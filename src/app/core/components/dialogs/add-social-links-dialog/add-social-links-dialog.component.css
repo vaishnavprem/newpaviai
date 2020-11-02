@@ -1,0 +1,120 @@
+.step-3-dialog {
+  text-align: center;
+  padding-top: 20px;
+}
+.step-3-text-1 {
+  color: #45A357;
+  margin: 20px 0 40px;
+  text-align: center;
+  font-family: "Segoe UI Semibold";
+  font-size: 30px;
+}
+.step-3-text-2 {
+  border-radius: 35px;
+  border: 1px solid #0265C9;
+  width: 400px;
+  height: 60px;
+  background: white;
+  color: #0265C9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  font-size: 22px;
+  position: relative;
+}
+.step-3-text-2 input {
+  display: none;
+}
+.step-3-text-3 {
+  margin-bottom: 50px;
+  color: #757575;
+  font-size: 18px;
+  font-family: "Segoe Regular";
+}
+.step-3-text-4 {
+  border-radius: 35px;
+  width: 100%;
+  height: 60px;
+  background: white;
+  color: #757575;
+  font-family: "Segoe Regular";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  box-shadow: 0px 0px 10px #0000000F;
+}
+.click-img {
+  position: absolute;
+  right: 16px;
+}
+.step-3-text-5 {
+  color: #0265C9;
+  line-height: 50px;
+  margin: 20px auto 40px;
+  text-align: center;
+  font-family: "Segoe UI Semibold";
+  font-size: 30px;
+  max-width: 266px;
+}
+
+.social-step-3 {
+  box-shadow: 0px 0px 10px #97979729;
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+}
+.social-step-3:hover {
+  cursor: pointer;
+}
+.add-step-3 {
+  width: 130px;
+  margin-left: 32px;
+  height: 60px;
+  color: #fff !important;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  background: #0265C9;
+  border: 1px solid #CCCCCC;
+  font-family: "Segoe Regular";
+  transition: 0.3s ease-in-out;
+}
+.step-3-social {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.add-step-3:hover {
+  cursor: pointer;
+}
+@media(max-width: 767px) {
+  .step-3-text-2 {
+    width: 100%;
+  }
+  .step-3-text-5 {
+    line-height: 30px;
+    margin: 20px auto 9px;
+    font-size: 23px;
+    max-width: 200px;
+  }
+  .step-3-social {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  .social-step-3 {
+    margin-right: 0;
+  }
+}
+

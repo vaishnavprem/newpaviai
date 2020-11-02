@@ -1,0 +1,33 @@
+<div class="work-items">
+  <div class="work-info">
+    <div class="work-header">
+      <img src="assets/images/decor-4.svg">
+      <p class="work-text-1">Certification</p>
+    </div>
+    <div class="work-list">
+      <ul>
+        <li *ngFor="let certification of certifications">
+          <img class="work-list-sqr" src="assets/images/circle-check.svg">
+          <p class="work-text-2">{{certification.name}}</p>
+          <div>
+            <p class="work-text-3">2019 ( 3 Week )</p>
+            <p class="work-text-4">{{certification.issued_by}}</p>
+          </div>
+          <div class="work-delete-edit" [hidden]="!showingEditDeleteBtns">
+            <a>
+              <img src="assets/images/edit-work.svg" (click)="showEditDialog(certification)">
+            </a>
+            <a>
+              <img src="assets/images/delete-work.svg" (click)="removeCertification(certification)">
+            </a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+    <div class="work-add-edit">
+      <a class="work-add-edit-1" (click)="addCertificationInfo()">Add +</a>
+      <a class="work-add-edit-2" (click)="showEditDeleteBtns()">Edit</a>
+    </div>
+  </div>
+</div>

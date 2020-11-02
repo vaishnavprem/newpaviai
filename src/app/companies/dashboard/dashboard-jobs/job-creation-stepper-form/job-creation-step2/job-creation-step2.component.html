@@ -1,0 +1,53 @@
+<form [formGroup]="step2Group">
+
+  <div class="jobs-form-content-header">
+    <div class="jobs-form-content-header-img">
+      <img src="../../../../../../assets/images/form-img.png">
+    </div>
+    Job Application Form
+  </div>
+  <div class="jobs-form-inputs">
+    <div class="jobs-form-item">
+      <label>Address</label>
+      <input placeholder="Company's Address">
+    </div>
+    <div class="jobs-form-item dropdown">
+      <label>Level</label>
+      <input class="dropdown-toggle" id="dropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false" placeholder="Level">
+      <i class="fas fa-angle-down select-webkit"></i>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-4">
+        <a class="dropdown-item">Beginner</a>
+        <a class="dropdown-item">Mid level</a>
+        <a class="dropdown-item">Senior</a>
+      </div>
+    </div>
+    <div class="jobs-form-item">
+      <label>Salary</label>
+      <input>
+    </div>
+    <div class="jobs-form-item">
+      <label>Email</label>
+      <input placeholder="Company Email">
+    </div>
+    <div class="jobs-form-item dropdown">
+      <label>Category</label>
+      <input class="dropdown-toggle" id="dropdownMenuLink-1" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false" placeholder="Category">
+      <i class="fas fa-angle-down select-webkit"></i>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-1">
+        <a class="dropdown-item" href="#">Category</a>
+        <a class="dropdown-item" href="#">Category</a>
+        <a class="dropdown-item" href="#">Category</a>
+      </div>
+    </div>
+    <div class="jobs-form-2">
+      <button type="button" class="jobs-form-item-next" matStepperPrevious>
+        <i class="fas fa-angle-left"></i> Back
+      </button>
+      <button type="button" class="jobs-form-item-next" matStepperNext>
+        Next<i class="fas fa-angle-right"></i>
+      </button>
+    </div>
+  </div>
+</form>

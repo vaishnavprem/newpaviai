@@ -1,0 +1,68 @@
+<form [formGroup]="$any(workExperienceForm)">
+  <ng-container *ngFor="let c of experienceItems;let ind = index">
+    <ng-container [formGroupName]="ind.toString()">
+      <div class="save-work-experience">
+        <i class="fas fa-times dialogs-close-btn" mat-dialog-close></i>
+        <div class="work-header">
+          <img src="assets/images/decor-1.svg">
+          <p class="work-text-1">Work Experience</p>
+        </div>
+        <div class="work-experience-input">
+          <label>Name Of Company</label>
+          <input placeholder="Name Of Company" formControlName="company_name">
+          <mat-error *ngIf="isSubmitted && c.get('company_name').hasError('required')">Company name is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="c.get('company_name').hasError('patternInvalid')">Company name is
+            <strong>invalid</strong>
+          </mat-error>
+        </div>
+        <div class="work-experience-input">
+          <label>Speciality</label>
+          <input placeholder="Speciality" formControlName="speciality">
+          <mat-error *ngIf="isSubmitted && c.get('speciality').hasError('required')">Speciality is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="c.get('speciality').hasError('patternInvalid')">Speciality format is
+            <strong>invalid</strong>
+          </mat-error>
+        </div>
+        <div class="work-experience-input">
+          <label>Years Of Work</label>
+          <div class="work-date-input">
+            <div class="year-input">
+              <input placeholder="Start year" formControlName="start_year">
+            </div>
+            <mat-error *ngIf="isSubmitted && c.get('start_year').hasError('required')">Start year is
+              <strong>required</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="c.get('start_year').hasError('patternInvalid') || c.get('start_year').hasError('yearInvalid') ">
+              Start year format is
+              <strong>invalid</strong>
+            </mat-error>
+            <mat-error *ngIf="c.get('start_year').hasError('startDateGreater')">
+              Start date is greater than end date
+            </mat-error>
+            <div class="year-input">
+              <input placeholder="End year" formControlName="end_year">
+              <mat-error
+                *ngIf="isSubmitted && c.get('end_year').hasError('required') ">End year is
+                <strong>required</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="c.get('end_year').hasError('patternInvalid')|| c.get('end_year').hasError('yearInvalid')">End
+                year format is
+                <strong>invalid</strong>
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="work-buttons">
+          <a class="work-add-edit-2" mat-dialog-close>Cancel</a>
+          <a class="work-add-edit-1" (click)="saveExperience()">Save</a>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</form>

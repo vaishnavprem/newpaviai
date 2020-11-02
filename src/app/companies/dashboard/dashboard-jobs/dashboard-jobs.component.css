@@ -1,0 +1,6 @@
+@import '../../../../assets/styles/dashboard.css';
+
+
+:host ::ng-deep .mat-horizontal-stepper-header-container {
+  display: none !important;
+}

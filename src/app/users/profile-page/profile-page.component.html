@@ -1,0 +1,58 @@
+<div class="ful-col-row">
+  <div class="left-bar">
+  <app-user-sidebar></app-user-sidebar>
+</div>
+<div class="right-bar">
+  <div class="container">
+      <div class="inner-page">
+          <div class="row">
+    <div class="col-xl-12 col-md-12 mb-12">
+
+
+      <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="currentStep-1" labelPosition="bottom"
+                              (selectionChange)="stepChanged($event)">
+
+        <ng-template matStepperIcon="edit" let-index="index">
+          <i class="fa fa-user" *ngIf="index === 0"></i>
+          <i class="far fa-file-user" *ngIf="index === 1"></i>
+          <i class="fas fa-file-pdf" *ngIf="index === 2"></i>
+        </ng-template>
+
+        <!-- Custom icon with a context variable. -->
+        <ng-template matStepperIcon="number" let-index="index">
+          <i class="fa fa-user" *ngIf="index === 0"></i>
+          <i class="far fa-file-user" *ngIf="index === 1"></i>
+          <i class="fas fa-file-pdf" *ngIf="index === 2"></i>
+        </ng-template>
+
+        <!-- Step 1 -->
+        <mat-step label="Step 1">
+          <ng-template matStepLabel>About</ng-template>
+          <app-about-tab></app-about-tab>
+        </mat-step>
+
+        <!-- Step 2 -->
+        <mat-step label="Step 2">
+          <ng-template matStepLabel>CV/Resume</ng-template>
+          <app-cv-portfolio-tab></app-cv-portfolio-tab>
+        </mat-step>
+
+        <!-- Step 3 -->
+        <mat-step label="Step 3">
+          <ng-template matStepLabel>Social Medias<br> PDF</ng-template>
+          <app-social-medias-tab></app-social-medias-tab>
+        </mat-step>
+
+      </mat-horizontal-stepper>
+
+
+    </div>
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+

@@ -1,0 +1,69 @@
+<div class="section-block-10-info">
+  <p class="profile-text-3">Contact Information</p>
+  <!--  <a class="profile-delete-btn-2">Delete Profile</a>-->
+  <a class="profile-save-btn" *ngIf="showEditProfileForm && !showChangeEmail && !showChangePass"
+     (click)="saveProfileDetails()">Save</a>
+  <a class="profile-edit-profile-btn" *ngIf="!showChangeEmail && !showChangePass && !showEditProfileForm"
+     (click)="editProfileForm()">Edit Profile</a>
+</div>
+<div class="section-block-10-form">
+  <form [formGroup]="profileForm" *ngIf="!showChangeEmail && !showChangePass">
+    <div class="form-elements">
+      <div class="profile-item">
+        <label>Phone:</label>
+        <input formControlName="phone">
+      </div>
+      <mat-error *ngIf="phone.hasError('patternInvalid')">Phone number is <strong>invalid</strong>. Only numbers
+        please.
+      </mat-error>
+      <div class="profile-item">
+        <label>Age:</label>
+        <input formControlName="age">
+      </div>
+      <div class="profile-item">
+        <label>Country:</label>
+        <input formControlName="country">
+      </div>
+      <mat-error *ngIf="country.hasError('patternInvalid')">Country format is <strong>invalid</strong>.
+      </mat-error>
+      <div class="profile-item">
+        <label>Gender:</label>
+        <input formControlName="gender">
+      </div>
+      <div class="profile-item">
+        <label>Email:</label>
+        <input formControlName="email">
+      </div>
+      <div class="profile-item">
+        <label>Birthday:</label>
+        <ng-container *ngIf="showEditProfileForm">
+
+          <div class="date-age" (click)="picker.open()">
+
+            <input matInput [matDatepicker]="picker" class="logos-small-input" formControlName="birthday"
+                   [max]="maxBirthdayDate" (dateChange)="dateChanged($event)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </div>
+          <!--                <mat-error *ngIf="birthday.hasError('required')">Birth day is <strong>required</strong>-->
+          <!--                </mat-error>-->
+          <mat-error *ngIf="birthday.hasError('matDatepickerMax')">The date is <strong>not allowed</strong>
+          </mat-error>
+        </ng-container>
+        <p *ngIf="!showEditProfileForm">{{getUserBirthdayFormatted()}}</p>
+      </div>
+    </div>
+    <div class="profile-item">
+      <a class="change-email-btn" (click)="showChangeEmailForm()">Change E-mail</a>
+    </div>
+    <div class="profile-item">
+      <a class="change-email-btn-2" (click)="showChangePassForm()">Change Password</a>
+    </div>
+  </form>
+  <div class="old-new-email" *ngIf="showChangeEmail">
+    <app-change-email-form (back)="backToMainForm()"></app-change-email-form>
+  </div>
+  <div class="changes-passwords" *ngIf="showChangePass">
+    <app-change-password-form (back)="backToMainForm()"></app-change-password-form>
+  </div>
+</div>

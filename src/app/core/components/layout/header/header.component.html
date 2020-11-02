@@ -1,0 +1,29 @@
+<header>
+    <div class="logo-inner">
+      <figure><a routerLink="/" routerLinkActive="active"><img src="assets/images/inner-logo.png" alt="Pavi" title="Pavi" class="img-responsive" /></a></figure>
+    </div>
+    <div class="nav-menu"> <a (click)="clickEvent()"><img src="assets/images/nav.png" alt="Nav" title="Nav" /></a> </div>
+    <div [ngClass]="status ? 'nav-show' : ''">
+    <div class="navicon">
+      <div class="nav-header-in">
+        <div class="logo-inner">
+          <figure><a href="javascript:void(0);"><img src="assets/images/inner-logo.png" alt="Pavi" title="Pavi" class="img-responsive" /></a></figure>
+        </div>
+        <span class="close-menu" (click)="clickEvent()"> <img src="assets/images/nav-close.png" /> </span> </div>
+      <div class="navicon-inner">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
+            <div class="col-sm-10">
+              <ul>
+                <li class="active"><a class="login" href="javascript:void(0);">Login</a></li>
+                <li><a class="about" href="javascript:void(0);">About</a></li>
+                <li><a class="contact" href="javascript:void(0);">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </header>

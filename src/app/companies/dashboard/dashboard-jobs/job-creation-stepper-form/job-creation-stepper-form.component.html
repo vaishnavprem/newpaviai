@@ -1,0 +1,23 @@
+<form class="jobs-form-content" [formGroup]="jobForm">
+  <mat-horizontal-stepper [linear]="false" #stepper [selectedIndex]="currentStep-1" labelPosition="bottom"
+                          (selectionChange)="stepChanged($event)">
+    <!-- Step 1 -->
+    <mat-step label="Step 1">
+      <ng-template matStepLabel>About</ng-template>
+      <app-job-creation-step1 [group]="step1Group"></app-job-creation-step1>
+    </mat-step>
+
+    <!-- Step 2 -->
+    <mat-step label="Step 2">
+      <ng-template matStepLabel>CV/Resume</ng-template>
+      <app-job-creation-step2 [group]="step2Group"></app-job-creation-step2>
+    </mat-step>
+
+    <!-- Step 3 -->
+    <mat-step label="Step 3">
+      <ng-template matStepLabel>Social Medias<br> PDF</ng-template>
+      <app-job-creation-step3 [group]="step3Group"></app-job-creation-step3>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</form>

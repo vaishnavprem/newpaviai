@@ -1,0 +1,159 @@
+<div *ngIf="isLoder" class="loader">
+  <svg width="80" height="80" viewBox="0 0 38 38" stroke="#fff">
+      <g fill="none" fill-rule="evenodd">
+          <g transform="translate(1 1)" stroke-width="2">
+              <circle stroke-opacity=".2" cx="18" cy="18" r="18"/>
+              <path d="M36 18c0-9.94-8.06-18-18-18">
+                  <animateTransform
+                      attributeName="transform"
+                      type="rotate"
+                      from="0 18 18"
+                      to="360 18 18"
+                      dur="1s"
+                      repeatCount="indefinite"/>
+              </path>
+          </g>
+      </g>
+  </svg>
+  </div>
+
+<section class="find-job-content">
+    <p class="find-job-text-1">Find Your Dream Job Here</p>
+    <div class="find-job-section-1">
+      <div class="find-job-left">
+        <img src="../../../assets/images/job-man.png">
+        <p class="find-job-text-2">Job Title Or Keyword</p>
+      </div>
+      <div class="find-job-left">
+        <img src="../../../assets/images/job-search.png">
+        <p class="find-job-text-2">Select Location</p>
+      </div>
+      <div class="position-relative">
+        <input class="find-job-right" placeholder="Search">
+        <i class="fas fa-search find-job-right-icon"></i>
+      </div>
+    </div>
+  </section>
+  <section class="find-job-block">
+    <div class="find-job-block-left dream-job-left-block">
+      <a class="top-jobs-text">Top Jobs</a>
+      <div class="dream-job-left">
+        <div class="top-jobs-item">
+          <div class="top-jobs-item-left">
+            <img src="../../../assets/images/muzica.png">
+          </div>
+          <div class="top-jobs-item-right">
+            <p class="top-text-1">Office Assistant</p>
+            <p class="top-text-2">Founders:<span>4days ago</span></p>
+          </div>
+        </div>
+        <div class="top-jobs-item">
+          <div class="top-jobs-item-left">
+            <img src="../../../assets/images/ideaa.png">
+          </div>
+          <div class="top-jobs-item-right">
+            <p class="top-text-1">Office Assistant</p>
+            <p class="top-text-2">Founders:<span>4 days ago</span></p>
+          </div>
+        </div>
+        <div class="top-jobs-item">
+          <div class="top-jobs-item-left">
+            <img src="../../../assets/images/muzica.png">
+          </div>
+          <div class="top-jobs-item-right">
+            <p class="top-text-1">Office Assistant</p>
+            <p class="top-text-2">Founders:<span>4 days ago</span></p>
+          </div>
+        </div>
+        <div class="top-jobs-item">
+          <div class="top-jobs-item-left">
+            <img src="../../../assets/images/muzica.png">
+          </div>
+          <div class="top-jobs-item-right">
+            <p class="top-text-1">Office Assistant</p>
+            <p class="top-text-2">Founders:<span>4days ago</span></p>
+          </div>
+        </div>
+        <div class="top-jobs-item">
+          <div class="top-jobs-item-left">
+            <img src="../../../assets/images/hex-lab.png">
+          </div>
+          <div class="top-jobs-item-right">
+            <p class="top-text-1">Office Assistant</p>
+            <p class="top-text-2">Founders:<span>4days ago</span></p>
+          </div>
+        </div>
+        <div class="top-jobs-item">
+          <div class="top-jobs-item-left">
+            <img src="../../../assets/images/muzica.png">
+          </div>
+          <div class="top-jobs-item-right">
+            <p class="top-text-1">Office Assistant</p>
+            <p class="top-text-2">Founders:<span>4days ago</span></p>
+          </div>
+        </div>
+        <div class="top-jobs-item">
+          <div class="top-jobs-item-left">
+            <img src="../../../assets/images/muzica.png">
+          </div>
+          <div class="top-jobs-item-right">
+            <p class="top-text-1">Office Assistant</p>
+            <p class="top-text-2">Founders:<span>4days ago</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="find-job-block-right position-relative">
+  
+      <div class="dream-job-content-2">
+        <a class="go-back-to-job-btn" (click)="router.navigate(['jobs/find-job'])"><i class="fas fa-chevron-left"></i>Go Back To The Jobs</a>
+        <a *ngIf="show" class="go-back-to-job-btn" (click)="getQuestionData(id)"><i class="fas fa-refresh"></i>Fetch Answer</a>
+      </div>
+    &nbsp;
+    &nbsp;
+      <div *ngIf="questions && questions.length == 0">No record found</div>
+      <div *ngIf="questions && questions.length > 0" class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Question</th>
+              <th style="text-align:right;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let question of questions; let i=index">
+              <td>{{i+1}}</td>
+              <td>{{question.question}}</td>
+             
+              <td align="right"> <a  style=" float:right;" class="go-back-to-job-btn" (click)="gotoVideoPage(question.id)"> <img src="assets/images/aside-2.png"> &nbsp; Record Answer</a>
+                <a *ngIf="question.recorded_url!=undefined" class="go-back-to-job-btn" style=" float:right;"> <i class="fa fa-eye"  (click)="showRecordedAnswer(question.recorded_url)"></i></a>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="dream-job-block-4">
+        <div class="contact-media-info-left">
+          <div class="media-left">
+            <img src="assets/images/contact-img-1.png">
+            Email
+          </div>
+          <div class="contact-center">
+            info@Pavi.com
+          </div>
+        </div>
+      
+        <div class="about-media-info-right">
+          <div class="media-left">
+            <img src="assets/images/about-img-2.svg"> Social Medias
+          </div>
+          <div>
+            <img src="assets/images/about-img-3.svg">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

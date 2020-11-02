@@ -1,0 +1,68 @@
+<footer>
+  <div class="footer-left">
+    <div class="footer-item">
+      <div class="footer-item-left">
+        <img src="../../../assets/images/img-1.png">
+      </div>
+      <div class="footer-item-right">
+        <p class="text-9">Address</p>
+        <p class="text-10">
+          21 Hight Street Cleethorpes North East Lincolnshire DN35 8LA
+        </p>
+      </div>
+    </div>
+    <div class="footer-item">
+      <div class="footer-item-left">
+        <img src="../../../assets/images/img-4.png">
+      </div>
+      <div class="footer-item-right">
+        <p class="text-9">Mail</p>
+        <p class="text-10">
+          hello@pavi.ai<br>
+        </p>
+      </div>
+    </div>
+    <div class="footer-item">
+      <div class="footer-item-left">
+        <img src="assets/images/img-29.png">
+      </div>
+      <div class="footer-item-right">
+        <p class="text-9">Navigation</p>
+        <ul class="text-10">
+          <li *ngFor="let link of footerLinks">
+            <a [routerLink]="link.route" routerLinkActive="active"
+             [routerLinkActiveOptions]="{exact:true}">{{link.name}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-item">
+      <div class="footer-item-left">
+        <img src="assets/images/img-2.png">
+      </div>
+      <div class="footer-item-right">
+        <p class="text-9">Call</p>
+        <p class="text-10">
+          <a>+1 (212) 661-2124</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-right">
+    <p class="text-7">Request a List of headings</p>
+    <p class="text-8">Please enter your email address to receive course titles, the topics will be emailed to you.</p>
+    <div class="footer-input">
+      <input placeholder="Name@gmail.com">
+      <a class="footer-send-btn">Send</a>
+    </div>
+    <div class="footer-block">
+      <label class="container">
+        <p class="text-8 mb-0">Your email has been successfully registered, headlines will be sent to you soon.</p>
+        <input type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  </div>
+</footer>
+<div class="footer-content">© Copyright 2020 - PAVI, LLC - All Rights Reserved </div>
+

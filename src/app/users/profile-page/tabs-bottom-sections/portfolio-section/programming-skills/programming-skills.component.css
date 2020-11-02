@@ -1,0 +1,6 @@
+.work-items{
+  display: flex;
+  height: 700px;
+  flex-direction: column;
+  /*justify-content: space-between;*/
+}

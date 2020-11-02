@@ -1,0 +1,93 @@
+<section class="register-content">
+  <div class="register-left-side">
+<!--    <a class="logo-back" (click)="router.navigate(['/'])">-->
+<!--      <img src="assets/images/logo.png">-->
+<!--    </a>-->
+    <img class="register-big-img" src="assets/images/login-1.svg" (click)="router.navigate(['/'])">
+    <div class="left-block-4" (click)="goToPage('auth/user-registration')">
+      <div>
+        <img src="assets/images/img-30.svg">
+        <div class="left-block-5">
+          <p class="login-text-5">Private</p>
+          <p class="login-text-8">Personal</p>
+        </div>
+      </div>
+      <img src="assets/images/img-31.svg">
+    </div>
+    <div class="left-block-4 active" (click)="goToPage('auth/company-registration')">
+      <div>
+        <img src="assets/images/img-32.svg">
+        <div class="left-block-5">
+          <p class="login-text-5">Company</p>
+          <p class="login-text-8">Business</p>
+        </div>
+      </div>
+      <img src="assets/images/img-31.svg">
+    </div>
+  </div>
+  <div class="register-right-side">
+    <p class="register-text-1">Don't have an account ?
+      <a class="login-text-2" (click)="router.navigate(['auth/user-registration'])">Sign In Here</a>
+    </p>
+    <div class="register-form">
+      <p class="login-text-3">Sign Up</p>
+      <p class="login-text-4">Choose the versions of Sign Up.</p>
+      <div class="login-block-1 mb-4">
+<!--        <a class="login-google" [href]="getGoogleAuthUrl()"><i class="fab fa-google"></i> Sign Up With Google</a>-->
+      </div>
+      <p class="login-text-7">Company</p>
+      <div class="line-block">
+        <span class="line-1"></span>
+        <span>OR</span>
+        <span class="line-1"></span>
+      </div>
+      <div>
+        <form [formGroup]="companyRegistrationForm" class="company-registration-form">
+
+          <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="currentStep-1" labelPosition="bottom">
+
+
+            <ng-template matStepperIcon="edit" let-index="index">
+              <i class="fas fa-user" *ngIf="index === 0"></i>
+              <i class="fas fa-key" *ngIf="index === 1"></i>
+              <i class="fas fa-phone-alt" *ngIf="index === 2"></i>
+            </ng-template>
+
+            <!-- Custom icon with a context variable. -->
+            <ng-template matStepperIcon="number" let-index="index">
+              <i class="fas fa-user" *ngIf="index === 0"></i>
+              <i class="fas fa-key" *ngIf="index === 1"></i>
+              <i class="fas fa-phone-alt" *ngIf="index === 2"></i>
+            </ng-template>
+
+
+
+<!--            &lt;!&ndash; 'Step passed' sign&ndash;&gt;-->
+<!--            <ng-template matStepperIcon="edit">-->
+<!--              <mat-icon>done</mat-icon>-->
+<!--            </ng-template>-->
+
+            <!-- Step 1 -->
+            <mat-step [stepControl]="companyInfo">
+              <ng-template matStepLabel>Company info</ng-template>
+              <app-step1 [group]="companyInfo" [stepper]="stepper"></app-step1>
+            </mat-step>
+
+            <!-- Step 2 -->
+            <mat-step [stepControl]="accountInfo">
+              <ng-template matStepLabel>Account info</ng-template>
+              <app-step2 [group]="accountInfo"></app-step2>
+            </mat-step>
+
+            <!-- Step 3 -->
+            <mat-step>
+              <ng-template matStepLabel>Company details</ng-template>
+              <app-step3 [group]="contactDetails" (registerCompany)="registerCompany()"></app-step3>
+            </mat-step>
+          </mat-horizontal-stepper>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

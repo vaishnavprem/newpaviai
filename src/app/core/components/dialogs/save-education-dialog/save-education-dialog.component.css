@@ -1,0 +1,128 @@
+.save-work-experience {
+  width: 100%;
+  border-radius: 60px !important;
+  background: white;
+  padding: 35px;
+}
+.work-experience-input {
+  margin-bottom: 18px;
+}
+.work-experience-input label {
+  font-size: 15px;
+  color: #757575;
+  line-height: 15px;
+  margin-bottom: 12px;
+  margin-left: 40px;
+  font-family: "Segoe UI Semibold";
+  display: block;
+}
+.work-experience-input input {
+  font-size: 15px;
+  width: 100%;
+  border-radius: 35px;
+  height: 60px;
+  border: 1px solid #F5F5F5;
+  line-height: 15px;
+  padding-left: 40px;
+  font-family: "Segoe UI Semibold";
+  outline: none;
+  color: #CCCCCC !important;
+}
+.work-experience-input input::placeholder {
+  color: #CCCCCC !important;
+}
+.work-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.work-buttons a {
+  margin-left: 20px;
+}
+.add-programming-skills {
+  font-size: 15px;
+  width: 100%;
+  border-radius: 35px;
+  height: 60px;
+  border: 1px solid #F5F5F5;
+  line-height: 15px;
+  font-family: "Segoe UI Semibold";
+  outline: none;
+  color: #CCCCCC !important;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.add-plus {
+  width: 60px;
+  height: 60px;
+  box-shadow: 0px 0px 10px #94949429;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-text {
+  font-size: 20px;
+  font-family: "Segoe Regular";
+  color: #2B2B2B;
+  margin-right: 30px;
+}
+.add-text span {
+  font-family: "Segoe Bold";
+  color: #F15A24;
+}
+.work-date-input {
+  display: flex;
+  justify-content: space-between;
+}
+.work-date-input .year-input {
+  width: 48%;
+}
+
+
+
+@media (max-width: 767px) {
+  .save-work-experience {
+    padding: 0;
+  }
+  .work-buttons {
+    justify-content: center;
+    margin: 0 10px;
+  }
+  .work-header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 480px) {
+  .add-text {
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  .work-buttons {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  .work-buttons .work-add-edit-1,
+  .work-buttons .work-add-edit-2 {
+    margin: 10px 0;
+  }
+  .work-experience-input input {
+    padding-left: 10px;
+  }
+  .work-experience-input label {
+    margin-left: 10px;
+  }
+  .work-text-1 {
+    line-height: 40px;
+  }
+  .save-work-experience {
+    height: 650px;
+  }
+}

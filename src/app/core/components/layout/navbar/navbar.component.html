@@ -1,0 +1,82 @@
+<nav class="home-header navbar navbar-expand-lg navbar-light" *ngIf="!checkIfDashboardPage()">
+  <div class="header-left">
+    <a class="header-left-logo navbar-brand" (click)="router.navigate(['/'])">
+      <img src="assets/images/logo.png">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="header-right collapse navbar-collapse nav-menu" id="navbarSupportedContent">
+    <ul>
+      <li *ngFor="let link of navbarLinks">
+        <a [routerLink]="link.route" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact:true}">{{link.name}}</a></li>
+    </ul>
+    <div class="header-btns">
+      <input placeholder="Search for ...">
+      <a class="search-btn"><i class="fas fa-search"></i></a>
+
+    </div>
+    <div class="header-small-block">
+      <div class="dropdown user-dropdown-part">
+        <a class="dropdown-toggle header-img-block" type="button" id="dropdownUserInfo" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false" (click)="goToLoginPage()">
+          <img class="header-img" src="assets/images/user.png">
+          <i class="fas fa-chevron-down"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownUserInfo" *ngIf="auth.loggedIn()">
+          <a class="dropdown-item" *ngIf="routerUrl && !routerUrl.includes('profile-page')"
+             (click)="router.navigate(['users/profile-page'])">
+            <img class="header-img" src="assets/images/social-media-profile.png">My Profile
+          </a>
+          <a class="dropdown-item" *ngIf="auth.loggedIn()" (click)="auth.logOut()">
+            <img class="header-img" src="assets/images/logout-profile.png">Logout
+          </a>
+        </div>
+      </div>
+
+      <div class="dropdown language-dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+          En
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">USA</a>
+          <a class="dropdown-item" href="#">Ru</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<nav class="dashboard-header" *ngIf="checkIfDashboardPage()">
+  <img class="dashboard-logo" src="assets/images/logo.png" (click)="router.navigate(['/'])">
+
+  
+
+  <a class="dashboard-text-1" (click)="router.navigate(['/'])">
+    <img src="assets/images/directional.png">
+    Back To Website
+  </a>
+  <div class="dashboard-text-2">
+    <input placeholder="Search">
+    <span class="dashboard-text-3"><img src="assets/images/search-dash.png"></span>
+  </div>
+  <div class="dashboard-text-4">
+    <div class="dashboard-text-5">
+      <img src="assets/images/camera.png">
+    </div>
+    <div class="dropdown dashboard-text-6">
+      <a class="dropdown-toggle" type="button" id="dropdownUserInfo2" data-toggle="dropdown" aria-haspopup="true"
+         aria-expanded="false">
+        {{authUser.full_name}}
+        <img class="header-img" src="assets/images/img-dash.png">
+        <i class="fas fa-chevron-down"></i>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownUserInfo">
+        <a class="dropdown-item" *ngIf="auth.loggedIn()" (click)="auth.logOut()"><img class="header-img" src="assets/images/logout-profile.png">Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<body>

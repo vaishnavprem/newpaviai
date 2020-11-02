@@ -1,0 +1,34 @@
+<div class="work-items">
+  <div class="work-info">
+    <div class="work-header">
+      <img src="../../../assets/images/decor-2.svg">
+      <p class="work-text-1">Education</p>
+    </div>
+    <div class="work-list">
+      <ul>
+        <li *ngFor="let education of educationInfo">
+          <img class="work-list-sqr" src="../../../assets/images/circle-check.svg">
+          <p class="work-text-2">{{education.institution}}</p>
+          <div>
+            <p
+              class="work-text-3">{{!education.end_year ? education.start_year : (education.start_year + '-' + education.end_year) }}</p>
+            <p class="work-text-4">{{education.degree}}</p>
+            <p class="work-text-5">{{education.speciality}}</p>
+          </div>
+          <div class="work-delete-edit" *ngIf="showingEditDeleteBtns">
+            <a>
+              <img src="../../../assets/images/edit-work.svg" (click)="showEditDialog(education)">
+            </a>
+            <a>
+              <img src="../../../assets/images/delete-work.svg" (click)="removeEducationInfo(education)">
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="work-add-edit">
+      <a class="work-add-edit-1" (click)="addEducationInfo()">Add +</a>
+      <a class="work-add-edit-2" (click)="showEditDeleteBtns()">Edit</a>
+    </div>
+  </div>
+</div>

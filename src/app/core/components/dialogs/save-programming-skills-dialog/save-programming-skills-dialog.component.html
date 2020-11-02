@@ -1,0 +1,41 @@
+<form [formGroup]="skillsForm">
+  <ng-container *ngFor="let c of skills;let ind = index">
+    <ng-container [formGroupName]="ind.toString()">
+      <div class="save-work-experience">
+        <i class="fas fa-times dialogs-close-btn" mat-dialog-close></i>
+        <div class="work-header">
+          <img src="assets/images/decor-3.svg">
+          <p class="work-text-1">Programing Skills</p>
+        </div>
+        <div class="add-programming-items">
+          <div class="work-experience-input">
+            <label>Name of the skill</label>
+            <input placeholder="Name of the skill" formControlName="name">
+            <mat-error *ngIf="isSubmitted && c.get('name').hasError('required')">Skill name is <strong>required</strong>
+            </mat-error>
+          </div>
+          <div class="work-experience-input">
+            <label>How Well You Know it?</label>
+            <input placeholder="0%" formControlName="rating">
+            <mat-error *ngIf="isSubmitted && c.get('rating').hasError('required')">Skill rating is
+              <strong>required</strong></mat-error>
+            <mat-error *ngIf="c.get('rating').hasError('patternInvalid')">Skill rating is
+              <strong>invalid</strong></mat-error>
+            <mat-error *ngIf="c.get('rating').hasError('ratingInvalid')">Skill rating should be
+              <strong>less than 100</strong></mat-error>
+          </div>
+        </div>
+        <div class="add-programming-skills" [hidden]="true">
+          <div class="add-plus"><img src="assets/images/plus.svg"></div>
+          <div class="add-text">Add One More <span>Skill.</span></div>
+        </div>
+
+
+        <div class="work-buttons">
+          <a class="work-add-edit-2">Cancel</a>
+          <a class="work-add-edit-1" (click)="saveSkill()">Save</a>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</form>

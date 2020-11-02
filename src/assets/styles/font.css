@@ -1,0 +1,20 @@
+@font-face {
+    src: url("../fonts/arialregular.ttf");
+    font-family: "Arial Regular";
+}
+@font-face {
+    src: url("../fonts/arialbold.ttf");
+    font-family: "Arial Bold";
+}
+@font-face {
+    src: url("../fonts/segoeregular.ttf");
+    font-family: "Segoe Regular";
+}
+@font-face {
+    src: url("../fonts/segoebold.ttf");
+    font-family: "Segoe Bold";
+}
+@font-face {
+    src: url("../fonts/segoesemibold.ttf");
+    font-family: "Segoe UI Semibold";
+}

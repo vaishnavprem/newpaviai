@@ -1,0 +1,24 @@
+.loader{background:rgba(0,0,0,0.5); position:fixed; left:0px; right:0px; top:0px; bottom:0px; z-index:9;}
+.loader svg{margin: 20% auto; display: table;}
+.find-job-block-info .logos-item{width: 275px;}
+.find-job-section-1 img{width: 22px; position: absolute; left: 30px; top: 19px;}
+.logos-item-input{padding-left:45px;}
+.find-job-section-1{padding: 0 10px 0 30px;}
+.row{width:100%;}
+.find-job-section-1 .login-btn{height:60px; width:100%;}
+.find-job-right-icon { position: absolute; left: 17px; top: 15px; color: #0265C9; right: inherit;}
+.find-job-section-1 .login-btn:hover .find-job-right-icon{color:#fff;}
+.find-job-block .logos-item-img{background: #d9dbdb;}
+
+@media (max-width: 767px) {
+.find-job-section-1{padding:30px 10px 30px 10px;}
+.find-job-section-1 img{top: 12px;}
+.logos-item-input{margin-bottom:20px;}
+.find-job-right-icon { left: 0px; top: 20px; color: #0265C9; right: 93px; font-size:18px;}
+.find-job-block-left {width: 100%;}
+.accordion-block{padding:15px;}
+.find-job-block-info .logos-item{width: 100%;}
+.top-jobs-item{width:100%!important; margin-bottom: 20px !important;}
+
+
+}

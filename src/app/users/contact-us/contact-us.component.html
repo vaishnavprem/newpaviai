@@ -1,0 +1,59 @@
+
+
+<section class="about-content-2" *ngIf="showSubmitMessage">
+  <p class="find-job-text-1">Thank You For Your Message</p>
+  <div class="about-media-info-right">
+    <div class="media-left">
+      <img src="assets/images/about-img-2.svg"> Social Medias
+    </div>
+    <div>
+      <img src="assets/images/about-img-3.svg">
+    </div>
+  </div>
+</section>
+<section class="about-content" *ngIf="hideSubmitMessage">
+  <p class="find-job-text-1">Contact Us</p>
+</section>
+<section class="about-text" *ngIf="hideSubmitMessage">
+  <div class="about-text-left">
+    <img src="assets/images/slack.svg">
+  </div>
+  <form>
+    <section class="contact-media-info">
+      <div class="contact-media-info-left">
+        <div class="media-left">
+          <img src="assets/images/contact-img-2.svg">
+          Phone
+        </div>
+        <div class="contact-center">
+          +1 (212) 661-2124
+        </div>
+      </div>
+      <div class="contact-media-info-left">
+        <div class="media-left">
+          <img src="assets/images/contact-img-1.png">
+          Email
+        </div>
+        <div class="contact-center">
+          hello@pavi.ai 
+        </div>
+      </div>
+    </section>
+    <div class="contact-block-1">
+      <div>
+        <label>Name*</label>
+        <input placeholder="Name">
+      </div>
+      <div>
+        <label>Email*</label>
+        <input placeholder="Email">
+      </div>
+    </div>
+    <div class="contact-block-1">
+      <textarea></textarea>
+    </div>
+    <div class="contact-block-2">
+      <a class="contact-btn" (click)="submitContactMessage()">Submit</a>
+    </div>
+  </form>
+</section>

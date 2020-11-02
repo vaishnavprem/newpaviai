@@ -1,0 +1,75 @@
+
+aside {
+  width: 340px;
+  position: fixed;
+  top: 100px;
+  background: #2B2B31;
+  display: flex;
+  border-top-right-radius: 40px;
+  height: calc(100vh - 100px);
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 34px 0 30px 40px;
+}
+
+.aside-title {
+  padding: 24px 0;
+  display: flex;
+  justify-content: center;
+}
+
+aside ul li a {
+  padding: 16px 20px;
+  width: 100%;
+  display: flex;
+  color: #8C8C8F !important;
+  align-items: center;
+  font-size: 20px;
+  font-family: "Segoe Regular";
+  transition: 0.3s ease-in-out;
+  border-top-left-radius: 38px;
+  border-bottom-left-radius: 38px;
+  height: 75px;
+}
+
+aside ul li a.active {
+  color: #272C32 !important;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  display: flex;
+  align-items: center;
+}
+
+aside ul li a img {
+  margin-right: 16px;
+}
+
+aside ul li a .aside-img-blue {
+  display: none;
+}
+
+aside ul li a.active .aside-img-blue {
+  display: block;
+}
+
+aside ul li a.active .aside-img-gray {
+  display: none;
+}
+
+aside ul li a:hover {
+  cursor: pointer;
+  color: #272C32 !important;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  display: flex;
+  align-items: center;
+}
+
+aside ul li a:hover .aside-img-blue {
+  display: block;
+}
+
+aside ul li a:hover .aside-img-gray {
+  display: none;
+}
+@media (max-width: 992px) {
+
+}

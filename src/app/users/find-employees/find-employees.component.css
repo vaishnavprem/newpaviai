@@ -1,0 +1,11 @@
+.find-worker-logos-big {
+  justify-content: flex-start !important;
+  height: 370px;
+}
+.find-work-item-left img {
+  border-radius: 50px;
+}
+.find-worker-logos {
+  justify-content: space-around !important;
+  height: 120px;
+}

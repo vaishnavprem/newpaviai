@@ -1,0 +1,131 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap');
+
+@font-face {font-family: "Montserrat Ultra Light";
+    src: url("../fonts/9d31c906a6cc6064bbe7d33d51058317.eot"); /* IE9*/
+    src: url("../fonts/9d31c906a6cc6064bbe7d33d51058317.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/9d31c906a6cc6064bbe7d33d51058317.woff2") format("woff2"), /* chrome firefox */
+    url("../fonts/t/9d31c906a6cc6064bbe7d33d51058317.woff") format("woff"), /* chrome firefox */
+    url("../fonts/9d31c906a6cc6064bbe7d33d51058317.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+    url("../fonts/9d31c906a6cc6064bbe7d33d51058317.svg#Montserrat Ultra Light") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: 'ROCKETWILDNESS';
+    src: url('../fonts/ROCKETWILDNESS.woff2') format('woff2'),
+        url('../fonts/ROCKETWILDNESS.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ROCKETWILDNESS';
+    src: url('../fonts/ROCKETWILDNESS.woff2') format('woff2'),
+        url('../fonts/ROCKETWILDNESS.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+a, a:hover, a:focus{text-decoration:none;}
+.bg-images-1{background:url(../images/bg-images-1.jpg) no-repeat center fixed; height:100%; width:100%; font-family: "Montserrat Ultra Light"; background-size:cover; }
+.logo{text-align:center; }
+.logo figure{max-width:220px; margin:10% auto 0px; text-align:center;}
+
+header{width:100%; display:inline-block; padding: 30px;}
+.nav-header-in{padding: 30px; width:100%; display:inline-block;}
+.navicon-inner{padding-top:60px;}
+.nav-header-in .logo-inner img{opacity:0.4;}
+.logo-inner{float:left;}
+.logo-inner img{max-width:56px; display:inline-block;}
+.logo-inner a{display:block;}
+.logo-inner a span{color:#fff; font-family: 'ROCKETWILDNESS'; font-size:22px; position: relative; top: 9px; margin-left:5px;}
+.logo h2{font-size:100px; font-family: 'ROCKETWILDNESS'; color:#fff; margin:0px;}
+.nav-menu{float:right; padding-top: 22px;}
+.content-info{padding-top:60px;}
+.content-info .welcome-img{margin-right:30px;}
+.content-info h1{font-family: "Montserrat Ultra Light"; padding-left: 10px; margin: 0; color:#fff; font-size:60px;position:relative; display:inline-block; line-height:78px;}
+.content-info h1 .hr-line{height:85px; width:1px; background:#fff; display:inline-block; position:absolute; margin-left: 5px;}
+.sound-icon{position:absolute; bottom:20px; right:30px;}
+
+.navicon{position:fixed; top:0px; bottom:0px; width:100%; background:url(../images/bg-images-1.jpg) no-repeat center fixed; right: 0; z-index:12; transform:translate(100%,0px); transition:all ease-in-out 0.3s;}
+.nav-show .navicon{transform:translate(0%,0px); transition:all ease-in-out 0.3s;}
+.navicon ul {padding:0px 0px 0px; margin:0px;}
+.navicon ul li {list-style:none;}
+.navicon ul li a{display:block; color:#5c6175; font-family: "Montserrat Ultra Light"; text-decoration:none; font-size:60px;padding:6px 50px; transition:all ease-in-out 0.3s; position:relative;}
+.navicon ul li.active a, .navicon ul li:hover a{color:#fff; transition:all ease-in-out 0.3s;}
+.close-menu{width:30px; height:30px; cursor: pointer; margin:0px; float:right; margin-top:12px; fill: #18ffff; text-align: center; padding-top: 8px;}
+
+.login:before{background:url(../images/key.png) no-repeat left; height:18px; width:23px; content:""; display:block; position: absolute; left: 5px;  background-position: 0px 4px;top: 36px;}
+.login:before:hover{background-position: 0px -4px;}
+
+.about:before{background:url(../images/about.png) no-repeat left; height:18px; width:23px; content:""; display:block; position: absolute; left: 5px;  background-position: 0px 0px;top: 39px;}
+
+.contact:before{background:url(../images/email.png) no-repeat left; height:18px; width:23px; content:""; display:block; position: absolute; left: 5px;  background-position: 0px 3px; top: 39px; transition:all ease-in-out 0.3s;}
+
+.navicon ul li:hover a.contact:before{background-position: 0px -14px;}
+.navicon ul li:hover a.about:before{background-position: 0px -18px;}
+
+
+/****radio Btn start*****/
+.parent_question{padding:30px 0px 0px 0px; list-style:none;}
+.parent_question li { position: relative;}
+.parent_question li input[type=radio] {position: absolute; visibility: hidden;}
+.parent_question li label {color: #3d445a; font-size: 52px; padding-left:10px; padding-bottom:30px; -webkit-transition: all 0.25s linear; line-height: 52px; font-weight:normal; margin: 0; cursor:pointer;}
+.parent_question li label ~ span{font-size:24px; color:#99a0c0; padding-left: 25px;}
+.parent_question li .check { position: relative; height: 18px; width: 18px; top: 6px; z-index: 5; transition: border .25s linear; -webkit-transition: border .25s linear; float:left;}
+.parent_question li .check:before {display: block;	position: absolute;	content: ''; height: 15px;	width: 15px; transition: background 0.25s linear; -webkit-transition: background 0.25s linear;}
+input[type=radio]:checked ~ .check:before { background: url(../images/redio-check.png) no-repeat;}
+input[type=radio]:checked ~ label {color: #fff;}
+/****radio Btn End*****/
+
+.search-box-location{max-width:606px;}
+.search-box-location .form-control{box-shadow:none; height:47px; font-size:28px; border-radius: 0px;}
+.form-control::placeholder{color:#d4d4d5;}
+.search-box-location .form-control:focus{box-shadow:none; border-color:#fff;}
+.search-box-location .input-group-btn:first-child .btn-group{margin-right: 20px;}
+.search-box-location p{text-align: right; color: #52586e; font-size: 24px; padding-top: 2px;}
+.global-icon{max-width: 200px; position: absolute; right: 0; bottom: -58px;}
+.global-icon img{max-width: 100%;}
+.search-btn .btn{height: 47px; font-weight:600; background:#99a0bf; color:#fff; font-family: 'Montserrat', sans-serif; padding: 4px 25px 10px; font-size:28px; border-radius: 0px;}
+
+.select-job{background:none; border:none; color:#edf568;}
+.search-job-section{padding-top:30px;}
+
+.select-your-job{background:#e6e7ea; margin-left: 44px; padding: 0px 12px; scrollbar-width: thin; scrollbar-color: #fff #999aa1; height:278px; overflow:auto; margin-top: 50px;}
+.select-your-job ul{padding:0px; list-style:none; }
+.select-your-job ul li{border-bottom: solid 1px #000819; padding:15px 0px 30px; }
+.select-your-job ul li strong{font-family: 'Montserrat', sans-serif; font-weight:700; font-size:20px;}
+.select-your-job ul li h4{font-size:22px; margin-bottom: 0px; margin-top: 7px;} 
+.select-your-job ul li h4 span{float:right;}
+.select-your-job ul li h4 span a + a {margin-left:10px;}
+
+@media(max-width:767px){
+header{padding: 15px;}
+.content-info{padding-top: 15px;}
+.content-info .welcome-img{margin: 0px auto; text-align: center; display: table;}
+.content-info h1{line-height: 55px; text-align: center; font-size: 50px;}
+.content-info h1 .hr-line{height: 58px;}
+.nav-menu{padding-top: 6px;}
+.nav-header-in .logo-inner img{opacity: 0.8;}
+.nav-header-in{padding:15px;}
+.close-menu{margin-top:0px;}
+.navicon-inner {padding-top: 15px;}
+.navicon-inner img{display:table; margin:0px auto;}
+.navicon ul li a{font-size: 53px;}
+.parent_question li label{font-size: 45px; padding-bottom: 20px; line-height: 45px;}
+.parent_question li label ~ span{font-size: 14px; padding-left: 15px;}
+.search-box-location .form-control{font-size: 20px;}
+.global-icon{max-width: 80px; right: 0px; bottom: -94px; left: 0; margin: 0px auto;}
+.search-box-location p{font-size: 23px;}
+.search-btn .btn{padding: 10px 10px 10px; font-size: 18px;}
+.select-your-job ul li h4{font-size: 16px;}
+.select-your-job ul li strong{font-size: 14px;}
+.select-your-job{margin-top: 15px;}
+.select-your-job ul li h4 span img{width:18px;}
+
+}
+
+

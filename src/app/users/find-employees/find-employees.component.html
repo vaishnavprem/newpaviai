@@ -1,0 +1,617 @@
+
+
+<section class="find-job-content">
+  <p class="find-job-text-1">Search & Find Your Woker</p>
+  <div class="find-job-section-1">
+    <div class="find-job-left">
+      <img src="../../../assets/images/job-man.png">
+      <p class="find-job-text-2">Interior Designer</p>
+    </div>
+    <div class="find-job-left">
+      <img src="../../../assets/images/job-search.png">
+      <p class="find-job-text-2">USA</p>
+    </div>
+    <div class="position-relative">
+      <input class="find-job-right" placeholder="Search">
+      <i class="fas fa-search find-job-right-icon"></i>
+    </div>
+  </div>
+</section>
+<section class="find-job-block">
+  <div class="find-job-block-left">
+    <a class="clear-all-filters">Clear All Filters</a>
+    <div class="accordion" id="accordionExample">
+      <div class="card accordion-block">
+        <div id="headingOne">
+          <a data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Filter By Job Countries <i class="fas fa-angle-up"></i>
+          </a>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <label class="container">USA
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Canada
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Australia
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="card accordion-block">
+        <div id="headingTwo">
+          <a data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+            Filter By Profession <i class="fas fa-angle-up"></i>
+          </a>
+        </div>
+        <div class="find-work-search-block">
+          <input class="find-work-search" placeholder="Search By Name">
+          <i class="fas fa-search find-work-search-icon"></i>
+        </div>
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body card-body-scroll">
+            <label class="container">Software Development
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Quality Assurance/Control
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Quality Assurance/Control
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Administrative/Office-Work
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Software Development
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Quality Assurance/Control
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Quality Assurance/Control
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Administrative/Office-Work
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Other It
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Sales/Service Management
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Quality Assurance/Control
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Quality Assurance/Control
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Administrative/Office-Work
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Software Development
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Quality Assurance/Control
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Quality Assurance/Control
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Quality Assurance/Control
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Administrative/Office-Work
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Software Development
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Quality Assurance/Control
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="card accordion-block">
+        <div id="headingThree">
+          <a data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+            Gender <i class="fas fa-angle-up"></i>
+          </a>
+        </div>
+        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            <label class="container">Male
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Female
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="find-job-block-right">
+    <div class="find-job-block-info find-job-block-info-1">
+      <div class="logos-item find-worker-logos-big">
+        <div class="logos-item-img find-worker-logos">
+          <div class="find-work-item-left">
+            <img src="../../../assets/images/find-work-10.png">
+          </div>
+          <div class="find-work-item-right" (click)="openInvitationDialog()">
+            <img src="../../../assets/images/find-work-2.png">
+          </div>
+        </div>
+        <div class="logos-block">
+          <p class="text-5">Jessica Alba</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+          <p class="text-5">Education</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+
+          <a class="text-6">More<i class="fas fa-angle-right"></i></a>
+        </div>
+      </div>
+      <div class="logos-item find-worker-logos-big">
+        <div class="logos-item-img find-worker-logos">
+          <div class="find-work-item-left">
+            <img src="../../../assets/images/find-work-5.png">
+          </div>
+          <div class="find-work-item-right" (click)="openInvitationDialog()">
+            <img src="../../../assets/images/find-work-1.png">
+          </div>
+        </div>
+        <div class="logos-block">
+          <p class="text-5">Jessica Alba</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+          <p class="text-5">Education</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+
+          <a class="text-6">More<i class="fas fa-angle-right"></i></a>
+        </div>
+      </div>
+      <div class="logos-item find-worker-logos-big">
+        <div class="logos-item-img find-worker-logos">
+          <div class="find-work-item-left">
+            <img src="../../../assets/images/find-work-6.png">
+          </div>
+          <div class="find-work-item-right" (click)="openInvitationDialog()">
+            <img src="../../../assets/images/find-work-2.png">
+          </div>
+        </div>
+        <div class="logos-block">
+          <p class="text-5">Jessica Alba</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+          <p class="text-5">Education</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+
+          <a class="text-6">More<i class="fas fa-angle-right"></i></a>
+        </div>
+      </div>
+      <div class="logos-item find-worker-logos-big">
+        <div class="logos-item-img find-worker-logos">
+          <div class="find-work-item-left">
+            <img src="../../../assets/images/find-work-7.png">
+          </div>
+          <div class="find-work-item-right" (click)="openInvitationDialog()">
+            <img src="../../../assets/images/find-work-1.png">
+          </div>
+        </div>
+        <div class="logos-block">
+          <p class="text-5">Jessica Alba</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+          <p class="text-5">Education</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+
+          <a class="text-6">More<i class="fas fa-angle-right"></i></a>
+        </div>
+      </div>
+      <div class="logos-item find-worker-logos-big">
+        <div class="logos-item-img find-worker-logos">
+          <div class="find-work-item-left">
+            <img src="../../../assets/images/find-work-8.png">
+          </div>
+          <div class="find-work-item-right" (click)="openInvitationDialog()">
+            <img src="../../../assets/images/find-work-2.png">
+          </div>
+        </div>
+        <div class="logos-block">
+          <p class="text-5">Jessica Alba</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+          <p class="text-5">Education</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+
+          <a class="text-6">More<i class="fas fa-angle-right"></i></a>
+        </div>
+      </div>
+      <div class="logos-item find-worker-logos-big">
+        <div class="logos-item-img find-worker-logos">
+          <div class="find-work-item-left">
+            <img src="../../../assets/images/find-work-10.png">
+          </div>
+          <div class="find-work-item-right">
+            <img src="../../../assets/images/find-work-2.png">
+          </div>
+        </div>
+        <div class="logos-block">
+          <p class="text-5">Jessica Alba</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+          <p class="text-5">Education</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+
+          <a class="text-6">More<i class="fas fa-angle-right"></i></a>
+        </div>
+      </div>
+      <div class="logos-item find-worker-logos-big">
+        <div class="logos-item-img find-worker-logos">
+          <div class="find-work-item-left">
+            <img src="../../../assets/images/find-work-5.png">
+          </div>
+          <div class="find-work-item-right">
+            <img src="../../../assets/images/find-work-1.png">
+          </div>
+        </div>
+        <div class="logos-block">
+          <p class="text-5">Jessica Alba</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+          <p class="text-5">Education</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+
+          <a class="text-6">More<i class="fas fa-angle-right"></i></a>
+        </div>
+      </div>
+      <div class="logos-item find-worker-logos-big">
+        <div class="logos-item-img find-worker-logos">
+          <div class="find-work-item-left">
+            <img src="../../../assets/images/find-work-6.png">
+          </div>
+          <div class="find-work-item-right">
+            <img src="../../../assets/images/find-work-2.png">
+          </div>
+        </div>
+        <div class="logos-block">
+          <p class="text-5">Jessica Alba</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+          <p class="text-5">Education</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+
+          <a class="text-6">More<i class="fas fa-angle-right"></i></a>
+        </div>
+      </div>
+      <div class="logos-item find-worker-logos-big">
+        <div class="logos-item-img find-worker-logos">
+          <div class="find-work-item-left">
+            <img src="../../../assets/images/find-work-10.png">
+          </div>
+          <div class="find-work-item-right">
+            <img src="../../../assets/images/find-work-2.png">
+          </div>
+        </div>
+        <div class="logos-block">
+          <p class="text-5">Jessica Alba</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+          <p class="text-5">Education</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+
+          <a class="text-6">More<i class="fas fa-angle-right"></i></a>
+        </div>
+      </div>
+      <div class="logos-item find-worker-logos-big">
+        <div class="logos-item-img find-worker-logos">
+          <div class="find-work-item-left">
+            <img src="../../../assets/images/find-work-10.png">
+          </div>
+          <div class="find-work-item-right">
+            <img src="../../../assets/images/find-work-1.png">
+          </div>
+        </div>
+        <div class="logos-block">
+          <p class="text-5">Jessica Alba</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+          <p class="text-5">Education</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+
+          <a class="text-6">More<i class="fas fa-angle-right"></i></a>
+        </div>
+      </div>
+      <div class="logos-item find-worker-logos-big">
+        <div class="logos-item-img find-worker-logos">
+          <div class="find-work-item-left">
+            <img src="../../../assets/images/find-work-10.png">
+          </div>
+          <div class="find-work-item-right">
+            <img src="../../../assets/images/find-work-2.png">
+          </div>
+        </div>
+        <div class="logos-block">
+          <p class="text-5">Jessica Alba</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+          <p class="text-5">Education</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+
+          <a class="text-6">More<i class="fas fa-angle-right"></i></a>
+        </div>
+      </div>
+      <div class="logos-item find-worker-logos-big">
+        <div class="logos-item-img find-worker-logos">
+          <div class="find-work-item-left">
+            <img src="../../../assets/images/find-work-10.png">
+          </div>
+          <div class="find-work-item-right">
+            <img src="../../../assets/images/find-work-2.png">
+          </div>
+        </div>
+        <div class="logos-block">
+          <p class="text-5">Jessica Alba</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+          <p class="text-5">Education</p>
+          <p class="text-11">
+            <span class="blue-circle"></span><span>Interview Date: </span>20 May 2020
+          </p>
+
+          <a class="text-6">More<i class="fas fa-angle-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+    <div class="find-job-block-info find-job-block-info-2">
+      <div class="founders">
+        <div class="item-job-1"><img src="../../../assets/images/lighting.png"></div>
+        <div class="assistant-content">
+          <p class="job-text-3">Office Assistant / Social Media Assistant</p>
+          <p class="job-text-4">Founders: <span>4days ago</span></p>
+        </div>
+        <div class="assistant-content">
+          <p class="job-text-3">Full Time</p>
+          <p class="job-text-4"><span>In Parise</span></p>
+        </div>
+        <div class="assistant-content">
+          <div class="assistant-content-orange">
+            <div class="orange-block"><span></span>Design</div>
+            <span class="span-1"></span>
+            <span class="span-2"></span>
+          </div>
+        </div>
+        <div class="assistant-content">
+          <img src="../../../assets/images/heart.png">
+        </div>
+      </div>
+      <div class="founders">
+        <div class="item-job-1"><img src="../../../assets/images/circle.png"></div>
+        <div class="assistant-content">
+          <p class="job-text-3">Marketing & Communication Manager</p>
+          <p class="job-text-4">Founders: <span>1days ago</span></p>
+        </div>
+        <div class="assistant-content">
+          <p class="job-text-3">Part Time</p>
+          <p class="job-text-4"><span>In Austin, Tx</span></p>
+        </div>
+        <div class="assistant-content">
+          <div class="assistant-content-green">
+            <div class="green-block"><span></span>Business Development</div>
+            <span class="span-1"></span>
+            <span class="span-2"></span>
+          </div>
+        </div>
+        <div class="assistant-content">
+          <img src="../../../assets/images/heart.png">
+        </div>
+      </div>
+      <div class="founders">
+        <div class="item-job-1"><img src="../../../assets/images/lighting.png"></div>
+        <div class="assistant-content">
+          <p class="job-text-3">Office Assistant / Social Media Assistant</p>
+          <p class="job-text-4">Founders: <span>4days ago</span></p>
+        </div>
+        <div class="assistant-content">
+          <p class="job-text-3">Full Time</p>
+          <p class="job-text-4"><span>In Parise</span></p>
+        </div>
+        <div class="assistant-content">
+          <div class="assistant-content-orange">
+            <div class="orange-block"><span></span>Design</div>
+            <span class="span-1"></span>
+            <span class="span-2"></span>
+          </div>
+        </div>
+        <div class="assistant-content">
+          <img src="../../../assets/images/heart.png">
+        </div>
+      </div>
+      <div class="founders">
+        <div class="item-job-1"><img src="../../../assets/images/lighting.png"></div>
+        <div class="assistant-content">
+          <p class="job-text-3">Office Assistant / Social Media Assistant</p>
+          <p class="job-text-4">Founders: <span>4days ago</span></p>
+        </div>
+        <div class="assistant-content">
+          <p class="job-text-3">Full Time</p>
+          <p class="job-text-4"><span>In Parise</span></p>
+        </div>
+        <div class="assistant-content">
+          <div class="assistant-content-blue">
+            <div class="blue-block"><span></span>Development</div>
+            <span class="span-1"></span>
+            <span class="span-2"></span>
+          </div>
+        </div>
+        <div class="assistant-content">
+          <img src="../../../assets/images/heart.png">
+        </div>
+      </div>
+      <div class="founders">
+        <div class="item-job-1"><img src="../../../assets/images/lighting.png"></div>
+        <div class="assistant-content">
+          <p class="job-text-3">Office Assistant / Social Media Assistant</p>
+          <p class="job-text-4">Founders: <span>4days ago</span></p>
+        </div>
+        <div class="assistant-content">
+          <p class="job-text-3">Full Time</p>
+          <p class="job-text-4"><span>In Parise</span></p>
+        </div>
+        <div class="assistant-content">
+          <div class="assistant-content-orange">
+            <div class="orange-block"><span></span>Design</div>
+            <span class="span-1"></span>
+            <span class="span-2"></span>
+          </div>
+        </div>
+        <div class="assistant-content">
+          <img src="../../../assets/images/heart.png">
+        </div>
+      </div>
+      <div class="founders">
+        <div class="item-job-1"><img src="../../../assets/images/circle.png"></div>
+        <div class="assistant-content">
+          <p class="job-text-3">Marketing & Communication Manager</p>
+          <p class="job-text-4">Founders: <span>1days ago</span></p>
+        </div>
+        <div class="assistant-content">
+          <p class="job-text-3">Part Time</p>
+          <p class="job-text-4"><span>In Austin, Tx</span></p>
+        </div>
+        <div class="assistant-content">
+          <div class="assistant-content-green">
+            <div class="green-block"><span></span>Business Development</div>
+            <span class="span-1"></span>
+            <span class="span-2"></span>
+          </div>
+        </div>
+        <div class="assistant-content">
+          <img src="../../../assets/images/heart.png">
+        </div>
+      </div>
+      <div class="founders">
+        <div class="item-job-1"><img src="../../../assets/images/lighting.png"></div>
+        <div class="assistant-content">
+          <p class="job-text-3">Office Assistant / Social Media Assistant</p>
+          <p class="job-text-4">Founders: <span>4days ago</span></p>
+        </div>
+        <div class="assistant-content">
+          <p class="job-text-3">Full Time</p>
+          <p class="job-text-4"><span>In Parise</span></p>
+        </div>
+        <div class="assistant-content">
+          <div class="assistant-content-orange">
+            <div class="orange-block"><span></span>Design</div>
+            <span class="span-1"></span>
+            <span class="span-2"></span>
+          </div>
+        </div>
+        <div class="assistant-content">
+          <img src="../../../assets/images/heart.png">
+        </div>
+      </div>
+      <div class="founders">
+        <div class="item-job-1"><img src="../../../assets/images/lighting.png"></div>
+        <div class="assistant-content">
+          <p class="job-text-3">Office Assistant / Social Media Assistant</p>
+          <p class="job-text-4">Founders: <span>4days ago</span></p>
+        </div>
+        <div class="assistant-content">
+          <p class="job-text-3">Full Time</p>
+          <p class="job-text-4"><span>In Parise</span></p>
+        </div>
+        <div class="assistant-content">
+          <div class="assistant-content-blue">
+            <div class="blue-block"><span></span>Development</div>
+            <span class="span-1"></span>
+            <span class="span-2"></span>
+          </div>
+        </div>
+        <div class="assistant-content">
+          <img src="../../../assets/images/heart.png">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="profile-page-open-pagination">
+  <a class="pagination-left" href="#"><i class="fas fa-angle-left"></i></a>
+  <a class="active" href="#">1</a>
+  <a href="#">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">6</a>
+  <a class="pagination-right" href="#"><i class="fas fa-angle-right"></i></a>
+</div>
+<app-footer></app-footer>
+<div class="footer-content">@ 2020 PICANTE BY 00000 000000 ALL RIGHTS RESERVED</div>
+

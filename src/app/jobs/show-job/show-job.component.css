@@ -1,0 +1,4 @@
+.go-back-to-job-btn{cursor:pointer; transition: 0.3s ease-in-out; border: 1px solid #0265C9;}
+.go-back-to-job-btn:hover{background: #0265C9; color: white !important; transition: 0.3s ease-in-out;}
+
+.top-job-header-abs{background: #d9dbdb; width:51%;}

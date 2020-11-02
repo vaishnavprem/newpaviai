@@ -1,0 +1,78 @@
+<form [formGroup]="step1Group">
+
+  <div class="jobs-form-content-header">
+    <div class="jobs-form-content-header-img">
+      <img src="assets/images/form-img.png">
+    </div>
+    Job Application Form
+  </div>
+  <div class="jobs-form-inputs">
+    <div class="jobs-form-item">
+      <label>Job Title</label>
+      <input placeholder="Job Title" formControlName="jobTitle">
+    </div>
+    <div class="jobs-form-item dropdown">
+      <label>Employment</label>
+      <input class="dropdown-toggle" id="employment-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+             placeholder="Employment" formControlName="employment">
+      <i class="fas fa-angle-down select-webkit"></i>
+      <div class="dropdown-menu" aria-labelledby="employment-1">
+        <a class="dropdown-item" href="#">Full - Time</a>
+        <a class="dropdown-item" href="#">Part time</a>
+      </div>
+    </div>
+    <div class="jobs-form-item dropdown">
+      <label>Country</label>
+      <input class="dropdown-toggle" id="dropdownMenuLink-2" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false" placeholder="Country" formControlName="country">
+      <i class="fas fa-angle-down select-webkit"></i>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-2">
+        <a class="dropdown-item" href="#">Usa</a>
+        <a class="dropdown-item" href="#">Italy</a>
+        <a class="dropdown-item" href="#">France</a>
+      </div>
+    </div>
+    <div class="jobs-form-item dropdown">
+      <label>City</label>
+      <input class="dropdown-toggle" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false" placeholder="City" formControlName="city">
+      <i class="fas fa-angle-down select-webkit"></i>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
+        <a class="dropdown-item" href="#">New York</a>
+        <a class="dropdown-item" href="#">New York</a>
+        <a class="dropdown-item" href="#">New York</a>
+      </div>
+    </div>
+    <div class="jobs-form-item date-opened">
+      <label>Date Opened</label>
+      <ng-container>
+
+        <div class="date-age" (click)="picker.open()">
+
+          <input matInput [matDatepicker]="opened_picker" class="logos-small-input" formControlName="date_opened"
+                 (dateChange)="dateChanged($event, 'date_opened')">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #opened_picker></mat-datepicker>
+        </div>
+        <!--                <mat-error *ngIf="birthday.hasError('required')">Birth day is <strong>required</strong>-->
+        <!--                </mat-error>-->
+        <!--      <mat-error *ngIf="birthday.hasError('matDatepickerMax')">The date is <strong>not allowed</strong>-->
+        <!--      </mat-error>-->
+      </ng-container>
+      <!--    <input placeholder="DD / MM / YYY">-->
+    </div>
+    <div class="jobs-form-item date-closed">
+      <label>Date Close</label>
+      <div class="date-age" (click)="picker.open()">
+
+        <input matInput [matDatepicker]="picker" class="logos-small-input" formControlName="date_closed"
+               (dateChange)="dateChanged($event, 'date_closed')">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+    </div>
+    <div class="jobs-form-next">
+      <button type="button" class="jobs-form-item-next" matStepperNext>Next<i class="fas fa-angle-right"></i></button>
+    </div>
+  </div>
+</form>

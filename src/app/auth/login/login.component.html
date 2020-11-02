@@ -1,0 +1,57 @@
+<section class="login-content">
+  <div class="login-left-side">
+<!--    <a class="logo-back" (click)="router.navigate(['/'])">-->
+<!--      <img src="assets/images/logo.png">-->
+<!--    </a>-->
+    <img class="login-big-img" src="assets/images/login-1.svg" (click)="router.navigate(['/'])">
+    <div class="left-block-1">
+      <div class="left-block-2">
+        <img src="assets/images/login-2.svg">
+        <p class="login-text-5">Welcome Back!</p>
+      </div>
+      <p class="login-text-6">In This Togheter. Keeping You Securely Connected Wherever You Are.</p>
+    </div>
+  </div>
+  <div class="login-right-side">
+    <p class="login-text-1">Don't have an account ? <a *ngIf="id==undefined" class="login-text-2"
+                                                       (click)="router.navigate(['auth/user-registration'])">Sign Up Here</a>
+                                                       <a *ngIf="id!=undefined" class="login-text-2"
+                                                       (click)="router.navigate(['auth/user-registration'] ,{ queryParams: { job: id } })">Sign Up Here</a>
+                                                      </p>
+    <form class="login-form" [formGroup]="loginForm">
+      <p class="login-text-3">Sign In</p>
+      <p class="login-text-4">Choose the versions of Sign In.</p>
+      <div class="login-block-1">
+        <a class="login-google" [href]="getGoogleAuthUrl()"><i class="fab fa-google"></i> Sign Up With Google</a>
+      </div>
+      <div class="line-block">
+        <span class="line-1"></span>
+        <span>OR</span>
+        <span class="line-1"></span>
+      </div>
+      <div class="login-item">
+        <label class="logos-item-label">Email Address</label>
+        <input class="logos-item-input" placeholder="Email*" formControlName="email">
+        <mat-error *ngIf="isSubmitted && email.hasError('required')">E-mail is <strong>required</strong></mat-error>
+        <mat-error *ngIf="isSubmitted && email.hasError('patternInvalid')">E-mail is <strong>invalid</strong>
+        </mat-error>
+      </div>
+      <div class="login-item">
+        <label class="logos-item-label">Password</label>
+        <input class="logos-item-input" placeholder="Password*" type="password" formControlName="password">
+        <mat-error *ngIf="isSubmitted && pass.hasError('required')">Password is <strong>required</strong>
+        </mat-error>
+        <a href="forgot" class="forgot-password">Forgot Password?</a>
+      </div>
+      <!--      <div class="login-item login-item-checkbox">-->
+      <!--        <input type="checkbox">-->
+      <!--        <label class="checkbox-text">Stay Singed In</label>-->
+      <!--      </div>-->
+      <div class="login-buttons">
+        <div></div>
+        <a class="login-btn" (click)="login()">Sign In</a>
+      </div>
+    </form>
+  </div>
+</section>
+
