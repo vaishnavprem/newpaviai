@@ -92,9 +92,12 @@ export class UserSignUpComponent implements OnInit {
     this.passwordsMatch = this.pass.value === this.confirmPass.value;
   }
 
-  getGoogleAuthUrl() {
-    return `${API_URL}auth/google`;
+  getSignIn() {
+   this.router.navigate(['auth/login']);;
   }
+  // getGoogleAuthUrl() {
+  //   return `${API_URL}auth/google`;
+  // }
 
   /**
    * First name field control getter
