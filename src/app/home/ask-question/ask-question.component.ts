@@ -11,7 +11,9 @@ export class AskQuestionComponent implements OnInit {
   public findNewEmployee = false;
 
   constructor(   public router: Router) { }
-
+public step1=false;
+public step2 =true;
+public step3 = false;
   ngOnInit(): void {
   }
   

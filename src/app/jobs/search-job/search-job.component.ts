@@ -63,6 +63,6 @@ export class SearchJobComponent implements OnInit {
  
   getLocation(value){
   //  this.router.navigate(['jobs/find-job']);
-    this.router.navigate(['jobs/find-job'],{ queryParams: { location: value } })
+    this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } })
   }
 }
