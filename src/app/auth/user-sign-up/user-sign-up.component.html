@@ -13,7 +13,8 @@
           <div class="col-sm-8">
             <div class="private-user animate__fadeInRightBig animate__animated">
               <div class="private-user-info">
-                <div class="private-user-head"> <a [href]="getGoogleAuthUrl()" class="sign-google"><i class="fa fa-google"></i> Sign Up With Google</a>
+                <!-- <div class="private-user-head"> <a [href]="getGoogleAuthUrl()" class="sign-google"><i class="fa fa-google"></i> Sign </a> -->
+                  <div class="private-user-head" (click)="getSignIn()"><a [href]="" class="sign-google"> Sign In Here</a>
                   <div class="private-title">
                     <h4>Private</h4>
                     <span class="and-off">OR</span> </div>
