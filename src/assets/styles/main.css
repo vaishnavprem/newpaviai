@@ -801,7 +801,7 @@ footer {
 .login-content {
   padding: 0 68px 40px 68px;
   min-height: 100vh;
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
 }
 

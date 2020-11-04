@@ -1,0 +1,63 @@
+.parent{
+    background-color: #ffffffd1;
+    width: auto;
+    height: auto;
+    margin-left: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.child{
+    background-color: white;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 100%;
+    padding:20px;
+}
+
+.googleButton{
+    float: left;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.inputForm{
+    padding: 12px;
+}
+
+.form-control{
+    border-radius: 20px !important;
+}
+
+.hr{
+    margin-top: 0px !important;
+    margin-bottom: 20px !important;
+    border: black !important; 
+    border-top: 1 px solid black !important;
+}
+
+.resetButton{
+    float: left;
+    font-size: larger;
+    background-color: white;
+    color: #2424d6;
+    border-radius: 20px;
+    font-weight: 600;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.submitButton{
+    float: right;
+    font-size: larger;
+    background-color: white;
+    color: #2424d6;
+    border-radius: 20px;
+    font-weight: 600;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.form-row{
+    padding: 5px;
+}

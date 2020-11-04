@@ -6,6 +6,8 @@ import {AuthGuard} from './core/guards/auth.guard';
 import {RoleGuard} from './core/guards/role.guard';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { AskQuestionComponent } from './home/ask-question/ask-question.component';
+import { FindNewEmployeeComponent } from './home/find-new-employee/find-new-employee.component';
+import { EmployeeSignUpComponent } from './home/employee-sign-up/employee-sign-up.component';
 const routes: Routes = [
   {
     path: '',
@@ -19,6 +21,14 @@ const routes: Routes = [
     path: 'help',
     component: AskQuestionComponent
   },
+  // {
+  //   path: 'find-new-employee',
+  //   component: FindNewEmployeeComponent
+  // },
+  // {
+  //   path: 'employee-sign-up',
+  //   component: EmployeeSignUpComponent
+  // },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),

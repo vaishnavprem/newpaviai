@@ -7,12 +7,25 @@ import {Router} from '@angular/router';
 })
 export class AskQuestionComponent implements OnInit {
 
+  public helpFlag = true;
+  public findNewEmployee = false;
+
   constructor(   public router: Router) { }
 
   ngOnInit(): void {
   }
-  openFindJOb(){
-    this.router.navigate(['/jobs/search-job']);
+  
+  routeYes(routerLink){
+    this.router.navigate(['/'+ routerLink ]);
 
   }
+  newEmployee(){
+    this.helpFlag = false;
+    this.findNewEmployee = true;
+  }
+
+  //This is for open find-new-employee component
+  // openFindNewEmployee(){
+  //   this.router.navigate(['/find-new-employee']);
+  // }
 }

@@ -1,184 +1,162 @@
-<section class="register-content">
-  <div class="register-left-side">
-<!--    <a class="logo-back" (click)="router.navigate(['/'])">-->
-<!--      <img src="assets/images/logo.png">-->
-<!--    </a>-->
-    <img class="register-big-img" src="assets/images/login-1.svg" (click)="router.navigate(['/'])">
-    <div class="left-block-4 active" (click)="goToPage('auth/user-registration')">
-      <div>
-        <img src="assets/images/img-30.svg">
-        <div class="left-block-5">
-          <p class="login-text-5">Private</p>
-          <p class="login-text-8">Personal</p>
-        </div>
-      </div>
-      <img src="assets/images/img-31.svg">
-    </div>
-    <div class="left-block-4" (click)="goToPage('auth/company-registration')">
-      <div>
-        <img src="assets/images/img-32.svg">
-        <div class="left-block-5">
-          <p class="login-text-5">Company</p>
-          <p class="login-text-8">Business</p>
-        </div>
-      </div>
-      <img src="assets/images/img-31.svg">
-    </div>
-  </div>
-  <div class="register-right-side">
-    <p class="register-text-1">Have an account ? <a class="login-text-2" (click)="router.navigate(['auth/login'])">Sign
-      In Here</a></p>
-    <form class="register-form" [formGroup]="userRegisterForm">
-      <p class="login-text-3">Sign Up</p>
-      <p class="login-text-4">Choose the versions of Sign Up.</p>
-      <div class="login-block-1 mb-4">
-        <a class="login-google" [href]="getGoogleAuthUrl()"><i class="fab fa-google"></i>Sign Up With Google</a>
-      </div>
-      <p class="login-text-7">Private</p>
-      <div class="line-block">
-        <span class="line-1"></span>
-        <span>OR</span>
-        <span class="line-1"></span>
-      </div>
-      <div class="register-block-1">
-        <div> 
-          <div class="login-item">
-              <label class="logos-item-label">First Name</label>
-              <input class="logos-item-input" placeholder="First Name*" formControlName="first_name">
-              <mat-error *ngIf="firstName.errors?.minlength || firstName.errors?.maxlength">
-                  First name must be <strong>2-15 characters</strong> long.
-              </mat-error>
-              <mat-error *ngIf="(firstName.touched || isSubmitted) && firstName.hasError('required')">First name is
-                  <strong>required</strong>
-              </mat-error>
-              <mat-error *ngIf="firstName.hasError('patternInvalid')">First name has <strong>incorrect format</strong>
-              </mat-error>
+<section class="bg-images-1">
+  <div class="about-warp">
+    <div class="about-inner sign-up">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="logo" (click)="router.navigate(['/'])">
+              <figure class="animate__fadeInLeftBig animate__animated"><a href="javascript:void(0);"><img src="assets/images/logo.png" alt="Pavi" title="Pavi" class="img-responsive" />
+                <h2>Pavi</h2>
+                </a></figure>
+            </div>
           </div>
-       </div>
-       <div>
-          <div class="login-item">
-              <label class="logos-item-label">Last Name</label>
-              <input class="logos-item-input" placeholder="Last Name*" formControlName="last_name">
-              <mat-error *ngIf="(lastName.touched||isSubmitted) && lastName.hasError('required')">Last name is <strong>required</strong>
-              </mat-error>
-              <mat-error *ngIf="lastName.errors?.minlength || lastName.errors?.maxlength">
-                Last name must be <strong>2-15 characters</strong> long.
-              </mat-error>
-              <mat-error *ngIf="lastName.hasError('patternInvalid')">Last name has <strong>incorrect format</strong>
-              </mat-error>
-          </div>
-       </div>
-      </div>
-      <div class="register-block-1">
-        <div>
-          <div class="login-item">
-              <label class="logos-item-label">Date Of Birth</label>
-              <div class="date-age" (click)="picker.open()">
-      
-                <input matInput [matDatepicker]="picker" class="logos-small-input" formControlName="birthday"
-                       [max]="maxBirthdayDate">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+          <div class="col-sm-8">
+            <div class="private-user animate__fadeInRightBig animate__animated">
+              <div class="private-user-info">
+                <div class="private-user-head"> <a [href]="getGoogleAuthUrl()" class="sign-google"><i class="fa fa-google"></i> Sign Up With Google</a>
+                  <div class="private-title">
+                    <h4>Private</h4>
+                    <span class="and-off">OR</span> </div>
+                </div>
+                <form  [formGroup]="userRegisterForm">
+                  <div class="private-user-body">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>First Name</label>
+                          <input class="form-control" type="text" placeholder="First Name*" formControlName="first_name" />
+                        </div>
+                        <mat-error *ngIf="firstName.errors?.minlength || firstName.errors?.maxlength">
+                          First name must be <strong>2-15 characters</strong> long.
+                        </mat-error>
+                        <mat-error *ngIf="(firstName.touched || isSubmitted) && firstName.hasError('required')">First name is
+                            <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="firstName.hasError('patternInvalid')">First name has <strong>incorrect format</strong>
+                        </mat-error>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Last Name</label>
+                          <input class="form-control" type="text" placeholder="Last Name*" formControlName="last_name" />
+                        </div>
+                        <mat-error *ngIf="(lastName.touched||isSubmitted) && lastName.hasError('required')">Last name is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="lastName.errors?.minlength || lastName.errors?.maxlength">
+                          Last name must be <strong>2-15 characters</strong> long.
+                        </mat-error>
+                        <mat-error *ngIf="lastName.hasError('patternInvalid')">Last name has <strong>incorrect format</strong>
+                        </mat-error>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Date of Birth</label>
+                          <input class="form-control" type="date" placeholder="" formControlName="birthday" [max]="maxBirthdayDate" />
+                          <i class="fa fa-calendar"></i> </div>
+                          <mat-error *ngIf="isSubmitted && birthday.hasError('required')">Birth day is <strong>required</strong>
+                          </mat-error>
+                          <mat-error *ngIf="birthday.hasError('matDatepickerMax')">The date is <strong>not allowed</strong>
+                          </mat-error>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Country</label>
+                          <select class="form-control" formControlName="country">
+                            <option selected disabled [value]="''">Country</option>
+                            <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+                          </select>
+                          <i class="fa fa-angle-down"></i> </div>
+                          <mat-error *ngIf="isSubmitted && userRegisterForm.get('country').hasError('required')">Country is <strong>required</strong>
+                          </mat-error>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Email</label>
+                          <input class="form-control" type="text" placeholder="Email*" formControlName="email"/>
+                        </div>
+                        <mat-error *ngIf="isSubmitted && email.hasError('required')">E-mail is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="isSubmitted && email.hasError('patternInvalid')">E-mail is <strong>invalid</strong>
+                        </mat-error>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Gender</label>
+                          <ul class="parent_question-genral">
+                            <li>
+                              <input type="radio" id="male" name="gender" value="male" formControlName="gender">
+                              <label for="male">Male</label>
+                              <div class="check"></div>
+                            </li>
+                            <li>
+                              <input type="radio" id="female" name="gender" value="female" formControlName="gender">
+                              <label for="female">Female</label>
+                              <div class="check"></div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Password</label>
+                          <input class="form-control" type="password" placeholder="Password*" formControlName="password" />
+                        </div>
+                        <mat-error *ngIf="isSubmitted && pass.hasError('required')">Password is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="pass.hasError('patternInvalid')">Password should not contain <strong>spaces</strong>
+                        </mat-error>
+                        <mat-error *ngIf="pass.errors?.minlength || pass.errors?.maxlength">
+                            Password must be <strong>5-15 characters</strong> long.
+                        </mat-error>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Confirm Password</label>
+                          <input class="form-control" type="password" placeholder="Confirm Password*" formControlName="confirm_password" (keyup)="comparePasswords()" />
+                        </div>
+                        <mat-error *ngIf="isSubmitted && confirmPass.hasError('required')">Password confirmation is
+                          <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="!passwordsMatch && !confirmPass.hasError('required')">Passwords doesn't match</mat-error>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <div class="checkbox terms-account">
+                            <label>
+                              <input type="checkbox" id="terms" name="terms" class="checkbox_type" formControlName="agreed" />
+                              <i class="helper"></i> Creating an account means you're okay with our</label>
+                              <p> <a href="javascript:void(0);"> Terms of Service,</a> <a href="javascript:void(0);"> privacy Policy,</a> and our default <a href="javascript:void(0);"> Notification Settings.</a> </p>
+                          </div>
+                          <div>
+                          </div>
+                        </div>
+                        <mat-error *ngIf="isSubmitted && userRegisterForm.get('agreed').hasError('required')">Please
+                          <strong>agree</strong> to the terms
+                        </mat-error>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                      <div class="form-group">
+                      <button class="btn btn-block" type="button" (click)="userRegisterForm.reset()">Reset All</button>
+                      </div>
+                      
+                      </div>
+                      <div class="col-sm-6">
+                      <div class="form-group">
+                      <button class="btn btn-block" type="button" (click)="register()">Sign Up</button>
+                      </div>
+                      
+                      </div>
+                      
+                      </div>
+                  </div>
+                </form>
               </div>
-              <mat-error *ngIf="isSubmitted && birthday.hasError('required')">Birth day is <strong>required</strong>
-              </mat-error>
-              <mat-error *ngIf="birthday.hasError('matDatepickerMax')">The date is <strong>not allowed</strong>
-              </mat-error>
+            </div>
           </div>
-      </div>
-      <div>
-          <div class="login-item">
-              <label class="logos-item-label">Country</label>
-              <select class="logos-item-input" formControlName="country">
-                  <option selected disabled [value]="''">Country*</option>
-                  <option *ngFor="let country of countries" [value]="country">{{country}}</option>
-              </select>
-              <mat-error *ngIf="isSubmitted && userRegisterForm.get('country').hasError('required')">Country is <strong>required</strong>
-              </mat-error>
-          </div> 
-      </div>
-      </div>
-      <div class="register-block-1">
-        <div>
-          <div class="login-item">
-              <label class="logos-item-label">Email</label>
-              <input class="logos-item-input" placeholder="Email*" formControlName="email">
-              <mat-error *ngIf="isSubmitted && email.hasError('required')">E-mail is <strong>required</strong>
-              </mat-error>
-              <mat-error *ngIf="isSubmitted && email.hasError('patternInvalid')">E-mail is <strong>invalid</strong>
-              </mat-error>
-            </div>   
-      </div>
-      <div>
-          <div class="login-item">
-              <label class="logos-item-label">Gender</label>
-              <div class="gender logos-item-input border-0">
-                <div>
-                  <input type="radio" id="male" name="gender" value="male" formControlName="gender">
-                  <label for="male">Male</label>
-                </div>
-                <div>
-                  <input type="radio" id="female" name="gender" value="female" formControlName="gender">
-                  <label for="female">Female</label><br>
-                </div>
-              </div>
-          </div>
-      </div>
-      </div>
-      <div class="register-block-1">
-        <div>
-          <div class="login-item">
-              <label class="logos-item-label">Password</label>
-              <input class="logos-item-input" placeholder="Password*" type="password" formControlName="password">
-              <mat-error *ngIf="isSubmitted && pass.hasError('required')">Password is <strong>required</strong>
-              </mat-error>
-              <mat-error *ngIf="pass.hasError('patternInvalid')">Password should not contain <strong>spaces</strong>
-              </mat-error>
-              <mat-error *ngIf="pass.errors?.minlength || pass.errors?.maxlength">
-                  Password must be <strong>5-15 characters</strong> long.
-              </mat-error>
-              </div> 
-          </div>
-          <div>
-              <div class="login-item">
-                  <label class="logos-item-label">Confirm Password</label>
-                  <input class="logos-item-input" placeholder="Confirm Password*" type="password"
-                         formControlName="confirm_password" (keyup)="comparePasswords()">
-                </div>
-                <mat-error *ngIf="isSubmitted && confirmPass.hasError('required')">Password confirmation is
-                  <strong>required</strong>
-                </mat-error>
-                <mat-error *ngIf="!passwordsMatch && !confirmPass.hasError('required')">Passwords doesn't match</mat-error>
-          </div>
-      </div>
-      <div class="login-item register-checkbox">
-        <mat-checkbox formControlName="agreed" (change)="agreeTerms($event)" id="terms">
-              <span class="checkbox-text">
-              Creating an account means you're okay with our
-              </span>
-        </mat-checkbox>
-        <div>
-
-          <a>Terms of
-            Service,
-            Privacy
-            Policy,</a> and our default <a>Notification Settings.</a>
-        </div>
-        <div>
-          <mat-error *ngIf="isSubmitted && userRegisterForm.get('agreed').hasError('required')">Please
-            <strong>agree</strong> to the terms
-          </mat-error>
         </div>
       </div>
-      <div class="last-block-form">
-        <div class="register-buttons">
-          <a class="reset-btn" (click)="userRegisterForm.reset()">Reset All</a>
-        </div>
-        <div class="register-buttons">
-          <a class="login-btn" (click)="register()">Sign Up</a>
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
 </section>
-
