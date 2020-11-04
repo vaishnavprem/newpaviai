@@ -11,6 +11,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {COUNTRY_LIST} from '../../core/constants/countries';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-find-job',
   templateUrl: './find-job.component.html',
@@ -48,20 +49,25 @@ export class FindJobComponent implements OnInit {
   public checkedList= {
   
   }
+  public location;
   searchForm: FormGroup;
   config: any;
   public avatar_url= AVATAR_URL;
+  private sub: any;
+  public singleJob;
+  public stateData;
   constructor(
     public router: Router,
     private companiesService: CompaniesService,
     private toastr: ToastrService,
+    private route: ActivatedRoute,
     private fb: FormBuilder,
 
   ) {
     for(let country of COUNTRY_LIST){
       this.countries.push({'name':country})
     }
-    this.getJobs();
+    
     this.config = {
       itemsPerPage: 10,
       currentPage: 1,
@@ -75,7 +81,23 @@ export class FindJobComponent implements OnInit {
       location: [''],
 
     });
-    
+    this.sub = this.route.queryParams.subscribe(params => {
+      console.log(params);
+      this.location = params['cityId'];
+      this.checkedList = {
+        'city':this.location
+      }
+      this.isLoder=true;
+      let JobData = this.companiesService.searchJob(this.checkedList)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(response => {
+        this.isLoder=false;
+        this.jobs = response['data']['jobs'];
+        this.singleJob = response['data']['cityData'];
+        this.stateData = response['data']['stateData'];
+        console.log(this.singleJob );
+      });
+    });
   }
   
  async getJobs(){

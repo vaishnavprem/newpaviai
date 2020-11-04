@@ -6,17 +6,8 @@ select.selectpicker {
 .bootstrap-select {
     width: 303px\9;
 }
-.bootstrap-select > .dropdown-toggle {
-    position: relative;
-    width: 100%;
-    z-index: 1;
-    text-align: right;
-    white-space: nowrap;
-	background: transparent;
-	border-color: transparent;
-	color:#edf568;
-	font-size: 48px;
-}
+.bootstrap-select > .dropdown-toggle { position: relative; width: 100%; z-index: 10001; text-align: right; white-space: nowrap;
+background: transparent; border-color: transparent; color:#edf568; font-size: 36px;}
 .bootstrap-select > .dropdown-toggle:hover{background: transparent; border-color: transparent; color:#edf568;}
 .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default { color: transparent; background-color: transparent;  border-color: transparent;}
 .open > .dropdown-toggle.btn-default:hover{background-color: transparent; border-color: transparent; color:#edf568;}
@@ -194,6 +185,7 @@ select.selectpicker {
     height: 100%;
     width: 100%;
     text-align: left;
+	padding:0px;
 }
 .bootstrap-select .dropdown-toggle .filter-option-inner {
     padding-right: inherit;
@@ -203,7 +195,7 @@ select.selectpicker {
 }
 .bootstrap-select .dropdown-toggle .caret {
     position: absolute;
-    top: 50%;
+    top: 28px;
     right: 12px;
     margin-top: -2px;
     vertical-align: middle;
