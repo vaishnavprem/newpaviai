@@ -38,6 +38,7 @@ export class QuestionsComponent implements OnInit {
    });
 
    this.getQuestionData(this.id );
+   
   }
   getQuestionData(job_id){
     this.isLoder=true;
