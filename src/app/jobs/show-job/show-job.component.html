@@ -16,172 +16,74 @@
       </g>
   </svg>
   </div>
-
-<section class="find-job-content">
-  <p class="find-job-text-1">Find Your Dream Job Here</p>
-  <div class="find-job-section-1">
-    <div class="find-job-left">
-      <img src="../../../assets/images/job-man.png">
-      <p class="find-job-text-2">Job Title Or Keyword</p>
-    </div>
-    <div class="find-job-left">
-      <img src="../../../assets/images/job-search.png">
-      <p class="find-job-text-2">Select Location</p>
-    </div>
-    <div class="position-relative">
-      <input class="find-job-right" placeholder="Search">
-      <i class="fas fa-search find-job-right-icon"></i>
-    </div>
-  </div>
-</section>
-<section class="find-job-block">
-  <div class="find-job-block-left dream-job-left-block">
-    <a class="top-jobs-text">Top Jobs</a>
-    <div class="dream-job-left">
-      <div class="top-jobs-item">
-        <div class="top-jobs-item-left">
-          <img src="../../../assets/images/muzica.png">
-        </div>
-        <div class="top-jobs-item-right">
-          <p class="top-text-1">Office Assistant</p>
-          <p class="top-text-2">Founders:<span>4days ago</span></p>
-        </div>
-      </div>
-      <div class="top-jobs-item">
-        <div class="top-jobs-item-left">
-          <img src="../../../assets/images/ideaa.png">
-        </div>
-        <div class="top-jobs-item-right">
-          <p class="top-text-1">Office Assistant</p>
-          <p class="top-text-2">Founders:<span>4 days ago</span></p>
-        </div>
-      </div>
-      <div class="top-jobs-item">
-        <div class="top-jobs-item-left">
-          <img src="../../../assets/images/muzica.png">
-        </div>
-        <div class="top-jobs-item-right">
-          <p class="top-text-1">Office Assistant</p>
-          <p class="top-text-2">Founders:<span>4 days ago</span></p>
-        </div>
-      </div>
-      <div class="top-jobs-item">
-        <div class="top-jobs-item-left">
-          <img src="../../../assets/images/muzica.png">
-        </div>
-        <div class="top-jobs-item-right">
-          <p class="top-text-1">Office Assistant</p>
-          <p class="top-text-2">Founders:<span>4days ago</span></p>
-        </div>
-      </div>
-      <div class="top-jobs-item">
-        <div class="top-jobs-item-left">
-          <img src="../../../assets/images/hex-lab.png">
-        </div>
-        <div class="top-jobs-item-right">
-          <p class="top-text-1">Office Assistant</p>
-          <p class="top-text-2">Founders:<span>4days ago</span></p>
-        </div>
-      </div>
-      <div class="top-jobs-item">
-        <div class="top-jobs-item-left">
-          <img src="../../../assets/images/muzica.png">
-        </div>
-        <div class="top-jobs-item-right">
-          <p class="top-text-1">Office Assistant</p>
-          <p class="top-text-2">Founders:<span>4days ago</span></p>
-        </div>
-      </div>
-      <div class="top-jobs-item">
-        <div class="top-jobs-item-left">
-          <img src="../../../assets/images/muzica.png">
-        </div>
-        <div class="top-jobs-item-right">
-          <p class="top-text-1">Office Assistant</p>
-          <p class="top-text-2">Founders:<span>4days ago</span></p>
+  <app-header></app-header>
+  <div class="mid-content">
+    <div class="container-fluid">
+      <!--<div class="sound-icon"><a href="javascript:void(0);"><img src="assets/images/sound-off.png" alt="Sound" title="Sound" /> </a></div>-->
+      <div class="global-icon animate__fadeInBottomRight animate__animated"><img src="assets/images/global.png" alt="Global" title="Global" class="img-responsive" /> </div>
+      <div class="content-info">
+        <div class="row">
+          <div class="col-sm-1"><img src="assets/images/sparkle-test.png" class="welcome-img img-responsive" /></div>
+          <div class="col-sm-4">
+            <h1 class="animate__fadeInRight animate__animated job-title"> Great, if you like this job please click on the apply button below to be considered for this job. <i class="hr-line"></i> </h1>
+            <div class="search-box-location search-job-section">
+              <div class="input-group animate__fadeInLeftBig animate__animated">
+                <!--<div class="input-group-btn">
+                  <div class="btn-group"> <i class="pin"><img src="assets/images/job-icon.png" /></i> </div>
+                </div>
+                <input type="text" class="form-control" placeholder="" />
+                <div class="input-group-btn">
+                  <div class="btn-group search-btn"> <button class="btn">Search</button> </div>
+                </div>-->
+              </div>
+            </div>
+            </div>
+            <div class="col-sm-5">
+            <div class="select-your-job post-job-info animate__fadeInUpBig animate__animated" *ngFor="let job of jobs">
+              <ul>
+              <li>
+              <h4><strong>Location:</strong> {{job.country}} / {{job.companyAddress}}</h4>
+              <h4><strong>Title:</strong> {{job.jobTitle}} </h4>
+              <h4><strong>Posted:</strong> Yesterday <span><a href="javascript:void(0);"><img src="assets/images/eye.png" /></a> <a href="#"><img src="assets/images/like-icon.png" /></a></span></h4>
+              
+              <div class="post-detailview">
+              <div class="detailview-col">
+              <h3>{{job.jobTitle}}</h3>
+              <ul>
+              <li>Experience / {{job.experience}}-{{job.experience -- 1}} Years</li>
+              <li>Seniority Level / {{job.level}}</li>
+              <li>Employment / {{job.employment}} </li>
+              <li>Salary / {{job.salary}}k</li>
+              </ul>
+              </div>
+              <div class="detailview-col">
+                <h3>Job Brief</h3>
+                <p> {{job.job_brief}}</p>
+                </div>
+              <div class="detailview-col">
+              <h3>Job Description</h3>
+              <p>{{job.job_description}}</p>
+              </div>
+              
+             
+              
+              
+              
+              </div>
+              
+              <div class="apply-now-btn">
+               <a (click)="navigateBack()" class="apply-arrow-left"><img src="assets/images/apply-arrow.jpg" /></a>
+              <a href="javascript:void(0);" class="apply-btn">Apply</a>
+              
+              </div>
+              </li>
+              </ul>
+              </div>
+              </div>
+            <div class="col-sm-2">
+            
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="find-job-block-right position-relative" *ngFor="let job of jobs">
-    <img *ngIf="job.logo_image==undefined" class="find-job-general" src="../../../assets/images/top-job-header.png">
-    <img *ngIf="job.logo_image!=undefined" class="find-job-general" src="{{avatar_url+'uploads/avatars/'+job.cover_image}}"  width="1070" height="289">
-    <div class="dream-job-content-2">
-      <a class="go-back-to-job-btn" (click)="router.navigate(['jobs/find-job'])"><i class="fas fa-chevron-left"></i>Go Back To The Jobs</a>
-      <div class="top-job-header-abs">
-        <img *ngIf="job.logo_image==undefined"  src="{{profileImage}}" width="186" height="60">
-        <img *ngIf="job.logo_image!=undefined" src="{{avatar_url+'uploads/avatars/'+job.logo_image}}" width="186" height="60">
-      </div>
-      <a *ngIf="token==undefined" class="go-back-to-job-btn"  (click)="router.navigate(['auth/login'],{ queryParams: { job: job.id } })">Apply To This Work<i class="fas fa-angle-right"></i></a>
-    
-      <a *ngIf="token!=undefined" class="go-back-to-job-btn" (click)="router.navigate(['users/job-question',job.id])">Apply To This Work<i class="fas fa-angle-right"></i></a></div>
-    <p class="dream-job-text-1">{{job.jobTitle}}</p>
-    <div class="dream-job-block">
-      <p class="dream-job-text-2">{{job.country}} - <span>{{job.companyAddress}}</span></p>
-      <p class="dream-job-text-3">Posted 1 week ago </p>
-    </div>
-    <div class="dream-job-block-2">
-      <div>
-        <p class="dream-job-text-4">Experience</p>
-        <p class="dream-job-text-5">{{job.experience}}-{{job.experience -- 1}} Years</p>
-      </div>
-      <div>
-        <p class="dream-job-text-4">Seniority Level</p>
-        <p class="dream-job-text-5">{{job.level}}</p>
-      </div>
-      <div>
-        <p class="dream-job-text-4">Employment</p>
-        <p class="dream-job-text-5">{{job.employment}}</p>
-      </div>
-      <div>
-        <p class="dream-job-text-4">SaLary</p>
-        <p class="dream-job-text-5">${{job.salary}}k</p>
-      </div>
-    </div>
-    <p class="dream-job-text-6">Job Brief</p>
-    <p class="dream-job-text-7">
-      {{job.job_brief}}
-    </p>
-    <p class="dream-job-text-6">Job Description</p>
-    <p class="dream-job-text-7">
-      {{job.job_description}}
-    </p>
-    <p class="dream-job-text-6">Responsibilities</p>
-    <div class="dream-job-block-3">
-      <label class="container" *ngFor="let responsibility of job.responsibility">{{responsibility}}
-        <input type="checkbox" checked="checked">
-        <span class="checkmark"></span>
-      </label>
-      
-    </div>
-    <p class="dream-job-text-6">Requirements</p>
-    <div class="dream-job-block-3">
-      <label class="container" *ngFor="let requirement of job.requirement">{{requirement}}
-        <input type="checkbox" checked="checked">
-        <span class="checkmark"></span>
-      </label>
-     
-    </div>
-    <div class="dream-job-block-4">
-      <div class="contact-media-info-left">
-        <div class="media-left">
-          <img src="assets/images/contact-img-1.png">
-          Email
-        </div>
-        <div class="contact-center">
-          info@Pavi.com
-        </div>
-      </div>
-      <a *ngIf="token==undefined" class="go-back-to-job-btn" (click)="router.navigate(['auth/login'],{ queryParams: { job: job.id } })">Apply To This Work<i class="fas fa-angle-right"></i></a>
-      <a *ngIf="token!=undefined" class="go-back-to-job-btn" (click)="router.navigate(['users/job-question',job.id])">Apply To This Work<i class="fas fa-angle-right"></i></a>
-      <div class="about-media-info-right">
-        <div class="media-left">
-          <img src="assets/images/about-img-2.svg"> Social Medias
-        </div>
-        <div>
-          <img src="assets/images/about-img-3.svg">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
