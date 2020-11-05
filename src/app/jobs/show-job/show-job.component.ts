@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import { Subject ,Observable} from 'rxjs';
 import {API_URL,AVATAR_URL} from '../../core/constants/general';
 import { map, tap, takeUntil,startWith} from 'rxjs/operators';
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-show-job',
   templateUrl: './show-job.component.html',
@@ -26,6 +27,7 @@ export class ShowJobComponent implements OnInit {
     private route: ActivatedRoute,
     private companiesService: CompaniesService,
     private toastr: ToastrService,
+    private location: Location
   ) {
   }
 
@@ -57,4 +59,7 @@ export class ShowJobComponent implements OnInit {
     // Now let's also unsubscribe from the subject itself:
     this.destroy$.unsubscribe();
   }
+  navigateBack() {
+    this.location.back();
+}
 }

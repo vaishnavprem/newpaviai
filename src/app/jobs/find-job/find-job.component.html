@@ -68,7 +68,7 @@
               <li *ngFor="let job of jobs">
                 <h4><strong>Location:</strong>{{job.country}} / {{job.employment}}</h4>
                 <h4><strong>Title:</strong> {{job.jobTitle}} </h4>
-                <h4><strong>Posted:</strong> Yesterday <span><a href="#"><img src="assets/images/eye.png" /></a> <a href="#"><img src="assets/images/like-icon.png" /></a></span></h4>
+                <h4><strong>Posted:</strong> Yesterday <span><a  (click)="router.navigate(['jobs/show-job',job.id])"><img src="assets/images/eye.png" /></a> <a href="#"><img src="assets/images/like-icon.png" /></a></span></h4>
                 
                 </li>
             </ul>
