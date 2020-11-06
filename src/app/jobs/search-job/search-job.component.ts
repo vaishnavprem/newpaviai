@@ -65,4 +65,10 @@ export class SearchJobComponent implements OnInit {
   //  this.router.navigate(['jobs/find-job']);
     this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } })
   }
+
+  onCheckboxChecked(e){
+    if(e.target.checked){      
+      this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: 41745 } })  
+    }
+  }
 }
