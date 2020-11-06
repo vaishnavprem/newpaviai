@@ -10,16 +10,19 @@
           <mat-error *ngIf="common.companyNameExists">Company with such name <strong>exists</strong></mat-error>
           <mat-error *ngIf="companyCtrl.hasError('patternInvalid')">Company name is <strong>invalid</strong></mat-error>
         </div>
-        <label for="country" class="logos-item-label">Country</label>
-        <select id="country" class="logos-item-input" (change)="changeCountry($event)" formControlName="country">
-          <option disabled selected [value]="''">Country*</option>
-          <option *ngFor="let country of countries" [value]="country">{{country}}</option>
-        </select>
-        
-  
-        
-        <mat-error *ngIf="isSubmitted && industryCtrl.hasError('required')">Industry is <strong>required</strong>
-        </mat-error>
+
+        <div class="login-item">
+          <label for="country" class="logos-item-label">Country</label>
+          <select id="country" class="logos-item-input" (change)="changeCountry($event)" formControlName="country">
+            <option disabled selected [value]="''">Country*</option>
+            <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+          </select>
+          
+    
+          
+          <mat-error *ngIf="isSubmitted && industryCtrl.hasError('required')">Country is <strong>required</strong>
+          </mat-error>
+      </div>
   </div>
   <div class="jobs-form-inputs">
     <div class="login-item">
@@ -39,7 +42,7 @@
 <!--          <a class="dropdown-item" *ngFor="let country of countries" [value]="country">{{country}}</a>-->
 <!--        </div>-->
 <!--      </div>-->
-  <mat-error *ngIf="isSubmitted && countryCtrl.hasError('required')">Country is <strong>required</strong>
+  <mat-error *ngIf="isSubmitted && countryCtrl.hasError('required')">Industry is <strong>required</strong>
   </mat-error>
   </div>
   
