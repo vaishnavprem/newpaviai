@@ -90,4 +90,8 @@ export class CompanySignUpComponent implements OnInit {
   async goToPage(url) {
     await this.router.navigate([url]);
   }
+
+  getSignIn() {
+    this.router.navigate(['auth/login']);;
+   }
 }

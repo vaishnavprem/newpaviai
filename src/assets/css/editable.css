@@ -1,0 +1,282 @@
+.private-user{background:rgba(255,255,255,0.50); padding: 0 !important;}
+
+.navicon ul li{cursor: pointer !important;}
+
+/*company sign up and its step start here */
+
+.company-registration-form .mat-step-header {
+    pointer-events: none;
+  }
+  .mat-step-label {
+    min-width: 90px !important;
+  }
+  .register-block-1 {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .register-block-1 > div {
+    width: 50%;
+  }
+  .register-block-1 {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
+  }
+
+  .register-block-1 > div {
+    width: 100%;
+  }
+  .login-item-checkbox {
+    margin-left: 0;
+  }
+  .login-item-checkbox {
+    margin-left: 40px;
+    display: flex;
+  }
+  
+  .login-item-checkbox input {
+    margin-top: 5px;
+  }
+  .last-login-item {
+    height: 48px;
+  }
+  .login-item-checkbox {
+    margin-left: 0;
+  }
+  .logos-item-label {
+    font-size: 15px;
+    color: black;
+    line-height: 15px;
+    margin-bottom: 12px;
+    margin-left: 40px;
+    font-family: "Segoe UI Semibold";
+    display: block;
+  }
+  .logos-item-label {
+    font-size: 13px;
+  }
+  .logos-item-label {
+    margin-left: 0;
+  }
+  .logos-item-input {
+    font-size: 15px;
+    width: 100%;
+    border-radius: 35px;
+    height: 60px;
+    border: 1px solid #757575;
+    line-height: 15px;
+    padding-left: 40px;
+    font-family: "Segoe UI Semibold";
+    outline: none;
+    color: #343a40;
+  }
+  
+  .logos-item-input:focus {
+    border: 1px solid #343a40;
+  }
+  
+  .logos-item-input::placeholder {
+    color: #343a40;
+  }
+  .register-content .logos-item-input {
+    width: 95% !important;
+  }
+  .logos-item-input {
+    font-size: 13px;
+  }
+  .logos-item-input {
+    padding-left: 20px;
+    height: 50px;
+  }
+  .register-content .logos-item-input {
+    width: 100% !important;
+  }
+  .register-content .logos-item-input {
+    width: 100% !important;
+  }
+  .login-item {
+    margin-bottom: 27px;
+    position: relative;
+  }
+  .login-item-checkbox {
+    margin-left: 40px;
+    display: flex;
+  }
+  
+  .login-item-checkbox input {
+    margin-top: 5px;
+  }
+  .last-login-item {
+    height: 48px;
+  }
+  .login-item-checkbox {
+    margin-left: 0;
+  }
+  .last-block-form {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .last-block-form > div {
+    width: 50%;
+  }
+  /* .last-block-form > div {
+    width: 100%;
+  } */
+  .last-block-form {
+    display: flex;
+    justify-content: center;
+    /* flex-direction: column; */
+    /* align-items: center; */
+  }
+  .register-buttons a {
+    width: 95%;
+  }
+  .register-buttons a {
+    width: 95%;
+    margin-bottom: 30px;
+  }
+  .register-buttons a {
+    width: 95%;
+    margin-bottom: 30px;
+    font-size: 18px;
+  }
+  .register-buttons a {
+    width: 100%;
+  }
+  .login-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 60px;
+    border-radius: 35px;
+    font-family: "Segoe Regular";
+    font-size: 22px;
+    line-height: 40px;
+    transition: 0.3s ease-in-out;
+    margin: 0 auto;
+    color: #0265C9 !important;
+    background: white;
+    cursor: pointer;
+    border: 1px solid #0265C9;
+  }
+  
+  .login-btn:hover {
+    background: #0265C9;
+    color: white !important;
+  }
+  .login-btn i {
+    font-size: 20px;
+    margin-left: 12px;
+    margin-top: 5px;
+  }
+  .login-btn,
+  .register-btn {
+    height: 50px;
+  }
+  .login-btn i {
+    font-size: 14px;
+    margin-left: 12px;
+    margin-top: 3px;
+  }
+  .login-btn, .register-btn {
+    height: 50px;
+    font-size: 16px;
+    width: 100%;
+  }
+  .reset-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    border-radius: 35px;
+    font-family: "Segoe Regular";
+    font-size: 22px;
+    line-height: 40px;
+    border: 1px solid #0265C9;
+    color: #0265C9 !important;
+    transition: 0.3s ease-in-out;
+    margin: 0 auto;
+    background: white;
+  }
+  .reset-btn i {
+    font-size: 20px;
+    margin-right: 12px;
+    margin-top: 5px;
+  }
+  
+  .reset-btn:hover {
+    cursor: pointer;
+    background: #0265C9;
+    color: white !important;
+  }
+  .reset-btn-1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 350px;
+    height: 60px;
+    border-radius: 10px;
+    background: #0265C9;
+    color: white !important;
+    padding-left: 35px;
+    font-size: 15px;
+    font-family: "Segoe Regular";
+    transition: 0.3s ease-in-out;
+  }
+  
+  .reset-btn-2 {
+    margin-left: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    background: #F2F2F2;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .reset-btn-1 img {
+    margin-right: 13px;
+  }
+  .reset-btn-1:hover,
+.reset-btn-2:hover {
+  cursor: pointer;
+  background: #bcc4cc;
+}
+.reset-btn {
+    height: 50px;
+    font-size: 25px;
+  }
+  .reset-btn i {
+    font-size: 14px;
+    margin-right: 12px;
+    margin-top: 3px;
+  }
+  .reset-btn-1,
+  .reset-btn-2,
+  .reset-item-input,
+  .reset-buttons-1,
+  .reset-buttons-2 {
+    height: 50px;
+  }
+  .reset-btn-1 {
+    padding-left: 10px;
+  }
+
+  .reset-btn-1 img {
+    margin-right: 13px;
+    width: 20px;
+  }
+
+  .reset-btn-2 img {
+    width: 20px;
+  }
+
+/*company sign up and itas step end here */
+
