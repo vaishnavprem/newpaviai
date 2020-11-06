@@ -13,7 +13,7 @@
           <div class="col-sm-8">
             <div class="private-user animate__fadeInRightBig animate__animated">
               <div class="private-user-info">
-                <div class="private-user-head"><h1 style="color:blue"> Sign Up </h1>
+                <div class="private-user-head" (click)="getSignIn()"><a [href]="" class="sign-google"> Sign In Here</a>
                   <h4>Choose the versions of Sign Up.</h4>
                   <div class="private-title">
                     <h4>Company</h4>
@@ -27,15 +27,15 @@
         
                     <ng-template matStepperIcon="edit" let-index="index">
                       <i class="fa fa-user" aria-hidden="true" *ngIf="index === 0"></i>
-                      <i class="fas fa-info" aria-hidden="true" *ngIf="index === 1"></i>
-                      <i class="fas fa-phone" aria-hidden="true" *ngIf="index === 2"></i>
+                      <i class="fa fa-info" aria-hidden="true" *ngIf="index === 1"></i>
+                      <i class="fa fa-phone" aria-hidden="true" *ngIf="index === 2"></i>
                     </ng-template>
         
                     <!-- Custom icon with a context variable. -->
                     <ng-template matStepperIcon="number" let-index="index">
                       <i class="fa fa-user" aria-hidden="true" *ngIf="index === 0"></i>
-                      <i class="fas fa-info" aria-hidden="true" *ngIf="index === 1"></i>
-                      <i class="fas fa-phone" aria-hidden="true" *ngIf="index === 2"></i>
+                      <i class="fa fa-info" aria-hidden="true" *ngIf="index === 1"></i>
+                      <i class="fa fa-phone" aria-hidden="true" *ngIf="index === 2"></i>
                     </ng-template>
         
         
