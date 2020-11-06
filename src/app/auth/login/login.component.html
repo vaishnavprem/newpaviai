@@ -16,7 +16,8 @@
                 <div class="private-user-head"> 
                 <h2>Sign in</h2>
                 <h6>Choose the versions of Sign In.</h6>
-                <a [href]="getGoogleAuthUrl()" class="sign-google"><i class="fa fa-google"></i> Sign Up With Google</a>
+                <a  *ngIf="id==undefined" class="sign-google"  (click)="router.navigate(['auth/company-registration'])"> Sign Up Here</a>
+                <a  *ngIf="id!=undefined" class="sign-google"  (click)="router.navigate(['auth/user-registration'],{ queryParams: { job: id } })"> Sign Up Here</a>
                   <div class="private-title">
                     <h4>&nbsp;</h4>
                     <span class="and-off">OR</span> </div>

@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import { Subject ,Observable} from 'rxjs';
 import {API_URL,AVATAR_URL} from '../../core/constants/general';
 import { map, tap, takeUntil,startWith} from 'rxjs/operators';
+import {AuthService} from '../../core/services/auth.service';
 import {Location} from '@angular/common';
 @Component({
   selector: 'app-show-job',
@@ -27,7 +28,8 @@ export class ShowJobComponent implements OnInit {
     private route: ActivatedRoute,
     private companiesService: CompaniesService,
     private toastr: ToastrService,
-    private location: Location
+    private location: Location,
+    public auth: AuthService,
   ) {
   }
 

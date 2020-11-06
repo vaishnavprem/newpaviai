@@ -16,8 +16,9 @@
             <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
             <div class="col-sm-10">
               <ul>
-                <li class="active" (click)="router.navigate(['/auth/login'])"><a href="javascript:void(0);" class="login" >Login</a></li>
-                <li (click)="router.navigate(['/users/about'])"><a class="about" href="javascript:void(0);">About</a></li>
+                <li *ngIf="!auth.loggedIn()" class="active"><a href="/auth/login" class="login" >Login</a></li>
+                <li *ngIf="auth.loggedIn()" class="active" ><a (click)="auth.logOut()" class="login" >Logout</a></li>
+                <li><a class="about" href="/users/about">About</a></li>
                 <li><a class="contact" href="javascript:void(0);">Contact Us</a></li>
               </ul>
             </div>
