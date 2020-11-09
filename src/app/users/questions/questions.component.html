@@ -7,7 +7,7 @@
     <div class="content-info">
       <div class="row">
       
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <h1 class="animate__fadeInRight animate__animated job-title"> Thank you for your interest in this role. Please read each question then click record answer to submit your response. <i class="hr-line"></i> </h1>
           <!--<div class="search-box-location search-job-section">
             <div class="input-group animate__fadeInLeftBig animate__animated">
@@ -21,10 +21,14 @@
             </div>
           </div>-->
           <br>
-          <img src="assets/images/sparkle-test.png" class="welcome-img img-responsive" style="width: 25%;"/>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"><img src="assets/images/sparkle-test.png" class="welcome-img img-responsive"/></div>
+            <div class="col-sm-4"></div>
+          </div>
           </div>
           
-          <div class="col-sm-8">
+          <div class="col-sm-9">
           <div class="select-your-job post-job-info animate__fadeInUpBig animate__animated">
             <ul>
             <li *ngFor="let job of jobs">
@@ -44,8 +48,12 @@
                   <td>{{i+1}}</td>
                   <td>{{question.question}}</td>
                  
-                  <td align="right"> <a  style=" float:right;cursor:pointer;"  (click)="gotoVideoPage(question.id)"> <img src="assets/images/record-icon.jpg"></a>
-                    <a *ngIf="question.recorded_url!=undefined" class="go-back-to-job-btn" style=" float:right;"> <i class="fa fa-eye"  (click)="showRecordedAnswer(question.recorded_url)"></i></a>
+                  <td align="right"> 
+                     
+                    <a  style=" float:right;cursor:pointer;"  (click)="gotoVideoPage(question.id)"> <img src="assets/images/record-icon.jpg"></a> 
+                    <a *ngIf="question.recorded_url!=undefined"  style=" float:right;cursor:pointer;margin-right:8px;" (click)="showRecordedAnswer(question.recorded_url)"> <img src="assets/images/eye.png" />
+                    </a>
+                  
                   </td>
                 </tr>
               <!-- <tr><td>1</td> <td>How many years of experience you have?</td> <td align="right"><a href="javascript:void(0);"><img src="assets/images/record-icon.jpg" /></a></td> </tr>

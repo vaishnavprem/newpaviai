@@ -9,6 +9,8 @@
 .find-job-right-icon { position: absolute; left: 17px; top: 15px; color: #0265C9; right: inherit;}
 .find-job-section-1 .login-btn:hover .find-job-right-icon{color:#fff;}
 .find-job-block .logos-item-img{background: #d9dbdb;}
+.content-info{padding-top: 10px !important;}
+.mid-content{position:relative !important;}
 
 @media (max-width: 767px) {
 .find-job-section-1{padding:30px 10px 30px 10px;}
