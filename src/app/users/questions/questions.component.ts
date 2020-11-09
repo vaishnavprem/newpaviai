@@ -17,6 +17,7 @@ export class QuestionsComponent implements OnInit {
   private sub: any;
   public questions:any;
   public isLoder=false;
+  public jobs;
   authUser;
   postParamas;
   public show = false;
@@ -53,6 +54,7 @@ export class QuestionsComponent implements OnInit {
       if (response.statusCode == 200) {
         console.log(response);
           this.questions = response['data']['question']; 
+          this.jobs = response['data']['jobs'];
       } else {
         this.toastr.error(response.message);
       }
