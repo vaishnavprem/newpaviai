@@ -211,25 +211,29 @@ export class FindJobComponent implements OnInit {
         }
       }
       }
- }
-this.checkedList= {
-  'city':this.city,
-  'country':this.country,
-  'category':this.category,
-  'keyword':this.searchForm.get('keyword').value,
-  'level':this.level,
-  'employment':this.employment
-}
+    }
+    this.checkedList= {
+      'city':this.city,
+      'country':this.country,
+      'category':this.category,
+      'keyword':this.searchForm.get('keyword').value,
+      'level':this.level,
+      'employment':this.employment
+    }
 
-this.isLoder=true;
-let JobData = this.companiesService.searchJob(this.checkedList)
-.pipe(takeUntil(this.destroy$))
-.subscribe(response => {
-  this.isLoder=false;
-  this.jobs = response['data']['jobs'];
-});
-}
-pageChanged(event){
-  this.config.currentPage = event;
-}
+    this.isLoder=true;
+    let JobData = this.companiesService.searchJob(this.checkedList)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(response => {
+      this.isLoder=false;
+      this.jobs = response['data']['jobs'];
+    });
+  }
+  pageChanged(event){
+    this.config.currentPage = event;
+  }
+  
+  changeCity(value){
+    this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } })
+  }
 }

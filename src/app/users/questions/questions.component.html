@@ -31,9 +31,9 @@
           <div class="col-sm-9">
           <div class="select-your-job post-job-info animate__fadeInUpBig animate__animated">
             <ul>
-            <li>
-            <h4><strong>Location:</strong> Arizona / Company Icon: Earth / Job</h4>
-            <h4><strong>Title:</strong> Human on the earth / Data </h4>
+            <li *ngFor="let job of jobs">
+            <h4><strong>Location:</strong> {{job.country}} / {{job.companyAddress}}</h4>
+            <h4><strong>Title:</strong> {{job.jobTitle}}</h4>
             <h4><strong>Posted:</strong> Yesterday <span><a href="javascript:void(0);"><img src="assets/images/eye.png" /></a> <a href="#"><img src="assets/images/like-icon.png" /></a></span></h4>
             
             <div class="question-record">
