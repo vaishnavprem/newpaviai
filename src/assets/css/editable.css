@@ -2,6 +2,13 @@
 
 .navicon ul li{cursor: pointer !important;}
 
+.mid-content{position:static !important;}
+
+@media(max-width:767px){
+  .content-info{padding-top: 60px;}
+}
+
+
 /*company sign up and its step start here */
 
 .company-registration-form .mat-step-header {

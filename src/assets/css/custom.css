@@ -210,6 +210,9 @@ input[type="date"].form-control ~ i{position:absolute; right:33px; top:47%; poin
 .about-warp .logo img{max-width: 150px; margin: 0px auto;}
 .about-warp .logo h2{font-size: 60px;}
 .about-warp p{color:#fff; font-size:26px; line-height: 34px; margin-bottom: 20px;}
+.mid-warp{display:table; width:100%;}
+.mid-col-sec{vertical-align:middle; display:table-cell;}
+
 
 @media(max-width:767px){
 header{padding: 15px;}
