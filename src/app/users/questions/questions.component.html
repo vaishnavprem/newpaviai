@@ -51,8 +51,11 @@
                   <td align="right"> 
                      
                     <a  style=" float:right;cursor:pointer;"  (click)="gotoVideoPage(question.id)"> <img src="assets/images/record-icon.jpg"></a> 
-                    <a *ngIf="question.recorded_url!=undefined"  style=" float:right;cursor:pointer;margin-right:8px;" (click)="showRecordedAnswer(question.recorded_url)"> <img src="assets/images/eye.png" />
+
+                    <a *ngIf="question.recorded_url!=undefined"  style=" float:right;cursor:pointer;margin-right:8px;" (click)="showRecordedAnswer(question.recorded_url)"> <i class="fa fa-play" aria-hidden="true"></i>
                     </a>
+                    
+                    <a  style=" float:right;cursor:pointer;margin-right:5px;"  > <i class="fa fa-trash" aria-hidden="true"></i></a>
                   
                   </td>
                 </tr>
