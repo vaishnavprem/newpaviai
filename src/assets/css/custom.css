@@ -38,7 +38,7 @@ a, a:hover, a:focus{text-decoration:none;}
 
 header{width:100%; display:inline-block; padding: 30px;}
 .nav-header-in{padding: 30px; width:100%; display:inline-block;}
-.navicon-inner{padding-top:60px;}
+.navicon-inner{padding-top:40px;}
 .nav-header-in .logo-inner img{opacity:0.4;}
 .logo-inner{float:left;}
 .logo-inner img{max-width:56px; display:inline-block;}
@@ -46,7 +46,7 @@ header{width:100%; display:inline-block; padding: 30px;}
 .logo-inner a span{color:#fff; font-family: 'ROCKETWILDNESS'; font-size:22px; position: relative; top: 9px; margin-left:5px;}
 .logo h2{font-size:100px; font-family: 'ROCKETWILDNESS'; color:#fff; margin:0px;}
 .nav-menu{float:right; padding-top: 22px;}
-.content-info{padding-top:60px;}
+.content-info{padding-top:40px;}
 .content-info .welcome-img{margin-right:30px;}
 .content-info h1{font-family: "Montserrat Ultra Light"; padding-left: 10px; margin: 0; color:#fff; font-size:60px;position:relative; display:inline-block; line-height:78px;}
 .content-info h1 .hr-line{height:85px; width:1px; background:#fff; display:inline-block; position:absolute; margin-left: 5px;}
@@ -210,8 +210,25 @@ input[type="date"].form-control ~ i{position:absolute; right:33px; top:47%; poin
 .about-warp .logo img{max-width: 150px; margin: 0px auto;}
 .about-warp .logo h2{font-size: 60px;}
 .about-warp p{color:#fff; font-size:26px; line-height: 34px; margin-bottom: 20px;}
+
 .mid-warp{display:table; width:100%;}
 .mid-col-sec{vertical-align:middle; display:table-cell;}
+
+.pavi-them-logo img{max-width:100px; margin:0px auto;}
+.dashbaord-menu{padding:0px; margin-top: 20px;}
+.dashbaord-menu li{list-style:none;}
+.dashbaord-menu li a{color:#3f4359; padding:6px 15px; display:inline-block; font-size:28px; font-weight:500; font-family: 'Montserrat', sans-serif; transition:all ease-in-out 0.4s;}
+.dashbaord-menu li:hover a{color:#fff; transition:all ease-in-out 0.4s;}
+
+.dashbaord-info-warp{background:#e6e7ea; padding: 20px 20px; scrollbar-width: thin; scrollbar-color: #fff #999aa1; height:500px; overflow:auto; margin-top: 15px;}
+.dashbaord-info-warp ul{padding:0px; list-style:none;}
+.dashbaord-info-warp ul li{height:150px; background:#fff; display:table; width:100%; margin-bottom:30px; padding:0px 20px;}
+.dashbaord-info-warp ul li h5{font-size:30px; text-transform:uppercase;}
+.dashbaord-info-warp ul li span{font-weight:600; font-family: 'Montserrat', sans-serif; font-size:30px;}
+.dashbaord-info-warp ul li .dashbaord-info{vertical-align:middle; display:table-cell;}
+.dashbaord-info-warp ul li abbr{float:right;}
+.bar{width:80%; display:inline-block;background:#eaecef; height:25px; border-radius:30px; margin-left:20px; overflow:hidden;}
+.bar-inner{display: table; height:25px}
 
 
 @media(max-width:767px){
@@ -237,5 +254,8 @@ header{padding: 15px;}
 .select-your-job ul li strong{font-size: 14px;}
 .select-your-job{margin-top: 15px;}
 .select-your-job ul li h4 span img{width:18px;}
-.paviwelcome{padding:80px 0px;}
 }
+
+
+
+

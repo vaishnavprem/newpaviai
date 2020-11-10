@@ -100,7 +100,7 @@ export class QuestionsComponent implements OnInit {
    });
   }
   showRecordedAnswer(recordString){
-    window.open("https://d1iruxeyl67hmv.cloudfront.net/web/index.php/archive/"+recordString+"/view", "_blank");
+    window.open("https://d1iruxeyl67hmv.cloudfront.net/web/index.php/archive/"+recordString+"/view?id="+this.id+"" , "_blank");
   }
   
 }
