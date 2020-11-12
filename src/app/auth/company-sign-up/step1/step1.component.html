@@ -1,7 +1,8 @@
 <form [formGroup]="companyInfoFormGroup">
-  <div class="register-block-1">
+
       
-        <div class="login-item">
+  <div class="col-sm-12">
+    <div class="form-group">
           <label class="logos-item-label">Company Name</label>
           <input formControlName="name" class="logos-item-input" placeholder="Company Name*"
                  (keyup)="checkCompanyName($event)">
@@ -10,8 +11,10 @@
           <mat-error *ngIf="common.companyNameExists">Company with such name <strong>exists</strong></mat-error>
           <mat-error *ngIf="companyCtrl.hasError('patternInvalid')">Company name is <strong>invalid</strong></mat-error>
         </div>
+  </div>
 
-        <div class="login-item">
+  <div class="col-sm-12">
+    <div class="form-group">
           <label for="country" class="logos-item-label">Country</label>
           <select id="country" class="logos-item-input" (change)="changeCountry($event)" formControlName="country">
             <option disabled selected [value]="''">Country*</option>
@@ -24,8 +27,9 @@
           </mat-error>
       </div>
   </div>
-  <div class="jobs-form-inputs">
-    <div class="login-item">
+
+  <div class="col-sm-12">
+    <div class="form-group">
       <label for="industry" class="logos-item-label">Industry</label>
     <select id="industry" class="logos-item-input" (change)="changeIndustry($event)" formControlName="industry">
       <option selected disabled [value]="''">Industry*</option>
@@ -46,7 +50,7 @@
   </mat-error>
   </div>
   
-    
+  <div class="col-sm-12">
     <div class="last-block-form">
       <div class="register-buttons">
         <!--      <a class="reset-btn"><i class="fas fa-chevron-left"></i>Reset All</a>-->
@@ -55,5 +59,6 @@
         <button class="login-btn" (click)="submit()">Next<i class="fa fa-chevron-right" aria-hidden="true"></i>
         </button>
       </div>
+    </div>
     </div>
   </form>

@@ -253,6 +253,27 @@ input[type="date"].form-control ~ i{position:absolute; right:33px; top:47%; poin
 .social-icon h5{font-size:24px; color:#99a0bf; padding-top:15px;}
 .social-icon h5 a{font-size:24px; color:#ccc; text-transform:uppercase;}
 
+.signup-warp{background:#99a0bf; border-radius:35px; margin-bottom:30px; padding:20px 50px;max-width:450px; position:relative;}
+.signup-warp .form-group .form-control{height:47px; border-radius:0px; font-size:24px; box-shadow:none;}
+.signup-warp .form-group .form-control:focus{box-shadow:none; border-color:#fff;}
+.signup-warp h3{font-size:30px; text-align:center; font-weight:700; color:#fff; font-family: 'Montserrat', sans-serif; padding-bottom:15px;}
+
+.signup-warp .form-group .form-control::-webkit-input-placeholder { color: #999;}
+.signup-warp .form-group .form-control::-moz-placeholder {color: #999;}
+.signup-warp .form-group .form-control:-ms-input-placeholder {color: #999;}
+.signup-warp .form-group .form-control:-moz-placeholder {color: #999;}
+.signup-warp .checkbox{background:transparent;}
+.signup-warp .checkbox .helper{background: #fff; top: 2px;}
+.signup-warp .checkbox label{padding-left:10px; color: #fff;}
+.signup-warp .form-group p{font-size:14px; color:#fff;}
+.signup-warp .checkbox a{color:#8ae1ff;}
+.signup-warp .checkbox span{color:#fff;}
+.register-btn{text-align:center; margin-top:20px;}
+.register-btn .btn{font-weight:600;width:300px; color:#fff; font-family: 'Montserrat', sans-serif; border: solid 2px #fff; background:transparent; padding:8px 15px 12px; transition:all ease-in-out 0.4s; font-size:25px; }
+.register-btn .btn:hover{background:#0064d1; border-color:#0064d1; transition:all ease-in-out 0.4s;}
+
+.close-icon{position:absolute; right:-50px; top:-20px;}
+.welcome-sign-up{margin-top:150px;}
 
 @media(max-width:767px){
 header{padding: 15px;}

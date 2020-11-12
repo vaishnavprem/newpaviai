@@ -15,7 +15,7 @@ import {NewPasswordComponent} from './new-password/new-password.component';
 import {SubmittedPasswordComponent} from './submitted-password/submitted-password.component';
 import {AuthComponent} from './auth.component';
 import {ReceiveCodeComponent} from './receive-code/receive-code.component';
-
+import {CoreModule} from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import {ReceiveCodeComponent} from './receive-code/receive-code.component';
     AuthRoutingModule,
     SharedModule,
     FormsModule,
+    CoreModule,
     ReactiveFormsModule
   ],
   providers: []

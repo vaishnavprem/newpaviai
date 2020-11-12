@@ -1,77 +1,76 @@
 <!-- <app-header></app-header> -->
-<section class="bg-images-1">
-  <div class="about-warp">
-    <div class="about-inner sign-up">
-      <div class="container">
-        <div class="sound-icon"><a href="javascript:void(0);"><img src="assets/images/sound.png" alt="Sound" title="Sound" /> </a></div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="logo" (click)="router.navigate(['/'])">
-              <figure class="animate__fadeInLeftBig animate__animated"><a href="javascript:void(0);"><img src="assets/images/logo.png" alt="Pavi" title="Pavi" class="img-responsive" />
-                <h2>Pavi</h2>
-                </a></figure>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <div class="private-user animate__fadeInRightBig animate__animated">
-              <div class="private-user-info">
-                <div class="private-user-head" (click)="getSignIn()"><a [href]="" class="sign-google"> Sign In Here</a>
-                  <h4>Choose the versions of Sign Up.</h4>
-                  <div class="private-title">
-                    <h4>Company</h4>
-                    <span class="and-off">OR</span> </div>
+<section class="new-login-employer-bg">
+  <app-header></app-header>
+<div class="mid-content">
+  <div class="container">
+    <div class="content-info">
+      <div class="row">
+        <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img welcome-sign-up" /></div>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-md-8">
+                <div class="private-user animate__fadeInRightBig animate__animated">
+                  <div class="signup-warp">
+                    <div class="private-user-head" (click)="getSignIn()"><a [href]="" class="sign-google"> Sign In Here</a>
+                      <h4>Choose the versions of Sign Up.</h4>
+                      <div class="private-title">
+                        <h4>Company</h4>
+                        <span class="and-off">OR</span> </div>
+                    </div>
+                    
+                    <form [formGroup]="companyRegistrationForm" class="company-registration-form">
+    
+                      <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="currentStep-1" labelPosition="bottom">
+            
+            
+                        <ng-template matStepperIcon="edit" let-index="index">
+                          <i class="fa fa-user" aria-hidden="true" *ngIf="index === 0"></i>
+                          <i class="fa fa-info" aria-hidden="true" *ngIf="index === 1"></i>
+                          <i class="fa fa-phone" aria-hidden="true" *ngIf="index === 2"></i>
+                        </ng-template>
+            
+                        <!-- Custom icon with a context variable. -->
+                        <ng-template matStepperIcon="number" let-index="index">
+                          <i class="fa fa-user" aria-hidden="true" *ngIf="index === 0"></i>
+                          <i class="fa fa-info" aria-hidden="true" *ngIf="index === 1"></i>
+                          <i class="fa fa-phone" aria-hidden="true" *ngIf="index === 2"></i>
+                        </ng-template>
+            
+            
+            
+            <!--            &lt;!&ndash; 'Step passed' sign&ndash;&gt;-->
+            <!--            <ng-template matStepperIcon="edit">-->
+            <!--              <mat-icon>done</mat-icon>-->
+            <!--            </ng-template>-->
+            
+                        <!-- Step 1 -->
+                        <mat-step [stepControl]="companyInfo">
+                          <ng-template matStepLabel>Company info</ng-template>
+                          <app-step1 [group]="companyInfo" [stepper]="stepper"></app-step1>
+                        </mat-step>
+            
+                        <!-- Step 2 -->
+                        <mat-step [stepControl]="accountInfo">
+                          <ng-template matStepLabel>Account info</ng-template>
+                          <app-step2 [group]="accountInfo"></app-step2>
+                        </mat-step>
+            
+                        <!-- Step 3 -->
+                        <mat-step>
+                          <ng-template matStepLabel>Company details</ng-template>
+                          <app-step3 [group]="contactDetails" (registerCompany)="registerCompany()"></app-step3>
+                        </mat-step>
+                      </mat-horizontal-stepper>
+            
+                    </form>
                 </div>
-                
-                <form [formGroup]="companyRegistrationForm" class="company-registration-form">
-
-                  <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="currentStep-1" labelPosition="bottom">
-        
-        
-                    <ng-template matStepperIcon="edit" let-index="index">
-                      <i class="fa fa-user" aria-hidden="true" *ngIf="index === 0"></i>
-                      <i class="fa fa-info" aria-hidden="true" *ngIf="index === 1"></i>
-                      <i class="fa fa-phone" aria-hidden="true" *ngIf="index === 2"></i>
-                    </ng-template>
-        
-                    <!-- Custom icon with a context variable. -->
-                    <ng-template matStepperIcon="number" let-index="index">
-                      <i class="fa fa-user" aria-hidden="true" *ngIf="index === 0"></i>
-                      <i class="fa fa-info" aria-hidden="true" *ngIf="index === 1"></i>
-                      <i class="fa fa-phone" aria-hidden="true" *ngIf="index === 2"></i>
-                    </ng-template>
-        
-        
-        
-        <!--            &lt;!&ndash; 'Step passed' sign&ndash;&gt;-->
-        <!--            <ng-template matStepperIcon="edit">-->
-        <!--              <mat-icon>done</mat-icon>-->
-        <!--            </ng-template>-->
-        
-                    <!-- Step 1 -->
-                    <mat-step [stepControl]="companyInfo">
-                      <ng-template matStepLabel>Company info</ng-template>
-                      <app-step1 [group]="companyInfo" [stepper]="stepper"></app-step1>
-                    </mat-step>
-        
-                    <!-- Step 2 -->
-                    <mat-step [stepControl]="accountInfo">
-                      <ng-template matStepLabel>Account info</ng-template>
-                      <app-step2 [group]="accountInfo"></app-step2>
-                    </mat-step>
-        
-                    <!-- Step 3 -->
-                    <mat-step>
-                      <ng-template matStepLabel>Company details</ng-template>
-                      <app-step3 [group]="contactDetails" (registerCompany)="registerCompany()"></app-step3>
-                    </mat-step>
-                  </mat-horizontal-stepper>
-        
-                </form>
               </div>
             </div>
-          </div>
+          </div>          
         </div>
       </div>
     </div>
   </div>
+</div>
 </section>
+
