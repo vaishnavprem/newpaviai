@@ -4,6 +4,10 @@
 
 .mid-content{position:static !important;}
 
+.new-login-employer-bg{position: absolute;}
+
+.new-login-bg{position: absolute;}
+
 @media(max-width:767px){
   .content-info{padding-top: 60px;}
 }

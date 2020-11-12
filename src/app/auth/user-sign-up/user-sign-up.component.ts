@@ -94,9 +94,9 @@ export class UserSignUpComponent implements OnInit {
 
   getSignIn() {
     if(this.id){
-        this.router.navigate(['auth/login'],{ queryParams: { job: this.id } });
+        this.router.navigate(['auth/login'],{ queryParams: { job: this.id , id: 1} });
     } else {
-      this.router.navigate(['auth/login']);
+      this.router.navigate(['auth/login', 1]);
     }
   }
   // getGoogleAuthUrl() {

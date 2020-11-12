@@ -52,10 +52,11 @@
                      
                     <a  style=" float:right;cursor:pointer;"  (click)="gotoVideoPage(question.id)"> <img src="assets/images/record-icon.jpg"></a> 
 
-                    <a *ngIf="question.recorded_url!=undefined"  style=" float:right;cursor:pointer;margin-right:8px;" (click)="showRecordedAnswer(question.recorded_url)"> <i class="fa fa-play" aria-hidden="true"></i>
-                    </a>
                     
-                    <a  style=" float:right;cursor:pointer;margin-right:5px;"  > <i class="fa fa-trash" aria-hidden="true"></i></a>
+                      <a *ngIf="question.recorded_url!=undefined"  style=" float:right;cursor:pointer;margin-right:8px;" (click)="showRecordedAnswer(question.recorded_url)"> <i class="fa fa-play" style="font-size: 25px;color:#1b1b1d73;" aria-hidden="true"></i>
+                      </a>
+                      
+                    <a *ngIf="question.recorded_url!=undefined" style=" float:right;cursor:pointer;margin-right:5px;" (click)="deleteRecordedAnswer(question.id,question.recorded_url)"  > <i class="fa fa-trash" style="font-size: 25px;color:#1b1b1d73;" aria-hidden="true"></i></a>
                   
                   </td>
                 </tr>

@@ -13,7 +13,6 @@ import { JobCreationStepperFormComponent } from './dashboard/dashboard-jobs/job-
 import {SharedModule} from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-
 @NgModule({
   declarations: [
     DashboardJobsComponent,
