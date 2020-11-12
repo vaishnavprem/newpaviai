@@ -1,3 +1,4 @@
+
 import { Component, OnInit,ViewChild } from '@angular/core';
 import {AuthService} from '../../core/services/auth.service';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -15,7 +16,9 @@ import { PaviAdminService } from '../../core/services/pavi-admin.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+
 declare var $: any;
+
 interface PeriodicElement {
   name: string;
   position: number;
@@ -105,6 +108,8 @@ export class DashboardComponent implements OnInit {
  
   public dataSourceThree;
   public displayedColumnsThree: string[];
+
+  public selectedValue = 0;  //SelectMenu Of Dashboard
 
   dataSourceTwo: MatTableDataSource<PeriodicElement>;
   displayedColumnsTwo: string[] = ['position', 'name', 'weight', 'symbol'];
@@ -637,69 +642,81 @@ showCandidateAnswers(index){
   $("#add-modal-candidate").modal("show");
 }
 
-showAddJob(){
-  document.getElementById('home').style.display = 'none';
-    document.getElementById('create-job').style.display = 'block';
-    document.getElementById('add-interview-questions').style.display = 'none';
-    document.getElementById('interview-questions').style.display = 'none';
-    document.getElementById('interviews').style.display = 'none';
-    document.getElementById('jobs-user').style.display = 'none';
-    document.getElementById('profile').style.display = 'none';
-}
 
-showAddInterview(){
-  this.getJobs();
-  document.getElementById('home').style.display = 'none';
-    document.getElementById('create-job').style.display = 'none';
-    document.getElementById('add-interview-questions').style.display = 'block';
-    document.getElementById('interview-questions').style.display = 'none';
-    document.getElementById('interviews').style.display = 'none';
-    document.getElementById('jobs-user').style.display = 'none';
-    document.getElementById('profile').style.display = 'none';
-}
-
-showInterviewQuestion(){
-  this.getJobs();
-  document.getElementById('home').style.display = 'none';
-    document.getElementById('create-job').style.display = 'none';
-    document.getElementById('add-interview-questions').style.display = 'none';
-    document.getElementById('interview-questions').style.display = 'block';
-    document.getElementById('interviews').style.display = 'none';
-    document.getElementById('jobs-user').style.display = 'none';
-    document.getElementById('profile').style.display = 'none';
-}
-
-showJobs(){
-  this.getJobs();
-  document.getElementById('home').style.display = 'none';
-    document.getElementById('create-job').style.display = 'none';
-    document.getElementById('add-interview-questions').style.display = 'none';
-    document.getElementById('interview-questions').style.display = 'none';
-    document.getElementById('interviews').style.display = 'block';
-    document.getElementById('jobs-user').style.display = 'none';
-    document.getElementById('profile').style.display = 'none';
-}
-
-showApplications(){
-  this.getUsers();
-  document.getElementById('home').style.display = 'none';
-    document.getElementById('create-job').style.display = 'none';
-    document.getElementById('add-interview-questions').style.display = 'none';
-    document.getElementById('interview-questions').style.display = 'none';
-    document.getElementById('interviews').style.display = 'none';
-    document.getElementById('jobs-user').style.display = 'block';
-    document.getElementById('profile').style.display = 'none';
-}
-
-showMyProfile(){
-  this.showProfile();
-  document.getElementById('home').style.display = 'none';
-    document.getElementById('create-job').style.display = 'none';
-    document.getElementById('add-interview-questions').style.display = 'none';
-    document.getElementById('interview-questions').style.display = 'none';
-    document.getElementById('interviews').style.display = 'none';
-    document.getElementById('jobs-user').style.display = 'none';
-    document.getElementById('profile').style.display = 'block';
+selectedV(){
+  let select = +this.selectedValue;
+  
+  switch(select) { 
+    case 1: { 
+      document.getElementById('home').style.display = 'none';
+      document.getElementById('create-job').style.display = 'block';
+      document.getElementById('add-interview-questions').style.display = 'none';
+      document.getElementById('interview-questions').style.display = 'none';
+      document.getElementById('interviews').style.display = 'none';
+      document.getElementById('jobs-user').style.display = 'none';
+      document.getElementById('profile').style.display = 'none';
+       break; 
+    } 
+    case 2: { 
+      this.getJobs();
+      document.getElementById('home').style.display = 'none';
+        document.getElementById('create-job').style.display = 'none';
+        document.getElementById('add-interview-questions').style.display = 'none';
+        document.getElementById('interview-questions').style.display = 'none';
+        document.getElementById('interviews').style.display = 'block';
+        document.getElementById('jobs-user').style.display = 'none';
+        document.getElementById('profile').style.display = 'none';
+       break; 
+    }
+    case 3: { 
+      this.getJobs();
+      document.getElementById('home').style.display = 'none';
+        document.getElementById('create-job').style.display = 'none';
+        document.getElementById('add-interview-questions').style.display = 'block';
+        document.getElementById('interview-questions').style.display = 'none';
+        document.getElementById('interviews').style.display = 'none';
+        document.getElementById('jobs-user').style.display = 'none';
+        document.getElementById('profile').style.display = 'none';
+      break; 
+    }
+    case 4: { 
+      this.getJobs();
+      document.getElementById('home').style.display = 'none';
+        document.getElementById('create-job').style.display = 'none';
+        document.getElementById('add-interview-questions').style.display = 'none';
+        document.getElementById('interview-questions').style.display = 'block';
+        document.getElementById('interviews').style.display = 'none';
+        document.getElementById('jobs-user').style.display = 'none';
+        document.getElementById('profile').style.display = 'none';
+      break; 
+    }
+    case 5: { 
+      this.getUsers();
+      document.getElementById('home').style.display = 'none';
+        document.getElementById('create-job').style.display = 'none';
+        document.getElementById('add-interview-questions').style.display = 'none';
+        document.getElementById('interview-questions').style.display = 'none';
+        document.getElementById('interviews').style.display = 'none';
+        document.getElementById('jobs-user').style.display = 'block';
+        document.getElementById('profile').style.display = 'none';
+      break; 
+    }
+    case 6: { 
+      this.showProfile();
+      document.getElementById('home').style.display = 'none';
+        document.getElementById('create-job').style.display = 'none';
+        document.getElementById('add-interview-questions').style.display = 'none';
+        document.getElementById('interview-questions').style.display = 'none';
+        document.getElementById('interviews').style.display = 'none';
+        document.getElementById('jobs-user').style.display = 'none';
+        document.getElementById('profile').style.display = 'block';
+      break; 
+    }  
+    default: { 
+       
+       break; 
+    } 
+ } 
 }
 
 }
