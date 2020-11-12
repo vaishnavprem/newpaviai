@@ -100,7 +100,32 @@ export class QuestionsComponent implements OnInit {
    });
   }
   showRecordedAnswer(recordString){
+
+    // var mapForm = document.createElement("form");
+    // mapForm.target = "_blank";    
+    // mapForm.method = "POST";
+    // mapForm.action = "https://d1iruxeyl67hmv.cloudfront.net/web/index.php/archive/"+recordString+"/view.php";
+
+    
+    // var mapInput = document.createElement("input");
+    // mapInput.type = "text";
+    // mapInput.name = "job_id";
+    // mapInput.value = "ijhhjih";
+
+    // mapForm.appendChild(mapInput);
+    // document.body.appendChild(mapForm);
+    // mapForm.submit();
+
     window.open("https://d1iruxeyl67hmv.cloudfront.net/web/index.php/archive/"+recordString+"/view?id="+this.id+"" , "_blank");
+  }
+
+  deleteRecordedAnswer(questionId,questionUrl){
+    console.log("QuestionId>>>", questionId);
+    var res = window.confirm("Are you sure want to delete this video?");
+    if (res) {
+        console.log("File Delete");
+        //window.open("https://d1iruxeyl67hmv.cloudfront.net/web/index.php/archive/"+questionUrl+"/delete" , "");
+    }
   }
   
 }

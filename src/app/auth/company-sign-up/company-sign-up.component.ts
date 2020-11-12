@@ -92,6 +92,6 @@ export class CompanySignUpComponent implements OnInit {
   }
 
   getSignIn() {
-    this.router.navigate(['auth/login']);;
+    this.router.navigate(['auth/login', 2]);;
    }
 }

@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
   isSubmitted = false;
   private sub: any;
   id: number;
+  loginid: number; //Decide to open Employer(2) Login Or User(1) Login 
+  
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
@@ -27,10 +29,11 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private toastr: ToastrService,
   ) {
+    this.loginid = this.route.snapshot.params['id']; // for open User Login Or Employer Login
   }
 
   ngOnInit(): void {
-    this.sub = this.route.queryParams.subscribe(params => {
+    this.sub = this.route.queryParams.subscribe(params => { 
           this.id = +params['job'] || null; // (+) converts string 'id' to a number
           const token = localStorage.getItem('token');
           if (token && this.id ) {

@@ -11,7 +11,7 @@ import {ReceiveCodeComponent} from './receive-code/receive-code.component';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: 'login/:id',
     component: LoginComponent
   },
   {

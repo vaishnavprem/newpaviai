@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
     this.status = !this.status;       
   }
 
-  // goToPage(routerLink){
-  //   this.router.navigate(['/'+ routerLink ]);
-  // }
+  goToLogin(){
+    this.router.navigate(['/auth/login', 1]);
+  }
 }
