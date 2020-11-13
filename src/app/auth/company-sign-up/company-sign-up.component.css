@@ -1,3 +1,16 @@
 .signup-warp {
     max-width: unset;
 }
+
+.new-login-employer-bg {
+    position: inherit !important;
+}
+
+.private-user {
+    background: none;
+    
+}
+
+.steper{
+    background-color: transparent;
+}

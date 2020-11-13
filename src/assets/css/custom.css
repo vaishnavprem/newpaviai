@@ -298,6 +298,37 @@ header{padding: 15px;}
 .select-your-job ul li strong{font-size: 14px;}
 .select-your-job{margin-top: 15px;}
 .select-your-job ul li h4 span img{width:18px;}
+
+.new-login-col{padding-top: 30px;}
+.new-login-col .input-group{margin-bottom: 20px;}
+
+.new-login-col .input-group{width: 100%;}
+.new-login-col .input-group .input-group-btn{width: 100%; display: block;}
+.new-login-col .input-group-btn:first-child .btn-group{margin-bottom: 5px;}
+
+.social-icon ul{display: table; margin: 0px auto;}
+.social-icon ul li{padding: 10px 10px;}
+.social-icon ul li a img{width: 40px;}
+.social-icon h4{text-align: center; font-size: 35px;}
+.social-icon{width:100%;}
+.social-icon h5 a{font-size: 18px;}
+.social-icon h5{font-size: 18px; text-align: center;}
+
+.signup-warp{padding: 10px 20px;}
+.signup-warp .form-group .form-control{font-size: 18px; height: 40px;}
+.signup-warp h3{font-size: 25px;}
+.close-icon{position: absolute; right: 15px; top: 18px;}
+
+.private-user-body .form-group .btn{padding: 6px 6px; font-size: 16px;}
+.sign-up .logo{padding: 0px 0px 30px;}
+.private-user-body .form-group label{font-size: 13px;}
+.private-user-body .form-group .terms-account label{font-size: 12px;}
+.about-warp .private-user-body p{font-size: 13px; text-align: center;}
+.sign-google{width: auto; font-size: 15px; display: table; margin: 0 auto;}
+.about-warp p{font-size: 18px; line-height: 27px;}
+
+
+
 }
 
 

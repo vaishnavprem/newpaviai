@@ -1,555 +1,575 @@
 
-<div class="modal fade" id="edit-modal-popup-user">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">User Data</h5>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="userForm" (ngSubmit)="updateUser()">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">First Name:</label>
-                <input type="text" class="form-control" formControlName="first_name">
-                <div *ngIf="userForm.get('first_name').invalid"class="alert alert-danger">First Name is required</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Last Name:</label>
-                <input type="text" class="form-control"  formControlName="last_name">
-                <div *ngIf="userForm.get('last_name').invalid"class="alert alert-danger">Last Name is required</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Email:</label>
-                <input type="text" class="form-control"  formControlName="email" readonly>
-                <div *ngIf="userForm.get('email').invalid" class="alert alert-danger">Email is required</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>Status</label>
-                <ul class="radio-box">
-                  <li>
-                    <input id="radio1" type="radio" name="radioname">
-                    <label for="radio1">Yes </label>
-                    <div class="check"></div>
-                  </li>
-                  <li>
-                    <input id="radio2" type="radio" name="radioname">
-                    <label for="radio2">NO </label>
-                    <div class="check"></div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>Gender</label>
-                <input type="radio" name="gender"  [value]="'male'" id="male" formControlName="gender">
-                Male
-                <input type="radio" name="gender" [value]="'female'" id="female" formControlName="gender">
-                Female </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary ">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="add-modal-job-catgory">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Job Category</h5>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="categoryForm" (ngSubmit)="saveJobCategory()">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Job Category:</label>
-                <input type="text" class="form-control" formControlName="category">
-                <div *ngIf="categoryForm.get('category').touched && categoryForm.get('category').invalid" class="alert alert-danger">Job Category is required</div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary ">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="add-modal-job-terms">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Job Terms</h5>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="termsForm" (ngSubmit)="saveJobTerms()">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Job Specialist Level:</label>
-                <input type="text" class="form-control" formControlName="term">
-                <div *ngIf="termsForm.get('term').touched && termsForm.get('term').invalid" class="alert alert-danger">Job Term is required</div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary ">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="add-modal-job-specialist">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Job Specialist Level</h5>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="specialistForm" (ngSubmit)="saveJobSpecialistLevel()">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Job Specialist Level:</label>
-                <input type="text" class="form-control" formControlName="specialist_level">
-                <div *ngIf="specialistForm.get('specialist_level').touched && specialistForm.get('specialist_level').invalid" class="alert alert-danger">Job Specialist Level is required</div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary ">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="add-modal-country">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Country</h5>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="specialistForm" (ngSubmit)="saveJobSpecialistLevel()">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label"> Country Name:</label>
-                <input type="text" class="form-control" formControlName="specialist_level">
-                <div *ngIf="specialistForm.get('specialist_level').touched && specialistForm.get('specialist_level').invalid" class="alert alert-danger">Job Specialist Level is required</div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary ">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="edit-modal-popup-company">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Company data</h5>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="companyForm" (ngSubmit)="updateCompany()">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Company Name:</label>
-                <input type="text" class="form-control" formControlName="name" readonly>
-                <div *ngIf="companyForm.get('name').invalid"class="alert alert-danger">Company Name is required</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Company Address:</label>
-                <input type="text" class="form-control"  formControlName="address">
-                <div *ngIf="companyForm.get('address').invalid"class="alert alert-danger">Company Address is required</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Phone No:</label>
-                <input type="text" class="form-control"  formControlName="phone">
-                <div *ngIf="companyForm.get('phone').invalid"class="alert alert-danger">Phone No is required</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Country:</label>
-                <select class="form-control" formControlName="country">
-                  <option selected disabled [value]="''">Country*</option>
-                  <option *ngFor="let country of countries" [value]="country">{{country}}</option>
-                </select>
-                <div *ngIf="companyForm.get('country').invalid"class="alert alert-danger">Country is required</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">First Name:</label>
-                <input type="text" class="form-control"  formControlName="first_name">
-                <div *ngIf="companyForm.get('first_name').invalid"class="alert alert-danger">First Name is required</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Last Name:</label>
-                <input type="text" class="form-control"  formControlName="last_name">
-                <div *ngIf="companyForm.get('last_name').invalid"class="alert alert-danger">Last Name is required</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Email:</label>
-                <input type="text" class="form-control"  formControlName="email" readonly>
-                <div *ngIf="companyForm.get('email').invalid"class="alert alert-danger">Email is required</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>Status</label>
-                <div class="onoffswitch">
-                  <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitchuser" tabindex="0" checked="" formControlName="status">
-                  <label class="onoffswitch-label" for="myonoffswitch"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary ">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="toggle-mobile-section" [ngClass]="{'mobile-in':!show}">
-<div (click)="show = !show" class="bugger-menu-mobile">
-  <h5><img src="assets/images/nav.png" /></h5>
-</div>
-<div class="ful-col-row">
-  <div class="left-bar">
-    <aside>
-      <div>
-        <ul class="nav nav-pills" id="pills-tab">
-          <li class="active"> <a class="active" id="pills-create-job" data-toggle="pill" href="#dashboard"> <img src="assets/images/aside-5.png"> <span>Dashboard</span> </a> </li>
-          <li> <a (click) ="getComapnies()" id="pills-create-job" data-toggle="pill" href="#create-job"> <img src="assets/images/building.png"> <span>Companies</span> </a> </li>
-          <li> <a (click) ="getUsers()"id="pills-interviews" data-toggle="pill" href="#interviews"> <img src="assets/images/man-user.png"> <span>Users</span> </a> </li>
-          <li> <a (click)= "getJobCategory()" id="pills-Job-category" data-toggle="pill" href="#Job-category"> <img src="assets/images/aside-1.png"> <span>Job Category</span> </a> </li>
-          <li> <a (click)= "getJobTerms()" id="pills-Job-terms" data-toggle="pill" href="#Job-terms"> <img src="assets/images/certificate.png"> <span>Job Terms</span> </a> </li>
-          <li> <a (click)= "getJobSpecialistLevel()" id="pills-Job-specialist" data-toggle="pill" href="#Job-specialist"> <img src="assets/images/specialist.png"> <span>Job Specialist Level</span> </a> </li>
-          <li> <a (click)= "getCountries()" id="pills-countries" data-toggle="pill" href="#countries"> <img src="assets/images/placeholder.png"> <span>Country List</span> </a> </li>
-          <li> <a (click)= "addCity()" id="pills-add-city" data-toggle="pill" href="#add-city"> <img src="assets/images/aside-3.png"> <span>Add City</span> </a> </li>
-          <li> <a id="pills-profile" data-toggle="pill" href="#profile"> <img src="assets/images/aside-4.png"> <span>My Profile</span> </a> </li>
-        <li> <a> <img src="assets/images/logout.png"> <span>Log Out</span> </a> </li>
-        </ul>
-      </div>
-    </aside>
-  </div>
-  <div class="right-bar">
-    <div class="container">
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="dashboard">
-          <div class="inner-page">
-            <h2>Dashboard</h2>
+  <div class="modal fade" id="edit-modal-popup-user">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">User Data</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="userForm" (ngSubmit)="updateUser()">
             <div class="row">
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Companies</div>
-                        <div *ngIf="companyCount!=undefined" class="h5 mb-0 font-weight-bold text-gray-800">{{companyCount}}</div>
-                      </div>
-                      <div class="col-auto"> <i class="fas fa-building fa-2x text-gray-300"></i> </div>
-                    </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">First Name:</label>
+                  <input type="text" class="form-control" formControlName="first_name">
+                  <div *ngIf="userForm.get('first_name').invalid"class="alert alert-danger">First Name is required</div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Last Name:</label>
+                  <input type="text" class="form-control"  formControlName="last_name">
+                  <div *ngIf="userForm.get('last_name').invalid"class="alert alert-danger">Last Name is required</div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Email:</label>
+                  <input type="text" class="form-control"  formControlName="email" readonly>
+                  <div *ngIf="userForm.get('email').invalid" class="alert alert-danger">Email is required</div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Status</label>
+                  <ul class="radio-box">
+                    <li>
+                      <input id="radio1" type="radio" name="radioname">
+                      <label for="radio1">Yes </label>
+                      <div class="check"></div>
+                    </li>
+                    <li>
+                      <input id="radio2" type="radio" name="radioname">
+                      <label for="radio2">NO </label>
+                      <div class="check"></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Gender</label>
+                  <input type="radio" name="gender"  [value]="'male'" id="male" formControlName="gender">
+                  Male
+                  <input type="radio" name="gender" [value]="'female'" id="female" formControlName="gender">
+                  Female </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="add-modal-job-catgory">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Job Category</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="categoryForm" (ngSubmit)="saveJobCategory()">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Job Category:</label>
+                  <input type="text" class="form-control" formControlName="category">
+                  <div *ngIf="categoryForm.get('category').touched && categoryForm.get('category').invalid" class="alert alert-danger">Job Category is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="add-modal-job-terms">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Job Terms</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="termsForm" (ngSubmit)="saveJobTerms()">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Job Specialist Level:</label>
+                  <input type="text" class="form-control" formControlName="term">
+                  <div *ngIf="termsForm.get('term').touched && termsForm.get('term').invalid" class="alert alert-danger">Job Term is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="add-modal-job-specialist">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Job Specialist Level</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="specialistForm" (ngSubmit)="saveJobSpecialistLevel()">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Job Specialist Level:</label>
+                  <input type="text" class="form-control" formControlName="specialist_level">
+                  <div *ngIf="specialistForm.get('specialist_level').touched && specialistForm.get('specialist_level').invalid" class="alert alert-danger">Job Specialist Level is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="add-modal-country">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Country</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="specialistForm" (ngSubmit)="saveJobSpecialistLevel()">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"> Country Name:</label>
+                  <input type="text" class="form-control" formControlName="specialist_level">
+                  <div *ngIf="specialistForm.get('specialist_level').touched && specialistForm.get('specialist_level').invalid" class="alert alert-danger">Job Specialist Level is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="edit-modal-popup-company">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Company data</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="companyForm" (ngSubmit)="updateCompany()">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Company Name:</label>
+                  <input type="text" class="form-control" formControlName="name" readonly>
+                  <div *ngIf="companyForm.get('name').invalid"class="alert alert-danger">Company Name is required</div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Company Address:</label>
+                  <input type="text" class="form-control"  formControlName="address">
+                  <div *ngIf="companyForm.get('address').invalid"class="alert alert-danger">Company Address is required</div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Phone No:</label>
+                  <input type="text" class="form-control"  formControlName="phone">
+                  <div *ngIf="companyForm.get('phone').invalid"class="alert alert-danger">Phone No is required</div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Country:</label>
+                  <select class="form-control" formControlName="country">
+                    <option selected disabled [value]="''">Country*</option>
+                    <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+                  </select>
+                  <div *ngIf="companyForm.get('country').invalid"class="alert alert-danger">Country is required</div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">First Name:</label>
+                  <input type="text" class="form-control"  formControlName="first_name">
+                  <div *ngIf="companyForm.get('first_name').invalid"class="alert alert-danger">First Name is required</div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Last Name:</label>
+                  <input type="text" class="form-control"  formControlName="last_name">
+                  <div *ngIf="companyForm.get('last_name').invalid"class="alert alert-danger">Last Name is required</div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Email:</label>
+                  <input type="text" class="form-control"  formControlName="email" readonly>
+                  <div *ngIf="companyForm.get('email').invalid"class="alert alert-danger">Email is required</div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Status</label>
+                  <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitchuser" tabindex="0" checked="" formControlName="status">
+                    <label class="onoffswitch-label" for="myonoffswitch"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
                   </div>
                 </div>
               </div>
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Users</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{userCount}}</div>
-                      </div>
-                      <div class="col-auto"> <i class="fas fa-user fa-2x text-gray-300"></i> </div>
-                    </div>
-                  </div>
-                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+<div class="bg-images-1">
+  <app-header></app-header>
+
+  <div class="mid-col-sec-dashbord">
+    <div class="mid-content">
+      <div class="container-fluid">
+        
+        <!--<div class="global-icon animate__fadeInBottomRight animate__animated"><img src="assets/images/global.png" alt="Global" title="Global" class="img-responsive" /> </div>-->
+        <div class="content-info">
+          <div class="row">
+            <div class="col-sm-4">
+              <h1 class="animate__fadeInRight animate__animated job-title"> Welcome Company. What would you like to do next? <i class="hr-line"></i> </h1>
+          
+              <select [(ngModel)]="selectedValue" id="pills-tab" class="form-control selectMenu" (change)="selectedV()" >
+                <option selected disabled [value]=0>Dashboard Menu</option>
+                <option [value]=1>Companies</option>
+                <option [value]=2>Users</option>
+                <option [value]=3>Job Category</option>
+                <option [value]=4>Job Terms</option>
+                <option [value]=5>Job Specialist Level</option>
+                <option [value]=6>Country List</option>
+                <option [value]=7>Add City</option>
+                <option [value]=8>My Profile</option>
+                <option [value]=9>Log Out</option>
+              </select>
+              <div class="pavi-them-logo">
+            <img src="/assets/images/sparkle-test.png" class="img-responsive" />
+            </div>
               </div>
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-info shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jobs</div>
-                        <div class="row no-gutters align-items-center">
-                          <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">300</div>
+
+              <div class="toggle-mobile-section" [ngClass]="{'mobile-in':!show}">
+                <div (click)="show = !show" class="bugger-menu-mobile">
+                  <h5><img src="assets/images/nav.png" /></h5>
+                </div>
+                <div class="col-sm-8">
+                <div class="dashbaord-info-warp animate__fadeInUpBig animate__animated " id="pills-tabContent">
+                  
+                  <div *ngIf="home" id="home">
+                    <div class="inner-page">
+                      <h2>Dashboard</h2>
+                      <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-4">
+                          <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                              <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Companies</div>
+                                  <div *ngIf="companyCount!=undefined" class="h5 mb-0 font-weight-bold text-gray-800">{{companyCount}}</div>
+                                </div>
+                                <div class="col-auto"> <i class="fas fa-building fa-2x text-gray-300"></i> </div>
+                              </div>
+                            </div>
                           </div>
-                          <div class="col">
-                            <div class="progress progress-sm mr-2">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 33%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                          <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                              <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Users</div>
+                                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{userCount}}</div>
+                                </div>
+                                <div class="col-auto"> <i class="fas fa-user fa-2x text-gray-300"></i> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                          <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                              <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                  <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jobs</div>
+                                  <div class="row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">300</div>
+                                    </div>
+                                    <div class="col">
+                                      <div class="progress progress-sm mr-2">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 33%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-auto"> <i class="fas fa-clipboard-list fa-2x text-gray-300"></i> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                          <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                              <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                  <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+                                  <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                </div>
+                                <div class="col-auto"> <i class="fas fa-comments fa-2x text-gray-300"></i> </div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-auto"> <i class="fas fa-clipboard-list fa-2x text-gray-300"></i> </div>
+                    </div>  
+                  </div>
+
+                  <div  *ngIf="viewCompanies" id="create-job">
+                    <div *ngIf="!companies">No record found</div>
+                    <div *ngIf="companies" class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Company Name</th>
+                            <th>Company Address</th>
+                            <th>Country</th>
+                            <th>Phone No</th>
+                            <th>Email</th>
+                            <th style="text-align:right;">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let company of companies; let i=index">
+                            <td>{{i + 1}}</td>
+                            <td>{{company.name}}</td>
+                            <td>{{company.address}}</td>
+                            <td>{{company.country}}</td>
+                            <td>{{company.phone}}</td>
+                            <td>{{company.email}}</td>
+                            <td align="right"><a class="btn" data-toggle="modal" (click)="editCompany(i)" data-target="#edit-modal-popup-company"> <i class="fa fa-pencil"></i></a> <a class="btn red"> <i class="fa fa-trash"></i></a></td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-warning shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                  <div *ngIf="viewUsers" id="interviews">
+                    <div *ngIf="!users">No record found</div>
+                    <div *ngIf="users" class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th style="text-align:right;">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let user of users; let i=index">
+                            <td>{{i + 1}}</td>
+                            <td>{{user.first_name}}</td>
+                            <td>{{user.last_name}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.gender}}</td>
+                            <td align="right"><a class="btn" data-toggle="modal" (click)="editUser(i)" data-target="#edit-modal-popup-user"> <i class="fa fa-pencil"></i></a> <a class="btn red"> <i class="fa fa-trash"></i></a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div *ngIf="jobCategory" id="Job-category">
+                    <div *ngIf="categories==undefined || categories.length==0">No record found</div>
+                    <div class="row">
+                      <div class="col-xl-12 col-md-12 mb-12">
+                        <button type="button" class="btn btn-outline-dark float-right" data-toggle="modal" data-target="#add-modal-job-catgory">Add Job Category</button>
                       </div>
-                      <div class="col-auto"> <i class="fas fa-comments fa-2x text-gray-300"></i> </div>
+                    </div>
+                    &nbsp;
+                    <div *ngIf="categories!=undefined && categories.length > 0" class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Job Category</th>
+                            <th style="text-align:right;">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let category of categories; let i=index">
+                            <td>{{i + 1}}</td>
+                            <td>{{category.category}}</td>
+                            <td align="right"><a class="btn"  data-target="#edit-modal-popup-user"> <i class="fa fa-pencil"></i></a> <a class="btn red"> <i class="fa fa-trash"></i></a></td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div  class="tab-pane fade" id="create-job">
-          <div *ngIf="!companies">No record found</div>
-          <div *ngIf="companies" class="table-responsive">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Company Name</th>
-                  <th>Company Address</th>
-                  <th>Country</th>
-                  <th>Phone No</th>
-                  <th>Email</th>
-                  <th style="text-align:right;">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let company of companies; let i=index">
-                  <td>{{i + 1}}</td>
-                  <td>{{company.name}}</td>
-                  <td>{{company.address}}</td>
-                  <td>{{company.country}}</td>
-                  <td>{{company.phone}}</td>
-                  <td>{{company.email}}</td>
-                  <td align="right"><a class="btn" data-toggle="modal" (click)="editCompany(i)" data-target="#edit-modal-popup-company"> <i class="fa fa-pencil"></i></a> <a class="btn red"> <i class="fa fa-trash"></i></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="interviews">
-          <div *ngIf="!users">No record found</div>
-          <div *ngIf="users" class="table-responsive">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th>Gender</th>
-                  <th style="text-align:right;">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let user of users; let i=index">
-                  <td>{{i + 1}}</td>
-                  <td>{{user.first_name}}</td>
-                  <td>{{user.last_name}}</td>
-                  <td>{{user.email}}</td>
-                  <td>{{user.gender}}</td>
-                  <td align="right"><a class="btn" data-toggle="modal" (click)="editUser(i)" data-target="#edit-modal-popup-user"> <i class="fa fa-pencil"></i></a> <a class="btn red"> <i class="fa fa-trash"></i></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="Job-category">
-          <div *ngIf="categories==undefined || categories.length==0">No record found</div>
-          <div class="row">
-            <div class="col-xl-12 col-md-12 mb-12">
-              <button type="button" class="btn btn-outline-dark float-right" data-toggle="modal" data-target="#add-modal-job-catgory">Add Job Category</button>
-            </div>
-          </div>
-          &nbsp;
-          <div *ngIf="categories!=undefined && categories.length > 0" class="table-responsive">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Job Category</th>
-                  <th style="text-align:right;">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let category of categories; let i=index">
-                  <td>{{i + 1}}</td>
-                  <td>{{category.category}}</td>
-                  <td align="right"><a class="btn"  data-target="#edit-modal-popup-user"> <i class="fa fa-pencil"></i></a> <a class="btn red"> <i class="fa fa-trash"></i></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="Job-terms">
-          <div *ngIf="terms==undefined || terms.length==0">No record found</div>
-          <div class="row">
-            <div class="col-xl-12 col-md-12 mb-12">
-              <button type="button" class="btn btn-outline-dark float-right" data-toggle="modal" data-target="#add-modal-job-terms">Add Job Terms</button>
-            </div>
-          </div>
-          &nbsp;
-          <div *ngIf="terms!=undefined && terms.length > 0" class="table-responsive">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Job Terms</th>
-                  <th style="text-align:right;">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let term of terms; let i=index">
-                  <td>{{i + 1}}</td>
-                  <td>{{term.term}}</td>
-                  <td align="right"><a class="btn"  data-target="#edit-modal-popup-user"> <i class="fa fa-pencil"></i></a> <a class="btn red"> <i class="fa fa-trash"></i></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="Job-specialist">
-          <div *ngIf="levels==undefined || levels.length==0">No record found</div>
-          <div class="row">
-            <div class="col-xl-12 col-md-12 mb-12">
-              <button type="button" class="btn btn-outline-dark float-right" data-toggle="modal" data-target="#add-modal-job-specialist">Add Job Specialist Level</button>
-            </div>
-          </div>
-          &nbsp;
-          <div *ngIf="levels!=undefined && levels.length > 0" class="table-responsive">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Job Specialist level</th>
-                  <th style="text-align:right;">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let level of levels; let i=index">
-                  <td>{{i + 1}}</td>
-                  <td>{{level.specialist_level}}</td>
-                  <td align="right"><a class="btn"  data-target="#edit-modal-popup-user"> <i class="fa fa-pencil"></i></a> <a class="btn red"> <i class="fa fa-trash"></i></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="countries">
-          <div *ngIf="allcountries==undefined || allcountries.length==0">No record found</div>
-          <div class="row">
-            <div class="col-xl-12 col-md-12 mb-12">
-              <button type="button" class="btn btn-outline-dark float-right" data-toggle="modal" data-target="#add-modal-country">Add Country</button>
-            </div>
-          </div>
-          &nbsp;
-          <div *ngIf="allcountries!=undefined && allcountries.length > 0" class="table-responsive">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Job Specialist level</th>
-                  <th style="text-align:right;">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let country of allcountries; let i=index">
-                  <td>{{i + 1}}</td>
-                  <td>{{country.country_name}}</td>
-                  <td align="right"><a class="btn"  data-target="#edit-modal-popup-user"> <i class="fa fa-pencil"></i></a> <a class="btn red"> <i class="fa fa-trash"></i></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="add-city">
-          <div *ngIf="allcountries && allcountries.length == 0">Add Country First</div>
-          <div *ngIf="allcountries && allcountries.length > 0" class="inner-page">
-            <h2>Add City </h2>
-            <form [formGroup]="cityForm" (ngSubmit)="saveCity()">
-              <div class="row">
-                <div class="col-xl-12 col-md-12">
-                  <div class="form-group">
-                    <label>Select Job</label>
-                    <select class="form-control" formControlName="country_id">
-                      <option selected disabled [value]="''">Select Country*</option>
-                      <option *ngFor="let country of allcountries" [value]="country.id">{{country.country_name}}</option>
-                    </select>
+                  <div *ngIf="jobTerms" id="Job-terms">
+                    <div *ngIf="terms==undefined || terms.length==0">No record found</div>
+                    <div class="row">
+                      <div class="col-xl-12 col-md-12 mb-12">
+                        <button type="button" class="btn btn-outline-dark float-right" data-toggle="modal" data-target="#add-modal-job-terms">Add Job Terms</button>
+                      </div>
+                    </div>
+                    &nbsp;
+                    <div *ngIf="terms!=undefined && terms.length > 0" class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Job Terms</th>
+                            <th style="text-align:right;">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let term of terms; let i=index">
+                            <td>{{i + 1}}</td>
+                            <td>{{term.term}}</td>
+                            <td align="right"><a class="btn"  data-target="#edit-modal-popup-user"> <i class="fa fa-pencil"></i></a> <a class="btn red"> <i class="fa fa-trash"></i></a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                  <div *ngIf="cityForm.get('country_id').touched && cityForm.get('country_id').invalid"class="alert alert-danger">Country required</div>
-                </div>
-                <div class="col-xl-12 col-md-12">
-                  <div class="form-group">
-                    <label>Interview Question</label>
-                    <input class="form-control"  placeholder="city name" type="text" formControlName="city"/>
+                  <div *ngIf="jobSpecialistLevel" id="Job-specialist">
+                    <div *ngIf="levels==undefined || levels.length==0">No record found</div>
+                    <div class="row">
+                      <div class="col-xl-12 col-md-12 mb-12">
+                        <button type="button" class="btn btn-outline-dark float-right" data-toggle="modal" data-target="#add-modal-job-specialist">Add Job Specialist Level</button>
+                      </div>
+                    </div>
+                    &nbsp;
+                    <div *ngIf="levels!=undefined && levels.length > 0" class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Job Specialist level</th>
+                            <th style="text-align:right;">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let level of levels; let i=index">
+                            <td>{{i + 1}}</td>
+                            <td>{{level.specialist_level}}</td>
+                            <td align="right"><a class="btn"  data-target="#edit-modal-popup-user"> <i class="fa fa-pencil"></i></a> <a class="btn red"> <i class="fa fa-trash"></i></a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                  <div *ngIf="cityForm.get('city').touched && cityForm.get('city').invalid"class="alert alert-danger">city name is required</div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-primary ">Submit</button>
+                  <div *ngIf="countryList" id="countries">
+                    <div *ngIf="allcountries==undefined || allcountries.length==0">No record found</div>
+                    <div class="row">
+                      <div class="col-xl-12 col-md-12 mb-12">
+                        <button type="button" class="btn btn-outline-dark float-right" data-toggle="modal" data-target="#add-modal-country">Add Country</button>
+                      </div>
+                    </div>
+                    &nbsp;
+                    <div *ngIf="allcountries!=undefined && allcountries.length > 0" class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Job Specialist level</th>
+                            <th style="text-align:right;">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let country of allcountries; let i=index">
+                            <td>{{i + 1}}</td>
+                            <td>{{country.country_name}}</td>
+                            <td align="right"><a class="btn"  data-target="#edit-modal-popup-user"> <i class="fa fa-pencil"></i></a> <a class="btn red"> <i class="fa fa-trash"></i></a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                </div>
+                  <div *ngIf="viewAddCity" id="add-city">
+                    <div *ngIf="allcountries && allcountries.length == 0">Add Country First</div>
+                    <div *ngIf="allcountries && allcountries.length > 0" class="inner-page">
+                      <h2>Add City </h2>
+                      <form [formGroup]="cityForm" (ngSubmit)="saveCity()">
+                        <div class="row">
+                          <div class="col-xl-12 col-md-12">
+                            <div class="form-group">
+                              <label>Select Job</label>
+                              <select class="form-control" formControlName="country_id">
+                                <option selected disabled [value]="''">Select Country*</option>
+                                <option *ngFor="let country of allcountries" [value]="country.id">{{country.country_name}}</option>
+                              </select>
+                            </div>
+                            <div *ngIf="cityForm.get('country_id').touched && cityForm.get('country_id').invalid"class="alert alert-danger">Country required</div>
+                          </div>
+                          <div class="col-xl-12 col-md-12">
+                            <div class="form-group">
+                              <label>City Name</label>
+                              <input class="form-control"  placeholder="city name" type="text" formControlName="city"/>
+                            </div>
+                            <div *ngIf="cityForm.get('city').touched && cityForm.get('city').invalid"class="alert alert-danger">city name is required</div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <div class="form-group">
+                              <button type="submit" class="btn btn-primary ">Submit</button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div *ngIf="myProfile" id="profile">My Profile</div>
+
+                  </div>
+                  </div>
               </div>
-            </form>
+              <div class="overlay"></div>
           </div>
         </div>
-        <div class="tab-pane fade" id="profile">My Profile</div>
       </div>
     </div>
-  </div>
-   <div class="overlay"></div>
-</div>
+    </div>
 </div>

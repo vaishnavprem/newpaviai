@@ -34,6 +34,21 @@ export class AdminDashboardComponent implements OnInit {
   specialistForm: FormGroup;
   cityForm: FormGroup;
   countries = COUNTRY_LIST;
+
+  public selectedValue = 0;  //SelectMenu Of Dashboard
+  public home = true;
+  public viewCompanies = false;
+  public viewUsers = false;
+  public jobCategory = false;
+  public jobTerms = false;
+  public jobSpecialistLevel = false;
+  public countryList = false;
+  public viewAddCity = false;
+  public myProfile = false;
+  public logout = false;
+  
+
+
   constructor(
     public auth: AuthService,
     private fb: FormBuilder,
@@ -265,4 +280,140 @@ saveCity(){
     this.toastr.error('Please check all fields');
   }
 }
+
+selectedV(){
+  let select = +this.selectedValue;
+  
+  switch(select) { 
+    case 1: { 
+      this.getComapnies();
+      this.home = false;
+      this.viewCompanies = true;
+      this.viewUsers = false;
+      this.jobCategory = false;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = false;
+      this.countryList = false;
+      this.viewAddCity = false;
+      this.myProfile = false;
+      this.logout = false;
+      
+       break; 
+    } 
+    case 2: { 
+      this.getUsers();
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = true;
+      this.jobCategory = false;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = false;
+      this.countryList = false;
+      this.viewAddCity = false;
+      this.myProfile = false;
+      this.logout = false;
+      
+       break; 
+    }
+    case 3: { 
+      this.getJobCategory();
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = false;
+      this.jobCategory = true;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = false;
+      this.countryList = false;
+      this.viewAddCity = false;
+      this.myProfile = false;
+      this.logout = false;
+      
+      break; 
+    }
+    case 4: { 
+      this.getJobTerms();
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = false;
+      this.jobCategory = false;
+      this.jobTerms = true;
+      this.jobSpecialistLevel = false;
+      this.countryList = false;
+      this.viewAddCity = false;
+      this.myProfile = false;
+      this.logout = false;
+      
+      break; 
+    }
+    case 5: { 
+      this.getJobSpecialistLevel();
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = false;
+      this.jobCategory = false;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = true;
+      this.countryList = false;
+      this.viewAddCity = false;
+      this.myProfile = false;
+      this.logout = false;
+      
+      break; 
+    }
+    case 6: { 
+      this.getCountries();
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = false;
+      this.jobCategory = false;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = false;
+      this.countryList = true;
+      this.viewAddCity = false;
+      this.myProfile = false;
+      this.logout = false;
+      
+      break; 
+    }
+    case 7: { 
+      this.addCity();
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = false;
+      this.jobCategory = false;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = false;
+      this.countryList = false;
+      this.viewAddCity = true;
+      this.myProfile = false;
+      this.logout = false;
+      
+      break; 
+    }
+    case 8: { 
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = false;
+      this.jobCategory = false;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = false;
+      this.countryList = false;
+      this.viewAddCity = false;
+      this.myProfile = true;
+      this.logout = false;
+      
+      break; 
+    }
+    case 9: { 
+      // Here Just Call the Logout Service 
+      
+      break; 
+    }        
+    default: { 
+       
+       break; 
+    } 
+ } 
+}
+
 }
