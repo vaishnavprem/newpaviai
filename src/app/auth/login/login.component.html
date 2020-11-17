@@ -13,7 +13,7 @@
                 <div class="col-md-8">
                   <div class="row">
                     <form class="login-form" [formGroup]="loginForm">
-                      <div class="col-md-4">
+                      <div class="col-md-5 col-lg-5 col-xs-6">
                         <div class="input-group">
                           <div class="input-group-btn">
                             <div class="btn-group"> <i class="login-icon"><img src="assets/images/new-login-user.png" /></i> </div>
@@ -22,7 +22,7 @@
                         </div>
                         <mat-error *ngIf="isSubmitted && email.hasError('required')">E-mail is <strong>required</strong></mat-error>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-5 col-lg-5 col-xs-6">
                         <div class="input-group">
                           <div class="input-group-btn">
                             <div class="btn-group"> <i class="login-icon"><img src="assets/images/new-login-key.png" /></i> </div>
@@ -33,7 +33,7 @@
                         <mat-error *ngIf="isSubmitted && pass.hasError('required')">Password is <strong>required</strong>
                         </mat-error>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-2 col-lg-2 col-xs-12">
                         <button class="btn" type="button" (click)="login()">Login</button>
                       </div>
                     </form>
@@ -71,7 +71,7 @@
                 <div class="col-md-8">
                   <div class="row">
                     <form class="login-form" [formGroup]="loginForm">
-                      <div class="col-md-4">
+                      <div class="col-md-5 col-lg-5 col-xs-6">
                         <div class="input-group">
                           <div class="input-group-btn">
                             <div class="btn-group"> <i class="login-icon"><img src="assets/images/new-login-user.png" /></i> </div>
@@ -80,7 +80,7 @@
                         </div>
                         <mat-error *ngIf="isSubmitted && email.hasError('required')">E-mail is <strong>required</strong></mat-error>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-5 col-lg-5 col-xs-6">
                         <div class="input-group">
                           <div class="input-group-btn">
                             <div class="btn-group"> <i class="login-icon"><img src="assets/images/new-login-key.png" /></i> </div>
@@ -90,7 +90,7 @@
                         <mat-error *ngIf="isSubmitted && pass.hasError('required')">Password is <strong>required</strong>
                         </mat-error>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-2 col-lg-2 col-xs-12">
                         <button class="btn" type="button" (click)="login()">Login</button>
                       </div>
                     </form>
