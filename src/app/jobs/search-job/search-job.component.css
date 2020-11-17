@@ -1,2 +1,5 @@
 .loader{background:rgba(0,0,0,0.5); position:fixed; left:0px; right:0px; top:0px; bottom:0px; z-index:9;}
 .loader svg{margin: 20% auto; display: table;}
+
+html{height:100%;}
+.mid-bar{position: absolute !important; left: 0; right: 0; top: 30%;}
