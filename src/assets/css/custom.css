@@ -39,7 +39,7 @@ a, a:hover, a:focus{text-decoration:none;}
 .new-login-employer-bg{background:url(../images/new-login-employer-bg.jpg) no-repeat center fixed; height:100%; width:100%; font-family: "Montserrat Ultra Light"; background-size:cover; position: fixed; height:100%; overflow:auto;}
 
 .logo{text-align:center;}
-.logo figure{max-width:220px; margin:8% auto 0px; text-align:center;}
+.logo figure{max-width:220px; margin:0 auto 0px; text-align:center;}
 
 header{width:100%; display:inline-block; padding: 30px;}
 .nav-header-in{padding: 30px; width:100%; display:inline-block;}
@@ -167,7 +167,7 @@ input[type=radio]:checked ~ label {color: #fff;}
 .private-user-head{margin-bottom:20px;}
 
 .private-user-body .form-group select.form-control{-moz-appearance: none; -webkit-appearance: none; cursor: pointer;}
-.private-user-body .form-group select ~ i{position:absolute; right:0px; pointer-events: none; right:33px; top:35px; font-size:27px; color:#282828; }
+.private-user-body .form-group select ~ i{position:absolute; right:0px; pointer-events: none; right:33px; top:15px; font-size:27px; color:#282828; }
 
 input[type="date"].form-control ~ i{position:absolute; right:33px; top:47%; pointer-events: none; }
 
@@ -274,6 +274,10 @@ input[type="date"].form-control ~ i{position:absolute; right:33px; top:47%; poin
 
 .close-icon{position:absolute; right:-50px; top:-20px;}
 .welcome-sign-up{margin-top:150px;}
+
+/*For Vertical Middle Styling*/
+/* html{height:100%;}
+.mid-bar{position: absolute !important; left: 0; right: 0; top: 30%;} */
 
 @media (min-width:1200px) and (max-width:1300px){
 .new-login-col .btn{font-size:18px;}

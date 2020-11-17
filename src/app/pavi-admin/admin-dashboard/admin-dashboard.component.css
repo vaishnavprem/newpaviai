@@ -143,6 +143,9 @@ input[type=radio]:checked ~ label {color: #16c8e4;}
 
 .selectMenu{width: 100%;background-color: #d2bb67;border-radius: 8px;height: 40px;color: #344e44;font-size: large;font-weight: 700;}
 
+html{height:100%;}
+.mid-bar{position: absolute !important; left: 0; right: 0; top: 30%;}
+
 @media(max-width:767px){
 .left-bar aside{padding: 15px 0 15px 0px !important;}
 .bugger-menu-mobile h5{position:fixed; cursor:pointer; float:left; display:inline-block; z-index: 11; left: 113px; top: 39px;}
