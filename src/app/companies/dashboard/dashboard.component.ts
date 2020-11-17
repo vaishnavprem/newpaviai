@@ -110,6 +110,13 @@ export class DashboardComponent implements OnInit {
   public displayedColumnsThree: string[];
 
   public selectedValue = 0;  //SelectMenu Of Dashboard
+  public home = true;
+  public addJobs = false;
+  public viewjobs = false;
+  public addInterviewQuestions = false;
+  public viewQuestions = false;
+  public Applicants = false;
+  public Profile = false;
 
   dataSourceTwo: MatTableDataSource<PeriodicElement>;
   displayedColumnsTwo: string[] = ['position', 'name', 'weight', 'symbol'];
@@ -142,13 +149,6 @@ export class DashboardComponent implements OnInit {
   private pipe = new DatePipe('en-US')
   ngOnInit(): void {
 
-    document.getElementById('home').style.display = 'block';
-    document.getElementById('create-job').style.display = 'none';
-    document.getElementById('add-interview-questions').style.display = 'none';
-    document.getElementById('interview-questions').style.display = 'none';
-    document.getElementById('interviews').style.display = 'none';
-    document.getElementById('jobs-user').style.display = 'none';
-    document.getElementById('profile').style.display = 'none';
 
    // this.isLoder=true;
     this.authUser = this.getAuthUser.transform();
@@ -648,68 +648,74 @@ selectedV(){
   
   switch(select) { 
     case 1: { 
-      document.getElementById('home').style.display = 'none';
-      document.getElementById('create-job').style.display = 'block';
-      document.getElementById('add-interview-questions').style.display = 'none';
-      document.getElementById('interview-questions').style.display = 'none';
-      document.getElementById('interviews').style.display = 'none';
-      document.getElementById('jobs-user').style.display = 'none';
-      document.getElementById('profile').style.display = 'none';
+      this.home = false;
+      this.addJobs = true;
+      this.viewjobs = false;
+      this.addInterviewQuestions = false;
+      this.viewQuestions = false;
+      this.Applicants = false;
+      this.Profile = false;
+      
        break; 
     } 
     case 2: { 
       this.getJobs();
-      document.getElementById('home').style.display = 'none';
-        document.getElementById('create-job').style.display = 'none';
-        document.getElementById('add-interview-questions').style.display = 'none';
-        document.getElementById('interview-questions').style.display = 'none';
-        document.getElementById('interviews').style.display = 'block';
-        document.getElementById('jobs-user').style.display = 'none';
-        document.getElementById('profile').style.display = 'none';
+      this.home = false;
+      this.addJobs = false;
+      this.viewjobs = true;
+      this.addInterviewQuestions = false;
+      this.viewQuestions = false;
+      this.Applicants = false;
+      this.Profile = false;
+      
        break; 
     }
     case 3: { 
       this.getJobs();
-      document.getElementById('home').style.display = 'none';
-        document.getElementById('create-job').style.display = 'none';
-        document.getElementById('add-interview-questions').style.display = 'block';
-        document.getElementById('interview-questions').style.display = 'none';
-        document.getElementById('interviews').style.display = 'none';
-        document.getElementById('jobs-user').style.display = 'none';
-        document.getElementById('profile').style.display = 'none';
+      this.home = false;
+      this.addJobs = false;
+      this.viewjobs = false;
+      this.addInterviewQuestions = true;
+      this.viewQuestions = false;
+      this.Applicants = false;
+      this.Profile = false;
+      
       break; 
     }
     case 4: { 
       this.getJobs();
-      document.getElementById('home').style.display = 'none';
-        document.getElementById('create-job').style.display = 'none';
-        document.getElementById('add-interview-questions').style.display = 'none';
-        document.getElementById('interview-questions').style.display = 'block';
-        document.getElementById('interviews').style.display = 'none';
-        document.getElementById('jobs-user').style.display = 'none';
-        document.getElementById('profile').style.display = 'none';
+      this.home = false;
+      this.addJobs = false;
+      this.viewjobs = false;
+      this.addInterviewQuestions = false;
+      this.viewQuestions = true;
+      this.Applicants = false;
+      this.Profile = false;
+      
       break; 
     }
     case 5: { 
       this.getUsers();
-      document.getElementById('home').style.display = 'none';
-        document.getElementById('create-job').style.display = 'none';
-        document.getElementById('add-interview-questions').style.display = 'none';
-        document.getElementById('interview-questions').style.display = 'none';
-        document.getElementById('interviews').style.display = 'none';
-        document.getElementById('jobs-user').style.display = 'block';
-        document.getElementById('profile').style.display = 'none';
+      this.home = false;
+      this.addJobs = false;
+      this.viewjobs = false;
+      this.addInterviewQuestions = false;
+      this.viewQuestions = false;
+      this.Applicants = true;
+      this.Profile = false;
+      
       break; 
     }
     case 6: { 
       this.showProfile();
-      document.getElementById('home').style.display = 'none';
-        document.getElementById('create-job').style.display = 'none';
-        document.getElementById('add-interview-questions').style.display = 'none';
-        document.getElementById('interview-questions').style.display = 'none';
-        document.getElementById('interviews').style.display = 'none';
-        document.getElementById('jobs-user').style.display = 'none';
-        document.getElementById('profile').style.display = 'block';
+      this.home = false;
+      this.addJobs = false;
+      this.viewjobs = false;
+      this.addInterviewQuestions = false;
+      this.viewQuestions = false;
+      this.Applicants = false;
+      this.Profile = true;
+      
       break; 
     }  
     default: { 

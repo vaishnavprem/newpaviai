@@ -141,6 +141,8 @@ input[type=radio]:checked ~ label {color: #16c8e4;}
 .form-group textarea.form-control{height:200px; max-height:200px; min-height:200px;}
 .card-body { padding: 1.25rem !important;}
 
+.selectMenu{width: 100%;background-color: #d2bb67;border-radius: 8px;height: 40px;color: #344e44;font-size: large;font-weight: 700;}
+
 @media(max-width:767px){
 .left-bar aside{padding: 15px 0 15px 0px !important;}
 .bugger-menu-mobile h5{position:fixed; cursor:pointer; float:left; display:inline-block; z-index: 11; left: 113px; top: 39px;}

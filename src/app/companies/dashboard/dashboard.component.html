@@ -278,7 +278,7 @@
                 <div class="col-sm-8">
                 <div class="dashbaord-info-warp animate__fadeInUpBig animate__animated " id="pills-tabContent">
                   
-                  <ul id="home">
+                  <ul *ngIf="home" id="home">
                     <li style="border-left: solid 4px #00cd84">
                     <div class="dashbaord-info">
                     <h5 style="color:#00cd84;">User</h5>
@@ -314,7 +314,7 @@
                     
                   </ul>
 
-                  <div id="create-job"> 
+                  <div *ngIf="addJobs" id="create-job"> 
                     <div class="inner-page">
                       <h2>Create Job</h2>
                       <form [formGroup]="jobForm" (ngSubmit)="saveJob()">
@@ -472,7 +472,7 @@
                     </div>
                   </div>
 
-                  <div id="add-interview-questions">
+                  <div *ngIf="addInterviewQuestions" id="add-interview-questions">
                     <div *ngIf="jobs && jobs.length == 0">Add Job First</div>
                     <div *ngIf="jobs && jobs.length > 0" class="inner-page">
                       <h2>Add Interview Questions</h2>
@@ -507,7 +507,7 @@
                     </div>
                   </div>
                   
-                  <div id="interview-questions">
+                  <div *ngIf="viewQuestions" id="interview-questions">
                     <div *ngIf="jobs && jobs.length == 0">No record found</div>
                     <div *ngIf="jobs && jobs.length > 0" class="table-responsive">
                       <table class="table table-bordered">
@@ -531,7 +531,7 @@
                     </div>
                   </div>
 
-                  <div id="interviews">
+                  <div *ngIf="viewjobs" id="interviews">
                     <div *ngIf="jobs && jobs.length == 0">No record found</div>
                     <div *ngIf="jobs && jobs.length > 0" class="table-responsive">
                         <mat-form-field>
@@ -606,7 +606,7 @@
                     </div>
                   </div>
 
-                  <div id="jobs-user">
+                  <div *ngIf="Applicants" id="jobs-user">
                     <div class="table-responsive">
                         <mat-form-field>
                           <input
@@ -670,7 +670,7 @@
                       </div>
                   </div>
                   
-                  <div id="profile">
+                  <div *ngIf="Profile" id="profile">
                     <div class="inner-page">
                     <mat-tab-group>
                       <mat-tab label="Logo/Cover Image">
@@ -796,7 +796,7 @@
                     <mat-tab label="Change Password"> Change Password </mat-tab>
                   </mat-tab-group>
                 </div>
-                </div>
+                  </div>
 
                   </div>
                   </div>
