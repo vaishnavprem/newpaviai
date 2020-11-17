@@ -1,23 +1,6 @@
-<div *ngIf="isLoder" class="loader">
-  <svg width="80" height="80" viewBox="0 0 38 38" stroke="#fff">
-      <g fill="none" fill-rule="evenodd">
-          <g transform="translate(1 1)" stroke-width="2">
-              <circle stroke-opacity=".2" cx="18" cy="18" r="18"/>
-              <path d="M36 18c0-9.94-8.06-18-18-18">
-                  <animateTransform
-                      attributeName="transform"
-                      type="rotate"
-                      from="0 18 18"
-                      to="360 18 18"
-                      dur="1s"
-                      repeatCount="indefinite"/>
-              </path>
-          </g>
-      </g>
-  </svg>
-  </div>
 
-  <div class="modal fade" id="add-modal-seniority">
+
+  <div class="modal fade in" id="add-modal-seniority">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -46,7 +29,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="add-modal-employment">
+  <div class="modal fade in" id="add-modal-employment">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -75,7 +58,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="show-question">
+  <div class="modal fade in" id="show-question">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -111,7 +94,7 @@
   
   </div>
 
-  <div class="modal fade" id="add-modal-responsibilities">
+  <div class="modal fade in" id="add-modal-responsibilities">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -140,7 +123,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="add-modal-requirements">
+  <div class="modal fade in" id="add-modal-requirements">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -169,7 +152,7 @@
     </div>
   </div>
 
-  <div class="modal fade bd-example-modal-lg" id="add-modal-candidate">
+  <div class="modal fade in bd-example-modal-lg" id="add-modal-candidate">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -194,7 +177,7 @@
     </div>
   </div>
 
-  <div *ngIf="singleJob" class="modal fade" id="show-job">
+  <div *ngIf="singleJob" class="modal fade in" id="show-job">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">

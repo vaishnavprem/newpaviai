@@ -7,8 +7,9 @@ import {Router} from '@angular/router';
 })
 export class AskQuestionComponent implements OnInit {
 
-  public helpFlag = true;
+  public helpFlag = false;
   public findNewEmployee = false;
+  public jobExp = true;
 
   constructor(   public router: Router) { }
 public step1=false;
@@ -21,8 +22,15 @@ public step3 = false;
     this.router.navigate(['/'+ routerLink ]);
 
   }
+
+  helpJob(){
+    this.helpFlag = true;
+    this.jobExp = false;
+    this.findNewEmployee = false;
+  }
   newEmployee(){
     this.helpFlag = false;
+    this.jobExp = false;
     this.findNewEmployee = true;
   }
 
