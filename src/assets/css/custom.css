@@ -34,9 +34,9 @@
 a, a:hover, a:focus{text-decoration:none;}
 .bg-images-1{background:url(../images/bg-images-1.jpg) no-repeat center fixed; height:100%; width:100%; font-family: "Montserrat Ultra Light"; background-size:cover;}
 
-.new-login-bg{background:url(../images/new-login-bg.jpg) no-repeat center fixed; height:100%; width:100%; font-family: "Montserrat Ultra Light"; background-size:cover;}
+.new-login-bg{background:url(../images/new-login-bg.jpg) no-repeat center fixed; height:100%; width:100%; font-family: "Montserrat Ultra Light"; background-size:cover; position: fixed; height:100%; overflow:auto;}
 
-.new-login-employer-bg{background:url(../images/new-login-employer-bg.jpg) no-repeat center fixed; height:100%; width:100%; font-family: "Montserrat Ultra Light"; background-size:cover;}
+.new-login-employer-bg{background:url(../images/new-login-employer-bg.jpg) no-repeat center fixed; height:100%; width:100%; font-family: "Montserrat Ultra Light"; background-size:cover; position: fixed; height:100%; overflow:auto;}
 
 .logo{text-align:center;}
 .logo figure{max-width:220px; margin:8% auto 0px; text-align:center;}
@@ -57,12 +57,12 @@ header{width:100%; display:inline-block; padding: 30px;}
 .content-info h1 .hr-line{height:85px; width:1px; background:#fff; display:inline-block; position:absolute; margin-left: 5px;}
 .sound-icon{position:absolute; bottom:20px; right:30px;}
 
-.navicon{position:fixed; top:0px; bottom:0px; width:100%; background:url(../images/bg-images-1.jpg) no-repeat center fixed; right: 0; z-index:12; transform:translate(100%,0px); transition:all ease-in-out 0.3s;}
-.nav-show .navicon{transform:translate(0%,0px); transition:all ease-in-out 0.3s;}
+.navicon{position:fixed; top:0px; bottom:0px; width:100%; background:url(../images/bg-images-1.jpg) no-repeat center fixed; right: 0; z-index:12; transform:translate(100%,0px); -webkit-transform:translate(100%,0px); transition:all ease-in-out 0.3s; -webkit-transition:all ease-in-out 0.3s; background-size: cover;}
+.nav-show .navicon{transform:translate(0%,0px); transition:all ease-in-out 0.3s; -webkit-transform:translate(0%,0px); -webkit-transition:all ease-in-out 0.3s;}
 .navicon ul {padding:0px 0px 0px; margin:0px;}
 .navicon ul li {list-style:none;}
-.navicon ul li a{display:block; color:#5c6175; font-family: "Montserrat Ultra Light"; text-decoration:none; font-size:60px;padding:6px 50px; transition:all ease-in-out 0.3s; position:relative;}
-.navicon ul li.active a, .navicon ul li:hover a{color:#fff; transition:all ease-in-out 0.3s;}
+.navicon ul li a{display:block; color:#5c6175; font-family: "Montserrat Ultra Light"; text-decoration:none; font-size:60px;padding:6px 50px; transition:all ease-in-out 0.3s; -webkit-transition:all ease-in-out 0.3s; position:relative;}
+.navicon ul li.active a, .navicon ul li:hover a{color:#fff; transition:all ease-in-out 0.3s; -webkit-transition:all ease-in-out 0.3s;}
 .close-menu{width:30px; height:30px; cursor: pointer; margin:0px; float:right; margin-top:12px; fill: #18ffff; text-align: center; padding-top: 8px;}
 
 .login:before{background:url(../images/key.png) no-repeat left; height:18px; width:23px; content:""; display:block; position: absolute; left: 5px;  background-position: 0px 4px;top: 36px;}
@@ -153,8 +153,8 @@ input[type=radio]:checked ~ label {color: #fff;}
 .private-user{background:rgba(255,255,255,0.50); padding:15px;}
 
 .private-user-info{background:#fff; padding:15px; scrollbar-width: thin; scrollbar-color: #fff #999aa1; height: 500px; overflow: auto;}
-.sign-google{background:#0064d1; padding:12px 20px; width:300px; color:#fff; border-radius:6px; font-size:18px; font-weight:600; transition:all ease-in-out 0.4s; display:inline-block;}
-.sign-google:hover{transition:all ease-in-out 0.4s; color:#fff; background:#0f4c81;}
+.sign-google{background:#0064d1; padding:12px 20px; width:300px; color:#fff; border-radius:6px; font-size:18px; font-weight:600; transition:all ease-in-out 0.4s; display:inline-block; -webkit-transition:all ease-in-out 0.4s;}
+.sign-google:hover{transition:all ease-in-out 0.4s; -webkit-transition:all ease-in-out 0.4s; color:#fff; background:#0f4c81;}
 .private-title{border-bottom: solid 1px #c6c6c6;}
 
 .private-title{position:relative;}
@@ -225,7 +225,7 @@ input[type="date"].form-control ~ i{position:absolute; right:33px; top:47%; poin
 .dashbaord-menu li a{color:#3f4359; padding:6px 15px; display:inline-block; font-size:28px; font-weight:500; font-family: 'Montserrat', sans-serif; transition:all ease-in-out 0.4s;}
 .dashbaord-menu li:hover a{color:#fff; transition:all ease-in-out 0.4s;}
 
-.dashbaord-info-warp{background:#e6e7ea; padding: 20px 20px; scrollbar-width: thin; scrollbar-color: #fff #999aa1; height:500px; overflow:auto; margin-top: 15px;}
+.dashbaord-info-warp{background:#e6e7ea; padding: 20px 20px; scrollbar-width: thin; scrollbar-color: #fff #999aa1; height:560px; overflow:auto; margin-top: 15px;}
 .dashbaord-info-warp ul{padding:0px; list-style:none;}
 .dashbaord-info-warp ul li{height:150px; background:#fff; display:table; width:100%; margin-bottom:30px; padding:0px 20px;}
 .dashbaord-info-warp ul li h5{font-size:30px; text-transform:uppercase;}
@@ -239,7 +239,7 @@ input[type="date"].form-control ~ i{position:absolute; right:33px; top:47%; poin
 
 .new-login-col .form-control{border:1px #fff; height:47px; border-radius:0px; padding:6px 12px; font-size:20px;}
 .new-login-col .form-control:focus{box-shadow:none;}
-.new-login-col .btn{background:#99a0bf; color:#fff; border-radius:0px;padding:5px 10px; width:100%; height:47px; font-size:23px; font-weight:600; font-family: 'Montserrat', sans-serif;}
+.new-login-col .btn{background:#99a0bf; color:#fff; border-radius:0px;padding:5px 10px; width:100%; height:47px; font-size:20px; font-weight:600; font-family: 'Montserrat', sans-serif;}
 
 .new-login-col .input-group-btn:first-child .btn-group{margin-right: 10px;}
 .new-login-col{padding-top:50px;}
@@ -269,8 +269,8 @@ input[type="date"].form-control ~ i{position:absolute; right:33px; top:47%; poin
 .signup-warp .checkbox a{color:#8ae1ff;}
 .signup-warp .checkbox span{color:#fff;}
 .register-btn{text-align:center; margin-top:20px;}
-.register-btn .btn{font-weight:600;width:300px; color:#fff; font-family: 'Montserrat', sans-serif; border: solid 2px #fff; background:transparent; padding:8px 15px 12px; transition:all ease-in-out 0.4s; font-size:25px; }
-.register-btn .btn:hover{background:#0064d1; border-color:#0064d1; transition:all ease-in-out 0.4s;}
+.register-btn .btn{font-weight:600;width:300px; color:#fff; font-family: 'Montserrat', sans-serif; border: solid 2px #fff; background:transparent; padding:8px 15px 12px; transition:all ease-in-out 0.4s; font-size:25px; -webkit-transition:all ease-in-out 0.4s;}
+.register-btn .btn:hover{background:#0064d1; border-color:#0064d1; transition:all ease-in-out 0.4s; -webkit-transition:all ease-in-out 0.4s;}
 
 .close-icon{position:absolute; right:-50px; top:-20px;}
 .welcome-sign-up{margin-top:150px;}
@@ -279,6 +279,9 @@ input[type="date"].form-control ~ i{position:absolute; right:33px; top:47%; poin
 /* html{height:100%;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 30%;} */
 
+@media (min-width:1200px) and (max-width:1300px){
+.new-login-col .btn{font-size:18px;}
+}
 
 
 @media(max-width:767px){
@@ -332,6 +335,8 @@ header{padding: 15px;}
 .about-warp .private-user-body p{font-size: 13px; text-align: center;}
 .sign-google{width: auto; font-size: 15px; display: table; margin: 0 auto;}
 .about-warp p{font-size: 18px; line-height: 27px;}
+
+.signup-warp{margin:0px auto 30px;}
 
 
 
