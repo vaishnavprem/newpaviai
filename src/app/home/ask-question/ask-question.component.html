@@ -5,6 +5,24 @@
       <div class="container">
         <div class="sound-icon"><a href="javascript:void(0);"><img src="assets/images/sound.png" alt="Sound" title="Sound" /> </a></div>
         <div class="content-info">
+          <div *ngIf="jobExp" class="row">
+            <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
+            <div class="col-sm-10">
+              <h1>Choose your experi? <i class="hr-line"></i></h1>
+              <ul class="parent_question">
+                <li>
+                  <input type="radio" id="yes" name="radio-btn" checked="" />
+                  <label for="yes" (click)="helpJob()">Job Seeker</label>
+                  <div class="check"></div>
+                </li>
+                <li>
+                  <input type="radio" id="no" name="radio-btn" />
+                  <label for="no" (click)="newEmployee()">Employer</label>
+                  <div class="check"></div>
+                </li>
+              </ul>
+            </div>
+          </div>
           <div *ngIf="helpFlag" class="row">
             <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
             <div class="col-sm-10">
