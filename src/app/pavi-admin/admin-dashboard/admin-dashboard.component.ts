@@ -27,6 +27,7 @@ export class AdminDashboardComponent implements OnInit {
   public companyCount;
   public userCount;
   public  show = true;
+  public isLoder=false;
   companyForm: FormGroup;
   userForm: FormGroup;
   categoryForm: FormGroup;
@@ -34,6 +35,21 @@ export class AdminDashboardComponent implements OnInit {
   specialistForm: FormGroup;
   cityForm: FormGroup;
   countries = COUNTRY_LIST;
+
+  public selectedValue = 0;  //SelectMenu Of Dashboard
+  public home = true;
+  public viewCompanies = false;
+  public viewUsers = false;
+  public jobCategory = false;
+  public jobTerms = false;
+  public jobSpecialistLevel = false;
+  public countryList = false;
+  public viewAddCity = false;
+  public myProfile = false;
+  public logout = false;
+  
+
+
   constructor(
     public auth: AuthService,
     private fb: FormBuilder,
@@ -100,6 +116,7 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
   getComapnies(){
+    this.isLoder=true;
     let companData = this.paviAdminService.getComapnies()
     .subscribe((response : any) => {
       if (response.statusCode == 200) {
@@ -113,12 +130,15 @@ export class AdminDashboardComponent implements OnInit {
          this.toastr.error(response.message)
       }
     });
+    this.isLoder=false;
   }
  getUsers(){
+  this.isLoder=true;
   let userData = this.paviAdminService.getUsers()
   .subscribe(response => {
     this.users = response['data']['users']; 
   });
+  this.isLoder=false;
  }
 
  updateCompany(){
@@ -136,6 +156,8 @@ export class AdminDashboardComponent implements OnInit {
  editCompany(index){
   $("#edit-modal-popup-company").modal("show");
   $("#edit-modal-popup-company").appendTo("body");
+  let element = document.getElementById('edit-modal-popup-company');
+  element.className = 'modal fade in';
   this.companyForm.patchValue({
     name: this.companies[index].name,
     address: this.companies[index].address,
@@ -151,6 +173,8 @@ export class AdminDashboardComponent implements OnInit {
  editUser(index){
   $("#edit-modal-popup-user").modal("show");
   $("#edit-modal-popup-user").appendTo("body");
+  let element = document.getElementById('edit-modal-popup-user');
+  element.className = 'modal fade in';
   this.userForm.patchValue({
     email: this.users[index].email,
     first_name: this.users[index].first_name,
@@ -173,11 +197,13 @@ export class AdminDashboardComponent implements OnInit {
   }
 }
 getJobCategory(){
+  this.isLoder=true;
  
   let JobData = this.paviAdminService.getJobCategory()
   .subscribe(response => {
     this.categories = response['data']['categories'];  
   });
+  this.isLoder=false;
 }
 saveJobCategory(){
   if(this.categoryForm.valid){
@@ -229,23 +255,29 @@ saveJobSpecialistLevel(){
   }
 }
 getJobTerms(){
+  this.isLoder=true;
   let JobData = this.paviAdminService.getJobTerms()
   .subscribe(response => {
     this.terms = response['data']['terms'];  
   });
+  this.isLoder=false;
 }
 
 getJobSpecialistLevel(){
+  this.isLoder=true;
   let JobData = this.paviAdminService.getJobSpecialistLevel()
   .subscribe(response => {
     this.levels = response['data']['levels'];  
   });
+  this.isLoder=false;
 }
 getCountries(){
+  this.isLoder=true;
   let JobData = this.paviAdminService.getCountry()
   .subscribe(response => {
     this.allcountries = response['data']['countries'];  
   });
+  this.isLoder=false;
 }
 addCity(){
   this.getCountries();
@@ -265,4 +297,140 @@ saveCity(){
     this.toastr.error('Please check all fields');
   }
 }
+
+selectedV(){
+  let select = +this.selectedValue;
+  
+  switch(select) { 
+    case 1: { 
+      this.getComapnies();
+      this.home = false;
+      this.viewCompanies = true;
+      this.viewUsers = false;
+      this.jobCategory = false;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = false;
+      this.countryList = false;
+      this.viewAddCity = false;
+      this.myProfile = false;
+      this.logout = false;
+      
+       break; 
+    } 
+    case 2: { 
+      this.getUsers();
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = true;
+      this.jobCategory = false;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = false;
+      this.countryList = false;
+      this.viewAddCity = false;
+      this.myProfile = false;
+      this.logout = false;
+      
+       break; 
+    }
+    case 3: { 
+      this.getJobCategory();
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = false;
+      this.jobCategory = true;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = false;
+      this.countryList = false;
+      this.viewAddCity = false;
+      this.myProfile = false;
+      this.logout = false;
+      
+      break; 
+    }
+    case 4: { 
+      this.getJobTerms();
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = false;
+      this.jobCategory = false;
+      this.jobTerms = true;
+      this.jobSpecialistLevel = false;
+      this.countryList = false;
+      this.viewAddCity = false;
+      this.myProfile = false;
+      this.logout = false;
+      
+      break; 
+    }
+    case 5: { 
+      this.getJobSpecialistLevel();
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = false;
+      this.jobCategory = false;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = true;
+      this.countryList = false;
+      this.viewAddCity = false;
+      this.myProfile = false;
+      this.logout = false;
+      
+      break; 
+    }
+    case 6: { 
+      this.getCountries();
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = false;
+      this.jobCategory = false;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = false;
+      this.countryList = true;
+      this.viewAddCity = false;
+      this.myProfile = false;
+      this.logout = false;
+      
+      break; 
+    }
+    case 7: { 
+      this.addCity();
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = false;
+      this.jobCategory = false;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = false;
+      this.countryList = false;
+      this.viewAddCity = true;
+      this.myProfile = false;
+      this.logout = false;
+      
+      break; 
+    }
+    case 8: { 
+      this.home = false;
+      this.viewCompanies = false;
+      this.viewUsers = false;
+      this.jobCategory = false;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = false;
+      this.countryList = false;
+      this.viewAddCity = false;
+      this.myProfile = true;
+      this.logout = false;
+      
+      break; 
+    }
+    case 9: { 
+      // Here Just Call the Logout Service 
+      
+      break; 
+    }        
+    default: { 
+       
+       break; 
+    } 
+ } 
+}
+
 }

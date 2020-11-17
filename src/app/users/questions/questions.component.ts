@@ -99,20 +99,23 @@ export class QuestionsComponent implements OnInit {
      
    });
   }
+
   showRecordedAnswer(recordString){
-
-    // var mapForm = document.createElement("form");
-    // mapForm.target = "_blank";    
-    // mapForm.method = "POST";
-    // mapForm.action = "https://d1iruxeyl67hmv.cloudfront.net/web/index.php/archive/"+recordString+"/view.php";
-
+    // let obj = {
+    //   job_id:this.id
+    // }
     
-    // var mapInput = document.createElement("input");
-    // mapInput.type = "text";
-    // mapInput.name = "job_id";
-    // mapInput.value = "ijhhjih";
-
-    // mapForm.appendChild(mapInput);
+    // var mapForm = document.createElement("form");
+    //   mapForm.target = "_blank";
+    //   mapForm.method = "POST"; // or "post" if appropriate
+    //   mapForm.action = "https://d1iruxeyl67hmv.cloudfront.net/web/index.php/archive/"+recordString+"/view";  
+    //   Object.keys(obj).forEach(function(param){
+    //   var mapInput = document.createElement("input");
+    //   mapInput.type = "hidden";
+    //   mapInput.name = param;
+    //   mapInput.setAttribute("value", obj[param]);
+    //   mapForm.appendChild(mapInput);
+    //   });
     // document.body.appendChild(mapForm);
     // mapForm.submit();
 
