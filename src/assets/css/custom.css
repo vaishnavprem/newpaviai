@@ -275,6 +275,12 @@ input[type="date"].form-control ~ i{position:absolute; right:33px; top:47%; poin
 .close-icon{position:absolute; right:-50px; top:-20px;}
 .welcome-sign-up{margin-top:150px;}
 
+/*For Vertical Middle Styling*/
+/* html{height:100%;}
+.mid-bar{position: absolute !important; left: 0; right: 0; top: 30%;} */
+
+
+
 @media(max-width:767px){
 header{padding: 15px;}
 .content-info{padding-top: 15px;}
