@@ -43,40 +43,46 @@
         </div>
         <div class="col-sm-6">
           <div class="select-your-job post-job-info animate__fadeInUpBig animate__animated" *ngFor="let job of jobs">
-            <ul>
-              <li>
-                <h4><strong>Location:</strong> {{job.country}} / {{job.companyAddress}}</h4>
-                <h4><strong>Title:</strong> {{job.jobTitle}} </h4>
-                <h4><strong>Posted:</strong> Yesterday <span><a href="javascript:void(0);"><img src="assets/images/eye.png" /></a> <a href="#"><img src="assets/images/like-icon.png" /></a></span></h4>
-                <div class="post-detailview"> <a (click)="navigateBack()" style="float: right;color: #000; font-size: 18px; font-weight: 600;">Close <i style="width: 24px;height: 24px;float: right;" class="closes"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-theme-164" viewBox="0 0 24 24">
-                  <path d="M19.583 4.965a.65.65 0 0 1-.176.449l-6.445 6.426 6.445 6.426c.117.131.176.28.176.449a.65.65 0 0 1-.176.449.846.846 0 0 1-.215.127.596.596 0 0 1-.468 0 .846.846 0 0 1-.215-.127l-6.426-6.445-6.426 6.445a.846.846 0 0 1-.215.127.596.596 0 0 1-.468 0 .846.846 0 0 1-.215-.127.65.65 0 0 1-.176-.449c0-.169.059-.318.176-.449l6.445-6.426-6.445-6.426a.65.65 0 0 1-.176-.449c0-.169.059-.318.176-.449a.652.652 0 0 1 .449-.176c.169 0 .319.059.449.176l6.426 6.445 6.426-6.445a.652.652 0 0 1 .449-.176c.169 0 .319.059.449.176.117.13.176.28.176.449z"></path>
-                  </svg></i> </a>
-                  <div class="detailview-col">
-                    <h3>{{job.jobTitle}}</h3>
-                    <ul>
-                      <li>Experience / {{job.experience}}-{{job.experience -- 1}} Years</li>
-                      <li>Seniority Level / {{job.level}}</li>
-                      <li>Employment / {{job.employment}} </li>
-                      <li>Salary / {{job.salary}}k</li>
-                    </ul>
-                  </div>
-                  <div class="detailview-col">
-                    <h3>Job Brief</h3>
-                    <p> {{job.job_brief}}</p>
-                  </div>
-                  <div class="detailview-col">
-                    <h3>Job Description</h3>
-                    <p>{{job.job_description}}</p>
-                  </div>
+          <ul>
+            <li>
+              <h4><strong>Location:</strong> {{job.country}} / {{job.companyAddress}}</h4>
+              <h4><strong>Title:</strong> {{job.jobTitle}} </h4>
+              <h4><strong>Posted:</strong> Yesterday <span><a href="javascript:void(0);"><img src="assets/images/eye.png" /></a> <a href="#"><img src="assets/images/like-icon.png" /></a></span></h4>
+              <div class="post-detailview"> <a (click)="navigateBack()" style="float: right;color: #000; font-size: 18px; font-weight: 600;">Close <i style="width: 24px;height: 24px;float: right;" class="closes"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-theme-164" viewBox="0 0 24 24">
+                <path d="M19.583 4.965a.65.65 0 0 1-.176.449l-6.445 6.426 6.445 6.426c.117.131.176.28.176.449a.65.65 0 0 1-.176.449.846.846 0 0 1-.215.127.596.596 0 0 1-.468 0 .846.846 0 0 1-.215-.127l-6.426-6.445-6.426 6.445a.846.846 0 0 1-.215.127.596.596 0 0 1-.468 0 .846.846 0 0 1-.215-.127.65.65 0 0 1-.176-.449c0-.169.059-.318.176-.449l6.445-6.426-6.445-6.426a.65.65 0 0 1-.176-.449c0-.169.059-.318.176-.449a.652.652 0 0 1 .449-.176c.169 0 .319.059.449.176l6.426 6.445 6.426-6.445a.652.652 0 0 1 .449-.176c.169 0 .319.059.449.176.117.13.176.28.176.449z"></path>
+                </svg></i> </a>
+                <div class="detailview-col">
+                  <h3>{{job.jobTitle}}</h3>
+                  <ul>
+                    <li>Experience / {{job.experience}}-{{job.experience -- 1}} Years</li>
+                    <li>Seniority Level / {{job.level}}</li>
+                    <li>Employment / {{job.employment}} </li>
+                    <li>Salary / {{job.salary}}k</li>
+                  </ul>
                 </div>
-                <div class="apply-now-btn"> <a *ngIf="token==undefined"  class="apply-btn" (click)="router.navigate(['auth/login'],{ queryParams: { job: job.id } })">Apply</a> <a *ngIf="token!=undefined"  class="apply-btn" (click)="router.navigate(['users/job-question',job.id])">Apply</a> </div>
-              </li>
-            </ul>
-          </div>
+                <div class="detailview-col">
+                  <h3>Job Brief</h3>
+                  <p> {{job.job_brief}}</p>
+                </div>
+                <div class="detailview-col">
+                  <h3>Job Description</h3>
+                  <p>{{job.job_description}}</p>
+                </div>
+              </div>
+              <div class="apply-now-btn"> <a *ngIf="token==undefined"  class="apply-btn" (click)="router.navigate(['auth/login'],{ queryParams: { job: job.id } })">Apply</a> <a *ngIf="token!=undefined"  class="apply-btn" (click)="router.navigate(['users/job-question',job.id])">Apply</a> </div>
+              <div class="detailview-col">
+                <h3>Job Description</h3>
+                <p>{{job.job_description}}</p>
+              </div>
+            </div>
+            <div class="apply-now-btn"> <a *ngIf="token==undefined"  class="apply-btn" (click)="router.navigate(['auth/login', 1],{ queryParams: { job: job.id } })">Apply</a> <a *ngIf="token!=undefined"  class="apply-btn" (click)="router.navigate(['users/job-question',job.id])">Apply</a> </div>
+            </li>
+          </ul>
         </div>
-        <div class="col-sm-1"> </div>
       </div>
+      <div class="col-sm-1"> </div>
     </div>
   </div>
+</div>
 </div>
 <div class="global-icon animate__fadeInBottomRight animate__animated"><img src="assets/images/global.png" alt="Global" title="Global" class="img-responsive" /> </div>

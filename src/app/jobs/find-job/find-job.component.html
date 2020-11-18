@@ -30,6 +30,14 @@
               <option *ngFor="let city of stateData" [value]="city.id">{{city.city}}</option>
             </select>
             I can always refine the seach if you have an industry or a job title in mind? <i class="hr-line"></i> </h1>
+          <h1 class="animate__fadeInRight animate__animated job-title"> Here are the Jobs in
+            <select class="selectpicker select-job" (change)="changeCity($event.target.value)">
+              <!-- <option >All</option> -->
+              <option *ngIf="singleJob && singleJob.length == 0">All</option>
+              <option *ngFor="let city of singleJob" [value]="city.id">{{city.city}},{{city.state_code}}</option>
+              <option *ngFor="let city of stateData" [value]="city.id">{{city.city}}</option>
+            </select>
+            I can always refine the seach if you have an industry or a job title in mind? <i class="hr-line"></i> </h1>
           <div class="search-box-location search-job-section">
             <form class="example-form" [formGroup]="searchForm"  (ngSubmit)="findJob()">
               <div class="input-group animate__fadeInLeftBig animate__animated" style="z-index: unset;"> 

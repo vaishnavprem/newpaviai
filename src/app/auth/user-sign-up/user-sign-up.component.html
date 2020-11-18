@@ -13,7 +13,7 @@
                 <h3>Register Account</h3>
                 <h6 class="close-icon"><a href="javascript:void(0);"><img src="assets/images/close-icon.png" /></a></h6>
                 <form  [formGroup]="userRegisterForm">
-                  <div class="private-user-body">
+                  <!-- <div class="private-user-body"> -->
                     <div class="row">
                       <div class="col-sm-12">
                         <div class="form-group">
@@ -45,7 +45,7 @@
                       <div class="col-sm-12">
                         <div class="form-group">
                           <!-- <label>Date of Birth</label> -->
-                          <input class="form-control inputField" type="date" placeholder="Date of Birth" formControlName="birthday" [max]="maxBirthdayDate" />
+                          <input class="form-control inputField" type="date" id="birthday" placeholder="Date of Birth" formControlName="birthday" [max]="maxBirthdayDate" (change)="getDate()" />
                           <!-- <i class="fa fa-calendar"></i>  -->
                         </div>
                           <mat-error *ngIf="isSubmitted && birthday.hasError('required')">Birth day is <strong>required</strong>
@@ -131,21 +131,21 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-6 col-xs-6">
+                      <!-- <div class="col-sm-6 col-xs-6">
                       <div class="form-group">
                       <button class="btn btn-block" type="button" (click)="userRegisterForm.reset()">Reset All</button>
                       </div>
                       
-                      </div>
-                      <div class="col-sm-6 col-xs-6">
-                      <div class="form-group">
-                      <button class="btn btn-block" type="button" (click)="register()">Sign Up</button>
-                      </div>
-                      
+                      </div> -->
+                      <div class="col-sm-12 col-xs-12">
+                      <div class="form-group register-btn">
+                      <a class="btn" (click)="register()">Register</a>
                       </div>
                       
                       </div>
-                  </div>
+                      
+                      </div>
+                  <!-- </div> -->
                 </form>
               </div>
             </div>

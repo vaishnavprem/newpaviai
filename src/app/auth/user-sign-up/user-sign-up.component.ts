@@ -135,6 +135,19 @@ export class UserSignUpComponent implements OnInit {
     return this.userRegisterForm.get('confirm_password');
   }
 
+  getDate(){
+    let date = this.userRegisterForm.get('birthday').value;
+    let d = new Date(Date.parse(date));
+    let year = d.getFullYear();
+    let month = ("0" + (d.getMonth() + 1)).slice(-2);
+    let day = ("0" + d.getDate()).slice(-2);
+    //let dateArr = date.split("-");
+    //console.log("Date is here>>>>>>",`${year}-${month}-${day}`);
+    let Str = `${month}-${day}-${year}`;
+    //document.getElementById('birthday').innerHTML= Str;
+    console.log("Formated date is >>>>>>>>>",Str);
+  }
+
   get birthday(): AbstractControl {
     return this.userRegisterForm.get('birthday');
   }
