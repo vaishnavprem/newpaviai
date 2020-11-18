@@ -156,8 +156,8 @@ export class AdminDashboardComponent implements OnInit {
  editCompany(index){
   $("#edit-modal-popup-company").modal("show");
   $("#edit-modal-popup-company").appendTo("body");
-  let element = document.getElementById('edit-modal-popup-company');
-  element.className = 'modal fade in';
+  // let element = document.getElementById('edit-modal-popup-company');
+  // element.className = 'modal fade in';
   this.companyForm.patchValue({
     name: this.companies[index].name,
     address: this.companies[index].address,
@@ -173,8 +173,8 @@ export class AdminDashboardComponent implements OnInit {
  editUser(index){
   $("#edit-modal-popup-user").modal("show");
   $("#edit-modal-popup-user").appendTo("body");
-  let element = document.getElementById('edit-modal-popup-user');
-  element.className = 'modal fade in';
+  // let element = document.getElementById('edit-modal-popup-user');
+  // element.className = 'modal fade in';
   this.userForm.patchValue({
     email: this.users[index].email,
     first_name: this.users[index].first_name,
@@ -301,7 +301,22 @@ saveCity(){
 selectedV(){
   let select = +this.selectedValue;
   
-  switch(select) { 
+  switch(select) {
+    case 0: { 
+      this.getComapnies();
+      this.home = true;
+      this.viewCompanies = false;
+      this.viewUsers = false;
+      this.jobCategory = false;
+      this.jobTerms = false;
+      this.jobSpecialistLevel = false;
+      this.countryList = false;
+      this.viewAddCity = false;
+      this.myProfile = false;
+      this.logout = false;
+      
+       break; 
+    }
     case 1: { 
       this.getComapnies();
       this.home = false;

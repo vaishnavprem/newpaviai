@@ -17,7 +17,7 @@
   </svg>
   </div>
   
-  <div class="modal fade" id="edit-modal-popup-user">
+  <div class="modal fade in" id="edit-modal-popup-user">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -83,7 +83,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="add-modal-job-catgory">
+  <div class="modal fade in" id="add-modal-job-catgory">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -110,7 +110,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="add-modal-job-terms">
+  <div class="modal fade in" id="add-modal-job-terms">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -137,7 +137,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="add-modal-job-specialist">
+  <div class="modal fade in" id="add-modal-job-specialist">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -164,7 +164,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="add-modal-country">
+  <div class="modal fade in" id="add-modal-country">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -191,7 +191,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="edit-modal-popup-company">
+  <div class="modal fade in" id="edit-modal-popup-company">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -284,12 +284,12 @@
         
         <!--<div class="global-icon animate__fadeInBottomRight animate__animated"><img src="assets/images/global.png" alt="Global" title="Global" class="img-responsive" /> </div>-->
         <div class="content-info">
-          <div class="row">
+          <div class="row rowContent">
             <div class="col-sm-4">
               <h1 class="animate__fadeInRight animate__animated job-title"> Welcome Company. What would you like to do next? <i class="hr-line"></i> </h1>
           
               <select [(ngModel)]="selectedValue" id="pills-tab" class="form-control selectMenu" (change)="selectedV()" >
-                <option selected disabled [value]=0>Dashboard Menu</option>
+                <option selected [value]=0>Dashboard Menu</option>
                 <option [value]=1>Companies</option>
                 <option [value]=2>Users</option>
                 <option [value]=3>Job Category</option>
@@ -309,7 +309,7 @@
                 <!-- <div (click)="show = !show" class="bugger-menu-mobile">
                   <h5><img src="assets/images/nav.png" /></h5>
                 </div> -->
-                <div class="col-sm-8">
+                <div class="col-sm-8 coltoggle-mobile-section">
                 <div class="dashbaord-info-warp animate__fadeInUpBig animate__animated " id="pills-tabContent">
                   
                   <ul *ngIf="home" id="home">

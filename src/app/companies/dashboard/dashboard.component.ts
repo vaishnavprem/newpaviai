@@ -646,7 +646,18 @@ showCandidateAnswers(index){
 selectedV(){
   let select = +this.selectedValue;
   
-  switch(select) { 
+  switch(select) {
+    case 0: { 
+      this.home = true;
+      this.addJobs = false;
+      this.viewjobs = false;
+      this.addInterviewQuestions = false;
+      this.viewQuestions = false;
+      this.Applicants = false;
+      this.Profile = false;
+      
+       break; 
+    } 
     case 1: { 
       this.home = false;
       this.addJobs = true;
