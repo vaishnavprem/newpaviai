@@ -29,6 +29,7 @@ export class UserSignUpComponent implements OnInit {
   private sub: any;
   countries = COUNTRY_LIST;
   id: number;
+  formatedDate;
   constructor(
     public router: Router,
     private fb: FormBuilder,
@@ -141,15 +142,16 @@ export class UserSignUpComponent implements OnInit {
     let year = d.getFullYear();
     let month = ("0" + (d.getMonth() + 1)).slice(-2);
     let day = ("0" + d.getDate()).slice(-2);
-    //let dateArr = date.split("-");
-    //console.log("Date is here>>>>>>",`${year}-${month}-${day}`);
     let Str = `${month}-${day}-${year}`;
-    //document.getElementById('birthday').innerHTML= Str;
+    this.formatedDate = Str;
     console.log("Formated date is >>>>>>>>>",Str);
+    // this.userRegisterForm.patchValue({
+    //   birthday: this.formatedDate
+    // });
   }
 
   get birthday(): AbstractControl {
-    return this.userRegisterForm.get('birthday');
+   return this.userRegisterForm.get('birthday');
   }
 
   async goToPage(url) {
