@@ -4,7 +4,7 @@
 
   <div class="col-sm-12">
     <div class="form-group">
-        <label class="logos-item-label">First Name</label>
+        <!-- <label class="logos-item-label">First Name</label> -->
         <input formControlName="first_name" placeholder="First Name*" class="logos-item-input">
         <mat-error *ngIf="isSubmitted && firstName.hasError('required')">First name is
           <strong>required</strong>
@@ -15,7 +15,7 @@
   </div>
   <div class="col-sm-12">
     <div class="form-group">
-        <label class="logos-item-label">Last Name</label>
+        <!-- <label class="logos-item-label">Last Name</label> -->
         <input formControlName="last_name" placeholder="Last Name*" class="logos-item-input">
         <mat-error *ngIf="isSubmitted && lastName.hasError('required')">Last name is
           <strong>required</strong>
@@ -30,7 +30,7 @@
       
   <div class="col-sm-12">
     <div class="form-group">
-        <label class="logos-item-label">Gender</label>
+        <!-- <label class="logos-item-label">Gender</label> -->
         <div class="gender">
           <div class="row">
           <div  class="col-sm-6">
@@ -49,7 +49,7 @@
   </div>
   <div class="col-sm-12">
     <div class="form-group">
-        <label class="logos-item-label">Password</label>
+        <!-- <label class="logos-item-label">Password</label> -->
         <input type="password" formControlName="password" placeholder="Password*" class="logos-item-input">
         <mat-error *ngIf="isSubmitted && pass.hasError('required')">Password is <strong>required</strong>
         </mat-error>
@@ -58,13 +58,17 @@
   </div>
 
   <div class="col-sm-12">
-  <div class="last-block-form">
-    <div class="register-buttons">
-      <button class="reset-btn" matStepperPrevious><i class="fa fa-chevron-left" aria-hidden="true"></i>Previous</button>
+  <div class="row">
+    <div class="col-sm-6 col-lg-6">
+      <div class="register-btn">
+        <button class="btn" matStepperPrevious><i class="fa fa-chevron-left" aria-hidden="true"></i>Previous</button>
+      </div>
     </div>
-    <div class="register-buttons">
-      <button class="login-btn" matStepperNext (click)="isSubmitted = true">Next<i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </button>
+    <div class="col-sm-6 col-lg-6">
+      <div class="register-btn">
+        <button class="btn" matStepperNext (click)="isSubmitted = true">Next<i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
   </div>
   </div>

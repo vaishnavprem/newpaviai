@@ -62,7 +62,7 @@
     line-height: 15px;
     margin-bottom: 12px;
     margin-left: 40px;
-    font-family: "Segoe UI Semibold";
+    font-family: "Montserrat Ultra Light";
     display: block;
   }
   .logos-item-label {
@@ -76,10 +76,10 @@
     width: 100%;
     border-radius: 35px;
     height: 60px;
-    border: 1px solid #757575;
+    border: 0px solid #757575;
     line-height: 15px;
     padding-left: 40px;
-    font-family: "Segoe UI Semibold";
+    font-family: "Montserrat Ultra Light";
     outline: none;
     color: #343a40;
   }

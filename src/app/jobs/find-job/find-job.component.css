@@ -11,6 +11,8 @@
 .find-job-block .logos-item-img{background: #d9dbdb;}
 .content-info{padding-top: 10px !important;}
 /* .mid-content{position:relative !important;} */
+.job-title{width:100%;}
+.select-job{width:100%;font-size: x-large;}
 
 html{height:100%;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 30%;}
