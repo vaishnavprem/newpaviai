@@ -69,12 +69,6 @@
                   <p>{{job.job_description}}</p>
                 </div>
               </div>
-              <div class="apply-now-btn"> <a *ngIf="token==undefined"  class="apply-btn" (click)="router.navigate(['auth/login'],{ queryParams: { job: job.id } })">Apply</a> <a *ngIf="token!=undefined"  class="apply-btn" (click)="router.navigate(['users/job-question',job.id])">Apply</a> </div>
-              <div class="detailview-col">
-                <h3>Job Description</h3>
-                <p>{{job.job_description}}</p>
-              </div>
-            </div>
             <div class="apply-now-btn"> <a *ngIf="token==undefined"  class="apply-btn" (click)="router.navigate(['auth/login', 1],{ queryParams: { job: job.id } })">Apply</a> <a *ngIf="token!=undefined"  class="apply-btn" (click)="router.navigate(['users/job-question',job.id])">Apply</a> </div>
             </li>
           </ul>
