@@ -1,97 +1,82 @@
-<div *ngIf="isLoder" class="loader">
-  <svg width="80" height="80" viewBox="0 0 38 38" stroke="#fff">
-      <g fill="none" fill-rule="evenodd">
-          <g transform="translate(1 1)" stroke-width="2">
-              <circle stroke-opacity=".2" cx="18" cy="18" r="18"/>
-              <path d="M36 18c0-9.94-8.06-18-18-18">
-                  <animateTransform
+<div *ngIf="isLoder" class="loader"> <svg width="80" height="80" viewBox="0 0 38 38" stroke="#fff">
+  <g fill="none" fill-rule="evenodd">
+    <g transform="translate(1 1)" stroke-width="2">
+      <circle stroke-opacity=".2" cx="18" cy="18" r="18"/>
+      <path d="M36 18c0-9.94-8.06-18-18-18">
+        <animateTransform
                       attributeName="transform"
                       type="rotate"
                       from="0 18 18"
                       to="360 18 18"
                       dur="1s"
                       repeatCount="indefinite"/>
-              </path>
-          </g>
-      </g>
-  </svg>
-  </div>
-  <app-header></app-header>
-  <div class="mid-content mid-bar">
-    <div class="container-fluid">
-      <!--<div class="sound-icon"><a href="javascript:void(0);"><img src="assets/images/sound-off.png" alt="Sound" title="Sound" /> </a></div>-->
-      <div class="global-icon animate__fadeInBottomRight animate__animated"><img src="assets/images/global.png" alt="Global" title="Global" class="img-responsive" /> </div>
-      <div class="content-info">
-        <div class="row">
-          
-          <div class="col-sm-3">
-            <h1 class="animate__fadeInRight animate__animated job-title"> Great, if you like this job please click on the apply button below to be considered for this job. <i class="hr-line"></i> </h1>
-            <div class="search-box-location search-job-section">
-              <div class="input-group animate__fadeInLeftBig animate__animated">
-                <!--<div class="input-group-btn">
+      </path>
+    </g>
+  </g>
+  </svg> </div>
+<app-header></app-header>
+<div class="mid-content mid-bar">
+  <div class="container-fluid"> 
+    <!--<div class="sound-icon"><a href="javascript:void(0);"><img src="assets/images/sound-off.png" alt="Sound" title="Sound" /> </a></div>-->
+    
+    <div class="content-info">
+      <div class="row">
+        <div class="col-sm-4">
+          <h1 class="animate__fadeInRight animate__animated job-title"> Great, if you like this job please click on the apply button below to be considered for this job. <i class="hr-line"></i> </h1>
+          <div class="search-box-location search-job-section">
+            <div class="input-group animate__fadeInLeftBig animate__animated"> 
+              <!--<div class="input-group-btn">
                   <div class="btn-group"> <i class="pin"><img src="assets/images/job-icon.png" /></i> </div>
                 </div>
                 <input type="text" class="form-control" placeholder="" />
                 <div class="input-group-btn">
                   <div class="btn-group search-btn"> <button class="btn">Search</button> </div>
-                </div>-->
-              </div>
+                </div>--> 
             </div>
-            <br>
-            <div class="row">
-              <div class="col-sm-4"></div>
-              <div class="col-sm-4"><img src="assets/images/sparkle-test.png" class="welcome-img img-responsive"/></div>
-              <div class="col-sm-4"></div>
-            </div>
-            </div>
-            <div class="col-sm-7">
-            <div class="select-your-job post-job-info animate__fadeInUpBig animate__animated" *ngFor="let job of jobs">
-              <ul>
-              <li>
-              <h4><strong>Location:</strong> {{job.country}} / {{job.companyAddress}}</h4>
-              <h4><strong>Title:</strong> {{job.jobTitle}} </h4>
-              <h4><strong>Posted:</strong> Yesterday <span><a href="javascript:void(0);"><img src="assets/images/eye.png" /></a> <a href="#"><img src="assets/images/like-icon.png" /></a></span></h4>
-              
-              <div class="post-detailview">
-                 <a (click)="navigateBack()" style="float: right;color: #000; font-size: 18px; font-weight: 600;">Close <i style="width: 24px;height: 24px;float: right;" class="closes"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-theme-164" viewBox="0 0 24 24"><path d="M19.583 4.965a.65.65 0 0 1-.176.449l-6.445 6.426 6.445 6.426c.117.131.176.28.176.449a.65.65 0 0 1-.176.449.846.846 0 0 1-.215.127.596.596 0 0 1-.468 0 .846.846 0 0 1-.215-.127l-6.426-6.445-6.426 6.445a.846.846 0 0 1-.215.127.596.596 0 0 1-.468 0 .846.846 0 0 1-.215-.127.65.65 0 0 1-.176-.449c0-.169.059-.318.176-.449l6.445-6.426-6.445-6.426a.65.65 0 0 1-.176-.449c0-.169.059-.318.176-.449a.652.652 0 0 1 .449-.176c.169 0 .319.059.449.176l6.426 6.445 6.426-6.445a.652.652 0 0 1 .449-.176c.169 0 .319.059.449.176.117.13.176.28.176.449z"></path></svg></i> </a>
-              <div class="detailview-col">
-              <h3>{{job.jobTitle}}</h3>
-              <ul>
-              <li>Experience / {{job.experience}}-{{job.experience -- 1}} Years</li>
-              <li>Seniority Level / {{job.level}}</li>
-              <li>Employment / {{job.employment}} </li>
-              <li>Salary / {{job.salary}}k</li>
-              </ul>
-              </div>
-              <div class="detailview-col">
-                <h3>Job Brief</h3>
-                <p> {{job.job_brief}}</p>
-                </div>
-              <div class="detailview-col">
-              <h3>Job Description</h3>
-              <p>{{job.job_description}}</p>
-              </div>
-              
-             
-              
-              
-              
-              </div>
-              
-              <div class="apply-now-btn">
-               
-              <a *ngIf="token==undefined"  class="apply-btn" (click)="router.navigate(['auth/login'],{ queryParams: { job: job.id } })">Apply</a>
-              <a *ngIf="token!=undefined"  class="apply-btn" (click)="router.navigate(['users/job-question',job.id])">Apply</a>
-             
-              </div>
-              </li>
-              </ul>
-              </div>
-              </div>
-            <div class="col-sm-2">
-            
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"><img src="assets/images/sparkle-test.png" class="welcome-img img-responsive"/></div>
+            <div class="col-sm-4"></div>
           </div>
         </div>
+        <div class="col-sm-6">
+          <div class="select-your-job post-job-info animate__fadeInUpBig animate__animated" *ngFor="let job of jobs">
+            <ul>
+              <li>
+                <h4><strong>Location:</strong> {{job.country}} / {{job.companyAddress}}</h4>
+                <h4><strong>Title:</strong> {{job.jobTitle}} </h4>
+                <h4><strong>Posted:</strong> Yesterday <span><a href="javascript:void(0);"><img src="assets/images/eye.png" /></a> <a href="#"><img src="assets/images/like-icon.png" /></a></span></h4>
+                <div class="post-detailview"> <a (click)="navigateBack()" style="float: right;color: #000; font-size: 18px; font-weight: 600;">Close <i style="width: 24px;height: 24px;float: right;" class="closes"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-theme-164" viewBox="0 0 24 24">
+                  <path d="M19.583 4.965a.65.65 0 0 1-.176.449l-6.445 6.426 6.445 6.426c.117.131.176.28.176.449a.65.65 0 0 1-.176.449.846.846 0 0 1-.215.127.596.596 0 0 1-.468 0 .846.846 0 0 1-.215-.127l-6.426-6.445-6.426 6.445a.846.846 0 0 1-.215.127.596.596 0 0 1-.468 0 .846.846 0 0 1-.215-.127.65.65 0 0 1-.176-.449c0-.169.059-.318.176-.449l6.445-6.426-6.445-6.426a.65.65 0 0 1-.176-.449c0-.169.059-.318.176-.449a.652.652 0 0 1 .449-.176c.169 0 .319.059.449.176l6.426 6.445 6.426-6.445a.652.652 0 0 1 .449-.176c.169 0 .319.059.449.176.117.13.176.28.176.449z"></path>
+                  </svg></i> </a>
+                  <div class="detailview-col">
+                    <h3>{{job.jobTitle}}</h3>
+                    <ul>
+                      <li>Experience / {{job.experience}}-{{job.experience -- 1}} Years</li>
+                      <li>Seniority Level / {{job.level}}</li>
+                      <li>Employment / {{job.employment}} </li>
+                      <li>Salary / {{job.salary}}k</li>
+                    </ul>
+                  </div>
+                  <div class="detailview-col">
+                    <h3>Job Brief</h3>
+                    <p> {{job.job_brief}}</p>
+                  </div>
+                  <div class="detailview-col">
+                    <h3>Job Description</h3>
+                    <p>{{job.job_description}}</p>
+                  </div>
+                </div>
+                <div class="apply-now-btn"> <a *ngIf="token==undefined"  class="apply-btn" (click)="router.navigate(['auth/login'],{ queryParams: { job: job.id } })">Apply</a> <a *ngIf="token!=undefined"  class="apply-btn" (click)="router.navigate(['users/job-question',job.id])">Apply</a> </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-1"> </div>
       </div>
     </div>
   </div>
+</div>
+<div class="global-icon animate__fadeInBottomRight animate__animated"><img src="assets/images/global.png" alt="Global" title="Global" class="img-responsive" /> </div>
