@@ -30,7 +30,7 @@
     font-display: swap;
 }
 
-
+html{height: 100%;}
 a, a:hover, a:focus{text-decoration:none;}
 .bg-images-1{background:url(../images/bg-images-1.jpg) no-repeat center fixed; height:100%; width:100%; font-family: "Montserrat Ultra Light"; background-size:cover;}
 
