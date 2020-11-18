@@ -78,6 +78,8 @@ export class CompanySignUpComponent implements OnInit {
           localStorage.setItem('token', dt['data'].token);
             localStorage.setItem('data', JSON.stringify(dt['data']));
             await  this.router.navigate(['/companies/dashboard']);
+        }else {
+          this.toastr.error(dt.message);
         }
       });
     }

@@ -1,6 +1,9 @@
 .logos-item-input{
     border-radius: 0px !important;
-    font-size: medium;
+    height: 47px;
+    font-size: 24px;
+    box-shadow: none;
+    padding-left: 10px;
 }
 .login-btn{
     border-radius: 5px;
@@ -8,4 +11,7 @@
 
 .reset-btn{
     border-radius: 5px;
+}
+.register-btn .btn{
+    width:100%;
 }
