@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import {COUNTRY_LIST} from '../../core/constants/countries';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+declare var $: any;
 @Component({
   selector: 'app-find-job',
   templateUrl: './find-job.component.html',
@@ -98,6 +99,7 @@ export class FindJobComponent implements OnInit {
         console.log(this.singleJob );
       });
     });
+    setTimeout(function(){$('.selectpicker').selectpicker('refresh');$('.dropdown-menu').css('min-width','290px !important').css('min-height','100px !important'); }, 3000);
   }
   
  async getJobs(){
@@ -234,6 +236,7 @@ export class FindJobComponent implements OnInit {
   }
   
   changeCity(value){
+    setTimeout(function(){$('.selectpicker').selectpicker('refresh'); }, 3000);
     this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } })
   }
 }

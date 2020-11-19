@@ -32,7 +32,7 @@
             I can always refine the seach if you have an industry or a job title in mind? <i class="hr-line"></i> </h1>
           <div class="search-box-location search-job-section">
             <form class="example-form" [formGroup]="searchForm"  (ngSubmit)="findJob()">
-              <div class="input-group animate__fadeInLeftBig animate__animated" style="z-index: unset;"> 
+              <div class="input-group animate__fadeInLeftBig animate__animated"> 
                 <!--<div class="input-group-btn">
                 <div class="btn-group"> <i class="pin"><img src="assets/images/job-icon.png" /></i> </div>
               </div>-->
@@ -59,7 +59,7 @@
             <div class="col-sm-4"></div>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 colIndex">
           <div class="select-your-job animate__fadeInUpBig animate__animated">
             <div *ngIf="jobs && jobs.length == 0">No record found</div>
             <ul>

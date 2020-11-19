@@ -175,6 +175,13 @@ html{height:100%;}
 .mobile-in .overlay{background:rgba(0,0,0,.60); position:fixed; width:100%; height:100%; z-index:3; display:block;}
 .btn-primary {width:46%; margin:0px; height:auto; font-size: 18px; line-height: 28px;}
 .reset-btn{float:right;}
+.dashbaord-info-warp ul li h5{font-size:22px;}
+.dashbaord-info-warp ul li span{font-size:22px;}
+.bar{width:70%;}
+.dashbaord-info img{width:28px;}
+.dashbaord-info-warp ul li{height:100px;}
+.content-info .job-title{font-size:35px; line-height:45px; padding-left:0px; margin-bottom:15px;}
+.content-info .job-title .hr-line {height: 45px;}
 
 .table td, .table th{padding:6px 8px; white-space:nowrap;}
 
