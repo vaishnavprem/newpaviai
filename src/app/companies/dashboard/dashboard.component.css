@@ -120,5 +120,13 @@ html{height:100%;}
 .reset-btn{float:right;}
 
 .table td, .table th{padding:6px 8px; white-space:nowrap;}
+.dashbaord-info-warp ul li h5{font-size:22px;}
+.dashbaord-info-warp ul li span{font-size:22px;}
+.bar{width:70%;}
+.dashbaord-info img{width:28px;}
+.dashbaord-info-warp ul li{height:100px;}
+.content-info .job-title{font-size:35px; line-height:45px; padding-left:0px; margin-bottom:15px;}
+.content-info .job-title .hr-line {height: 45px;}
+
 
 }

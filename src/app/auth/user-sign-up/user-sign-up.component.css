@@ -13,3 +13,9 @@
 
 
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 15%;}
+
+@media (max-width: 767px){
+.mid-bar{top: 10%;}	
+.register-btn .btn{font-size:20px; width:250px; padding: 8px 15px 8px;}
+.register-btn{margin-top:0px;}
+}
