@@ -4,7 +4,6 @@
 .find-job-section-1 img{width: 22px; position: absolute; left: 30px; top: 19px;}
 .logos-item-input{padding-left:45px;}
 .find-job-section-1{padding: 0 10px 0 30px;}
-.row{width:100%;}
 .find-job-section-1 .login-btn{height:60px; width:100%;}
 .find-job-right-icon { position: absolute; left: 17px; top: 15px; color: #0265C9; right: inherit;}
 .find-job-section-1 .login-btn:hover .find-job-right-icon{color:#fff;}
@@ -31,6 +30,12 @@
 .accordion-block{padding:15px;}
 .find-job-block-info .logos-item{width: 100%;}
 .top-jobs-item{width:100%!important; margin-bottom: 20px !important;}
+
+.content-info h1 {line-height: 40px; font-size: 34px; padding-left:0px;}
+.content-info h1 .hr-line {height: 43px;}
+.global-icon{display:none;}
+
+.select-your-job{height:350px;}
 
 
 }
