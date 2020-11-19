@@ -1,1 +1,7 @@
 @import '~ngx-toastr/toastr.css';
+
+@media (max-width: 767px){
+.mat-horizontal-content-container{padding:0px !important; overflow: inherit !important;}
+.mat-horizontal-content-container .register-btn{margin-bottom:20px;}
+.mat-horizontal-content-container .register-btn .btn{width: 250px; font-size:20px; padding:8px 15px;}
+}
