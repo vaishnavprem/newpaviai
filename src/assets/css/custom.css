@@ -53,7 +53,7 @@ header{width:100%; display:inline-block; padding: 30px;}
 .nav-menu{float:right; padding-top: 22px;}
 .content-info{padding-top:40px;}
 .content-info .welcome-img{margin-right:30px;}
-.content-info h1{font-family: "Montserrat Ultra Light"; padding-left: 10px; margin: 0; color:#fff; font-size:60px;position:relative; display:inline-block; line-height:78px;}
+.content-info h1{font-family: "Montserrat Ultra Light"; padding-left: 10px; margin: 0; color:#fff; font-size:60px;position:relative; display:inline-block; line-height:78px;z-index:1;}
 .content-info h1 .hr-line{height:85px; width:1px; background:#fff; display:inline-block; position:absolute; margin-left: 5px;}
 .sound-icon{position:absolute; bottom:20px; right:30px;}
 
@@ -130,7 +130,7 @@ input[type=radio]:checked ~ label {color: #fff;}
 
 .select-job{background:none; border:none; color:#edf568;}
 .search-job-section{padding-top:30px;}
-.search-job-section .input-group{z-index:-1;}
+
 .search-box-location{padding-top: 10px;}
 .search-box-location .search-btn .btn{font-size: 26px; padding: 4px 10px 10px;}
 .search-box-location .input-group-btn:last-child > .btn-group{margin-left: 2px;}

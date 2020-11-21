@@ -8,6 +8,8 @@
 
 .new-login-bg{position: absolute;}
 
+.logo-inner img{max-width:100px;}
+
 @media(max-width:767px){
   .content-info{padding-top: 60px;}
 }

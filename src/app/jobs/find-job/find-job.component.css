@@ -16,8 +16,9 @@
 
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 20%;}
 .content-info h1{width:100%;}
+.select-your-job ul li h4 span a{cursor:pointer;}
 /* .global-icon{bottom:0px;} */
-.colIndex{z-index: -1;}
+/* .colIndex{z-index: -1;} */
 
 .bootstrap-select .dropdown-menu{width:100% !important;min-width: 290px !important;min-height: 100px !important;}
 

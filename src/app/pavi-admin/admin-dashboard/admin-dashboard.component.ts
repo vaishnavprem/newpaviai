@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {AuthService} from '../../core/services/auth.service';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -11,7 +11,38 @@ import { PaviAdminService } from '../../core/services/pavi-admin.service';
 import {ToastrService} from 'ngx-toastr';
 import {patternValidator} from '../../core/helpers/pattern-validator';
 import {COUNTRY_LIST} from '../../core/constants/countries';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+
 declare var $: any;
+
+interface Company {
+  name: string;
+  address: string;
+  country: string;
+  phone: string;
+  email: string;
+}
+interface User {
+  fitstName: string;
+  lastName: string;
+  email: string;
+  gender: string;
+}
+interface JobCategory {
+  jobCategory: string;
+}
+interface JobTerm {
+  jobTerm: string;
+}
+interface JobSpecialty {
+  jobSpecialty: string;
+}
+interface Country {
+  country: string;
+}
+
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
@@ -47,8 +78,32 @@ export class AdminDashboardComponent implements OnInit {
   public viewAddCity = false;
   public myProfile = false;
   public logout = false;
-  
 
+  public dataSourceOne;
+  public displayedColumnsOne: string[];
+  public dataSourceTwo;
+  public displayedColumnsTwo: string[];
+  public dataSourceThree;
+  public displayedColumnsThree: string[];
+  public dataSourceFour;
+  public displayedColumnsFour: string[];
+  public dataSourceFive;
+  public displayedColumnsFive: string[];
+  public dataSourceSix;
+  public displayedColumnsSix: string[];
+  
+  @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
+  @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
+  @ViewChild('TableTwoPaginator', {static: true}) tableTwoPaginator: MatPaginator;
+  @ViewChild('TableTwoSort', {static: true}) tableTwoSort: MatSort;
+  @ViewChild('TableThreePaginator', {static: true}) tableThreePaginator: MatPaginator;
+  @ViewChild('TableThreeSort', {static: true}) tableThreeSort: MatSort;
+  @ViewChild('TableFourPaginator', {static: true}) tableFourPaginator: MatPaginator;
+  @ViewChild('TableFourSort', {static: true}) tableFourSort: MatSort;
+  @ViewChild('TableFivePaginator', {static: true}) tableFivePaginator: MatPaginator;
+  @ViewChild('TableFiveSort', {static: true}) tableFiveSort: MatSort;
+  @ViewChild('TableSixPaginator', {static: true}) tableSixPaginator: MatPaginator;
+  @ViewChild('TableSixSort', {static: true}) tableSixSort: MatSort;
 
   constructor(
     public auth: AuthService,
@@ -58,7 +113,20 @@ export class AdminDashboardComponent implements OnInit {
     private paviAdminService:PaviAdminService,
     private getAuthUser: GetAuthUserPipe,
     private toastr: ToastrService,
-  ) { }
+  ) { 
+    this.dataSourceOne = new MatTableDataSource<Company>();
+    this.displayedColumnsOne=['name', 'address', 'country', 'phone','email','action'];
+    this.dataSourceTwo = new MatTableDataSource<User>();
+    this.displayedColumnsTwo=['firstName', 'lastName', 'email', 'gender','action'];
+    this.dataSourceThree = new MatTableDataSource<JobCategory>();
+    this.displayedColumnsThree=['jobCategory','action'];
+    this.dataSourceFour = new MatTableDataSource<JobTerm>();
+    this.displayedColumnsFour=['jobTerm','action'];
+    this.dataSourceFive = new MatTableDataSource<JobSpecialty>();
+    this.displayedColumnsFive=['jobSpecialty','action'];
+    this.dataSourceSix = new MatTableDataSource<Country>();
+    this.displayedColumnsSix=['country','action'];
+    }
 
   ngOnInit(): void {
     let companData = this.paviAdminService.getDashboardcount()
@@ -120,7 +188,10 @@ export class AdminDashboardComponent implements OnInit {
     let companData = this.paviAdminService.getComapnies()
     .subscribe((response : any) => {
       if (response.statusCode == 200) {
-      this.companies = response['data']['companies']; 
+        this.dataSourceOne.data = response['data']['companies'] as Company[];
+        this.dataSourceOne.paginator = this.tableOnePaginator;
+        this.dataSourceOne.sort = this.tableOneSort;
+        this.companies = response['data']['companies']; 
       }  else if (response.statusCode == 401) {
         console.log(response.statusCode);
              this.toastr.error(response.message)
@@ -136,6 +207,9 @@ export class AdminDashboardComponent implements OnInit {
   this.isLoder=true;
   let userData = this.paviAdminService.getUsers()
   .subscribe(response => {
+    this.dataSourceTwo.data = response['data']['users'] as User[];
+    this.dataSourceTwo.paginator = this.tableTwoPaginator;
+    this.dataSourceTwo.sort = this.tableTwoSort;
     this.users = response['data']['users']; 
   });
   this.isLoder=false;
@@ -201,6 +275,9 @@ getJobCategory(){
  
   let JobData = this.paviAdminService.getJobCategory()
   .subscribe(response => {
+    this.dataSourceThree.data = response['data']['categories'] as JobCategory[];
+    this.dataSourceThree.paginator = this.tableThreePaginator;
+    this.dataSourceThree.sort = this.tableThreeSort;
     this.categories = response['data']['categories'];  
   });
   this.isLoder=false;
@@ -258,6 +335,9 @@ getJobTerms(){
   this.isLoder=true;
   let JobData = this.paviAdminService.getJobTerms()
   .subscribe(response => {
+    this.dataSourceFour.data = response['data']['terms'] as JobTerm[];
+    this.dataSourceFour.paginator = this.tableFourPaginator;
+    this.dataSourceFour.sort = this.tableFourSort;
     this.terms = response['data']['terms'];  
   });
   this.isLoder=false;
@@ -267,6 +347,9 @@ getJobSpecialistLevel(){
   this.isLoder=true;
   let JobData = this.paviAdminService.getJobSpecialistLevel()
   .subscribe(response => {
+    this.dataSourceFive.data = response['data']['levels'] as JobSpecialty[];
+    this.dataSourceFive.paginator = this.tableFivePaginator;
+    this.dataSourceFive.sort = this.tableFiveSort;
     this.levels = response['data']['levels'];  
   });
   this.isLoder=false;
@@ -275,6 +358,9 @@ getCountries(){
   this.isLoder=true;
   let JobData = this.paviAdminService.getCountry()
   .subscribe(response => {
+    this.dataSourceSix.data = response['data']['countries'] as Country[];
+    this.dataSourceSix.paginator = this.tableSixPaginator;
+    this.dataSourceSix.sort = this.tableSixSort;
     this.allcountries = response['data']['countries'];  
   });
   this.isLoder=false;
@@ -296,6 +382,25 @@ saveCity(){
   } else {
     this.toastr.error('Please check all fields');
   }
+}
+
+applyFilterOne(filterValue: string) {
+  this.dataSourceOne.filter = filterValue.trim().toLowerCase();
+}
+applyFilterTwo(filterValue: string) {
+  this.dataSourceTwo.filter = filterValue.trim().toLowerCase();
+}
+applyFilterThree(filterValue: string) {
+  this.dataSourceThree.filter = filterValue.trim().toLowerCase();
+}
+applyFilterFour(filterValue: string) {
+  this.dataSourceFour.filter = filterValue.trim().toLowerCase();
+}
+applyFilterFive(filterValue: string) {
+  this.dataSourceFive.filter = filterValue.trim().toLowerCase();
+}
+applyFilterSix(filterValue: string) {
+  this.dataSourceSix.filter = filterValue.trim().toLowerCase();
 }
 
 selectedV(){

@@ -99,7 +99,7 @@ export class FindJobComponent implements OnInit {
         console.log(this.singleJob );
       });
     });
-    setTimeout(function(){$('.selectpicker').selectpicker('refresh');$('.dropdown-menu').css('min-width','290px !important').css('min-height','100px !important'); }, 3000);
+    setTimeout(function(){$('.selectpicker').selectpicker('refresh');$(".dropdown-toggle").append("<span class='bs-caret'><span class='caret'></span></span>");$(".dropdown-menu").css("min-width","290px !important"); }, 3000);
   }
   
  async getJobs(){
@@ -236,7 +236,7 @@ export class FindJobComponent implements OnInit {
   }
   
   changeCity(value){
-    setTimeout(function(){$('.selectpicker').selectpicker('refresh'); }, 3000);
+    setTimeout(function(){$('.selectpicker').selectpicker('refresh');$(".dropdown-toggle").append("<span class='bs-caret'><span class='caret'></span></span>");$(".dropdown-menu").css("min-width","290px !important"); },3000);
     this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } })
   }
 }
