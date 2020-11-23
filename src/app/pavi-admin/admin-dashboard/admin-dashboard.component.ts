@@ -51,10 +51,10 @@ interface Country {
 export class AdminDashboardComponent implements OnInit {
   public companies:any[];
   public users:any[];
-  public categories:[];
-  public terms:[];
-  public levels:[];
-  public allcountries:[];
+  public categories:any[];
+  public terms:any[];
+  public levels:any[];
+  public allcountries:any[];
   public companyCount;
   public userCount;
   public  show = true;
@@ -65,6 +65,11 @@ export class AdminDashboardComponent implements OnInit {
   termsForm: FormGroup;
   specialistForm: FormGroup;
   cityForm: FormGroup;
+  jobCategoryForm: FormGroup;
+  jobTermForm: FormGroup;
+  jobSpecialtyForm: FormGroup;
+  countryForm: FormGroup;
+  addCountryForm: FormGroup;
   countries = COUNTRY_LIST;
 
   public selectedValue = 0;  //SelectMenu Of Dashboard
@@ -102,8 +107,8 @@ export class AdminDashboardComponent implements OnInit {
   @ViewChild('TableFourSort', {static: true}) tableFourSort: MatSort;
   @ViewChild('TableFivePaginator', {static: true}) tableFivePaginator: MatPaginator;
   @ViewChild('TableFiveSort', {static: true}) tableFiveSort: MatSort;
-  @ViewChild('TableSixPaginator', {static: true}) tableSixPaginator: MatPaginator;
-  @ViewChild('TableSixSort', {static: true}) tableSixSort: MatSort;
+  @ViewChild('TableSixPaginator', {static: false}) tableSixPaginator: MatPaginator;
+  @ViewChild('TableSixSort', {static: false}) tableSixSort: MatSort;
 
   constructor(
     public auth: AuthService,
@@ -180,6 +185,31 @@ export class AdminDashboardComponent implements OnInit {
     this.cityForm = this.fb.group({
     city: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), patternValidator(TEXT_ONLY_PATTERN)]],
     country_id: ['', Validators.required],
+
+    });
+
+    this.jobCategoryForm = this.fb.group({
+      jobCategoryName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), patternValidator(TEXT_ONLY_PATTERN)]],
+
+    });
+
+    this.jobTermForm = this.fb.group({
+      jobTermName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), patternValidator(TEXT_ONLY_PATTERN)]],
+
+    });
+
+    this.jobSpecialtyForm = this.fb.group({
+      jobSpecialtyName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), patternValidator(TEXT_ONLY_PATTERN)]],
+
+    });
+
+    this.countryForm = this.fb.group({
+      countryName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), patternValidator(TEXT_ONLY_PATTERN)]],
+
+    });
+
+    this.addCountryForm = this.fb.group({
+      countryName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), patternValidator(TEXT_ONLY_PATTERN)]],
 
     });
   }
@@ -358,6 +388,7 @@ getCountries(){
   this.isLoder=true;
   let JobData = this.paviAdminService.getCountry()
   .subscribe(response => {
+    //console.log("Job Specialty>>>",response['data']['countries']);
     this.dataSourceSix.data = response['data']['countries'] as Country[];
     this.dataSourceSix.paginator = this.tableSixPaginator;
     this.dataSourceSix.sort = this.tableSixSort;
@@ -383,6 +414,35 @@ saveCity(){
     this.toastr.error('Please check all fields');
   }
 }
+
+editJobCategory(index){
+  $("#edit-modal-popup-jobCategory").modal("show");
+  $("#edit-modal-popup-jobCategory").appendTo("body");
+  this.jobCategoryForm.patchValue({
+    jobCategoryName: this.categories[index].category,
+  });
+ }
+ editJobTerm(index){
+  $("#edit-modal-popup-jobTerm").modal("show");
+  $("#edit-modal-popup-jobTerm").appendTo("body");
+  this.jobTermForm.patchValue({
+    jobTermName: this.terms[index].term,
+  });
+ }
+ editJobSpecialty(index){
+  $("#edit-modal-popup-jobSpecialty").modal("show");
+  $("#edit-modal-popup-jobSpecialty").appendTo("body");
+  this.jobSpecialtyForm.patchValue({
+    jobSpecialtyName: this.levels[index].specialist_level,
+  });
+ }
+ editCountry(index){
+  $("#edit-modal-popup-country").modal("show");
+  $("#edit-modal-popup-country").appendTo("body");
+  this.countryForm.patchValue({
+    countryName: this.allcountries[index].country_name,
+  });
+ }
 
 applyFilterOne(filterValue: string) {
   this.dataSourceOne.filter = filterValue.trim().toLowerCase();

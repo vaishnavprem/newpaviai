@@ -172,13 +172,13 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form [formGroup]="specialistForm" (ngSubmit)="saveJobSpecialistLevel()">
+          <form [formGroup]="addCountryForm" >
             <div class="row">
               <div class="col-sm-12">
                 <div class="form-group">
-                  <label for="recipient-name" class="col-form-label"> Country Name:</label>
-                  <input type="text" class="form-control" formControlName="specialist_level">
-                  <div *ngIf="specialistForm.get('specialist_level').touched && specialistForm.get('specialist_level').invalid" class="alert alert-danger">Job Specialist Level is required</div>
+                  <label for="country-name" class="col-form-label"> Country Name:</label>
+                  <input type="text" class="form-control" formControlName="countryName">
+                  <div *ngIf="addCountryForm.get('countryName').touched && addCountryForm.get('countryName').invalid" class="alert alert-danger">Country Name is required</div>
                 </div>
               </div>
             </div>
@@ -260,6 +260,114 @@
                     <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitchuser" tabindex="0" checked="" formControlName="status">
                     <label class="onoffswitch-label" for="myonoffswitch"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade in" id="edit-modal-popup-jobCategory">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Update Job Category</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="jobCategoryForm" >
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="category-name" class="col-form-label">Job Category Name:</label>
+                  <input type="text" class="form-control" formControlName="jobCategoryName">
+                  <div *ngIf="jobCategoryForm.get('jobCategoryName').invalid" class="alert alert-danger">Job Category Name is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade in" id="edit-modal-popup-jobTerm">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Update Job Term</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="jobTermForm" >
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="term-name" class="col-form-label">Job Term Name:</label>
+                  <input type="text" class="form-control" formControlName="jobTermName">
+                  <div *ngIf="jobTermForm.get('jobTermName').invalid" class="alert alert-danger">Job Term Name is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade in" id="edit-modal-popup-jobSpecialty">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Update Job Specialty Level</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="jobSpecialtyForm" >
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="specialty-name" class="col-form-label">Job Specialty Level:</label>
+                  <input type="text" class="form-control" formControlName="jobSpecialtyName">
+                  <div *ngIf="jobSpecialtyForm.get('jobSpecialtyName').invalid" class="alert alert-danger">Job Specialty Level is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade in" id="edit-modal-popup-country">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Update Country Name</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="countryForm" >
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="country-name" class="col-form-label">Country Name:</label>
+                  <input type="text" class="form-control" formControlName="countryName">
+                  <div *ngIf="countryForm.get('countryName').invalid" class="alert alert-danger">Country Name is required</div>
                 </div>
               </div>
             </div>
@@ -524,7 +632,7 @@
                     
                         <ng-container matColumnDef="action">
                           <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil"></i></a>  
+                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editJobCategory(i)"></i></a>  
                             <a class="btn red"> <i class="fa fa-trash"></i></a>
                           </td>
                         </ng-container>
@@ -576,7 +684,7 @@
                     
                         <ng-container matColumnDef="action">
                           <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil"></i></a>  
+                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editJobTerm(i)"></i></a>  
                             <a class="btn red"> <i class="fa fa-trash"></i></a>
                           </td>
                         </ng-container>
@@ -628,7 +736,7 @@
                     
                         <ng-container matColumnDef="action">
                           <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil"></i></a>  
+                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editJobSpecialty(i)"></i></a>  
                             <a class="btn red"> <i class="fa fa-trash"></i></a>
                           </td>
                         </ng-container>
@@ -680,7 +788,7 @@
                     
                         <ng-container matColumnDef="action">
                           <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil"></i></a>  
+                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editCountry(i)"></i></a>  
                             <a class="btn red"> <i class="fa fa-trash"></i></a>
                           </td>
                         </ng-container>
@@ -690,7 +798,7 @@
                       </table>
                     
                       <mat-paginator
-                      #TableTwoPaginator="matPaginator"
+                      #TableSixPaginator="matPaginator"
                       [pageSize]="3"
                       [pageSizeOptions]="[5, 10, 25, 100]"
                     ></mat-paginator>
