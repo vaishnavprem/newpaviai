@@ -41,6 +41,10 @@ interface User {
   gender: string;
   jobTitle: string;
 }
+
+interface Question {
+  jobTitle: string;
+}
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
@@ -109,6 +113,9 @@ export class DashboardComponent implements OnInit {
   public dataSourceThree;
   public displayedColumnsThree: string[];
 
+  public dataSourceFour;
+  public displayedColumnsFour: string[];
+
   public selectedValue = 0;  //SelectMenu Of Dashboard
   public home = true;
   public addJobs = false;
@@ -128,6 +135,8 @@ export class DashboardComponent implements OnInit {
 
 
   @ViewChild('TableThreePaginator', {static: true}) tableThreePaginator: MatPaginator;
+
+  @ViewChild('TableFourPaginator', {static: true}) tableFourPaginator: MatPaginator;
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
@@ -143,6 +152,9 @@ export class DashboardComponent implements OnInit {
 
     this.dataSourceThree = new MatTableDataSource<User>();
     this.displayedColumnsThree=['first_name', 'last_name', 'email', 'gender','jobTitle','action'];
+
+    this.dataSourceFour = new MatTableDataSource<Question>();
+    this.displayedColumnsFour=['jobTitle','action'];
     
     this.dataSourceTwo = new MatTableDataSource;
   }
@@ -257,6 +269,15 @@ this.coverImgForm = this.fb.group({
   applyFilterTwo(filterValue: string) {
     this.dataSourceTwo.filter = filterValue.trim().toLowerCase();
   }
+
+  applyFilterThree(filterValue: string) {
+    this.dataSourceThree.filter = filterValue.trim().toLowerCase();
+  }
+
+  applyFilterFour(filterValue: string) {
+    this.dataSourceFour.filter = filterValue.trim().toLowerCase();
+  }
+
   addEmployment(){
     $("#add-modal-employment").modal("show");
     $("#add-modal-employment").appendTo("body");
@@ -464,6 +485,8 @@ this.coverImgForm = this.fb.group({
       this.dataSourceOne.data = response['data']['jobs'] as JobsElements[];
       this.dataSourceOne.paginator = this.tableOnePaginator;
       this.dataSourceOne.sort = this.tableOneSort;
+      this.dataSourceFour.data = response['data']['jobs'] as Question[];
+      this.dataSourceFour.paginator = this.tableFourPaginator;
       this.jobs = response['data']['jobs'];  
     });
     this.isLoder=false;

@@ -146,6 +146,8 @@ input[type=radio]:checked ~ label {color: #16c8e4;}
 .pavi-them-logo{margin-top:30px;}
 .pavi-them-logo img {max-width:200px}
 .btn{display:inherit;}
+.modal-footer {display:inline-block;}
+/* .form-group label{padding-left: 2px !important;} */
 
 
 
@@ -185,6 +187,6 @@ html{height:100%;}
 
 .table td, .table th{padding:6px 8px; white-space:nowrap;}
 
-.mid-bar{position: absolute !important; left: 0; right: 0; top: 12%;bottom: 10px;}
+.mid-bar{position: absolute !important; left: 0; right: 0; top: 12%;bottom: -18%;}
 
 }
