@@ -190,16 +190,19 @@ export class AdminDashboardComponent implements OnInit {
 
     this.jobCategoryForm = this.fb.group({
       jobCategoryName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), patternValidator(TEXT_ONLY_PATTERN)]],
+      id: ['']
 
     });
 
     this.jobTermForm = this.fb.group({
       jobTermName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), patternValidator(TEXT_ONLY_PATTERN)]],
+      id: ['']
 
     });
 
     this.jobSpecialtyForm = this.fb.group({
       jobSpecialtyName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), patternValidator(TEXT_ONLY_PATTERN)]],
+      id: ['']
 
     });
 
@@ -305,6 +308,7 @@ getJobCategory(){
  
   let JobData = this.paviAdminService.getJobCategory()
   .subscribe(response => {
+    //console.log("Job Category>>>",response['data']['categories']);
     this.dataSourceThree.data = response['data']['categories'] as JobCategory[];
     this.dataSourceThree.paginator = this.tableThreePaginator;
     this.dataSourceThree.sort = this.tableThreeSort;
@@ -365,6 +369,7 @@ getJobTerms(){
   this.isLoder=true;
   let JobData = this.paviAdminService.getJobTerms()
   .subscribe(response => {
+    //console.log("Job Term>>>",response['data']['terms']);
     this.dataSourceFour.data = response['data']['terms'] as JobTerm[];
     this.dataSourceFour.paginator = this.tableFourPaginator;
     this.dataSourceFour.sort = this.tableFourSort;
@@ -377,6 +382,7 @@ getJobSpecialistLevel(){
   this.isLoder=true;
   let JobData = this.paviAdminService.getJobSpecialistLevel()
   .subscribe(response => {
+    //console.log("Job Specialty>>>",response['data']['levels']);
     this.dataSourceFive.data = response['data']['levels'] as JobSpecialty[];
     this.dataSourceFive.paginator = this.tableFivePaginator;
     this.dataSourceFive.sort = this.tableFiveSort;
@@ -420,22 +426,82 @@ editJobCategory(index){
   $("#edit-modal-popup-jobCategory").appendTo("body");
   this.jobCategoryForm.patchValue({
     jobCategoryName: this.categories[index].category,
+    id: this.categories[index].id
   });
  }
+ updateJobCategory(){
+  if(this.jobCategoryForm.valid){    
+    let params = {id: this.jobCategoryForm.getRawValue().id,
+              category: this.jobCategoryForm.getRawValue().jobCategoryName};
+        
+      this.paviAdminService.updateJobCategories(params).subscribe((response : any) => { 
+        console.log("Update Job Category>>>>>>", response)
+        if(response.statusCode==200){
+           this.getJobCategory();
+           this.toastr.success('Data Updated suceesfully');
+           (<any>$(`#edit-modal-popup-jobCategory`)).modal('hide');
+        } else {
+           this.toastr.error(response.message)
+        }
+       });
+  } else {
+     this.toastr.error('Please check all fields');
+  }
+}
  editJobTerm(index){
   $("#edit-modal-popup-jobTerm").modal("show");
   $("#edit-modal-popup-jobTerm").appendTo("body");
   this.jobTermForm.patchValue({
     jobTermName: this.terms[index].term,
+    id: this.terms[index].id
   });
  }
+ updateJobTerm(){
+  if(this.jobTermForm.valid){    
+    let params = {id: this.jobTermForm.getRawValue().id,
+              term: this.jobTermForm.getRawValue().jobTermName};
+              
+      this.paviAdminService.updateJobTerms(params).subscribe((response : any) => {
+        console.log("Update Job Term>>>>>>", response)
+        if(response.statusCode==200){
+          this.getJobTerms();
+          this.toastr.success('Data Updated suceesfully');
+          (<any>$(`#edit-modal-popup-jobTerm`)).modal('hide');
+        } else {
+          this.toastr.error(response.message)
+        }
+       });
+  } else {
+    this.toastr.error('Please check all fields');
+  }
+}
  editJobSpecialty(index){
   $("#edit-modal-popup-jobSpecialty").modal("show");
   $("#edit-modal-popup-jobSpecialty").appendTo("body");
   this.jobSpecialtyForm.patchValue({
     jobSpecialtyName: this.levels[index].specialist_level,
+    id: this.levels[index].id,
   });
  }
+ updateJobSpecialty(){
+  if(this.jobSpecialtyForm.valid){    
+    let params = {id: this.jobSpecialtyForm.getRawValue().id,
+      specialist_level: this.jobSpecialtyForm.getRawValue().jobSpecialtyName};
+        
+      this.paviAdminService.updateJobSpecialties(params).subscribe((response : any) => { 
+        console.log("Update Job Specialist>>>>>>", response)
+        if(response.statusCode==200){
+           this.getJobSpecialistLevel();
+           this.toastr.success('Data Updated suceesfully');
+           (<any>$(`#edit-modal-popup-jobSpecialty`)).modal('hide');
+        } else {
+           this.toastr.error(response.message)
+        }
+       });
+  } else {
+     this.toastr.error('Please check all fields');
+  }
+}
  editCountry(index){
   $("#edit-modal-popup-country").modal("show");
   $("#edit-modal-popup-country").appendTo("body");

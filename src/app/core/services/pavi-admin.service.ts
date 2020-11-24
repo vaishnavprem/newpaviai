@@ -55,4 +55,13 @@ export class PaviAdminService {
   saveCity(params){
     return this.httpClient.post(`${API_URL}admin/save-city`,params, {headers:this.getHeaders()});
   }
+  updateJobTerms(params){
+    return this.httpClient.post(`${API_URL}admin/edit-job-terms`,params, {headers:this.getHeaders()});
+  }
+  updateJobCategories(params){
+    return this.httpClient.post(`${API_URL}admin/edit-job-category`,params, {headers:this.getHeaders()});
+  }
+  updateJobSpecialties(params){
+    return this.httpClient.post(`${API_URL}admin/edit-job-specialist-level`,params, {headers:this.getHeaders()});
+  }
 }
