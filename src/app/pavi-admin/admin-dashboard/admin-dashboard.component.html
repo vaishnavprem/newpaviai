@@ -280,7 +280,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form [formGroup]="jobCategoryForm" >
+          <form [formGroup]="jobCategoryForm" (ngSubmit)="updateJobCategory()">
             <div class="row">
               <div class="col-sm-12">
                 <div class="form-group">
@@ -307,7 +307,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form [formGroup]="jobTermForm" >
+          <form [formGroup]="jobTermForm" (ngSubmit)="updateJobTerm()">
             <div class="row">
               <div class="col-sm-12">
                 <div class="form-group">
@@ -334,7 +334,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form [formGroup]="jobSpecialtyForm" >
+          <form [formGroup]="jobSpecialtyForm" (ngSubmit)="updateJobSpecialty()">
             <div class="row">
               <div class="col-sm-12">
                 <div class="form-group">
