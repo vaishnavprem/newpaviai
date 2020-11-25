@@ -551,12 +551,12 @@
                     
                         <!-- Position Column -->
                         <ng-container matColumnDef="jobTitle">
-                          <th mat-header-cell *matHeaderCellDef>Job Title</th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Title</th>
                           <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
                         </ng-container>
                     
                         <ng-container matColumnDef="action">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                          <th mat-header-cell *matHeaderCellDef >Action</th>
                           <td mat-cell *matCellDef="let element  let i = index;"> 
                             <a class="btn"> <i class="fa fa-eye"  (click)="showQuestions(element.id)"></i></a> 
                           </td>
@@ -567,8 +567,7 @@
                       </table>
                     
                       <mat-paginator
-                      #TableFourPaginator="matPaginator"
-                      [pageSize]="5"
+                      #TableFourPaginator
                       [pageSizeOptions]="[5, 10, 25, 100]"
                     ></mat-paginator>
                     </div>
@@ -597,7 +596,7 @@
                       
                           <!-- Position Column -->
                           <ng-container matColumnDef="jobTitle">
-                            <th mat-header-cell *matHeaderCellDef>Job Title</th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Title</th>
                             <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
                           </ng-container>
                       
@@ -630,7 +629,7 @@
                           </ng-container>
         
                           <ng-container matColumnDef="action">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                            <th mat-header-cell *matHeaderCellDef>Action</th>
                             <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editJob(i)"></i></a> 
                               <a class="btn"> <i class="fa fa-eye"  (click)="showJob(i)"></i></a> 
                               <a class="btn red"> <i (click)="deleteJob(element.id)" class="fa fa-trash"></i></a>
@@ -642,8 +641,7 @@
                         </table>
                       
                         <mat-paginator
-                        #TableOnePaginator="matPaginator"
-                        [pageSize]="3"
+                        #TableOnePaginator
                         [pageSizeOptions]="[5, 10, 25, 100]"
                       ></mat-paginator>
                     </div>
@@ -686,15 +684,15 @@
                             <td mat-cell *matCellDef="let element">{{ element.email }}</td>
                           </ng-container>
                           <ng-container matColumnDef="gender">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
                             <td mat-cell *matCellDef="let element">{{ element.gender }}</td>
                           </ng-container>
                           <ng-container matColumnDef="jobTitle">
-                            <th mat-header-cell *matHeaderCellDef>Job Title</th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Title</th>
                             <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
                           </ng-container>
                           <ng-container matColumnDef="action">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                            <th mat-header-cell *matHeaderCellDef >Action</th>
                             <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil"></i></a> 
                               <a class="btn"> <i class="fa fa-eye" (click)="showCandidateAnswers(i)"></i></a> 
                               <a class="btn red"> <i class="fa fa-trash"></i></a>
@@ -706,8 +704,7 @@
                         </table>
                       
                         <mat-paginator
-                        #TableThreePaginator="matPaginator"
-                        [pageSize]="3"
+                        #TableThreePaginator
                         [pageSizeOptions]="[5, 10, 25, 100]"
                       ></mat-paginator>
                       </div>

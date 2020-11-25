@@ -127,16 +127,18 @@ export class DashboardComponent implements OnInit {
 
   dataSourceTwo: MatTableDataSource<PeriodicElement>;
   displayedColumnsTwo: string[] = ['position', 'name', 'weight', 'symbol'];
-  @ViewChild('TableTwoPaginator', {static: true}) tableTwoPaginator: MatPaginator;
-  @ViewChild('TableTwoSort', {static: true}) tableTwoSort: MatSort;
+  @ViewChild('TableTwoPaginator', {static: false}) tableTwoPaginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) tableTwoSort: MatSort;
 
-  @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
-  @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
+  @ViewChild('TableOnePaginator', {static: false}) tableOnePaginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) tableOneSort: MatSort;
 
 
-  @ViewChild('TableThreePaginator', {static: true}) tableThreePaginator: MatPaginator;
+  @ViewChild('TableThreePaginator', {static: false}) tableThreePaginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) tableThreeSort: MatSort;
 
-  @ViewChild('TableFourPaginator', {static: true}) tableFourPaginator: MatPaginator;
+  @ViewChild('TableFourPaginator', {static: false}) tableFourPaginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) tableFourSort: MatSort;
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
@@ -483,10 +485,15 @@ this.coverImgForm = this.fb.group({
     let JobData = this.companiesService.getJobs(this.postArry)
     .subscribe(response => {
       this.dataSourceOne.data = response['data']['jobs'] as JobsElements[];
-      this.dataSourceOne.paginator = this.tableOnePaginator;
-      this.dataSourceOne.sort = this.tableOneSort;
+      setTimeout(() => {this.dataSourceOne.paginator = this.tableOnePaginator;
+        this.dataSourceOne.sort = this.tableOneSort;
+      });
+      
       this.dataSourceFour.data = response['data']['jobs'] as Question[];
-      this.dataSourceFour.paginator = this.tableFourPaginator;
+      setTimeout(() => {this.dataSourceFour.paginator = this.tableFourPaginator;
+        this.dataSourceFour.sort = this.tableFourSort;
+      });
+    
       this.jobs = response['data']['jobs'];  
     });
     this.isLoder=false;
@@ -500,7 +507,10 @@ this.coverImgForm = this.fb.group({
     let JobData = this.companiesService.getJobsUser(this.postArry)
     .subscribe(response => {
       this.dataSourceThree.data = response['data']['user'] as User[];
-      this.dataSourceThree.paginator = this.tableThreePaginator;
+      setTimeout(() => {this.dataSourceThree.paginator = this.tableThreePaginator;
+        this.dataSourceThree.sort = this.tableThreeSort;
+      });
+      
     });
     this.isLoder=false;
   }
