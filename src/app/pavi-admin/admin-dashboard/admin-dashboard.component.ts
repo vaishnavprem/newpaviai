@@ -25,22 +25,22 @@ interface Company {
   email: string;
 }
 interface User {
-  fitstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   email: string;
   gender: string;
 }
 interface JobCategory {
-  jobCategory: string;
+  category: string;
 }
 interface JobTerm {
-  jobTerm: string;
+  term: string;
 }
 interface JobSpecialty {
-  jobSpecialty: string;
+  specialist_level: string;
 }
 interface Country {
-  country: string;
+  country_name: string;
 }
 
 @Component({
@@ -97,18 +97,18 @@ export class AdminDashboardComponent implements OnInit {
   public dataSourceSix;
   public displayedColumnsSix: string[];
   
-  @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
-  @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
-  @ViewChild('TableTwoPaginator', {static: true}) tableTwoPaginator: MatPaginator;
-  @ViewChild('TableTwoSort', {static: true}) tableTwoSort: MatSort;
-  @ViewChild('TableThreePaginator', {static: true}) tableThreePaginator: MatPaginator;
-  @ViewChild('TableThreeSort', {static: true}) tableThreeSort: MatSort;
-  @ViewChild('TableFourPaginator', {static: true}) tableFourPaginator: MatPaginator;
-  @ViewChild('TableFourSort', {static: true}) tableFourSort: MatSort;
-  @ViewChild('TableFivePaginator', {static: true}) tableFivePaginator: MatPaginator;
-  @ViewChild('TableFiveSort', {static: true}) tableFiveSort: MatSort;
+  @ViewChild('TableOnePaginator', {static: false}) tableOnePaginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) tableOneSort: MatSort;
+  @ViewChild('TableTwoPaginator', {static: false}) tableTwoPaginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) tableTwoSort: MatSort;
+  @ViewChild('TableThreePaginator', {static: false}) tableThreePaginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) tableThreeSort: MatSort;
+  @ViewChild('TableFourPaginator', {static: false}) tableFourPaginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) tableFourSort: MatSort;
+  @ViewChild('TableFivePaginator', {static: false}) tableFivePaginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) tableFiveSort: MatSort;
   @ViewChild('TableSixPaginator', {static: false}) tableSixPaginator: MatPaginator;
-  @ViewChild('TableSixSort', {static: false}) tableSixSort: MatSort;
+  @ViewChild(MatSort, {static: false}) tableSixSort: MatSort;
 
   constructor(
     public auth: AuthService,
@@ -122,15 +122,15 @@ export class AdminDashboardComponent implements OnInit {
     this.dataSourceOne = new MatTableDataSource<Company>();
     this.displayedColumnsOne=['name', 'address', 'country', 'phone','email','action'];
     this.dataSourceTwo = new MatTableDataSource<User>();
-    this.displayedColumnsTwo=['firstName', 'lastName', 'email', 'gender','action'];
+    this.displayedColumnsTwo=['first_name', 'last_name', 'email', 'gender','action'];
     this.dataSourceThree = new MatTableDataSource<JobCategory>();
-    this.displayedColumnsThree=['jobCategory','action'];
+    this.displayedColumnsThree=['category','action'];
     this.dataSourceFour = new MatTableDataSource<JobTerm>();
-    this.displayedColumnsFour=['jobTerm','action'];
+    this.displayedColumnsFour=['term','action'];
     this.dataSourceFive = new MatTableDataSource<JobSpecialty>();
-    this.displayedColumnsFive=['jobSpecialty','action'];
+    this.displayedColumnsFive=['specialist_level','action'];
     this.dataSourceSix = new MatTableDataSource<Country>();
-    this.displayedColumnsSix=['country','action'];
+    this.displayedColumnsSix=['country_name','action'];
     }
 
   ngOnInit(): void {
@@ -222,8 +222,9 @@ export class AdminDashboardComponent implements OnInit {
     .subscribe((response : any) => {
       if (response.statusCode == 200) {
         this.dataSourceOne.data = response['data']['companies'] as Company[];
-        this.dataSourceOne.paginator = this.tableOnePaginator;
-        this.dataSourceOne.sort = this.tableOneSort;
+        setTimeout(() => {this.dataSourceOne.paginator = this.tableOnePaginator;
+          this.dataSourceOne.sort = this.tableOneSort;
+        });
         this.companies = response['data']['companies']; 
       }  else if (response.statusCode == 401) {
         console.log(response.statusCode);
@@ -241,8 +242,9 @@ export class AdminDashboardComponent implements OnInit {
   let userData = this.paviAdminService.getUsers()
   .subscribe(response => {
     this.dataSourceTwo.data = response['data']['users'] as User[];
-    this.dataSourceTwo.paginator = this.tableTwoPaginator;
-    this.dataSourceTwo.sort = this.tableTwoSort;
+    setTimeout(() => {this.dataSourceTwo.paginator = this.tableTwoPaginator;
+      this.dataSourceTwo.sort = this.tableTwoSort;
+    });
     this.users = response['data']['users']; 
   });
   this.isLoder=false;
@@ -310,8 +312,9 @@ getJobCategory(){
   .subscribe(response => {
     //console.log("Job Category>>>",response['data']['categories']);
     this.dataSourceThree.data = response['data']['categories'] as JobCategory[];
-    this.dataSourceThree.paginator = this.tableThreePaginator;
-    this.dataSourceThree.sort = this.tableThreeSort;
+    setTimeout(() => {this.dataSourceThree.paginator = this.tableThreePaginator;
+      this.dataSourceThree.sort = this.tableThreeSort;
+    });
     this.categories = response['data']['categories'];  
   });
   this.isLoder=false;
@@ -371,8 +374,9 @@ getJobTerms(){
   .subscribe(response => {
     //console.log("Job Term>>>",response['data']['terms']);
     this.dataSourceFour.data = response['data']['terms'] as JobTerm[];
-    this.dataSourceFour.paginator = this.tableFourPaginator;
-    this.dataSourceFour.sort = this.tableFourSort;
+    setTimeout(() => {this.dataSourceFour.paginator = this.tableFourPaginator;
+      this.dataSourceFour.sort = this.tableFourSort;
+    });
     this.terms = response['data']['terms'];  
   });
   this.isLoder=false;
@@ -384,8 +388,9 @@ getJobSpecialistLevel(){
   .subscribe(response => {
     //console.log("Job Specialty>>>",response['data']['levels']);
     this.dataSourceFive.data = response['data']['levels'] as JobSpecialty[];
-    this.dataSourceFive.paginator = this.tableFivePaginator;
-    this.dataSourceFive.sort = this.tableFiveSort;
+    setTimeout(() => {this.dataSourceFive.paginator = this.tableFivePaginator;
+      this.dataSourceFive.sort = this.tableFiveSort;
+    });
     this.levels = response['data']['levels'];  
   });
   this.isLoder=false;
@@ -396,8 +401,9 @@ getCountries(){
   .subscribe(response => {
     //console.log("Job Specialty>>>",response['data']['countries']);
     this.dataSourceSix.data = response['data']['countries'] as Country[];
-    this.dataSourceSix.paginator = this.tableSixPaginator;
-    this.dataSourceSix.sort = this.tableSixSort;
+    setTimeout(() => {this.dataSourceSix.paginator = this.tableSixPaginator;
+      this.dataSourceSix.sort = this.tableSixSort;
+    });
     this.allcountries = response['data']['countries'];  
   });
   this.isLoder=false;
