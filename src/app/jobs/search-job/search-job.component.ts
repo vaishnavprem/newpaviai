@@ -11,6 +11,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {COUNTRY_LIST} from '../../core/constants/countries';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+declare var $: any;
+declare function initialize(): any;
 @Component({
   selector: 'app-search-job',
   templateUrl: './search-job.component.html',
@@ -30,6 +32,7 @@ export class SearchJobComponent implements OnInit {
     private fb: FormBuilder,) { }
 
   ngOnInit(): void {
+    initialize();
   }
   onKeyUp(event: any,serachTerm) { // without type info
     if(event.target.value.length > 2 && event.target.value){
