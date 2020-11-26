@@ -6,16 +6,18 @@
 
 .top-job-header-abs{background: #d9dbdb; width:51%;}
 
-.content-info{padding-top: 10px !important;}
+.content-info{padding-top: 10px}
 
 .select-your-job{height:455px;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 20%;}
 .global-icon{bottom:0px;}
+.apply-btn{cursor:pointer;}
 
 @media (max-width: 767px) {
+.content-info{padding-top: 18px}
 .global-icon{bottom:0px; left:inherit; max-width: 50px;}	
 .content-info .job-title{padding-left:0px; font-size:30px; line-height:40px;}
 .content-info .job-title .hr-line{height:45px;}
-.select-your-job{height:300px;}
+.select-your-job{height:300px;margin-bottom: 10%;}
 .mid-bar{top: 10%;}
 }
