@@ -9,6 +9,8 @@ import {CommonService} from '../../core/services/common.service';
 import { Subject ,Observable} from 'rxjs';
 import { map, tap, takeUntil,startWith} from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+declare function typewriterlogin(params1, param2): any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -46,6 +48,13 @@ export class LoginComponent implements OnInit {
       }),
       password: ['', Validators.required]
     });
+
+    //for calling Typing animation on text
+    if(this.loginid==2){
+      typewriterlogin("Employer","employertext");
+    }else if(this.loginid==1){
+      typewriterlogin("Employee","employeetext");
+    }
   }
 
   login() {

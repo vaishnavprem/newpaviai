@@ -30,7 +30,8 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/js/typing.js"
+              "src/assets/js/typing.js",
+              "src/assets/js/typingLogin.js"
             ]
           },
           "configurations": {
