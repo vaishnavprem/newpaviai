@@ -7,6 +7,7 @@ import { Subject ,Observable} from 'rxjs';
 import {API_URL,AVATAR_URL} from '../../core/constants/general';
 import { map, tap, takeUntil,startWith} from 'rxjs/operators';
 import {GetAuthUserPipe} from '../../shared/pipes/get-auth-user.pipe';
+declare function typewriterQuestion(params1, param2): any;
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
@@ -39,7 +40,7 @@ export class QuestionsComponent implements OnInit {
    });
 
    this.getQuestionData(this.id );
-   
+   typewriterQuestion("Question", "questionText");
   }
   getQuestionData(job_id){
     this.isLoder=true;

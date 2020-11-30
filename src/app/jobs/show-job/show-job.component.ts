@@ -8,6 +8,7 @@ import {API_URL,AVATAR_URL} from '../../core/constants/general';
 import { map, tap, takeUntil,startWith} from 'rxjs/operators';
 import {AuthService} from '../../core/services/auth.service';
 import {Location} from '@angular/common';
+declare function typewriterShow(params1, param2): any;
 @Component({
   selector: 'app-show-job',
   templateUrl: './show-job.component.html',
@@ -39,6 +40,7 @@ export class ShowJobComponent implements OnInit {
    });
    this.getJobData(this.id);
    this.token=localStorage.getItem('token');
+   typewriterShow("Show-job","showText");
   }
   getJobData(job_id){
     this.isLoder=true;
