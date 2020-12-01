@@ -16,6 +16,7 @@ declare function initialize(): any;
 // declare function typewriterSearch(params1, param2): any;
 declare function typingEffect(params1, param2): any;
 
+declare function panTo(coords): any;
 
 @Component({
   selector: 'app-search-job',
@@ -78,5 +79,8 @@ export class SearchJobComponent implements OnInit {
     if(e.target.checked){      
       this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: 0 } })  
     }
+  }
+  setCoords(coords){
+    panTo(coords);
   }
 }
