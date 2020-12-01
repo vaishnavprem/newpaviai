@@ -13,6 +13,8 @@ import {COUNTRY_LIST} from '../../core/constants/countries';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 declare var $: any;
 declare function initialize(): any;
+declare function panTo(coords): any;
+
 @Component({
   selector: 'app-search-job',
   templateUrl: './search-job.component.html',
@@ -73,5 +75,8 @@ export class SearchJobComponent implements OnInit {
     if(e.target.checked){      
       this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: 0 } })  
     }
+  }
+  setCoords(coords){
+    panTo(coords);
   }
 }

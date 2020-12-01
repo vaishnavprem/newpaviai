@@ -85,23 +85,7 @@
     }
     //typewriter(); 
 	
-	function initialize() {
-        var  earth = new WE.map('earth_div');
-    earth.setView([46.8011, 8.2266], 1);
-    WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-   
-    }).addTo(earth);
-
-    // Start a simple rotation animation
-    var before = null;
-    requestAnimationFrame(function animate(now) {
-        var c = earth.getPosition();
-        var elapsed = before? now - before: 0;
-        before = now;
-        earth.setCenter([c[0], c[1] + 0.1*(elapsed/5)]);
-        requestAnimationFrame(animate);
-    });
-      }
+	
 
 
     
