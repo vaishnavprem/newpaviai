@@ -13,7 +13,10 @@ import {COUNTRY_LIST} from '../../core/constants/countries';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 declare var $: any;
 declare function initialize(): any;
-declare function typewriterSearch(params1, param2): any;
+// declare function typewriterSearch(params1, param2): any;
+declare function typingEffect(params1, param2): any;
+
+
 @Component({
   selector: 'app-search-job',
   templateUrl: './search-job.component.html',
@@ -34,7 +37,7 @@ export class SearchJobComponent implements OnInit {
 
   ngOnInit(): void {
     initialize();
-    typewriterSearch("Search","searchText");
+    typingEffect("I will help you find an opportunity in your area, please share your location","searchText");
   }
   onKeyUp(event: any,serachTerm) { // without type info
     if(event.target.value.length > 2 && event.target.value){
