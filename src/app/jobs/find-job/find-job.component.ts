@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../core/services/auth.service';
 import {CompaniesService} from '../../core/services/companies.service';
@@ -18,7 +18,7 @@ declare var $: any;
   templateUrl: './find-job.component.html',
   styleUrls: ['./find-job.component.css']
 })
-export class FindJobComponent implements OnInit {
+export class FindJobComponent implements OnInit, AfterViewInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
   options: string[];
   term: string;
@@ -97,9 +97,18 @@ export class FindJobComponent implements OnInit {
         this.singleJob = response['data']['cityData'];
         this.stateData = response['data']['stateData'];
         console.log(this.singleJob );
+        
       });
     });
-    setTimeout(function(){$('.selectpicker').selectpicker('refresh');$(".dropdown-toggle").append("<span class='bs-caret'><span class='caret'></span></span>");$(".dropdown-menu").css("min-width","290px !important"); }, 3000);
+    
+     setTimeout(function(){$('.selectpicker').selectpicker('refresh');$(".dropdown-toggle").append("<span class='bs-caret'><span class='caret'></span></span>");$(".dropdown-menu").css("min-width","290px !important"); }, 3000);
+  }
+
+  ngAfterViewInit(){
+    // console.log("AfterViewInit Called");
+    // $('.selectpicker').selectpicker('refresh');
+    // $(".dropdown-toggle").append("<span class='bs-caret'><span class='caret'></span></span>");
+    // $(".dropdown-menu").css("min-width","290px !important");
   }
   
  async getJobs(){
