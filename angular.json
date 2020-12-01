@@ -31,7 +31,11 @@
             ],
             "scripts": [
               "src/assets/js/typing.js",
-              "src/assets/js/map.js"
+              "src/assets/js/map.js",
+              "src/assets/js/typingLogin.js",
+              "src/assets/js/typingSearch.js",
+              "src/assets/js/typingShowjob.js",
+              "src/assets/js/typingJobquestion.js"
             ]
           },
           "configurations": {
