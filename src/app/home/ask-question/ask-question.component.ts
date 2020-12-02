@@ -23,10 +23,10 @@ public step3 = false;
   }
 
   ngAfterViewInit(){
-    // if(this.helpFlag == true){
-    //   console.log("HelpFlag");
-    //   typingEffect('Can I help you explore new opportunities?', 'css-typing');
-    // }
+    if(this.helpFlag == true){
+      console.log("HelpFlag");
+      // typingEffect('Can I help you explore new opportunities?', 'css-typing');
+    }
   }
   
   routeYes(routerLink){

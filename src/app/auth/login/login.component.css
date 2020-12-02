@@ -1,5 +1,6 @@
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 20%;}
 .social-icon h5 a{cursor:pointer;}
+.content-info h1 {font-size:55px;}
 
 @media (max-width: 767px){
 .content-info h1{font-size:35px; padding-left:0px;}

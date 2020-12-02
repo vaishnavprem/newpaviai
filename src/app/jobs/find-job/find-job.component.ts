@@ -105,7 +105,7 @@ export class FindJobComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
-    // console.log("AfterViewInit Called");
+    console.log("AfterViewInit Called");
     // $('.selectpicker').selectpicker('refresh');
     // $(".dropdown-toggle").append("<span class='bs-caret'><span class='caret'></span></span>");
     // $(".dropdown-menu").css("min-width","290px !important");

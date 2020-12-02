@@ -8,11 +8,11 @@
 
 .content-info{padding-top: 10px}
 
-.select-your-job{height:455px;}
+.select-your-job{height:490px;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 20%;}
 .global-icon{bottom:0px;}
 .apply-btn{cursor:pointer;}
-.content-info h1{font-size:40px;}
+.content-info h1{font-size:33px;padding-left: 5px;}
 
 @media (max-width: 767px) {
 .content-info{padding-top: 18px}

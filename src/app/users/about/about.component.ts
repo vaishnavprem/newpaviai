@@ -10,6 +10,7 @@ public showWelcomeText=false;
   constructor(public router: Router) { }
 
   ngOnInit(): void {
+    document.getElementById('about').className ="active";
   }
   showWelcomePage(){
      this.router.navigate(['/welcome']);

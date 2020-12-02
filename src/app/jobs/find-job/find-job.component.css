@@ -13,9 +13,10 @@
 .job-title{width:100%;}
 .select-job{width:100%;font-size: x-large;}
 
-
+.select-your-job{height:510px;}
+.content-info .job-title{font-size:33px;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 20%;bottom: 10%;}
-.content-info h1{width:100%;}
+.content-info h1{width:100%;padding-left: 5px;}
 .select-your-job ul li h4 span a{cursor:pointer;}
 /* .global-icon{bottom:0px;} */
 /* .colIndex{z-index: -1;} */

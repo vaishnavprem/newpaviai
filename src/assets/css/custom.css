@@ -279,6 +279,59 @@ input[type="date"].form-control ~ i{position:absolute; right:33px; top:47%; poin
 /* html{height:100%;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 30%;} */
 
+
+/*New Css 30-11-2020*/
+.interview-warp h1{font-size:40px; line-height: 52px;}
+.interview-warp h1 .hr-line{height: 60px;}
+.interview-warp h1 .interviewinput{width:250px; background:none; border-left:none; border-right:none; border-top:none; border-bottom: solid 1px #fff; }
+.interview-warp h5{color:#dee662; font-size:34px; margin-top:30px;}
+
+.interview-warp .parent_question{padding-top:50px;}
+.interview-warp .parent_question li{float:left;}
+.interview-warp .parent_question li + li{float:right;}
+.interview-warp .parent_question li label{padding-bottom:0px;}
+
+.interview-company h1{font-size:38px; line-height: 52px;}
+.interview-company .gray{color:#3d445a; font-size:30px; font-family: 'Montserrat', sans-serif; font-weight:300;} 
+.interview-company h6{color:#3d445a; font-size:16px; font-family: 'Montserrat', sans-serif; font-weight:300; margin-top:30px;}
+.interview-company h6 strong{font-weight:400; color:#777;}
+
+/*CONTACT FORM CSS*/
+.contact_form{padding-left:20px;}
+.contact_form .form-group input{width:100%; background:none; padding:18px 10px 18px 0px; border-width:0 0 1px 0; border-radius:0; -webkit-border-radius:0; box-shadow:none; font-size:35px; color:#3d445a; height:57px; border-color:transparent; font-family: 'Montserrat', sans-serif; font-weight:300;}
+.contact_form .form-group .control-label{ position: absolute; top:0px;  pointer-events:none; z-index:1; color:#dee662; font-size:30px; font-weight:normal; -webkit-transition: all 0.28s ease; transition: all 0.28s ease; left:30px; width:100%; text-align:left;}
+.contact_form .form-group input:focus {color: #3d445a; outline: none; }
+.contact_form .form-group input:focus ~ .control-label, .contact_form .form-group input:valid ~ .control-label{left: 30px; top: -70px; font-size:30px; color: #dee662;}
+
+/*New Css 30-11-2020 End*/
+
+/*New Css 01-12-2020 Start*/
+
+.about-inner .color-yellow{color:#edf568; font-size:45px;}
+.color-yellow{color:#edf568; font-size:35px; text-transform:uppercase; font-weight:300; font-family: 'Montserrat', sans-serif; }
+.new-head ul {list-style:none; padding:0px; float:right;}
+.new-head ul li{display:inline-block; }
+.new-head ul li a{color:#fff; padding:8px 20px; font-size:16px; text-transform:uppercase; font-weight:400; font-family: 'Montserrat', sans-serif;}
+.new-head ul li a.active{color:#edf568;}
+
+.new-head ul li a.login-sec{background:#99a0bf;cursor:pointer;}
+.overlay2{background:rgba(0,0,0,0.60); position: fixed; left:0px; right:0px; top:0; bottom:0; height:100%; z-index:1;}
+.live-call-warp{background:url(../images/live-chat-bg.jpg) no-repeat center; height:100%; position: fixed; top:0px; bottom:0px; background-size:cover; width:80%; margin:0px auto; left:0px; right:0px;}
+
+.live-profile{border-radius:100%; max-width:400px; max-height:400px; border: solid 20px #2e4051; margin:30px auto 0px;}
+.live-profile figure{border-radius:100%; max-width:400px; max-height:400px; border: solid 20px #001621;}
+.live-profile figure img{max-width:100%;}
+
+.live-call-warp h4{font-size:30px; color:#edf568; padding-top: 60px; padding-left: 30px;}
+.right-counter{text-align:right; margin-right:30px; margin-top:40px;}
+.right-counter img{max-width:100%;}
+
+.micro-icon{text-align: center;}
+.micro-icon ul{padding:0px; margin:0px; list-style:none; margin:0px auto; position:fixed; bottom:0px; left:0px; right:0px;}
+.micro-icon ul li{display:inline-block; padding:20px 10px;}
+
+
+
 @media (min-width:1200px) and (max-width:1300px){
 .new-login-col .btn{font-size:18px;}
 }
@@ -335,9 +388,15 @@ header{padding: 15px;}
 .about-warp .private-user-body p{font-size: 13px; text-align: center;}
 .sign-google{width: auto; font-size: 15px; display: table; margin: 0 auto;}
 .about-warp p{font-size: 18px; line-height: 27px;}
-
 .signup-warp{margin:0px auto 30px;}
 
+
+.new-head ul{float:none; text-align:center;}
+.new-head ul li a{padding: 6px 7px; font-size: 15px;}
+.live-call-warp h4{padding-left: 0px; text-align: center;}
+.live-profile{max-width: 270px; border: solid 15px #2e4051; max-height:270px;}
+.live-profile figure{max-width: 270px; border: solid 15px #001621; max-height:270px;}
+.right-counter{text-align: center; margin-right: 0px;}
 
 
 }
