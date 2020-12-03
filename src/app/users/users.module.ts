@@ -23,6 +23,9 @@ import {FindEmployeesComponent} from './find-employees/find-employees.component'
 import { QuestionsComponent } from './questions/questions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { PartnerComponent } from './partner/partner.component';
+import { WorkComponent } from './work/work.component';
+
 
 
 @NgModule({
@@ -45,7 +48,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     FindEmployeesComponent,
     QuestionsComponent,
     DashboardComponent,
-    SidebarComponent
+    SidebarComponent,
+    PartnerComponent,
+    WorkComponent,
   ],
   imports: [
     CommonModule,

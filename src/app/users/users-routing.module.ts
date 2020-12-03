@@ -8,6 +8,8 @@ import {AuthGuard} from '../core/guards/auth.guard';
 import {FindEmployeesComponent} from './find-employees/find-employees.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PartnerComponent } from './partner/partner.component';
+import { WorkComponent } from './work/work.component';
 const routes: Routes = [
   {
     path: 'profile-page',
@@ -21,6 +23,14 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'partner',
+    component: PartnerComponent
+  },
+  {
+    path: 'work',
+    component: WorkComponent
   },
   {
     path: 'find-employees',

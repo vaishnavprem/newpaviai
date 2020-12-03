@@ -1,7 +1,8 @@
-<header>
+<!-- <header >
     <div class="logo-inner">
       <figure><a routerLink="/" routerLinkActive="active"><img src="assets/images/inner-logo.png" alt="Pavi" title="Pavi" class="img-responsive" /></a></figure>
     </div>
+
     <div class="nav-menu"> <a (click)="clickEvent()"><img src="assets/images/nav.png" alt="Nav" title="Nav" /></a> </div>
     <div [ngClass]="status ? 'nav-show' : ''">
     <div class="navicon">
@@ -15,9 +16,9 @@
           <div class="row">
             <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
             <div class="col-sm-10">
-              <ul>
+              <ul> -->
                 <!-- <li *ngIf="!auth.loggedIn()" class="active"><a href="/auth/login" class="login" >Login</a></li> -->
-                <li *ngIf="!auth.loggedIn()" class="active"><a (click)="goToLogin()" class="login" >Login</a></li>
+                <!-- <li *ngIf="!auth.loggedIn()" class="active"><a (click)="goToLogin()" class="login" >Login</a></li>
                 <li *ngIf="auth.loggedIn()" class="active" ><a (click)="auth.logOut()" class="login" >Logout</a></li>
                 <li><a class="about" href="/users/about">About</a></li>
                 <li><a class="contact" href="javascript:void(0);">Contact Us</a></li>
@@ -28,4 +29,16 @@
       </div>
     </div>
   </div>
-  </header>
+  </header> -->
+
+
+  <header class="new-head">
+    <ul>
+    <li><a id="work" href="/users/work">How iT Works</a></li>
+    <li><a id="partner" href="/users/partner">Partners</a></li>
+    <li><a id="about" href="/users/about">About</a></li>
+    <li *ngIf="!auth.loggedIn()"><a (click)="goToLogin()" class="login-sec" >Login</a></li>
+    <li *ngIf="auth.loggedIn()"><a (click)="auth.logOut()" class="login-sec" >Logout</a></li>
+    </ul>
+    
+    </header>
