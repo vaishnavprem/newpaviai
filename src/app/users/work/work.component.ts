@@ -10,7 +10,7 @@ export class WorkComponent implements OnInit {
   constructor(public router: Router) { }
 
   ngOnInit(): void {
-    document.getElementById('work').className ="active";
+    
   }
   showWelcomePage(){
     this.router.navigate(['/welcome']);

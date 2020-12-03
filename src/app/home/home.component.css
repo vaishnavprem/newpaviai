@@ -95,6 +95,7 @@ svg {
 
 html, BODY{height:100%;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 20%;}
+.logoAnchor{cursor:pointer;}
 
 @media (max-width: 767px){
 .mid-bar{top: 20%;}	

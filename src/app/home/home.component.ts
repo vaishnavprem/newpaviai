@@ -38,11 +38,11 @@ export class HomeComponent implements OnInit {
     isTokenExpired() {
         return !this.jwtHelper.isTokenExpired();
     }
-    showAboutPage(){
-        this.router.navigate(['users/about']);
+    // showAboutPage(){
+    //     this.router.navigate(['/users/about']);
        /* this.showWelcomeText=true; 
         setTimeout(() => {
          this.router.navigate(['/help']);
      }, 5000)*/
-     }
+     //}
 }
