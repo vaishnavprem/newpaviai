@@ -10,9 +10,9 @@ export class WelcomeComponent implements OnInit {
   constructor(public router: Router,) { }
 
   ngOnInit(): void {
-  //   setTimeout(() => {
-  //     this.router.navigate(['/help']);
-  // }, 5000)
+    setTimeout(() => {
+      this.router.navigate(['/help']);
+  }, 5000)
   }
 
 }
