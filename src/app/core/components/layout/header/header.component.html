@@ -33,10 +33,14 @@
 
 
   <header class="new-head">
+    <div class="logo-inner">
+      <figure><a routerLink="/" routerLinkActive="active"><img src="assets/images/inner-logo.png" alt="Pavi" title="Pavi" class="img-responsive" /></a></figure>
+    </div>
+    
     <ul>
-    <li><a id="work" href="/users/work">How iT Works</a></li>
-    <li><a id="partner" href="/users/partner">Partners</a></li>
-    <li><a id="about" href="/users/about">About</a></li>
+    <li><a routerLink="/users/work"  routerLinkActive="active">How iT Works</a></li>
+    <li><a routerLink="/users/partner"  routerLinkActive="active">Partners</a></li>
+    <li><a routerLink="/users/about"  routerLinkActive="active">About</a></li>
     <li *ngIf="!auth.loggedIn()"><a (click)="goToLogin()" class="login-sec" >Login</a></li>
     <li *ngIf="auth.loggedIn()"><a (click)="auth.logOut()" class="login-sec" >Logout</a></li>
     </ul>
