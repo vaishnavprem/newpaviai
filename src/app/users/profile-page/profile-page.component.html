@@ -1,58 +1,294 @@
-<div class="ful-col-row">
-  <div class="left-bar">
-  <app-user-sidebar></app-user-sidebar>
-</div>
-<div class="right-bar">
-  <div class="container">
-      <div class="inner-page">
+<div class="bg-images-1">
+  <div class="content-warp">
+    <div class="content-bg-inner">
+      <div class="left-bar">
+        <figure><img src="assets/images/logowithpavi.png" /></figure>
+        <ul>
+          <li><a class="active" href="javascript:void(0);">Dashboard Menu</a></li>
+          <li><a href="javascript:void(0);">Add Jobs</a></li>
+          <li><a href="javascript:void(0);">View Jobs</a></li>
+          <li><a href="javascript:void(0);">Add Interview Questions</a></li>
+          <li><a href="javascript:void(0);">View Questions</a></li>
+          <li><a href="javascript:void(0);">Applicants</a></li>
+          <li><a href="javascript:void(0);">My Profile</a></li>
+        </ul>
+      </div>
+      <div class="right-bar">
+        <div class="right-header">
           <div class="row">
-    <div class="col-xl-12 col-md-12 mb-12">
-
-
-      <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="currentStep-1" labelPosition="bottom"
-                              (selectionChange)="stepChanged($event)">
-
-        <ng-template matStepperIcon="edit" let-index="index">
-          <i class="fa fa-user" *ngIf="index === 0"></i>
-          <i class="far fa-file-user" *ngIf="index === 1"></i>
-          <i class="fas fa-file-pdf" *ngIf="index === 2"></i>
-        </ng-template>
-
-        <!-- Custom icon with a context variable. -->
-        <ng-template matStepperIcon="number" let-index="index">
-          <i class="fa fa-user" *ngIf="index === 0"></i>
-          <i class="far fa-file-user" *ngIf="index === 1"></i>
-          <i class="fas fa-file-pdf" *ngIf="index === 2"></i>
-        </ng-template>
-
-        <!-- Step 1 -->
-        <mat-step label="Step 1">
-          <ng-template matStepLabel>About</ng-template>
-          <app-about-tab></app-about-tab>
-        </mat-step>
-
-        <!-- Step 2 -->
-        <mat-step label="Step 2">
-          <ng-template matStepLabel>CV/Resume</ng-template>
-          <app-cv-portfolio-tab></app-cv-portfolio-tab>
-        </mat-step>
-
-        <!-- Step 3 -->
-        <mat-step label="Step 3">
-          <ng-template matStepLabel>Social Medias<br> PDF</ng-template>
-          <app-social-medias-tab></app-social-medias-tab>
-        </mat-step>
-
-      </mat-horizontal-stepper>
-
-
+            <div class="col-sm-5">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" />
+                <div class="input-group-btn">
+                  <div class="btn-group">
+                    <button type="button" class="btn"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-7">
+              <ul>
+                <li><a href="#">Company Name &nbsp;&nbsp;|</a></li>
+                <li><a href="#">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-right-mid">
+          <div class="title-warp">
+            <h2>Dashboard <span>December 02, 2020</span></h2>
+          </div>
+          <div class="dashboard-list-view">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="dashboard-grid-info">
+                  <h4 style="color:#000">55</h4>
+                  <p>open jobs</p>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="dashboard-grid-info">
+                  <h4 style="color:#6e8cd7">255</h4>
+                  <p>applicants</p>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="dashboard-grid-info">
+                  <h4 style="color:#29b6f6">45</h4>
+                  <p>interviews completed</p>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="dashboard-grid-info">
+                  <h4 style="color:#0cc2aa">10</h4>
+                  <p> interviews to review</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-list-view">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="dashboard-grid-info">
+                  <h4 style="color:#18f513;">45</h4>
+                  <p>moving to a final interview</p>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="dashboard-grid-info">
+                  <h4 style="color:#f39c12;">65</h4>
+                  <p>Days the jobs have been open</p>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="dashboard-grid-info">
+                  <h4 style="color:#000;">10</h4>
+                  <p>pending offers</p>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="dashboard-grid-info">
+                  <h4 style="color:#29b6f6;">10</h4>
+                  <p>accepted offers</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="map-warp">
+            <div class="row">
+              <div class="col-sm-7">
+                <figure><img src="assets/images/map-img.jpg" class="img-responsive" /></figure>
+              </div>
+              <div class="col-sm-5">
+                <div class="map-company-view">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="blck">Company <span><i class="fa fa-angle-down"></i></span></th>
+                        <th align="center">Applicants</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="wht">Pierre Design Co.</td>
+                        <td style="color:#18f513; text-align:center">39.8%</td>
+                      </tr>
+                      <tr>
+                        <td class="wht">Avengers SARL</td>
+                        <td style="color:#f5ed13; text-align:center">26.9%</td>
+                      </tr>
+                      <tr>
+                        <td class="wht">Santa Claus Worksop Co.</td>
+                        <td style="color:#26a65b; text-align:center">22.8%</td>
+                      </tr>
+                      <tr>
+                        <td class="wht">Santa Claus Worksop Co.</td>
+                        <td style="color:#ef4836; text-align:center">53.2%</td>
+                      </tr>
+                      <tr>
+                        <td class="wht">Other</td>
+                        <td style="color:#f39c12; text-align:center">0.2%</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td>Total Result</td>
+                        <td>92.9%</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clander-warp">
+            <div class="row">
+              <div class="col-sm-6">
+                <figure><img src="assets/images/clander.jpg" class="img-responsive" /></figure>
+              </div>
+              <div class="col-sm-6">
+                <div class="clander-table">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Candidates </th>
+                        <th>&nbsp;</th>
+                        <th>Pending</th>
+                        <th>Complete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Jack Richard
+                          <p>Rejected Offer</p></td>
+                        <td><span>LA DODGER Enterprises</span>
+                          <p>Public relations specialist</p></td>
+                        <td></td>
+                        <td align="center"><a href="#"><img src="assets/images/close.png" /></a></td>
+                      </tr>
+                      <tr>
+                        <td>Bond Smithon
+                          <p>Pending for approval</p></td>
+                        <td><span>Pierre Design Co</span>
+                          <p>Web developer</p></td>
+                        <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Jack Richard
+                          <p>Moving to final interview</p></td>
+                        <td><span>Stallone & Co</span>
+                          <p>Multimedia animator</p></td>
+                        <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Ellen Richard
+                          <p>Accepted Offer</p></td>
+                        <td><span>Stallone & Co</span>
+                          <p>Multimedia animator</p></td>
+                        <td></td>
+                        <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
+                      </tr>
+                      <tr>
+                        <td>Ellen Richard
+                          <p>Accepted Offer</p></td>
+                        <td><span>Stallone & Co</span>
+                          <p>Multimedia animator</p></td>
+                        <td></td>
+                        <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
+                      </tr>
+                      <tr>
+                        <td>Ellen Richard
+                          <p>Accepted Offer</p></td>
+                        <td><span>Stallone & Co</span>
+                          <p>Multimedia animator</p></td>
+                        <td></td>
+                        <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="application-warp">
+            <h3>APLICATION DETAILS <a href="#"><img src="assets/images/refesh.png" /></a></h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Company Position</th>
+                  <th>Date Opened</th>
+                  <th>Days Job Opened</th>
+                  <th>Candidate Interviewed</th>
+                  <th>Candidate in Final round</th>
+                  <th>Number of Offers</th>
+                  <th>Offers Accepted </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>PARKER & BEYONDDesigner</td>
+                  <td>12/02/2020</td>
+                  <td align="center">3</td>
+                  <td align="center">23</td>
+                  <td align="center">23</td>
+                  <td align="center">23</td>
+                  <td align="center">23</td>
+                </tr>
+                <tr>
+                  <td>PARKER & BEYONDDesigner</td>
+                  <td>12/02/2020</td>
+                  <td align="center">4</td>
+                  <td align="center">43</td>
+                  <td align="center">43</td>
+                  <td align="center">43</td>
+                  <td align="center">43</td>
+                </tr>
+                <tr>
+                  <td>PARKER & BEYONDDesigner</td>
+                  <td>12/02/2020</td>
+                  <td align="center">19</td>
+                  <td align="center">33</td>
+                  <td align="center">33</td>
+                  <td align="center">33</td>
+                  <td align="center">33</td>
+                </tr>
+                <tr>
+                  <td>PARKER & BEYONDDesigner</td>
+                  <td>12/02/2020</td>
+                  <td align="center">25</td>
+                  <td align="center">125</td>
+                  <td align="center">125</td>
+                  <td align="center">125</td>
+                  <td align="center">125</td>
+                </tr>
+                <tr>
+                  <td>PARKER & BEYONDDesigner</td>
+                  <td>12/02/2020</td>
+                  <td align="center">56</td>
+                  <td align="center">65</td>
+                  <td align="center">65</td>
+                  <td align="center">65</td>
+                  <td align="center">65</td>
+                </tr>
+                <tr>
+                  <td>PARKER & BEYONDDesigner</td>
+                  <td>12/02/2020</td>
+                  <td align="center">2</td>
+                  <td align="center">2</td>
+                  <td align="center">2</td>
+                  <td align="center">2</td>
+                  <td align="center">2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <footer>© PAVI AI ALL RIGHT RESERVED 2020</footer>
+        </div>
+        
+      </div>
+      
     </div>
-
-
-
-
-</div>
-</div>
-</div>
-</div>
-
+  </div>
+  </div>
