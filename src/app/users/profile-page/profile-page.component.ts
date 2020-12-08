@@ -29,7 +29,7 @@ export class ProfilePageComponent implements OnInit {
   authUser;
   isLinear = false;
   currentStep = 1;
-
+  public status: boolean = false;
 
 
 
@@ -69,6 +69,11 @@ export class ProfilePageComponent implements OnInit {
     this.currentStep = e.selectedIndex + 1;
   }
 
+  
+  clickEvent(){
+    //console.log("ClickEvent>>>",this.status);
+    this.status = !this.status;       
+  }
 
 
 
