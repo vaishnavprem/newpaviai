@@ -20,6 +20,9 @@ export class QuestionsComponent implements OnInit {
   public questions:any;
   public isLoder=false;
   public jobs;
+  public start:boolean;
+  public lastminute:boolean=false;
+  public lastminutefinal:boolean=false;
   authUser;
   postParamas;
   public show = false;
@@ -39,7 +42,7 @@ export class QuestionsComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
    });
-
+   this.start=true;
    this.getQuestionData(this.id );
    typingEffect("Thank you for your interest in this role. Please read each question then click record answer to submit your response.", "questionText");
   }
@@ -63,11 +66,13 @@ export class QuestionsComponent implements OnInit {
       
     });
   }
+  startInterview(){
 
-  gotoVideoPage(questionId){
+  }
+  gotoVideoPage(){
     //console.log(questionId);
-   // window.open("https://demo.pavi.ai/vonage/index.html", "_blank");
-   this.show=true;
+    window.open("https://demo.pavi.ai/vonage/index.php", "_blank");
+  /* this.show=true;
    this.postParamas = {
     job_id:this.id,
     user_id:this.authUser.user_id,
@@ -99,7 +104,7 @@ export class QuestionsComponent implements OnInit {
        this.toastr.error(response.message);
      }
      
-   });
+   });*/
   }
 
   showRecordedAnswer(recordString){

@@ -329,7 +329,14 @@ input[type="date"].form-control ~ i{position:absolute; right:33px; top:47%; poin
 .micro-icon{text-align: center;}
 .micro-icon ul{padding:0px; margin:0px; list-style:none; margin:0px auto; position:fixed; bottom:0px; left:0px; right:0px;}
 .micro-icon ul li{display:inline-block; padding:20px 10px;}
+.last-mint-info{text-align:center;}
+.last-mint-info h3{font-size:35px; color:#555b73;font-family: 'Montserrat', sans-serif; font-weight:400; margin-bottom:20px; }
+.last-mint-info p{font-size:20px; color:#555b73; line-height:26px; font-family: 'Montserrat', sans-serif; font-weight:300;}
 
+.last-mint-arrow{padding-top:50px;}
+.audio-test-warp p{text-align:center; color:#555b73; font-size:20px; padding-top:20px; font-family: 'Montserrat', sans-serif; font-weight:400;}
+
+.video-signal-info {padding-top:20px;}
 
 
 @media (min-width:1200px) and (max-width:1300px){
@@ -397,7 +404,11 @@ header{padding: 15px;}
 .live-profile{max-width: 270px; border: solid 15px #2e4051; max-height:270px;}
 .live-profile figure{max-width: 270px; border: solid 15px #001621; max-height:270px;}
 .right-counter{text-align: center; margin-right: 0px;}
-
+.interview-warp .parent_question li label{font-size:30px;}
+.audio-test-warp p{padding-top: 0px; font-size: 18px;}
+.content-info.interview-warp h1{font-size: 30px; line-height: 40px;}
+.content-info.interview-warp h1 .hr-line{height: 44px;}
+.last-mint-info h3{font-size: 25px;}
 
 }
 
