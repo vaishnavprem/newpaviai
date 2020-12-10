@@ -74,7 +74,7 @@
               </li>
               <li>
                 <input type="radio" id="continue" name="radio-btn" checked="" />
-                <label for="continue" (click)="lastminute=false;lastminutefinal=true;">Continue</label>
+                <label for="continue" (click)="lastminute=false;lastminutefinal=true;startRecording();">Continue</label>
                 <div class="check"></div>
               </li>
             </ul>
@@ -100,7 +100,7 @@
           <figure> <img src="assets/images/micro-cricle.png" /> </figure>
           </div>
           </div>
-          <div class="col-sm-4 col-xs-6"">
+          <div class="col-sm-4 col-xs-6">
           <div class="last-mint-info">
           <figure> <img src="assets/images/micro-2.png" /> </figure>
           <h3>Webcam</h3>
@@ -121,14 +121,73 @@
               </li>
               <li>
                 <input type="radio" id="continue" name="radio-btn" checked="" />
-                <label for="continue">Start the test</label>
+                <label for="continue" (click)="lastminutefinal=false;startTest=true;startRecording();">Start the test</label>
                 <div class="check"></div>
               </li>
             </ul>
           </div>
+          
         </div>
 
 
     </div>
+    
+
+   
+
   </div>
   </div>
+  <div *ngIf="startTest" class="content-info" style="padding-top: 10px !important;">
+    <div class="row">
+      <div class="col-sm-3">
+        <h1 class="animate__fadeInRight animate__animated job-title"> Please press record to record your answer to the question above. <i class="hr-line"></i> </h1>
+        <!--<div class="search-box-location search-job-section">
+          <div class="input-group animate__fadeInLeftBig animate__animated">
+            <div class="input-group-btn">
+              <div class="btn-group"> <i class="pin"><img src="https://dq84tlhr1cf2j.cloudfront.net/assets/images/job-icon.png" /></i> </div>
+            </div>
+            <input type="text" class="form-control" placeholder="" />
+            <div class="input-group-btn">
+              <div class="btn-group search-btn"> <button class="btn">Search</button> </div>
+            </div>
+          </div>
+        </div>-->
+        <br>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"><img src="https://dq84tlhr1cf2j.cloudfront.net/assets/images/sparkle-test.png" class="welcome-img img-responsive"/></div>
+            <div class="col-sm-4"></div>
+          </div>
+        </div>
+        <div class="col-sm-8">
+        <div class="select-your-job post-job-info animate__fadeInUpBig animate__animated" style="overflow: hidden !important;background: none !important;padding: 0px !important;height: 470px;">
+          <ul>
+          <li>
+          
+          
+          <div >
+            
+            <div id="subscriber"></div>
+            <div id="publisher"></div>
+            <div id="buttonholder">
+              <div id="buttons">
+                <button type="button" id="start" onClick="javascript:startArchive()" class="btn btn-danger btn-primary">Start Archive</button>
+                <button type="button" id="stop" onClick="javascript:stopArchive('<?php echo $answerId;?>')" class="btn btn-danger stop-btn">Stop Archive</button>
+                <button type="button" id="view" onClick="javascript:viewArchive()" class="btn btn-danger btn-default" disabled>View Archive</button>
+              </div>
+            </div>
+          </div>
+            
+          
+         
+          </li>
+          </ul>
+          </div>
+          </div>
+    </div>
+  </div>
+  <style>
+    .OT_publisher, .OT_subscriber {
+min-height: 470px !important;
+}
+  </style>

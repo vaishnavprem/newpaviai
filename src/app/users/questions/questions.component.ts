@@ -9,6 +9,7 @@ import { map, tap, takeUntil,startWith} from 'rxjs/operators';
 import {GetAuthUserPipe} from '../../shared/pipes/get-auth-user.pipe';
 // declare function typewriterQuestion(params1, param2): any;
 declare function typingEffect(params1, param2): any;
+declare function initVonge(): any;
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
@@ -23,6 +24,7 @@ export class QuestionsComponent implements OnInit {
   public start:boolean;
   public lastminute:boolean=false;
   public lastminutefinal:boolean=false;
+  public startTest:boolean=false;
   authUser;
   postParamas;
   public show = false;
@@ -45,6 +47,7 @@ export class QuestionsComponent implements OnInit {
    this.start=true;
    this.getQuestionData(this.id );
    typingEffect("Thank you for your interest in this role. Please read each question then click record answer to submit your response.", "questionText");
+   
   }
   getQuestionData(job_id){
     this.isLoder=true;
@@ -66,8 +69,10 @@ export class QuestionsComponent implements OnInit {
       
     });
   }
-  startInterview(){
-
+  startRecording(){
+    if(this.startTest){
+        initVonge();
+    }
   }
   gotoVideoPage(){
     //console.log(questionId);
