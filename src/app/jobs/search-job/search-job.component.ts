@@ -17,6 +17,7 @@ declare function initialize(): any;
 declare function typingEffect(params1, param2): any;
 
 declare function panTo(coords): any;
+declare function geocodeAddress(value): any;
 
 @Component({
   selector: 'app-search-job',
@@ -71,8 +72,15 @@ export class SearchJobComponent implements OnInit {
    }
  
   getLocation(value){
-  //  this.router.navigate(['jobs/find-job']);
-    this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } })
+    let that = this;
+    //pass value is id for navigate
+    //  this.router.navigate(['jobs/find-job']);
+    //this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } })
+    const city = this.locationSearchData.find( ({ id }) => id === value );
+    //console.log(city.city);
+    geocodeAddress(city.city);
+    setTimeout(function(){ that.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } }) }, 6000);
+    
   }
 
   onCheckboxChecked(e){
