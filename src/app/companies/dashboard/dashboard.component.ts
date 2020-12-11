@@ -1,5 +1,5 @@
 
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {AuthService} from '../../core/services/auth.service';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -16,6 +16,7 @@ import { PaviAdminService } from '../../core/services/pavi-admin.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { Chart } from 'chart.js';
 
 declare var $: any;
 
@@ -57,7 +58,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
   employmentForm:FormGroup;
   seniorityForm:FormGroup;
   responsibilityForm:FormGroup;
@@ -124,6 +125,9 @@ export class DashboardComponent implements OnInit {
   public viewQuestions = false;
   public Applicants = false;
   public Profile = false;
+  public status: boolean = false;
+  today: number = Date.now()
+  
 
   dataSourceTwo: MatTableDataSource<PeriodicElement>;
   displayedColumnsTwo: string[] = ['position', 'name', 'weight', 'symbol'];
@@ -139,6 +143,9 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild('TableFourPaginator', {static: false}) tableFourPaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableFourSort: MatSort;
+
+  @ViewChild('lineCanvas',{static: false}) lineCanvas;
+  lineChart: any;
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
@@ -216,21 +223,32 @@ export class DashboardComponent implements OnInit {
       phone:['', Validators.required],
       address:['', Validators.required],
       name:['', Validators.required],
-  });
-  this.changeEmailForm = this.fb.group({
-    old_email: [this.authUser.email, [Validators.required, patternValidator(EMAIL_PATTERN)]],
-    new_email: ['', [Validators.required, patternValidator(EMAIL_PATTERN)]],
-    confirm_email: ['', [Validators.required, patternValidator(EMAIL_PATTERN)]]
-});
-this.profileImgTextForm = this.fb.group({
-  // avatar: [''],
-  about_text: ['']
-});
-this.coverImgForm = this.fb.group({
-  cover: ['']
-});
-  this.getCompanyData();
-   // this.isLoder=false;
+    });
+    this.changeEmailForm = this.fb.group({
+      old_email: [this.authUser.email, [Validators.required, patternValidator(EMAIL_PATTERN)]],
+      new_email: ['', [Validators.required, patternValidator(EMAIL_PATTERN)]],
+      confirm_email: ['', [Validators.required, patternValidator(EMAIL_PATTERN)]]
+      });
+      this.profileImgTextForm = this.fb.group({
+        // avatar: [''],
+        about_text: ['']
+      });
+      this.coverImgForm = this.fb.group({
+        cover: ['']
+      });
+        this.getCompanyData();
+        // this.isLoder=false;
+
+        //For Add Class active to Anchor Tag
+        let anchors = $(".left-bar ul li a").click(function() {
+          $(this).addClass("active")
+          anchors.not(this).removeClass("active")
+        })
+  }
+
+  ngAfterViewInit(): void{
+    //This for Chart
+    this.lineChartMethod();
   }
 
    async getCompanyData(){
@@ -278,6 +296,11 @@ this.coverImgForm = this.fb.group({
 
   applyFilterFour(filterValue: string) {
     this.dataSourceFour.filter = filterValue.trim().toLowerCase();
+  }
+
+  clickEvent(){
+    //console.log("ClickEvent>>>",this.status);
+    this.status = !this.status;       
   }
 
   addEmployment(){
@@ -675,12 +698,13 @@ showCandidateAnswers(index){
   $("#add-modal-candidate").modal("show");
 }
 
-
-selectedV(){
-  let select = +this.selectedValue;
-  
+selectedV(value){
+  let select = +value;
+  this.status = !this.status;
+  let that = this;
   switch(select) {
     case 0: { 
+      setTimeout(function(){ that.lineChartMethod(); }, 1000)
       this.home = true;
       this.addJobs = false;
       this.viewjobs = false;
@@ -768,5 +792,39 @@ selectedV(){
     } 
  } 
 }
+
+lineChartMethod() {
+  this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+    type: 'line',
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'],
+      datasets: [
+        {
+          label: 'Job Statistics',
+          fill: false,
+          lineTension: 0.1,
+          backgroundColor: '#fff',
+          borderColor: 'rgba(75,192,192,1)',
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: 'rgba(75,192,192,1)',
+          pointBackgroundColor: '#fff',
+          pointBorderWidth: 1,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgba(220,220,220,1)',
+          pointHoverBorderWidth: 2,
+          pointRadius: 1,
+          pointHitRadius: 10,
+          data: [65, 59, 80, 81, 56, 55, 40, 10, 5, 50, 10, 15],
+          spanGaps: false,
+        }
+      ]
+    }
+  });
+}
+
 
 }
