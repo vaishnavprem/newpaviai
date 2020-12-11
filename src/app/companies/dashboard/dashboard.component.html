@@ -241,609 +241,634 @@
 
 
 <div class="bg-images-1">
-  <app-header></app-header>
+  <div class="content-warp">
+    <div class="content-bg-inner"> 
+      <div [ngClass]="status ? 'nav-show' : ''">
+        <div class="left-bar">
+          <div class="nav-tiker-close hidden-sm hidden-md hidden-lg"><a (click)="clickEvent()"><img src="assets/images/nav-close.png" class="nav-tikerimg-close" /> </a></div>
 
-  <div class="mid-col-sec-dashbord">
-    <div class="mid-content mid-bar">
-      <div class="container-fluid">
-        
-        <!--<div class="global-icon animate__fadeInBottomRight animate__animated"><img src="assets/images/global.png" alt="Global" title="Global" class="img-responsive" /> </div>-->
-        <div class="content-info">
-          <div class="row rowContent">
-            <div class="col-sm-4">
-              <h1 class="animate__fadeInRight animate__animated job-title"> Welcome Company. What would you like to do next? <i class="hr-line"></i> </h1>
-              <!-- <ul class="dashbaord-menu">
-              <li (click)="showAddJob()"><a >Add Jobs</a></li>
-              <li (click)="showJobs()" ><a >View Jobs</a></li>
-              <li (click)="showAddInterview()"><a >Add Interview Questions</a></li>
-              <li (click)="showInterviewQuestion()"><a >View Questions</a></li>
-              <li (click)="showApplications()"><a >Applicants</a></li>
-              <li (click)="showMyProfile()"><a >My Profile</a></li>
-              </ul> -->
-              <select [(ngModel)]="selectedValue" id="pills-tab" class="form-control selectMenu" (change)="selectedV()" >
-                <option selected [value]=0>Dashboard Menu</option>
-                <option [value]=1>Add Jobs</option>
-                <option [value]=2>View Jobs</option>
-                <option [value]=3>Add Interview Questions</option>
-                <option [value]=4>View Questions</option>
-                <option [value]=5>Applicants</option>
-                <option [value]=6>My Profile</option>
-              </select>
-              <div class="pavi-them-logo">
-            <img src="/assets/images/sparkle-test.png" class="img-responsive" />
-            </div>
-              </div>
-
-              <div class="toggle-mobile-section" [ngClass]="{'mobile-in':!show}">
-                <!-- <div (click)="show = !show" class="bugger-menu-mobile">
-                  <h5><img src="assets/images/nav.png" /></h5>
-                </div> -->
-                <div class="col-sm-8 coltoggle-mobile-section">
-                <div class="dashbaord-info-warp animate__fadeInUpBig animate__animated " id="pills-tabContent">
-                  
-                  <ul *ngIf="home" id="home">
-                    <li style="border-left: solid 4px #00cd84">
-                    <div class="dashbaord-info">
-                    <h5 style="color:#00cd84;">User</h5>
-                    <span>69</span>
-                    <abbr><img src="/assets/images/dashbaord-user.png" /></abbr>           
-                    
-                    
-                    </div>
-                    </li>
-                    
-                    <li style="border-left: solid 4px #00bccf">
-                    <div class="dashbaord-info">
-                    <h5 style="color:#00bccf;">Jobs</h5>
-                    <span>27</span>
-                    
-                    <span class="bar"><i class="bar-inner" style="width:30%; background:#00a4bb; "></i></span>
-                    <abbr><img src="/assets/images/dashbaord-job.png" /></abbr>           
-                    
-                    
-                    </div>
-                    </li>
-                    
-                    <li style="border-left: solid 4px #ffd03f">
-                    <div class="dashbaord-info">
-                    <h5 style="color:#ffd03f;">Pending Requests</h5>
-                    <span>45</span>
-                    <abbr><img src="/assets/images/dashbaord-pending.png" /></abbr>           
-                    
-                    
-                    </div>
-                    </li>
-                    
-                    
-                  </ul>
-
-                  <div *ngIf="addJobs" id="create-job"> 
-                    <div class="inner-page">
-                      <h2>Create Job</h2>
-                      <form [formGroup]="jobForm" (ngSubmit)="saveJob()">
-                        <div class="row">
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Job Title</label>
-                              <input class="form-control" id="username" placeholder="Job Title" type="text" formControlName="jobTitle"/>
-                            </div>
-                            <div *ngIf="jobForm.get('jobTitle').touched && jobForm.get('jobTitle').invalid"class="alert alert-danger">Job Title is required</div>
-                          </div>
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Country</label>
-                              <select class="form-control" formControlName="country">
-                                <option selected disabled [value]="''">Country*</option>
-                                <option *ngFor="let country of countries" [value]="country">{{country}}</option>
-                              </select>
-                            </div>
-                            <div *ngIf="jobForm.get('country').touched && jobForm.get('country').invalid"class="alert alert-danger">country is required</div>
-                          </div>
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Company Email</label>
-                              <input class="form-control" id="company" placeholder="Company Email" type="email" formControlName="email"/>
-                            </div>
-                            <div *ngIf="jobForm.get('email').touched && jobForm.get('email').invalid"class="alert alert-danger">Email is required</div>
-                          </div>
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Company Address</label>
-                              <input class="form-control" id="CompanyAddress" placeholder="Company Address" type="text" formControlName="companyAddress"/>
-                            </div>
-                            <div *ngIf="jobForm.get('companyAddress').touched && jobForm.get('companyAddress').invalid"class="alert alert-danger">Company Address is required</div>
-                          </div>
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Job category</label>
-                              <select class="form-control" formControlName="category">
-                                <option selected disabled [value]="''">category*</option>
-                                <option *ngFor="let category of categories " [value]="category.category">{{category.category}}</option>
-                              </select>
-                            </div>
-                            <div *ngIf="jobForm.get('category').touched && jobForm.get('category').invalid"class="alert alert-danger">category is required</div>
-                          </div>
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Experience (Years) </label>
-                              <select class="form-control" formControlName="experience">
-                                <option selected disabled [value]="''">Experience*</option>
-                                <option [value]="0">0-1</option>
-                                <option [value]="1">1-2</option>
-                                <option [value]="2">2-3</option>
-                                <option [value]="3">3-4</option>
-                                <option [value]="4">4-5</option>
-                                <option [value]="5">5-6</option>
-                                <option [value]="6">6-7</option>
-                                <option [value]="7">7-8</option>
-                                <option [value]="8">8-9</option>
-                                <option [value]="9">9-10</option>
-                              </select>
-                            </div>
-                            <div *ngIf="jobForm.get('experience').touched && jobForm.get('experience').invalid"class="alert alert-danger">Experience is required</div>
-                          </div>
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Seniority Level &nbsp;<i class="fa fa-plus" aria-hidden="true" title="Add Seniority Level" (click)="addSeniority()"></i></label>
-                              <select class="form-control" formControlName="level">
-                                <option selected disabled [value]="''">Seniority Level*</option>
-                                <option *ngFor="let seniority of seniorityLevels" [value]="seniority['seniority']">{{seniority['seniority']}}</option>
-                              </select>
-                            </div>
-                            <div *ngIf="jobForm.get('level').touched && jobForm.get('level').invalid"class="alert alert-danger">Seniority Level is required</div>
-                          </div>
-        
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Employment &nbsp;<i class="fa fa-plus" aria-hidden="true" title="Add Employment" (click)="addEmployment()"></i></label>
-                              <select class="form-control" formControlName="employment">
-                                <option selected disabled [value]="''">Employment*</option>
-                                <option *ngFor="let employment of employments" [value]="employment['employment']">{{employment['employment']}}</option>
-                              </select>
-                            </div>
-                            <div *ngIf="jobForm.get('employment').touched && jobForm.get('employment').invalid"class="alert alert-danger">Employment is required</div>
-                          </div>
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Salary</label>
-                              <input class="form-control" id="Salary" placeholder="Salary" type="text" formControlName="salary"/>
-                            </div>
-                            <div *ngIf="jobForm.get('salary').touched && jobForm.get('salary').invalid"class="alert alert-danger">Salary is required</div>
-                          </div>
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Job Brief</label>
-                              <textarea class="form-control" placeholder="Job Brief" formControlName="job_brief"></textarea>
-                            </div>
-                            <div *ngIf="jobForm.get('job_brief').touched && jobForm.get('job_brief').invalid"class="alert alert-danger">Job Brief is required</div>
-                          </div>
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Job Description</label>
-                              <textarea class="form-control" placeholder="Job Description" formControlName="job_description"></textarea>
-                            </div>
-                            <div *ngIf="jobForm.get('job_description').touched && jobForm.get('job_description').invalid"class="alert alert-danger">Job Description is required</div>
-                          </div>
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Responsibilities &nbsp;<i class="fa fa-plus" aria-hidden="true" title="Add Responsibilities" (click)="addResponsibilities()"></i></label>
-                              <select class="form-control" multiple style="height: 100px;" formControlName="responsibility">
-                                <option *ngFor="let responsibility of responsibilities"  [value]="responsibility['responsibility']">{{responsibility['responsibility']}}</option>
-                              </select>
-                            </div>
-                            <div *ngIf="jobForm.get('responsibility').touched && jobForm.get('responsibility').invalid"class="alert alert-danger">Responsibilities required</div>
-                          </div>
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Requirements  &nbsp;<i class="fa fa-plus" aria-hidden="true" title="Add Requirements" (click)="addRequirements()"></i></label>
-                              <select class="form-control" multiple style="height: 100px;" formControlName="requirement">
-                                <option *ngFor="let requirement of requirements" [value]="requirement['requirement']">{{requirement['requirement']}}</option>
-                              </select>
-                            </div>
-                            <div *ngIf="jobForm.get('requirement').touched && jobForm.get('requirement').invalid"class="alert alert-danger">Requirements required</div>
-                          </div>
-        
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Job Start Date</label>
-                              <input class="form-control" id="start-date" placeholder="Job Start Date" type="date" formControlName="date_opened"/>
-                            </div>
-                            <div *ngIf="jobForm.get('date_opened').touched && jobForm.get('date_opened').invalid"class="alert alert-danger">Job Start Date is required</div>
-                          </div>
-                          <div class="col-xl-6 col-md-6">
-                            <div class="form-group">
-                              <label>Job End Date</label>
-                              <input class="form-control" id="end-date" placeholder="Job End Date" type="date" formControlName="date_closed"/>
-                            </div>
-                            <div *ngIf="jobForm.get('date_closed').touched && jobForm.get('date_closed').invalid"class="alert alert-danger">Job End Date is required</div>
-                            <input type="hidden" formControlName="jobId">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-sm-12">
-                            <div class="form-group">
-                              <button type="submit" class="btn btn-primary ">Submit</button> &nbsp; &nbsp;
-                              <button *ngIf="!jobForm.get('jobId').value" (click)= "jobFormRest()" type="button" class="btn btn-primary ">Reset</button>
-                            </div>
-        
-                            
-                          </div>
-                        </div>
-                    
-                        
-                      </form>
-                    </div>
-                  </div>
-
-                  <div *ngIf="addInterviewQuestions" id="add-interview-questions">
-                    <div *ngIf="jobs && jobs.length == 0">Add Job First</div>
-                    <div *ngIf="jobs && jobs.length > 0" class="inner-page">
-                      <h2>Add Interview Questions</h2>
-                      <form [formGroup]="questionForm" (ngSubmit)="saveQuestion()">
-                        <div class="row">
-                        <div class="col-xl-12 col-md-12">
-                          <div class="form-group">
-                            <label>Select Job</label>
-                            <select class="form-control" formControlName="jobId">
-                              <option selected disabled [value]="''">Select Job*</option>
-                              <option *ngFor="let job of jobs" [value]="job.id">{{job.jobTitle}}</option>
-                            </select>
-                          </div>
-                          <div *ngIf="questionForm.get('jobId').touched && questionForm.get('jobId').invalid"class="alert alert-danger">Job required</div>
-                        </div>
-                        <div class="col-xl-12 col-md-12">
-                          <div class="form-group">
-                            <label>Interview Question</label>
-                            <input class="form-control"  placeholder="Interview Question" type="text" formControlName="questionText"/>
-                          </div>
-                          <div *ngIf="questionForm.get('questionText').touched && questionForm.get('questionText').invalid"class="alert alert-danger">Interview Questions is required</div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <div class="form-group">
-                            <button type="submit" class="btn btn-primary ">Submit</button>
-                          </div>
-                        </div>
-                      </div>
-                      </form>
-                    </div>
-                  </div>
-                  
-                  <div *ngIf="viewQuestions" id="interview-questions">
-                    <div *ngIf="jobs && jobs.length == 0">No record found</div>
-                    <div *ngIf="jobs && jobs.length > 0" class="table-responsive">
-                      <!-- <table class="table table-bordered">
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Job Title</th>
-                            <th style="text-align:right;">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let job of jobs; let i=index">
-                            <td>{{i+1}}</td>
-                            <td>{{job.jobTitle}}</td>
-                          
-                            <td align="right"> <a class="btn" (click)="showQuestions(job.id)"> View Questions</a></td>
-                          </tr>
-                          
-                        </tbody>
-                      </table> -->
-                      <mat-form-field>
-                        <input
-                          matInput
-                          (keyup)="applyFilterFour($event.target.value)"
-                          placeholder="Search Keyword"
-                        />
-                      </mat-form-field>
-                      <table
-                        mat-table
-                        matSort
-                        [dataSource]="dataSourceFour"
-                      
-                        class="table table-bordered"
-                        style="width: 100%;"
-                      >
-                        <!--- Note that these columns can be defined in any order.
-                                The actual rendered columns are set as a property on the row definition" -->
-                    
-                        <!-- Position Column -->
-                        <ng-container matColumnDef="jobTitle">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Title</th>
-                          <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
-                        </ng-container>
-                    
-                        <ng-container matColumnDef="action">
-                          <th mat-header-cell *matHeaderCellDef >Action</th>
-                          <td mat-cell *matCellDef="let element  let i = index;"> 
-                            <a class="btn"> <i class="fa fa-eye"  (click)="showQuestions(element.id)"></i></a> 
-                          </td>
-                        </ng-container>
-                    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumnsFour"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumnsFour"></tr>
-                      </table>
-                    
-                      <mat-paginator
-                      #TableFourPaginator
-                      [pageSizeOptions]="[5, 10, 25, 100]"
-                    ></mat-paginator>
-                    </div>
-                  </div>
-
-                  <div *ngIf="viewjobs" id="interviews">
-                    <div *ngIf="jobs && jobs.length == 0">No record found</div>
-                    <div *ngIf="jobs && jobs.length > 0" class="table-responsive">
-                        <mat-form-field>
-                          <input
-                            matInput
-                            (keyup)="applyFilterOne($event.target.value)"
-                            placeholder="Search Keyword"
-                          />
-                        </mat-form-field>
-                        <table
-                          mat-table
-                          matSort
-                          [dataSource]="dataSourceOne"
-                        
-                          class="table table-bordered"
-                          style="width: 100%;"
-                        >
-                          <!--- Note that these columns can be defined in any order.
-                                  The actual rendered columns are set as a property on the row definition" -->
-                      
-                          <!-- Position Column -->
-                          <ng-container matColumnDef="jobTitle">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Title</th>
-                            <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
-                          </ng-container>
-                      
-                          <!-- Name Column -->
-                          <ng-container matColumnDef="email">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-                            <td mat-cell *matCellDef="let element">{{ element.email }}</td>
-                          </ng-container>
-                      
-                          <!-- Weight Column -->
-                          <ng-container matColumnDef="experience">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Experience(Years)</th>
-                            <td mat-cell *matCellDef="let element">{{ element.experience }} -{{element.experience -- 1}}</td>
-                          </ng-container>
-                      
-                          <!-- Symbol Column -->
-                          <ng-container matColumnDef="level">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Seniority Level</th>
-                            <td mat-cell *matCellDef="let element">{{ element.level }}</td>
-                          </ng-container>
-              
-                          <ng-container matColumnDef="employment">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Employment</th>
-                            <td mat-cell *matCellDef="let element">{{ element.employment}}</td>
-                          </ng-container>
-        
-                          <ng-container matColumnDef="salary">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Salary</th>
-                            <td mat-cell *matCellDef="let element">{{ element.salary}} K </td>
-                          </ng-container>
-        
-                          <ng-container matColumnDef="action">
-                            <th mat-header-cell *matHeaderCellDef>Action</th>
-                            <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editJob(i)"></i></a> 
-                              <a class="btn"> <i class="fa fa-eye"  (click)="showJob(i)"></i></a> 
-                              <a class="btn red"> <i (click)="deleteJob(element.id)" class="fa fa-trash"></i></a>
-                            </td>
-                          </ng-container>
-                      
-                          <tr mat-header-row *matHeaderRowDef="displayedColumnsOne"></tr>
-                          <tr mat-row *matRowDef="let row; columns: displayedColumnsOne"></tr>
-                        </table>
-                      
-                        <mat-paginator
-                        #TableOnePaginator
-                        [pageSizeOptions]="[5, 10, 25, 100]"
-                      ></mat-paginator>
-                    </div>
-                  </div>
-
-                  <div *ngIf="Applicants" id="jobs-user">
-                    <div class="table-responsive">
-                        <mat-form-field>
-                          <input
-                            matInput
-                            (keyup)="applyFilterThree($event.target.value)"
-                            placeholder="Search Keyword"
-                          />
-                        </mat-form-field>
-                        <table
-                          mat-table
-                          matSort
-                          [dataSource]="dataSourceThree"
-                        
-                          class="table table-bordered"
-                          style="width: 100%;"
-                        >
-                          <!--- Note that these columns can be defined in any order.
-                                  The actual rendered columns are set as a property on the row definition" -->
-                      
-                          <!-- Weight Column -->
-                          <ng-container matColumnDef="first_name">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
-                            <td mat-cell *matCellDef="let element">{{ element.first_name }}</td>
-                          </ng-container>
-                      
-                          <!-- Symbol Column -->
-                          <ng-container matColumnDef="last_name">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
-                            <td mat-cell *matCellDef="let element">{{ element.last_name }}</td>
-                          </ng-container>
-                          <!-- Name Column -->
-                          <ng-container matColumnDef="email">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-                            <td mat-cell *matCellDef="let element">{{ element.email }}</td>
-                          </ng-container>
-                          <ng-container matColumnDef="gender">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
-                            <td mat-cell *matCellDef="let element">{{ element.gender }}</td>
-                          </ng-container>
-                          <ng-container matColumnDef="jobTitle">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Title</th>
-                            <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
-                          </ng-container>
-                          <ng-container matColumnDef="action">
-                            <th mat-header-cell *matHeaderCellDef >Action</th>
-                            <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil"></i></a> 
-                              <a class="btn"> <i class="fa fa-eye" (click)="showCandidateAnswers(i)"></i></a> 
-                              <a class="btn red"> <i class="fa fa-trash"></i></a>
-                            </td>
-                          </ng-container>
-                      
-                          <tr mat-header-row *matHeaderRowDef="displayedColumnsThree"></tr>
-                          <tr mat-row *matRowDef="let row; columns: displayedColumnsThree"></tr>
-                        </table>
-                      
-                        <mat-paginator
-                        #TableThreePaginator
-                        [pageSizeOptions]="[5, 10, 25, 100]"
-                      ></mat-paginator>
-                      </div>
-                  </div>
-                  
-                  <div *ngIf="Profile" id="profile">
-                    <div class="inner-page">
-                    <mat-tab-group>
-                      <mat-tab label="Logo/Cover Image">
-                        <div class="row">
-                          <div class="col-xl-6 col-md-6">
-                            <form [formGroup]="profileImgTextForm">
-                            <div class="form-group">
-                              <label>Change Logo</label>
-                              <input id="profile-image" type="file" (change)="changeProfileImage($event)">
-                              <div class="profile-image change-photo-img" [style.backgroundImage]="'url('+profileImage+')'"></div>
-                            </div>
-                            </form>
-                            </div>
-        
-                            <div class="col-xl-6 col-md-6">
-                            <form [formGroup]="coverImgForm">
-                              <div class="form-group">
-                                <label>Change Cover</label>
-                                <input id="cover-image" type="file" (change)="changeCoverImage($event)">
-                                <div class="cover-image change-photo-img" [style.backgroundImage]="'url('+coverImage+')'"></div>
-                              </div>
-                              </form>
-                              </div>
-        
-                          </div>
-                        
-        
-                      </mat-tab>
-                    <mat-tab label="Company Profile">
-                      <form [formGroup]="profileForm" (ngSubmit)="saveProfileDetails()" style="margin-top: 20px;">
-                        <div class="row">
-                        <div class="col-xl-6 col-md-6">
-                          <div class="form-group">
-                            <label>Company Name</label>
-                            <input class="form-control"  placeholder="Company Name" type="text" formControlName="name"/>
-                          </div>
-                          <div *ngIf="profileForm.get('name').touched && profileForm.get('name').invalid"class="alert alert-danger">Job required</div>
-                        </div>
-                        <div class="col-xl-6 col-md-6">
-                          <div class="form-group">
-                            <label>Company Address</label>
-                            <input class="form-control"  placeholder="Company Address" type="text" formControlName="address"/>
-                          </div>
-                          <div *ngIf="profileForm.get('address').touched && profileForm.get('address').invalid"class="alert alert-danger">Interview Questions is required</div>
-                        </div>
-                        <div class="col-xl-6 col-md-6">
-                          <div class="form-group">
-                            <label>Phone</label>
-                            <input class="form-control"  placeholder="Company Address" type="text" formControlName="phone"/>
-                          </div>
-                          <div *ngIf="profileForm.get('phone').touched && profileForm.get('phone').invalid"class="alert alert-danger">Interview Questions is required</div>
-                        </div>
-                        <div class="col-xl-6 col-md-6">
-                          <div class="form-group">
-                            <label>Country</label>
-                            <select class="form-control" formControlName="country">
-                              <option selected disabled [value]="''">Country*</option>
-                              <option *ngFor="let country of countries" [value]="country">{{country}}</option>
-                            </select>
-                          </div>
-                          <div *ngIf="profileForm.get('country').touched && profileForm.get('country').invalid"class="alert alert-danger">Interview Questions is required</div>
-                        </div>
-                      
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <div class="form-group">
-                            <button type="submit" class="btn btn-primary ">Submit</button>
-                          </div>
-                        </div>
-                      </div>
-                      </form>
-                    </mat-tab>
-                    <mat-tab label="Change Email"> <form [formGroup]="changeEmailForm">
-                      <div class="row">
-                        <div class="col-xl-6 col-md-6">
-                          <div class="form-group">
-                        <label>Old Email:</label>
-                        <input  class="form-control" placeholder="hello@name.com" formControlName="old_email" (keyup)="compareNewOldEmails()">
-                      </div>
-                      <mat-error *ngIf="(oldEmail.touched || isSubmitted) && oldEmail.hasError('required')">Old email is required
-                      </mat-error>
-                      <mat-error *ngIf="oldEmail.hasError('patternInvalid')">E-mail is <strong>invalid</strong>
-                      </mat-error>
-                    </div>
-                      
-                        <div class="col-xl-6 col-md-6">
-                          <div class="form-group">
-                        <label>New E-mail Address:</label>
-                        <input  class="form-control" placeholder="New E-mail" formControlName="new_email" (keyup)="compareEmails()">
-                      </div>
-                      <mat-error *ngIf="newEmail.hasError('patternInvalid') && !newOldEmailsMatch">E-mail is <strong>invalid</strong>
-                      </mat-error>
-                      <mat-error *ngIf="(newEmail.touched || isSubmitted) && newEmail.hasError('required')">New email is required
-                      </mat-error>
-                      <mat-error *ngIf="newOldEmailsMatch">Old and new emails are the same
-                      </mat-error>
-                    </div>
-                      
-                      
-                        <div class="col-xl-6 col-md-6">
-                          <div class="form-group">
-                        <label>Confirm New Email:</label>
-                        <input  class="form-control" placeholder="Confirm New E-mail" formControlName="confirm_email" (keyup)="compareEmails()">
-                      </div>
-                      <mat-error *ngIf="confirmEmail.hasError('patternInvalid')">E-mail is <strong>invalid</strong>
-                      </mat-error>
-                      <mat-error *ngIf="(confirmEmail.touched || isSubmitted) && confirmEmail.hasError('required')">Please confirm the email
-                      </mat-error>
-                      <mat-error *ngIf="!emailsMatch && !confirmEmail.hasError('required')">Emails don't match
-                      </mat-error>
-                    </div>
-                  </div> 
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <div class="form-group">
-                          <a class="btn btn-primary" (click)="changeEmail()">Change the email</a>
-                        </div>
-                      </div>
-                      </div>
-                      
-                    </form> </mat-tab>
-                    <mat-tab label="Change Password"> Change Password </mat-tab>
-                  </mat-tab-group>
-                </div>
-                  </div>
-
-                  </div>
-                  </div>
-              </div>
+          <figure><img src="assets/images/logowithpavi.png" /></figure>
+            <ul id="pills-tab">
+              <li><a class="active" (click)="selectedV(0)">Dashboard Menu</a></li>
+              <li><a (click)="selectedV(1)">Add Jobs</a></li>
+              <li><a (click)="selectedV(2)">View Jobs</a></li>
+              <li><a (click)="selectedV(3)">Add Interview Questions</a></li>
+              <li><a (click)="selectedV(4)">View Questions</a></li>
+              <li><a (click)="selectedV(5)">Applicants</a></li>
+              <li><a (click)="selectedV(6)">My Profile</a></li>
+            </ul>
+          
+            <!-- <select [(ngModel)]="selectedValue" id="pills-tab" class="form-control selectMenu" (change)="selectedV()" >
+              <option selected [value]=0>Dashboard Menu</option>
+              <option [value]=1>Add Jobs</option>
+              <option [value]=2>View Jobs</option>
+              <option [value]=3>Add Interview Questions</option>
+              <option [value]=4>View Questions</option>
+              <option [value]=5>Applicants</option>
+              <option [value]=6>My Profile</option>
+            </select> -->
           </div>
-        </div>
       </div>
+        
+          <div class="right-bar">
+            <div class="right-header">
+              <div class="row">
+              <div class="col-xs-3 hidden-sm hidden-md hidden-lg">
+              <div class="nav-tiker"><a (click)="clickEvent()"><img src="assets/images/nav.png" class="nav-tikerimg" /> </a></div>
+              
+              </div>
+                <div class="col-sm-7 col-xs-9 pull-right">
+                  <ul>
+                    <li><a >{{companyData?.name}} &nbsp;&nbsp;|</a></li>
+                    <li><a (click)="auth.logOut()">Logout</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-5 col-xs-12">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" />
+                    <div class="input-group-btn">
+                      <div class="btn-group">
+                        <button type="button" class="btn"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                
+              </div>
+            </div>
+          <div class="dashbaord-info-warp animate__fadeInUpBig animate__animated " id="pills-tabContent">
+            <div class="title-warp">
+              <h2>Dashboard <span>{{today | date:'longDate'}}</span></h2>
+            </div>
+            <ul *ngIf="home" id="home">
+              <li style="border-left: solid 4px #00cd84">
+              <div class="dashbaord-info">
+              <h5 style="color:#00cd84;">User</h5>
+              <span>69</span>
+              <abbr><img src="/assets/images/dashbaord-user.png" /></abbr>           
+              
+              
+              </div>
+              </li>
+              
+              <li style="border-left: solid 4px #00bccf">
+              <div class="dashbaord-info">
+              <h5 style="color:#00bccf;">Jobs</h5>
+              <span>27</span>
+              
+              <span class="bar"><i class="bar-inner" style="width:30%; background:#00a4bb; "></i></span>
+              <abbr><img src="/assets/images/dashbaord-job.png" /></abbr>           
+              
+              
+              </div>
+              </li>
+              
+              <li style="border-left: solid 4px #ffd03f">
+              <div class="dashbaord-info">
+              <h5 style="color:#ffd03f;">Pending Requests</h5>
+              <span>45</span>
+              <abbr><img src="/assets/images/dashbaord-pending.png" /></abbr>           
+              
+              
+              </div>
+              </li>
+              
+              <div class="map-warp">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <canvas #lineCanvas></canvas>
+                  </div>
+                </div>
+              </div>
+              
+            </ul>
+
+            <div *ngIf="addJobs" id="create-job"> 
+              <div class="inner-page">
+                <h2>Create Job</h2>
+                <form [formGroup]="jobForm" (ngSubmit)="saveJob()">
+                  <div class="row">
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Job Title</label>
+                        <input class="form-control" id="username" placeholder="Job Title" type="text" formControlName="jobTitle"/>
+                      </div>
+                      <div *ngIf="jobForm.get('jobTitle').touched && jobForm.get('jobTitle').invalid"class="alert alert-danger">Job Title is required</div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Country</label>
+                        <select class="form-control" formControlName="country">
+                          <option selected disabled [value]="''">Country*</option>
+                          <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+                        </select>
+                      </div>
+                      <div *ngIf="jobForm.get('country').touched && jobForm.get('country').invalid"class="alert alert-danger">country is required</div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Company Email</label>
+                        <input class="form-control" id="company" placeholder="Company Email" type="email" formControlName="email"/>
+                      </div>
+                      <div *ngIf="jobForm.get('email').touched && jobForm.get('email').invalid"class="alert alert-danger">Email is required</div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Company Address</label>
+                        <input class="form-control" id="CompanyAddress" placeholder="Company Address" type="text" formControlName="companyAddress"/>
+                      </div>
+                      <div *ngIf="jobForm.get('companyAddress').touched && jobForm.get('companyAddress').invalid"class="alert alert-danger">Company Address is required</div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Job category</label>
+                        <select class="form-control" formControlName="category">
+                          <option selected disabled [value]="''">category*</option>
+                          <option *ngFor="let category of categories " [value]="category.category">{{category.category}}</option>
+                        </select>
+                      </div>
+                      <div *ngIf="jobForm.get('category').touched && jobForm.get('category').invalid"class="alert alert-danger">category is required</div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Experience (Years) </label>
+                        <select class="form-control" formControlName="experience">
+                          <option selected disabled [value]="''">Experience*</option>
+                          <option [value]="0">0-1</option>
+                          <option [value]="1">1-2</option>
+                          <option [value]="2">2-3</option>
+                          <option [value]="3">3-4</option>
+                          <option [value]="4">4-5</option>
+                          <option [value]="5">5-6</option>
+                          <option [value]="6">6-7</option>
+                          <option [value]="7">7-8</option>
+                          <option [value]="8">8-9</option>
+                          <option [value]="9">9-10</option>
+                        </select>
+                      </div>
+                      <div *ngIf="jobForm.get('experience').touched && jobForm.get('experience').invalid"class="alert alert-danger">Experience is required</div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Seniority Level &nbsp;<i class="fa fa-plus" aria-hidden="true" title="Add Seniority Level" (click)="addSeniority()"></i></label>
+                        <select class="form-control" formControlName="level">
+                          <option selected disabled [value]="''">Seniority Level*</option>
+                          <option *ngFor="let seniority of seniorityLevels" [value]="seniority['seniority']">{{seniority['seniority']}}</option>
+                        </select>
+                      </div>
+                      <div *ngIf="jobForm.get('level').touched && jobForm.get('level').invalid"class="alert alert-danger">Seniority Level is required</div>
+                    </div>
+
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Employment &nbsp;<i class="fa fa-plus" aria-hidden="true" title="Add Employment" (click)="addEmployment()"></i></label>
+                        <select class="form-control" formControlName="employment">
+                          <option selected disabled [value]="''">Employment*</option>
+                          <option *ngFor="let employment of employments" [value]="employment['employment']">{{employment['employment']}}</option>
+                        </select>
+                      </div>
+                      <div *ngIf="jobForm.get('employment').touched && jobForm.get('employment').invalid"class="alert alert-danger">Employment is required</div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Salary</label>
+                        <input class="form-control" id="Salary" placeholder="Salary" type="text" formControlName="salary"/>
+                      </div>
+                      <div *ngIf="jobForm.get('salary').touched && jobForm.get('salary').invalid"class="alert alert-danger">Salary is required</div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Job Brief</label>
+                        <textarea class="form-control" placeholder="Job Brief" formControlName="job_brief"></textarea>
+                      </div>
+                      <div *ngIf="jobForm.get('job_brief').touched && jobForm.get('job_brief').invalid"class="alert alert-danger">Job Brief is required</div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Job Description</label>
+                        <textarea class="form-control" placeholder="Job Description" formControlName="job_description"></textarea>
+                      </div>
+                      <div *ngIf="jobForm.get('job_description').touched && jobForm.get('job_description').invalid"class="alert alert-danger">Job Description is required</div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Responsibilities &nbsp;<i class="fa fa-plus" aria-hidden="true" title="Add Responsibilities" (click)="addResponsibilities()"></i></label>
+                        <select class="form-control" multiple style="height: 100px;" formControlName="responsibility">
+                          <option *ngFor="let responsibility of responsibilities"  [value]="responsibility['responsibility']">{{responsibility['responsibility']}}</option>
+                        </select>
+                      </div>
+                      <div *ngIf="jobForm.get('responsibility').touched && jobForm.get('responsibility').invalid"class="alert alert-danger">Responsibilities required</div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Requirements  &nbsp;<i class="fa fa-plus" aria-hidden="true" title="Add Requirements" (click)="addRequirements()"></i></label>
+                        <select class="form-control" multiple style="height: 100px;" formControlName="requirement">
+                          <option *ngFor="let requirement of requirements" [value]="requirement['requirement']">{{requirement['requirement']}}</option>
+                        </select>
+                      </div>
+                      <div *ngIf="jobForm.get('requirement').touched && jobForm.get('requirement').invalid"class="alert alert-danger">Requirements required</div>
+                    </div>
+
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Job Start Date</label>
+                        <input class="form-control" id="start-date" placeholder="Job Start Date" type="date" formControlName="date_opened"/>
+                      </div>
+                      <div *ngIf="jobForm.get('date_opened').touched && jobForm.get('date_opened').invalid"class="alert alert-danger">Job Start Date is required</div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                      <div class="form-group">
+                        <label>Job End Date</label>
+                        <input class="form-control" id="end-date" placeholder="Job End Date" type="date" formControlName="date_closed"/>
+                      </div>
+                      <div *ngIf="jobForm.get('date_closed').touched && jobForm.get('date_closed').invalid"class="alert alert-danger">Job End Date is required</div>
+                      <input type="hidden" formControlName="jobId">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary ">Submit</button> &nbsp; &nbsp;
+                        <button *ngIf="!jobForm.get('jobId').value" (click)= "jobFormRest()" type="button" class="btn btn-primary ">Reset</button>
+                      </div>
+
+                      
+                    </div>
+                  </div>
+              
+                  
+                </form>
+              </div>
+            </div>
+
+            <div *ngIf="addInterviewQuestions" id="add-interview-questions">
+              <div *ngIf="jobs && jobs.length == 0">Add Job First</div>
+              <div *ngIf="jobs && jobs.length > 0" class="inner-page">
+                <h2>Add Interview Questions</h2>
+                <form [formGroup]="questionForm" (ngSubmit)="saveQuestion()">
+                  <div class="row">
+                  <div class="col-xl-12 col-md-12">
+                    <div class="form-group">
+                      <label>Select Job</label>
+                      <select class="form-control" formControlName="jobId">
+                        <option selected disabled [value]="''">Select Job*</option>
+                        <option *ngFor="let job of jobs" [value]="job.id">{{job.jobTitle}}</option>
+                      </select>
+                    </div>
+                    <div *ngIf="questionForm.get('jobId').touched && questionForm.get('jobId').invalid"class="alert alert-danger">Job required</div>
+                  </div>
+                  <div class="col-xl-12 col-md-12">
+                    <div class="form-group">
+                      <label>Interview Question</label>
+                      <input class="form-control"  placeholder="Interview Question" type="text" formControlName="questionText"/>
+                    </div>
+                    <div *ngIf="questionForm.get('questionText').touched && questionForm.get('questionText').invalid"class="alert alert-danger">Interview Questions is required</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary ">Submit</button>
+                    </div>
+                  </div>
+                </div>
+                </form>
+              </div>
+            </div>
+            
+            <div *ngIf="viewQuestions" id="interview-questions">
+              <div *ngIf="jobs && jobs.length == 0">No record found</div>
+              <div *ngIf="jobs && jobs.length > 0" class="table-responsive">
+                <!-- <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Job Title</th>
+                      <th style="text-align:right;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let job of jobs; let i=index">
+                      <td>{{i+1}}</td>
+                      <td>{{job.jobTitle}}</td>
+                    
+                      <td align="right"> <a class="btn" (click)="showQuestions(job.id)"> View Questions</a></td>
+                    </tr>
+                    
+                  </tbody>
+                </table> -->
+                <mat-form-field>
+                  <input
+                    matInput
+                    (keyup)="applyFilterFour($event.target.value)"
+                    placeholder="Search Keyword"
+                  />
+                </mat-form-field>
+                <table
+                  mat-table
+                  matSort
+                  [dataSource]="dataSourceFour"
+                
+                  class="table table-bordered"
+                  style="width: 100%;"
+                >
+                  <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+              
+                  <!-- Position Column -->
+                  <ng-container matColumnDef="jobTitle">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Title</th>
+                    <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef >Action</th>
+                    <td mat-cell *matCellDef="let element  let i = index;"> 
+                      <a class="btn"> <i class="fa fa-eye"  (click)="showQuestions(element.id)"></i></a> 
+                    </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumnsFour"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumnsFour"></tr>
+                </table>
+              
+                <mat-paginator
+                #TableFourPaginator
+                [pageSizeOptions]="[5, 10, 25, 100]"
+              ></mat-paginator>
+              </div>
+            </div>
+
+            <div *ngIf="viewjobs" id="interviews">
+              <div *ngIf="jobs && jobs.length == 0">No record found</div>
+              <div *ngIf="jobs && jobs.length > 0" class="table-responsive">
+                  <mat-form-field>
+                    <input
+                      matInput
+                      (keyup)="applyFilterOne($event.target.value)"
+                      placeholder="Search Keyword"
+                    />
+                  </mat-form-field>
+                  <table
+                    mat-table
+                    matSort
+                    [dataSource]="dataSourceOne"
+                  
+                    class="table table-bordered"
+                    style="width: 100%;"
+                  >
+                    <!--- Note that these columns can be defined in any order.
+                            The actual rendered columns are set as a property on the row definition" -->
+                
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="jobTitle">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Title</th>
+                      <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
+                    </ng-container>
+                
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="email">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+                    </ng-container>
+                
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="experience">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Experience(Years)</th>
+                      <td mat-cell *matCellDef="let element">{{ element.experience }} -{{element.experience -- 1}}</td>
+                    </ng-container>
+                
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="level">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Seniority Level</th>
+                      <td mat-cell *matCellDef="let element">{{ element.level }}</td>
+                    </ng-container>
+        
+                    <ng-container matColumnDef="employment">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Employment</th>
+                      <td mat-cell *matCellDef="let element">{{ element.employment}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="salary">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Salary</th>
+                      <td mat-cell *matCellDef="let element">{{ element.salary}} K </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                      <th mat-header-cell *matHeaderCellDef>Action</th>
+                      <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editJob(i)"></i></a> 
+                        <a class="btn"> <i class="fa fa-eye"  (click)="showJob(i)"></i></a> 
+                        <a class="btn red"> <i (click)="deleteJob(element.id)" class="fa fa-trash"></i></a>
+                      </td>
+                    </ng-container>
+                
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsOne"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsOne"></tr>
+                  </table>
+                
+                  <mat-paginator
+                  #TableOnePaginator
+                  [pageSizeOptions]="[5, 10, 25, 100]"
+                ></mat-paginator>
+              </div>
+            </div>
+
+            <div *ngIf="Applicants" id="jobs-user">
+              <div class="table-responsive">
+                  <mat-form-field>
+                    <input
+                      matInput
+                      (keyup)="applyFilterThree($event.target.value)"
+                      placeholder="Search Keyword"
+                    />
+                  </mat-form-field>
+                  <table
+                    mat-table
+                    matSort
+                    [dataSource]="dataSourceThree"
+                  
+                    class="table table-bordered"
+                    style="width: 100%;"
+                  >
+                    <!--- Note that these columns can be defined in any order.
+                            The actual rendered columns are set as a property on the row definition" -->
+                
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="first_name">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+                      <td mat-cell *matCellDef="let element">{{ element.first_name }}</td>
+                    </ng-container>
+                
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="last_name">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+                      <td mat-cell *matCellDef="let element">{{ element.last_name }}</td>
+                    </ng-container>
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="email">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="gender">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
+                      <td mat-cell *matCellDef="let element">{{ element.gender }}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="jobTitle">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Title</th>
+                      <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="action">
+                      <th mat-header-cell *matHeaderCellDef >Action</th>
+                      <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil"></i></a> 
+                        <a class="btn"> <i class="fa fa-eye" (click)="showCandidateAnswers(i)"></i></a> 
+                        <a class="btn red"> <i class="fa fa-trash"></i></a>
+                      </td>
+                    </ng-container>
+                
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsThree"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsThree"></tr>
+                  </table>
+                
+                  <mat-paginator
+                  #TableThreePaginator
+                  [pageSizeOptions]="[5, 10, 25, 100]"
+                ></mat-paginator>
+                </div>
+            </div>
+            
+            <div *ngIf="Profile" id="profile">
+              <div class="inner-page">
+              <mat-tab-group>
+                <mat-tab label="Logo/Cover Image">
+                  <div class="row">
+                    <div class="col-xl-6 col-md-6">
+                      <form [formGroup]="profileImgTextForm">
+                      <div class="form-group">
+                        <label>Change Logo</label>
+                        <input id="profile-image" type="file" (change)="changeProfileImage($event)">
+                        <div class="profile-image change-photo-img" [style.backgroundImage]="'url('+profileImage+')'"></div>
+                      </div>
+                      </form>
+                      </div>
+
+                      <div class="col-xl-6 col-md-6">
+                      <form [formGroup]="coverImgForm">
+                        <div class="form-group">
+                          <label>Change Cover</label>
+                          <input id="cover-image" type="file" (change)="changeCoverImage($event)">
+                          <div class="cover-image change-photo-img" [style.backgroundImage]="'url('+coverImage+')'"></div>
+                        </div>
+                        </form>
+                        </div>
+
+                    </div>
+                  
+
+                </mat-tab>
+              <mat-tab label="Company Profile">
+                <form [formGroup]="profileForm" (ngSubmit)="saveProfileDetails()" style="margin-top: 20px;">
+                  <div class="row">
+                  <div class="col-xl-6 col-md-6">
+                    <div class="form-group">
+                      <label>Company Name</label>
+                      <input class="form-control"  placeholder="Company Name" type="text" formControlName="name"/>
+                    </div>
+                    <div *ngIf="profileForm.get('name').touched && profileForm.get('name').invalid"class="alert alert-danger">Job required</div>
+                  </div>
+                  <div class="col-xl-6 col-md-6">
+                    <div class="form-group">
+                      <label>Company Address</label>
+                      <input class="form-control"  placeholder="Company Address" type="text" formControlName="address"/>
+                    </div>
+                    <div *ngIf="profileForm.get('address').touched && profileForm.get('address').invalid"class="alert alert-danger">Interview Questions is required</div>
+                  </div>
+                  <div class="col-xl-6 col-md-6">
+                    <div class="form-group">
+                      <label>Phone</label>
+                      <input class="form-control"  placeholder="Company Address" type="text" formControlName="phone"/>
+                    </div>
+                    <div *ngIf="profileForm.get('phone').touched && profileForm.get('phone').invalid"class="alert alert-danger">Interview Questions is required</div>
+                  </div>
+                  <div class="col-xl-6 col-md-6">
+                    <div class="form-group">
+                      <label>Country</label>
+                      <select class="form-control" formControlName="country">
+                        <option selected disabled [value]="''">Country*</option>
+                        <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+                      </select>
+                    </div>
+                    <div *ngIf="profileForm.get('country').touched && profileForm.get('country').invalid"class="alert alert-danger">Interview Questions is required</div>
+                  </div>
+                
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary ">Submit</button>
+                    </div>
+                  </div>
+                </div>
+                </form>
+              </mat-tab>
+              <mat-tab label="Change Email"> <form [formGroup]="changeEmailForm">
+                <div class="row">
+                  <div class="col-xl-6 col-md-6">
+                    <div class="form-group">
+                  <label>Old Email:</label>
+                  <input  class="form-control" placeholder="hello@name.com" formControlName="old_email" (keyup)="compareNewOldEmails()">
+                </div>
+                <mat-error *ngIf="(oldEmail.touched || isSubmitted) && oldEmail.hasError('required')">Old email is required
+                </mat-error>
+                <mat-error *ngIf="oldEmail.hasError('patternInvalid')">E-mail is <strong>invalid</strong>
+                </mat-error>
+              </div>
+                
+                  <div class="col-xl-6 col-md-6">
+                    <div class="form-group">
+                  <label>New E-mail Address:</label>
+                  <input  class="form-control" placeholder="New E-mail" formControlName="new_email" (keyup)="compareEmails()">
+                </div>
+                <mat-error *ngIf="newEmail.hasError('patternInvalid') && !newOldEmailsMatch">E-mail is <strong>invalid</strong>
+                </mat-error>
+                <mat-error *ngIf="(newEmail.touched || isSubmitted) && newEmail.hasError('required')">New email is required
+                </mat-error>
+                <mat-error *ngIf="newOldEmailsMatch">Old and new emails are the same
+                </mat-error>
+              </div>
+                
+                
+                  <div class="col-xl-6 col-md-6">
+                    <div class="form-group">
+                  <label>Confirm New Email:</label>
+                  <input  class="form-control" placeholder="Confirm New E-mail" formControlName="confirm_email" (keyup)="compareEmails()">
+                </div>
+                <mat-error *ngIf="confirmEmail.hasError('patternInvalid')">E-mail is <strong>invalid</strong>
+                </mat-error>
+                <mat-error *ngIf="(confirmEmail.touched || isSubmitted) && confirmEmail.hasError('required')">Please confirm the email
+                </mat-error>
+                <mat-error *ngIf="!emailsMatch && !confirmEmail.hasError('required')">Emails don't match
+                </mat-error>
+              </div>
+            </div> 
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <a class="btn btn-primary" (click)="changeEmail()">Change the email</a>
+                  </div>
+                </div>
+                </div>
+                
+              </form> </mat-tab>
+              <mat-tab label="Change Password"> Change Password </mat-tab>
+            </mat-tab-group>
+          </div>
+            </div>
+
+            <footer>© PAVI AI ALL RIGHT RESERVED 2020</footer>
+            </div>
+            </div>
+             
     </div>
     </div>
 </div>
