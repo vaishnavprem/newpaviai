@@ -3,19 +3,28 @@ import {Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import {CompaniesService} from '../../core/services/companies.service';
 import {ToastrService} from 'ngx-toastr';
-import { Subject ,Observable} from 'rxjs';
+import { Subject ,Observable,timer, NEVER, BehaviorSubject, fromEvent, of } from 'rxjs';
 import {API_URL,AVATAR_URL} from '../../core/constants/general';
-import { map, tap, takeUntil,startWith} from 'rxjs/operators';
+import { map, tap, takeUntil,startWith,takeWhile, share,switchMap, filter} from 'rxjs/operators';
 import {GetAuthUserPipe} from '../../shared/pipes/get-auth-user.pipe';
+
+
 // declare function typewriterQuestion(params1, param2): any;
 declare function typingEffect(params1, param2): any;
+declare function initVonge(): any;
+declare function stopArchive(answerID): any;
+declare function testAudioVideo();
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.css']
 })
+
 export class QuestionsComponent implements OnInit {
   id: number;
+  public questionName;
+  public questionNo;
+  public totalQuestion;
   private sub: any;
   public questions:any;
   public isLoder=false;
@@ -23,10 +32,17 @@ export class QuestionsComponent implements OnInit {
   public start:boolean;
   public lastminute:boolean=false;
   public lastminutefinal:boolean=false;
+  public startTest:boolean=false;
+  public result:boolean=false;
   authUser;
   postParamas;
   public show = false;
   destroy$: Subject<boolean> = new Subject<boolean>();
+
+  completionTime: number;
+  timeLeft: number;
+  timePerQuestion = 20;
+  interval: any;
   constructor(
     public router: Router,
     private route: ActivatedRoute,
@@ -45,6 +61,7 @@ export class QuestionsComponent implements OnInit {
    this.start=true;
    this.getQuestionData(this.id );
    typingEffect("Thank you for your interest in this role. Please read each question then click record answer to submit your response.", "questionText");
+   
   }
   getQuestionData(job_id){
     this.isLoder=true;
@@ -66,8 +83,56 @@ export class QuestionsComponent implements OnInit {
       
     });
   }
-  startInterview(){
+  calculateTotalElapsedTime(elapsedTimes) {
+    return  elapsedTimes.reduce((acc, cur) => acc + cur, 0);
+  }
 
+  private countdown(questionID) {
+    let elapsedTimes = [];
+    this.timeLeft=30;
+      this.interval = setInterval(() => {
+        if (this.timeLeft > 0) {
+          this.timeLeft--;
+        //  this.calculateTotalElapsedTime(elapsedTimes);
+          if (this.timeLeft === 0 ) {  
+         //   stopArchive(questionID);
+            let nextQuestion =  questionID + 1;
+            if(this.questions[nextQuestion]){
+              this.startRecording(nextQuestion);
+            } else {
+              this.startTest =false;
+              this.result =true;
+            } 
+            
+          }
+        }
+      }, 1000);
+
+  }
+  startRecording(questionID){
+    if(this.startTest){
+      clearInterval(this.interval);
+      if(questionID=='start'){
+        questionID=0;
+      }
+      this.questionNo = questionID +1;
+      this.totalQuestion = Object.keys(this.questions).length;
+        this.questionName =this.questions[questionID].question
+
+        initVonge();
+      this.countdown(questionID);
+    }
+    
+  }
+
+  private resetTimer() {
+    this.timeLeft = this.timePerQuestion;
+  }
+
+   async checkDevice(){
+    let device =false;
+      device = await testAudioVideo();
+     return device;
   }
   gotoVideoPage(){
     //console.log(questionId);
