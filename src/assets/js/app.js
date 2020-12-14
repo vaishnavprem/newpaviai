@@ -160,6 +160,31 @@ function viewArchive() { // eslint-disable-line no-unused-vars
   $('#view').prop('disabled', true);
   window.location = SAMPLE_SERVER_BASE_URL + /archive/ + archiveID + '/view';
 }
-
+ async function testAudioVideo(){
+  const constraints = {
+    audio: true,
+  };
+  
+  const videoconstraints = {
+    video: true,
+  };
+  navigator.mediaDevices.getUserMedia(constraints)
+  .then(function(stream) {
+      alert("audio device found");
+  })
+  .catch(function(err) {
+    alert("audio device no found");
+  });
+  
+  navigator.mediaDevices.getUserMedia(videoconstraints)
+  .then(function(stream) {
+    alert("video device found");
+    return true;
+  })
+  .catch(function(err) {
+    alert("video device not found");
+  });
+  
+}
 $('#start').show();
 $('#view').hide();
