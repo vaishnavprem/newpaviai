@@ -42,8 +42,8 @@
                   formControlName="location"
                   (keyup)="onKeyUp($event,'location')"
                    [matAutocomplete]="locationauto">
-              <mat-autocomplete #locationauto="matAutocomplete"  (optionSelected)='getLocation($event.option.value)'>
-                <mat-option *ngFor="let city of locationSearchData" [value]="city.id"> {{city.city}} </mat-option>
+              <mat-autocomplete #locationauto="matAutocomplete" (optionSelected)='getLocation($event.option.value)'>
+                <mat-option *ngFor="let city of locationSearchData" [value]="city.city"> {{city.city}} </mat-option>
               </mat-autocomplete>
             </div>
             <p>(Enter manually the location you’re looking for)</p>
