@@ -1,213 +1,185 @@
 
 <div class="bg-images-1">
-  <app-header></app-header>
-  <div class="mid-content mid-bar">
-    <div class="container">
-      <div class="sound-icon"><a href="javascript:void(0);"><img src="assets/images/sound-off.png" alt="Sound" title="Sound" /> </a></div>
-      <!--<div class="global-icon animate__fadeInBottomRight animate__animated"><img src="assets/images/global.png" alt="Global" title="Global" class="img-responsive" /> </div>-->
-      <div *ngIf="start" class="content-info interview-warp" >
-        <div class="row">
-          <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
-          <div class="col-sm-10">
-            <h1 class="animate__fadeInRight animate__animated">You are interviewing for <input *ngIf="jobs && jobs.length > 0" class="interviewinput" type="text" placeholder="" value="{{jobs[0].jobTitle}}"/> Position, you will be asked a series of questions. You will be given 5 mins to answer each question. <i class="hr-line"></i></h1>
-            <h5>Please click start to begin your interview.</h5>
-            <ul class="parent_question animate__fadeInLeftBig animate__animated">
-              <li>
-                <input type="radio" id="cancel" name="radio-btn" />
-                <label for="cancel">Cancel</label>
-                <div class="check"></div>
-              </li>
-              <li>
-                <input type="radio" id="start" name="radio-btn" checked="" />
-                <label *ngIf="questions && questions.length > 0" for="start"><a style=" float:right;cursor:pointer;"  (click)="start=false;lastminute=true">Start</a></label>
-                <div class="check"></div>
-              </li>
-            </ul>
-          </div>
+<app-header></app-header>
+<div class="mid-content mid-bar">
+  <div class="container">
+    <div class="sound-icon"><a href="javascript:void(0);"><img src="assets/images/sound-off.png" alt="Sound" title="Sound" /> </a></div>
+    <!--<div class="global-icon animate__fadeInBottomRight animate__animated"><img src="assets/images/global.png" alt="Global" title="Global" class="img-responsive" /> </div>-->
+    <div *ngIf="start" class="content-info interview-warp" >
+      <div class="row">
+        <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
+        <div class="col-sm-10">
+          <h1 class="animate__fadeInRight animate__animated">You are interviewing for
+            <input *ngIf="jobs && jobs.length > 0" class="interviewinput" type="text" placeholder="" value="{{jobs[0].jobTitle}}"/>
+            Position, you will be asked a series of questions. You will be given 5 mins to answer each question. <i class="hr-line"></i></h1>
+          <h5>Please click start to begin your interview.</h5>
+          <ul class="parent_question animate__fadeInLeftBig animate__animated">
+            <li>
+              <input type="radio" id="cancel" name="radio-btn" />
+              <label for="cancel">Cancel</label>
+              <div class="check"></div>
+            </li>
+            <li>
+              <input type="radio" id="start" name="radio-btn" checked="" />
+              <label *ngIf="questions && questions.length > 0" for="start"><a style=" float:right;cursor:pointer;"  (click)="start=false;lastminute=true">Start</a></label>
+              <div class="check"></div>
+            </li>
+          </ul>
         </div>
       </div>
-
-      
-      <div *ngIf="lastminute" class="content-info interview-warp interview-company">
-        <div class="row">
-          <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
-          <div class="col-sm-10">
-            <h1 class="animate__fadeInRight animate__animated">Last Minute Checklist <i class="hr-line"></i></h1>
-      
+    </div>
+    <div *ngIf="lastminute" class="content-info interview-warp interview-company">
+      <div class="row">
+        <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
+        <div class="col-sm-10">
+          <h1 class="animate__fadeInRight animate__animated">Last Minute Checklist <i class="hr-line"></i></h1>
           <div class="row">
-          <div class="col-sm-3">
-          <div class="last-mint-info">
-          <figure> <img src="assets/images/last-mint-icon.png" /> </figure>
-          <h3>Close Tabs</h3>
-          <p>Close all other applications, browsers, etc., to free up as much as resources.</p>
+            <div class="col-sm-3">
+              <div class="last-mint-info">
+                <figure> <img src="assets/images/last-mint-icon.png" /> </figure>
+                <h3>Close Tabs</h3>
+                <p>Close all other applications, browsers, etc., to free up as much as resources.</p>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="last-mint-info">
+                <figure> <img src="assets/images/last-mint-icon2.png" /> </figure>
+                <h3>Headphones</h3>
+                <p>Wear headphones to minimize audio disruption to hearing.</p>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="last-mint-info">
+                <figure> <img src="assets/images/last-mint-icon3.png" /> </figure>
+                <h3>Internet</h3>
+                <p>Make sure nothing won't disrupt your internet connection bandwidth.</p>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="last-mint-info">
+                <figure> <img src="assets/images/last-mint-icon4.png" /> </figure>
+                <h3>Avoid distraction</h3>
+                <p>While you’re on air, mute your phone and close the door.</p>
+              </div>
+            </div>
           </div>
-          </div>
-          <div class="col-sm-3">
-          <div class="last-mint-info">
-          <figure> <img src="assets/images/last-mint-icon2.png" /> </figure>
-          <h3>Headphones</h3>
-          <p>Wear headphones to minimize audio disruption to hearing.</p>
-          </div>
-          </div>
-          <div class="col-sm-3">
-          <div class="last-mint-info">
-          <figure> <img src="assets/images/last-mint-icon3.png" /> </figure>
-          <h3>Internet</h3>
-          <p>Make sure nothing won't disrupt your internet connection bandwidth.</p>
-          </div>
-          </div>
-          <div class="col-sm-3">
-          <div class="last-mint-info">
-          <figure> <img src="assets/images/last-mint-icon4.png" /> </figure>
-          <h3>Avoid distraction</h3>
-          <p>While you’re on air, mute your phone and close the door.</p>
-          </div>
-          </div>
-          
-          </div>
-                    
-            
-            <ul class="parent_question animate__fadeInLeftBig animate__animated">
-              <li>
-                <input type="radio" id="close" name="radio-btn" />
-                <label for="close">Back</label>
-                <div class="check"></div>
-              </li>
-              <li>
-                <input type="radio" id="continue" name="radio-btn" checked="" />
-                <label for="continue" (click)="lastminute=false;lastminutefinal=true;">Continue</label>
-                <div class="check"></div>
-              </li>
-            </ul>
-          </div>
+          <ul class="parent_question animate__fadeInLeftBig animate__animated">
+            <li>
+              <input type="radio" id="close" name="radio-btn" />
+              <label for="close">Back</label>
+              <div class="check"></div>
+            </li>
+            <li>
+              <input type="radio" id="continue" name="radio-btn" checked="" />
+              <label for="continue" (click)="lastminute=false;lastminutefinal=true;">Continue</label>
+              <div class="check"></div>
+            </li>
+          </ul>
         </div>
       </div>
-
-      <div *ngIf="lastminutefinal" class="content-info interview-warp audio-test-warp">
-        
-        <div class="row">
-          <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
-          <div class="col-sm-10">
-            <h1 class="animate__fadeInRight animate__animated">Test your audio and video <i class="hr-line"></i></h1>
-            <div class="video-signal-info">
-          <div class="row">
-          <div class="col-sm-4 col-xs-6">
-          <div class="last-mint-info">
-          <figure> <img src="assets/images/micro-1.png" /> </figure>
-          <h3>Microphone</h3>
-          </div>
-          </div>
-          <div class="col-sm-4 hidden-xs">
-          <div class="last-mint-info last-mint-arrow">
-          <figure> <img src="assets/images/micro-cricle.png" /> </figure>
-          </div>
-          </div>
-          <div class="col-sm-4 col-xs-6">
-          <div class="last-mint-info">
-          <figure> <img src="assets/images/micro-2.png" /> </figure>
-          <h3>Webcam</h3>
-          </div>
-          </div>
-          
-          
-          </div>
-          
+    </div>
+    <div *ngIf="lastminutefinal" class="content-info interview-warp audio-test-warp">
+      <div class="row">
+        <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
+        <div class="col-sm-10">
+          <h1 class="animate__fadeInRight animate__animated">Test your audio and video <i class="hr-line"></i></h1>
+          <div class="video-signal-info">
+            <div class="row">
+              <div class="col-sm-4 col-xs-6">
+                <div class="last-mint-info">
+                  <figure> <img src="assets/images/micro-1.png" /> </figure>
+                  <h3>Microphone</h3>
+                </div>
+              </div>
+              <div class="col-sm-4 hidden-xs">
+                <div class="last-mint-info last-mint-arrow">
+                  <figure> <img src="assets/images/micro-cricle.png" /> </figure>
+                </div>
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <div class="last-mint-info">
+                  <figure> <img src="assets/images/micro-2.png" /> </figure>
+                  <h3>Webcam</h3>
+                </div>
+              </div>
+            </div>
           </div>
           <p>We need to test your audio and video signal for calibration purposes only.</p>
-  
-            <ul class="parent_question animate__fadeInLeftBig animate__animated">
-              <li>
-                <input type="radio" id="close" name="radio-btn" />
-                <label for="close">Back</label>
-                <div class="check"></div>
-              </li>
-              <li>
-                <input type="radio" id="continue" name="radio-btn" checked="" />
-                <label for="continue" (click)="lastminutefinal=false;startTest=true; startRecording('start');">Start the test</label>
-                <div class="check"></div>
-              </li>
-            </ul>
-          </div>
-          
+          <ul class="parent_question animate__fadeInLeftBig animate__animated">
+            <li>
+              <input type="radio" id="close" name="radio-btn" />
+              <label for="close">Back</label>
+              <div class="check"></div>
+            </li>
+            <li>
+              <input type="radio" id="continue" name="radio-btn" checked="" />
+              <label for="continue" (click)="lastminutefinal=false;startTest=true; startRecording('start');">Start the test</label>
+              <div class="check"></div>
+            </li>
+          </ul>
         </div>
-
-
+      </div>
     </div>
-    
     <div *ngIf="startTest" class="content-info" style="padding-top: 10px !important;">
       <div class="row">
-        <div class="col-sm-3">
+        <!--<div class="col-sm-3">
           <h1 class="animate__fadeInRight animate__animated job-title"> Please press record to record your answer to the question above. <i class="hr-line"></i> </h1>
-          <!--<div class="search-box-location search-job-section">
-            <div class="input-group animate__fadeInLeftBig animate__animated">
-              <div class="input-group-btn">
-                <div class="btn-group"> <i class="pin"><img src="https://dq84tlhr1cf2j.cloudfront.net/assets/images/job-icon.png" /></i> </div>
-              </div>
-              <input type="text" class="form-control" placeholder="" />
-              <div class="input-group-btn">
-                <div class="btn-group search-btn"> <button class="btn">Search</button> </div>
-              </div>
-            </div>
-          </div>-->
           <br>
-            <div class="row">
-              <div class="col-sm-4"></div>
-              <div class="col-sm-4"><img src="https://dq84tlhr1cf2j.cloudfront.net/assets/images/sparkle-test.png" class="welcome-img img-responsive"/></div>
-              <div class="col-sm-4"></div>
-            </div>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"><img src="https://dq84tlhr1cf2j.cloudfront.net/assets/images/sparkle-test.png" class="welcome-img img-responsive"/></div>
+            <div class="col-sm-4"></div>
           </div>
-          <div class="col-sm-8">
-            <div class="row">
-              
-              <div class="col-sm-6 interview-warp">
-                <div class="contact_form">
-                  <div class="form-group">
-                    <label for="name" class="control-label">Question {{questionNo}} of {{totalQuestion}}</label>
-                  </div>
+        </div>-->
+        <div class="col-sm-12">
+        <div class="bg-profile-chat">
+          <div class="row">
+            <div class="col-sm-3 col-xs-6 interview-warp">
+              <div class="contact_form">
+                <div class="form-group">
+                  <label for="name" class="control-label">Question {{questionNo}} of {{totalQuestion}} </label>
                 </div>
-                <h5>{{questionName}}</h5>
               </div>
-              <div class="col-sm-6">
-                <div id="countdown">    
-                    <div id="countdown-number">{{ timeLeft }}</div>
-                    <svg>
-                      <circle r="18" cx="20" cy="20"></circle>
-                    </svg>
-                  </div>
-              </div>
+              <h5>{{questionName}}</h5>
             </div>
-            
-          <div class="select-your-job post-job-info animate__fadeInUpBig animate__animated" style="overflow: hidden !important;background: none !important;padding: 0px !important;height: 470px;">
+            <div class="col-sm-3 col-xs-6 pull-right">
+              <div id="countdown">
+                <div id="countdown-number">{{ timeLeft }}</div>
+                <svg>
+                <circle r="54" cx="60" cy="60"></circle>
+                </svg> </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+            <div class="select-your-job post-job-info animate__fadeInUpBig animate__animated" style="overflow: hidden !important;background: none !important;padding: 0px !important;">
             <ul>
-            <li>
-            
-            
-            <div >
-              
-              <div id="subscriber"></div>
-              <div id="publisher"></div>
-              <div id="buttonholder">
-                <div id="buttons">
-                  <button type="button" id="start" onClick="javascript:startArchive()" class="btn btn-danger btn-primary">Start Recording</button>
-                  <button type="button" id="stop" onClick="javascript:stopArchive('2')" class="btn btn-danger stop-btn">Stop Recording</button>
-                  
+              <li>
+                <div >
+                  <div id="subscriber"></div>
+                  <div id="publisher"></div>
+                  <div id="buttonholder">
+                    
+                  </div>
                 </div>
-              </div>
-            </div>
-              
-            
-           
-            </li>
+              </li>
             </ul>
+          </div>
+            <div id="buttons">
+                      <button type="button" id="start" onClick="javascript:startArchive()" class="btn btn-danger btn-primary">Start Recording</button>
+                      <button type="button" id="stop" onClick="javascript:stopArchive('2')" class="btn btn-danger stop-btn">Stop Recording</button>
+                    </div>
             </div>
-            </div>
+            
+          </div>
+          
+          </div>
+        </div>
       </div>
     </div>
     <div *ngIf="result" class="content-info interview-warp interview-company">
       <div class="row">
         <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
         <div class="col-sm-10">
-          <h1 class="animate__fadeInRight animate__animated">Thank you for intervie.<i class="hr-line"></i></h1>
+          <h1 class="animate__fadeInRight animate__animated">Thank you for interview.<i class="hr-line"></i></h1>
           <h5 class="gray">Let us know your feedback on your PAVI interview experience.</h5>
           <h6><strong>Note:</strong> You will be able to view your responses to each question when you will be given feedback on your responses. </h6>
           <ul class="parent_question animate__fadeInLeftBig animate__animated">
@@ -225,7 +197,5 @@
         </div>
       </div>
     </div>
-
   </div>
-  </div>
- 
+</div>
