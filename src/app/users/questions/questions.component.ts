@@ -89,7 +89,7 @@ export class QuestionsComponent implements OnInit {
 
   private countdown(questionID) {
     let elapsedTimes = [];
-    this.timeLeft=30;
+    this.timeLeft=500;
       this.interval = setInterval(() => {
         if (this.timeLeft > 0) {
           this.timeLeft--;
