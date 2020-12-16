@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectionStrategy, TemplateRef} from '@angular/core';
 import {AuthService} from '../../core/services/auth.service';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -17,6 +17,9 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Chart } from 'chart.js';
+import {startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,addHours,} from 'date-fns';
+import { Subject } from 'rxjs';
+import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
 
 declare var $: any;
 
@@ -55,8 +58,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 @Component({
   selector: 'app-dashboard',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: [
+    './dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
   employmentForm:FormGroup;
@@ -127,6 +132,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public Profile = false;
   public status: boolean = false;
   today: number = Date.now()
+  viewDate: Date = new Date();
+  events = [];
+  view: CalendarView = CalendarView.Month;
+  activeDayIsOpen: boolean = true;
+
+  CalendarView = CalendarView;
   
 
   dataSourceTwo: MatTableDataSource<PeriodicElement>;
@@ -797,7 +808,7 @@ lineChartMethod() {
   this.lineChart = new Chart(this.lineCanvas.nativeElement, {
     type: 'line',
     data: {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'],
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Dec'],
       datasets: [
         {
           label: 'Job Statistics',
@@ -826,5 +837,12 @@ lineChartMethod() {
   });
 }
 
+setView(view: CalendarView) {
+  this.view = view;
+}
+
+closeOpenMonthViewDay() {
+  this.activeDayIsOpen = false;
+}
 
 }

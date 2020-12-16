@@ -73,13 +73,15 @@ export class SearchJobComponent implements OnInit {
  
   getLocation(value){
     let that = this;
+
     //pass value is id for navigate
     //  this.router.navigate(['jobs/find-job']);
     //this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } })
-    const city = this.locationSearchData.find( ({ id }) => id === value );
-    //console.log(city.city);
+    const city = this.locationSearchData.find( ({ city }) => city === value );
+    
+    //console.log(city);
     geocodeAddress(city.city);
-    setTimeout(function(){ that.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } }) }, 6000);
+    setTimeout(function(){ that.router.navigate(['jobs/find-job'],{ queryParams: { cityId: city.id } }) }, 10000);
     
   }
 
