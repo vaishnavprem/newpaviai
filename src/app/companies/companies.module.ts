@@ -12,6 +12,9 @@ import { DashboardMoreArchiveJobsComponent } from './dashboard/dashboard-more-ar
 import { JobCreationStepperFormComponent } from './dashboard/dashboard-jobs/job-creation-stepper-form/job-creation-stepper-form.component';
 import {SharedModule} from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+//For Calender
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CommonModule,
     CompaniesRoutingModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   providers: [DatePipe]
 })

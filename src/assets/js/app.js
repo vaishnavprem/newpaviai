@@ -2,8 +2,10 @@
 
 var apiKey;
 var sessionId ;
+var session;
 var token;
 var archiveID;
+var publisher;
 var SAMPLE_SERVER_BASE_URL = 'https://d1iruxeyl67hmv.cloudfront.net/web/index.php';
 /*(function() {
     var cors_api_host = 'cors-anywhere.herokuapp.com';
@@ -22,7 +24,6 @@ var SAMPLE_SERVER_BASE_URL = 'https://d1iruxeyl67hmv.cloudfront.net/web/index.ph
     };
 })();*/
 function initVonge() {
-  $('#stop').hide();
   archiveID = null;
 
   // Make an Ajax request to get the OpenTok API key, session ID, and token from the server
@@ -37,7 +38,7 @@ function initVonge() {
 
 function initializeSession() {
   $('#loader').show();
-  var session = OT.initSession(apiKey, sessionId);
+   session = OT.initSession(apiKey, sessionId);
 //alert("dafdaf");
 
   // Subscribe to a newly created stream
@@ -60,16 +61,13 @@ function initializeSession() {
 	//alert(event.id);												   
     archiveID = event.id;
     console.log('Archive started ' + archiveID);
-    $('#stop').show();
-    $('#start').hide();
+
   });
 
   session.on('archiveStopped', function archiveStopped(event) {
     archiveID = event.id;
     console.log('Archive stopped ' + archiveID);
-    $('#start').hide();
-    $('#stop').hide();
-    $('#view').show();
+   
   });
 
   session.on('sessionDisconnected', function sessionDisconnected(event) {
@@ -85,7 +83,7 @@ function initializeSession() {
         width: '100%',
         height: '100%'
       };
-      var publisher = OT.initPublisher('publisher', publisherOptions, function initCallback(err) {
+       publisher = OT.initPublisher('publisher', publisherOptions, function initCallback(err) {
         if (err) {
           console.log('There was an error initializing the publisher: ', err.name, err.message);
           return;
@@ -129,16 +127,12 @@ function startArchive() { // eslint-disable-line no-unused-vars
     }
   });
 
-  $('#start').hide();
-  $('#stop').show();
 }
 
 // Stop recording
 function stopArchive(answer_id) { // eslint-disable-line no-unused-vars
   $.post(SAMPLE_SERVER_BASE_URL + '/archive/' + archiveID + '/stop');
-  $('#stop').hide();
-  $('#view').prop('disabled', false);
-  $('#stop').show();
+
  // alert("adfafasdf");
  //alert(answer_id);
   var posting = $.post('https://d39smmql2m03vn.cloudfront.net/webservice/v1/companies/save-answer-recording', {
@@ -153,7 +147,13 @@ function stopArchive(answer_id) { // eslint-disable-line no-unused-vars
    // alert('failed');
   });
 }
+function closeWebCam(){
+console.log("session close");
+session.disconnect(); 
+session.destroy();
+session.unpublish(publisher);
 
+}
 // Get the archive status. If it is  "available", download it. Otherwise, keep checking
 // every 5 secs until it is "available"
 function viewArchive() { // eslint-disable-line no-unused-vars
@@ -175,5 +175,4 @@ function viewArchive() { // eslint-disable-line no-unused-vars
   
   
 }
-$('#start').show();
-$('#view').hide();
+
