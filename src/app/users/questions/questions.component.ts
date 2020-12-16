@@ -9,11 +9,13 @@ import { map, tap, takeUntil,startWith,takeWhile, share,switchMap, filter} from 
 import {GetAuthUserPipe} from '../../shared/pipes/get-auth-user.pipe';
 
 
-// declare function typewriterQuestion(params1, param2): any;
+// declare function typewriterQuestion(params1, param2): any; startArchive
 declare function typingEffect(params1, param2): any;
 declare function initVonge(): any;
 declare function stopArchive(answerID): any;
 declare function testAudioVideo();
+declare function startArchive();
+declare function viewArchive();
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
@@ -25,6 +27,7 @@ export class QuestionsComponent implements OnInit {
   public questionName;
   public questionNo;
   public totalQuestion;
+  public question_id;
   private sub: any;
   public questions:any;
   public isLoder=false;
@@ -43,6 +46,8 @@ export class QuestionsComponent implements OnInit {
   timeLeft: number;
   timePerQuestion = 20;
   interval: any;
+  public startTestButton:boolean=true;
+  public continueTestButton:boolean=false;
   constructor(
     public router: Router,
     private route: ActivatedRoute,
@@ -89,7 +94,7 @@ export class QuestionsComponent implements OnInit {
 
   private countdown(questionID) {
     let elapsedTimes = [];
-    this.timeLeft=30;
+    this.timeLeft=120;
       this.interval = setInterval(() => {
         if (this.timeLeft > 0) {
           this.timeLeft--;
@@ -118,21 +123,40 @@ export class QuestionsComponent implements OnInit {
       this.questionNo = questionID +1;
       this.totalQuestion = Object.keys(this.questions).length;
         this.questionName =this.questions[questionID].question
-
+this.question_id = this.questions[questionID].id
         initVonge();
       this.countdown(questionID);
     }
     
   }
+  startRecordingArchive(){
+    startArchive();
+  }
 
+  stopRecordingArchive(answerID){
+    stopArchive(answerID)
+  }
+  viewRecordingArchive(){
+    viewArchive();
+  }
   private resetTimer() {
     this.timeLeft = this.timePerQuestion;
   }
 
-   async checkDevice(){
-    let device =false;
-      device = await testAudioVideo();
-     return device;
+  checkDevice(){
+    let that=this;
+    navigator.mediaDevices.getUserMedia({ audio: true, video: true})
+    .then(function(stream) {
+        alert("audio and video device found");
+        that.lastminutefinal=false;
+        that.startTest=true; 
+        that.startRecording('start');
+    })
+    .catch(function(err) {
+      alert("audio or video device no found");
+    });
+    
+   
   }
   gotoVideoPage(){
     //console.log(questionId);

@@ -161,29 +161,18 @@ function viewArchive() { // eslint-disable-line no-unused-vars
   window.location = SAMPLE_SERVER_BASE_URL + /archive/ + archiveID + '/view';
 }
  async function testAudioVideo(){
-  const constraints = {
-    audio: true,
-  };
-  
-  const videoconstraints = {
-    video: true,
-  };
-  navigator.mediaDevices.getUserMedia(constraints)
+
+  navigator.mediaDevices.getUserMedia({ audio: true, video: true})
   .then(function(stream) {
-      alert("audio device found");
+      alert("audio and video device found");
+      return true;
   })
   .catch(function(err) {
-    alert("audio device no found");
+    alert("audio or video device no found");
+    return false;
   });
   
-  navigator.mediaDevices.getUserMedia(videoconstraints)
-  .then(function(stream) {
-    alert("video device found");
-    return true;
-  })
-  .catch(function(err) {
-    alert("video device not found");
-  });
+  
   
 }
 $('#start').show();
