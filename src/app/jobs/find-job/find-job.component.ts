@@ -96,8 +96,8 @@ export class FindJobComponent implements OnInit, AfterViewInit {
         this.jobs = response['data']['jobs'];
         this.singleJob = response['data']['cityData'];
         this.stateData = response['data']['stateData'];
-        console.log(this.singleJob );
-        
+       // console.log("Single City", this.singleJob );
+       // console.log("All City",  this.stateData );
       });
     });
     
@@ -245,7 +245,11 @@ export class FindJobComponent implements OnInit, AfterViewInit {
   }
   
   changeCity(value){
-    setTimeout(function(){$('.selectpicker').selectpicker('refresh');$(".dropdown-toggle").append("<span class='bs-caret'><span class='caret'></span></span>");$(".dropdown-menu").css("min-width","290px !important"); },3000);
-    this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } })
+    if(value == 'All'){
+      value = 0;
+    }
+      setTimeout(function(){$('.selectpicker').selectpicker('refresh');$(".dropdown-toggle").append("<span class='bs-caret'><span class='caret'></span></span>");$(".dropdown-menu").css("min-width","290px !important"); },3000);
+      this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } })
+    
   }
 }
