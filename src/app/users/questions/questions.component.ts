@@ -7,7 +7,7 @@ import { Subject ,Observable,timer, NEVER, BehaviorSubject, fromEvent, of } from
 import {API_URL,AVATAR_URL} from '../../core/constants/general';
 import { map, tap, takeUntil,startWith,takeWhile, share,switchMap, filter} from 'rxjs/operators';
 import {GetAuthUserPipe} from '../../shared/pipes/get-auth-user.pipe';
-
+declare var $: any;
 
 // declare function typewriterQuestion(params1, param2): any; startArchive
 declare function typingEffect(params1, param2): any;
@@ -75,7 +75,7 @@ export class QuestionsComponent implements OnInit {
    this.timeLeft=this.timePerQuestion;
   }
   getQuestionData(job_id){
-    this.isLoder=true;
+    $('.loader').show();
     let parmsa ={
       jobId:job_id,
       user_id:this.authUser.user_id
@@ -83,7 +83,7 @@ export class QuestionsComponent implements OnInit {
     let JobData =  this.companiesService.showQuestionAnswer(parmsa)
     .pipe(takeUntil(this.destroy$))
     .subscribe((response : any) => {
-      this.isLoder=false;
+      $('.loader').hide();
       if (response.statusCode == 200) {
         console.log(response);
           this.questions = response['data']['question']; 

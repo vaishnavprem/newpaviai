@@ -2,6 +2,23 @@
 <div class="bg-images-1">
 <app-header></app-header>
 <div class="mid-content mid-bar">
+  <div style="display: none;" class="loader"> <svg width="80" height="80" viewBox="0 0 38 38" stroke="#fff">
+    <g fill="none" fill-rule="evenodd">
+      <g transform="translate(1 1)" stroke-width="2">
+        <circle stroke-opacity=".2" cx="18" cy="18" r="18"/>
+        <path d="M36 18c0-9.94-8.06-18-18-18">
+          <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 18 18"
+                        to="360 18 18"
+                        dur="1s"
+                        repeatCount="indefinite"/>
+                </path>
+            </g>
+        </g>
+    </svg>
+    </div>   
   <div class="container">
     <div class="sound-icon"><a href="javascript:void(0);"><img src="assets/images/sound-off.png" alt="Sound" title="Sound" /> </a></div>
     <!--<div class="global-icon animate__fadeInBottomRight animate__animated"><img src="assets/images/global.png" alt="Global" title="Global" class="img-responsive" /> </div>-->
@@ -10,7 +27,7 @@
         <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
         <div class="col-sm-10">
           <h1 class="animate__fadeInRight animate__animated">You are interviewing for
-            <input *ngIf="jobs && jobs.length > 0" class="interviewinput" type="text" placeholder="" value="{{jobs[0].jobTitle}}"/>
+            <span *ngIf="jobs && jobs.length > 0" class="interviewinput">{{jobs[0].jobTitle}}</span>
             Position, you will be asked a series of questions. You will be given 5 mins to answer each question. <i class="hr-line"></i></h1>
           <h5>Please click start to begin your interview.</h5>
           <ul class="parent_question animate__fadeInLeftBig animate__animated">
@@ -144,7 +161,7 @@
             </div>
             <div class="col-sm-3 col-xs-6 pull-right">
               <div id="countdown">
-                <div id="countdown-number">{{ minutes }} : {{seconds}}</div>
+                <div id="countdown-number">{{ minutes  | number:'2.0-0'}}<span>:</span>{{seconds | number:'2.0-0'}}</div>
                 <svg>
                 <circle r="54" cx="60" cy="60"></circle>
                 </svg> </div>
@@ -166,8 +183,8 @@
 
           <div class="micro-icon">
             <div id="buttons" class="buttonschat">
-              <button type="button" id="start" [disabled]="recordingClicked" (click)="startRecordingArchive(questionArrayKey)" title="Start Recording"><img src="assets/images/chat-2.png" /></button>
-              <button type="button" id="stop" [disabled]="recordingStopClicked" (click)="stopRecordingArchive(questionArrayKey,question_id)" title="Stop Recording"><img src="assets/images/chat-3.png" /></button>
+              <button type="button" id="start" [disabled]="recordingClicked" (click)="startRecordingArchive(questionArrayKey)" title="Start Recording" class="btn"><img src="assets/images/chat-2.png" /></button>
+              <button type="button" id="stop" [disabled]="recordingStopClicked" (click)="stopRecordingArchive(questionArrayKey,question_id)" title="Stop Recording" class="btn"><img src="assets/images/chat-3.png" /></button>
               
                     </div>
                   </div>

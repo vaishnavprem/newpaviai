@@ -33,11 +33,12 @@ function initVonge() {
     token = res.token;
 
     initializeSession();
+    
   });
 }
 
 function initializeSession() {
-  $('#loader').show();
+  $('.loader').show();
    session = OT.initSession(apiKey, sessionId);
 //alert("dafdaf");
 
@@ -61,13 +62,13 @@ function initializeSession() {
 	//alert(event.id);												   
     archiveID = event.id;
     console.log('Archive started ' + archiveID);
-
+    $('.loader').hide();
   });
 
   session.on('archiveStopped', function archiveStopped(event) {
     archiveID = event.id;
     console.log('Archive stopped ' + archiveID);
-   
+    $('.loader').hide();
   });
 
   session.on('sessionDisconnected', function sessionDisconnected(event) {
@@ -93,13 +94,13 @@ function initializeSession() {
             console.log('There was an error publishing: ', pubErr.name, pubErr.message);
           }
         });
-		$('#loader').hide();
+		$('.loader').hide();
       });
     } else {
       console.log('There was an error connecting to the session: ', error.name, error.message);
     }
   });
- 
+
 }
 
 // Start recording

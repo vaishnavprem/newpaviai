@@ -40,8 +40,8 @@ strong {color: #09c;}
 .contact_form{padding:15px 0px 0px;}
 .interview-warp h5{color:#99a0bf;}
 
-.select-your-job{width:100%; height:350px; margin:20px auto; }
-.bg-profile-chat{background:url(../../../assets/images/live-chat-bg.jpg) no-repeat center fixed; height:490px;}
+.select-your-job{width:100%;  margin:20px auto; }
+.bg-profile-chat{background:url(../../../assets/images/live-chat-bg.jpg) no-repeat center fixed; height:600px;margin-top: -50px;}
 .select-your-job.post-job-info ul li{padding:0px;}
 .contact_form .form-group .control-label{font-size: 23px;}
 
@@ -61,10 +61,11 @@ strong {color: #09c;}
 
 }
 #countdown {position: relative; float:right; height: 120px; width: 120px; text-align: center; margin-top: 20px; margin-right: 30px;}
-#countdown-number {color: white; display: inline-block;	line-height: 120px; font-size: 40px; font-weight: 600;}
-svg {position: absolute; top: 0; right: 0; width: 120px; height: 120px; transform: rotateY(-180deg) rotateZ(-90deg);}
-svg circle {stroke-dasharray: 339px; stroke-dashoffset: 0px; stroke-linecap: round;	stroke-width: 4px; stroke: white; fill: none; }
-.micro-icon .buttonschat{padding:0px; margin:0px; list-style:none; margin:0px auto; position:fixed; bottom:30px; left:0px; right:0px;}
+#countdown-number {color: white; display: inline-block;	line-height: 110px; font-size: 30px; font-weight: 600;}
+#countdown-number span {font-size: 40px; font-weight: 100;}
+#countdown svg {position: absolute; top: 0; right: 0; width: 120px; height: 120px; transform: rotateY(-180deg) rotateZ(-90deg);}
+#countdown svg circle {stroke-dasharray: 339px; stroke-dashoffset: 0px; stroke-linecap: round;	stroke-width: 4px; stroke: white; fill: none; }
+.micro-icon .buttonschat{padding:0px; margin:0px; list-style:none; margin:0px auto; position:fixed; bottom:60px; left:0px; right:0px;}
 .micro-icon{text-align: center;}
 .micro-icon .btn{padding:0px; border:none; background:transparent; }
 .micro-icon .btn + .btn{margin-left:20px;}
