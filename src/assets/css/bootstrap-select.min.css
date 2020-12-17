@@ -6,15 +6,15 @@ select.selectpicker {
 .bootstrap-select {
     width: 303px\9;
 }
-.bootstrap-select > .dropdown-toggle { position: relative; width: 100%; z-index: 10001; text-align: right; white-space: nowrap;
-background: transparent; border-color: transparent; color:#edf568; font-size: 36px;}
+.select-job.show {display: inline-block !important;}
+.bootstrap-select > .dropdown-toggle { position: relative; z-index: 10001; text-align: right; white-space: nowrap;background: transparent; border-color: transparent; color:#edf568; font-size: 36px; padding:0px;}
 .bootstrap-select > .dropdown-toggle:hover{background: transparent; border-color: transparent; color:#edf568;}
 .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default { color: transparent; background-color: transparent;  border-color: transparent;}
 .open > .dropdown-toggle.btn-default:hover{background-color: transparent; border-color: transparent; color:#edf568;}
 .open > .dropdown-toggle.btn-default:focus{background-color: transparent; border-color: transparent; color:#edf568;}
 .open > .dropdown-toggle.btn-default{color:#edf568; border-color: transparent;}
 
-.select-job .dropup .caret{border-bottom: 10px dashed;}
+.select-job.dropup .caret{border-bottom: 10px transparent;}
 .select-job .caret{border-right: 10px solid transparent; border-left: 10px solid transparent; border-top: 10px dashed;}
 .select-job .dropdown-menu{background:rgba(237,245,104, 0.80); border-radius:0px; font-size:24px; scrollbar-width: thin; scrollbar-color: #fff #999aa1; padding:0px;}
 
@@ -88,9 +88,7 @@ background: transparent; border-color: transparent; color:#edf568; font-size: 36
 .bootstrap-select.fit-width {
     width: auto !important;
 }
-.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
-    width: 303px;
-}
+
 .bootstrap-select .dropdown-toggle:focus {
     outline: thin dotted transparent !important;
     outline: 0px auto -webkit-focus-ring-color !important;
@@ -175,9 +173,6 @@ background: transparent; border-color: transparent; color:#edf568; font-size: 36
     display: inline-block;
 }
 .bootstrap-select .dropdown-toggle .filter-option {
-    position: absolute;
-    top: 0;
-    left: 0;
     padding-top: inherit;
     padding-right: inherit;
     padding-bottom: inherit;
@@ -186,6 +181,7 @@ background: transparent; border-color: transparent; color:#edf568; font-size: 36
     width: 100%;
     text-align: left;
 	padding:0px;
+	display:inline-block;
 }
 .bootstrap-select .dropdown-toggle .filter-option-inner {
     padding-right: inherit;
@@ -196,7 +192,7 @@ background: transparent; border-color: transparent; color:#edf568; font-size: 36
 .bootstrap-select .dropdown-toggle .caret {
     position: absolute;
     top: 28px;
-    right: 12px;
+    right: -30px;
     margin-top: -2px;
     vertical-align: middle;
 }

@@ -1,1 +1,11 @@
 .new-head a{cursor:pointer;}
+
+@media(max-width:767px){
+.new-head ul li a{padding: 10px 10px; font-size: 17px; display: block;}
+.new-head ul li{width:100%;}
+.new-head-mobile{position: fixed; background: #02092a; z-index: 11; width: 250px; right: 0; height: 100%; top: 0;  transform: translate(100%,0px); transition: all ease-in-out 0.3s;}
+
+.nav-show .new-head-mobile {transform: translate(0%,0px); transition: all ease-in-out 0.3s; width:250px;}
+.nav-tiker{float:right;}
+.nav-tiker-close{float: right; padding-right: 15px; padding-top: 10px;}
+}

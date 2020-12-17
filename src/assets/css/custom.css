@@ -128,7 +128,7 @@ input[type=radio]:checked ~ label {color: #fff;}
 .global-icon img{max-width: 100%;}
 .search-btn .btn{height: 47px; font-weight:600; background:#99a0bf; color:#fff; font-family: 'Montserrat', sans-serif; padding: 4px 25px 10px; font-size:28px; border-radius: 0px;}
 
-.select-job{background:none; border:none; color:#edf568;}
+.select-job{background:none; border:none; color:#edf568;margin-right: 30px;}
 .search-job-section{padding-top:30px;}
 
 .search-box-location{padding-top: 10px;}
