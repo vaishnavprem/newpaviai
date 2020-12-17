@@ -7,13 +7,15 @@ import { Subject ,Observable,timer, NEVER, BehaviorSubject, fromEvent, of } from
 import {API_URL,AVATAR_URL} from '../../core/constants/general';
 import { map, tap, takeUntil,startWith,takeWhile, share,switchMap, filter} from 'rxjs/operators';
 import {GetAuthUserPipe} from '../../shared/pipes/get-auth-user.pipe';
+declare var $: any;
 
-
-// declare function typewriterQuestion(params1, param2): any;
+// declare function typewriterQuestion(params1, param2): any; startArchive
 declare function typingEffect(params1, param2): any;
 declare function initVonge(): any;
 declare function stopArchive(answerID): any;
-declare function testAudioVideo();
+declare function closeWebCam();
+declare function startArchive();
+declare function viewArchive();
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
@@ -25,6 +27,7 @@ export class QuestionsComponent implements OnInit {
   public questionName;
   public questionNo;
   public totalQuestion;
+  public question_id;
   private sub: any;
   public questions:any;
   public isLoder=false;
@@ -34,6 +37,7 @@ export class QuestionsComponent implements OnInit {
   public lastminutefinal:boolean=false;
   public startTest:boolean=false;
   public result:boolean=false;
+  public questionArrayKey;
   authUser;
   postParamas;
   public show = false;
@@ -41,8 +45,15 @@ export class QuestionsComponent implements OnInit {
 
   completionTime: number;
   timeLeft: number;
-  timePerQuestion = 20;
+  timePerQuestion = 120;
   interval: any;
+  localStream;
+  minutes:number;
+  seconds:number
+  public startTestButton:boolean=true;
+  public continueTestButton:boolean=false;
+  public recordingClicked:boolean=false;
+  public recordingStopClicked:boolean=true;
   constructor(
     public router: Router,
     private route: ActivatedRoute,
@@ -61,10 +72,10 @@ export class QuestionsComponent implements OnInit {
    this.start=true;
    this.getQuestionData(this.id );
    typingEffect("Thank you for your interest in this role. Please read each question then click record answer to submit your response.", "questionText");
-   
+   this.timeLeft=this.timePerQuestion;
   }
   getQuestionData(job_id){
-    this.isLoder=true;
+    $('.loader').show();
     let parmsa ={
       jobId:job_id,
       user_id:this.authUser.user_id
@@ -72,7 +83,7 @@ export class QuestionsComponent implements OnInit {
     let JobData =  this.companiesService.showQuestionAnswer(parmsa)
     .pipe(takeUntil(this.destroy$))
     .subscribe((response : any) => {
-      this.isLoder=false;
+      $('.loader').hide();
       if (response.statusCode == 200) {
         console.log(response);
           this.questions = response['data']['question']; 
@@ -88,18 +99,26 @@ export class QuestionsComponent implements OnInit {
   }
 
   private countdown(questionID) {
-    let elapsedTimes = [];
-    this.timeLeft=500;
       this.interval = setInterval(() => {
         if (this.timeLeft > 0) {
           this.timeLeft--;
+          this.minutes = Math.floor(this.timeLeft / 60);
+           this.seconds = Math.floor(this.timeLeft - this.minutes * 60);
         //  this.calculateTotalElapsedTime(elapsedTimes);
           if (this.timeLeft === 0 ) {  
          //   stopArchive(questionID);
             let nextQuestion =  questionID + 1;
             if(this.questions[nextQuestion]){
-              this.startRecording(nextQuestion);
+             // this.startRecording(nextQuestion);
+             this.stopRecordingArchive(questionID,this.questions[questionID].id)
             } else {
+              navigator.mediaDevices.getUserMedia({video: true, audio: true})
+              .then(mediaStream => {
+                const stream = mediaStream;
+                const tracks = stream.getTracks();
+
+                tracks[0].stop;
+              })
               this.startTest =false;
               this.result =true;
             } 
@@ -115,24 +134,65 @@ export class QuestionsComponent implements OnInit {
       if(questionID=='start'){
         questionID=0;
       }
-      this.questionNo = questionID +1;
-      this.totalQuestion = Object.keys(this.questions).length;
+        this.questionArrayKey=questionID;
+        this.questionNo = questionID +1;
+        this.totalQuestion = Object.keys(this.questions).length;
         this.questionName =this.questions[questionID].question
-
+        this.question_id = this.questions[questionID].id
+        this.timeLeft=120;
+        this.minutes = Math.floor(this.timeLeft / 60);
+      this.seconds = Math.floor(this.timeLeft - this.minutes * 60);
+           
         initVonge();
-      this.countdown(questionID);
+        
     }
     
   }
+  startRecordingArchive(questionID){
+    this.recordingStopClicked=false;
+    this.recordingClicked=true;
+    startArchive();
+    this.countdown(questionID);
+  }
 
+  stopRecordingArchive(questioKey,answerID){
+    this.recordingStopClicked=true;
+    this.recordingClicked=false;
+    stopArchive(answerID)
+    
+    let nextQuestion =  questioKey + 1;
+    if(this.questions[nextQuestion]){
+      // this.startRecording(nextQuestion);
+      this.startRecording((questioKey +1));
+     } else {
+       
+      closeWebCam();
+       this.startTest =false;
+       this.result =true;
+     } 
+  }
+  viewRecordingArchive(){
+    viewArchive();
+  }
   private resetTimer() {
     this.timeLeft = this.timePerQuestion;
   }
 
-   async checkDevice(){
-    let device =false;
-      device = await testAudioVideo();
-     return device;
+  checkDevice(){
+    let that=this;
+    navigator.mediaDevices.getUserMedia({ video: true,audio: true})
+    .then(function(stream) {
+      that.localStream = stream;
+        alert("audio and video device found");
+        that.lastminutefinal=false;
+        that.startTest=true; 
+        that.startRecording('start');
+    })
+    .catch(function(err) {
+      alert("audio or video device no found");
+    });
+    
+   
   }
   gotoVideoPage(){
     //console.log(questionId);
