@@ -9,6 +9,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchJobComponent } from './search-job/search-job.component';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 @NgModule({
   declarations: [ShowJobComponent, ApplyToJobComponent, SearchJobComponent],
   imports: [
@@ -17,7 +18,8 @@ import { SearchJobComponent } from './search-job/search-job.component';
     CoreModule,
     Ng2SearchPipeModule,
     JwPaginationModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    GooglePlaceModule
   ]
 })
 export class JobsModule { }
