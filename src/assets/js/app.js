@@ -165,7 +165,7 @@ function viewArchive() { // eslint-disable-line no-unused-vars
 
   navigator.mediaDevices.getUserMedia({ audio: true, video: true})
   .then(function(stream) {
-      alert("audio and video device found");
+    $('#media-device').modal('show');
       return true;
   })
   .catch(function(err) {

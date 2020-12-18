@@ -262,35 +262,33 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.lineChartMethod();
   }
 
-   async getCompanyData(){
-    this.isLoder=true;
-    this.postArry = {
-      user_id:this.authUser.user_id
+    getCompanyData(){
+      let that=this;
+      that.isLoder=true;
+      that.postArry = {
+      user_id:that.authUser.user_id
     }
-    let response=  await this.companiesService.getCompanyData(this.postArry)
+    that.companiesService.getCompanyData(that.postArry)
     .subscribe((response : any)=> {
+      that.isLoder=false;
       if (response.statusCode == 200) {
-          this.companyData = response['data']['companydata'];
-          this.getEmployment();
-          this.getSeniority();
-          this.getResponsibility();
-          this.getRequirements();
-          this.getJobCategory();
+        that.companyData = response['data']['companydata'];
+        that.employments = response['data']['employment']; 
+        that.seniorityLevels = response['data']['seniority']; 
+        that.responsibilities = response['data']['responsibility']; 
+        that.requirements = response['data']['requirement']; 
+        that.categories = response['data']['categories'];  
          } else if (response.statusCode == 401) {
-            this.toastr.error(response.message)
-            this.auth.logOut();
-            this.router.navigate(['auth/login']);
+          that.toastr.error(response.message)
+          that.auth.logOut();
+          that.router.navigate(['auth/login']);
           }
-          else this.toastr.error(response.message)
+          else that.toastr.error(response.message)
+          
     });
     
-    this.isLoder=false;
     
-
-    this.dataSourceTwo.data = ELEMENT_DATA;
-    this.dataSourceTwo.paginator = this.tableTwoPaginator;
-    this.dataSourceTwo.sort = this.tableTwoSort;
-    
+    this.isLoder = false; 
   }
 
   applyFilterOne(filterValue: string) {
