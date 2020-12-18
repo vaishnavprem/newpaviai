@@ -183,10 +183,13 @@ export class QuestionsComponent implements OnInit {
     navigator.mediaDevices.getUserMedia({ video: true,audio: true})
     .then(function(stream) {
       that.localStream = stream;
-        alert("audio and video device found");
-        that.lastminutefinal=false;
-        that.startTest=true; 
-        that.startRecording('start');
+          $('#media-device').modal('show');
+         
+          setTimeout(function(){
+            that.lastminutefinal=false;
+            that.startTest=true; 
+            that.startRecording('start');
+          }, 2000);   
     })
     .catch(function(err) {
       alert("audio or video device no found");
