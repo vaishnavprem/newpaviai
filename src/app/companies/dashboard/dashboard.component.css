@@ -108,7 +108,7 @@ html{height:100%;}
 /*New Dashboard Design Start*/
 a, a:hover, a:focus{text-decoration:none;cursor:pointer;}
 .bg-images-1{background:url(assets/images/bg-images-1.jpg) no-repeat center fixed; height:100%; width:100%; font-family: "Montserrat Ultra Light"; background-size:cover;}
-.content-warp{width:90%; margin:0px auto; background:#979ebd; position: fixed; height:100%; left:0px; right:0px; }
+.content-warp{width:90%; margin:0px auto; background:#979ebd; position: relative; height:100%; left:0px; right:0px; }
 
 .content-bg-inner{background:#99a0bf; width:100%; float:left;}
 
@@ -139,11 +139,11 @@ a, a:hover, a:focus{text-decoration:none;cursor:pointer;}
 .dashboard-list-view{margin-right:30px; margin-bottom:20px; padding-bottom:5px; border-bottom: solid 1px #fff;}
 .dashboard-list-view:nth-child(2n + 1){border-bottom:none;}
 
-.content-warp{width:90%; margin:0px auto; background:#979ebd; position: fixed; height:100%; left:0px; right:0px; }
+.content-warp{width:90%; margin:0px auto; background:#979ebd; position: relative; height:100%; left:0px; right:0px; }
 .map-company-view{background:#001621; margin-right: 30px;}
 .blck{background:#000614;}
 .wht{background:#fff;}
-.dashboard-right-mid{display: inline-block; width: 100%; margin-top:82px; height:550px; overflow:auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: #fff #999aa1;}
+.dashboard-right-mid{display: inline-block; width: 100%; margin-top:82px; scrollbar-width: thin; scrollbar-color: #fff #999aa1;}
 .map-company-view .table thead th{color:#fff; font-family: 'Montserrat'; font-weight:500; font-size:15px; text-transform:uppercase; padding:12px 10px;}
 .map-company-view .table thead th span{float: right; padding-right: 10px; font-size: 15px;}
 .map-company-view .table tbody td{font-family: 'Montserrat'; font-weight:400; font-size:15px; padding:12px 6px;}

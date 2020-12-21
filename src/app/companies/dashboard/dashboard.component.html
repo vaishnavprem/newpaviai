@@ -14,8 +14,8 @@
               </path>
           </g>
       </g>
-  </svg>
-  </div>   
+  </svg> 
+  </div> 
   <div class="modal fade in" id="add-modal-seniority">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -817,7 +817,7 @@
 
             <div *ngIf="addInterviewQuestions" id="add-interview-questions">
               <div *ngIf="jobs && jobs.length == 0">Add Job First</div>
-              <div *ngIf="jobs && jobs.length > 0" class="inner-page">
+              <div  class="inner-page">
                 <h2>Add Interview Questions</h2>
                 <form [formGroup]="questionForm" (ngSubmit)="saveQuestion()">
                   <div class="row">
@@ -852,7 +852,7 @@
             
             <div *ngIf="viewQuestions" id="interview-questions">
               <div *ngIf="jobs && jobs.length == 0">No record found</div>
-              <div *ngIf="jobs && jobs.length > 0" class="table-responsive">
+              <div  class="table-responsive">
                 <!-- <table class="table table-bordered">
                   <thead>
                     <tr>
@@ -914,8 +914,8 @@
             </div>
 
             <div *ngIf="viewjobs" id="interviews">
-              <div *ngIf="jobs && jobs.length == 0">No record found</div>
-              <div *ngIf="jobs && jobs.length > 0" class="table-responsive">
+              <!-- <div *ngIf="jobs && jobs.length == 0">No record found</div> -->
+              <div  class="table-responsive">
                   <mat-form-field>
                     <input
                       matInput
