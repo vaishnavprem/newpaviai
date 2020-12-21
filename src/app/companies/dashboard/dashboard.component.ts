@@ -263,27 +263,27 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
     getCompanyData(){
-      let that=this;
-      that.isLoder=true;
-      that.postArry = {
-      user_id:that.authUser.user_id
+      //let that=this;
+      this.isLoder=true;
+      this.postArry = {
+      user_id:this.authUser.user_id
     }
-    that.companiesService.getCompanyData(that.postArry)
+    this.companiesService.getCompanyData(this.postArry)
     .subscribe((response : any)=> {
-      that.isLoder=false;
+      this.isLoder=false;
       if (response.statusCode == 200) {
-        that.companyData = response['data']['companydata'];
-        that.employments = response['data']['employment']; 
-        that.seniorityLevels = response['data']['seniority']; 
-        that.responsibilities = response['data']['responsibility']; 
-        that.requirements = response['data']['requirement']; 
-        that.categories = response['data']['categories'];  
+        this.companyData = response['data']['companydata'];
+        this.employments = response['data']['employment']; 
+        this.seniorityLevels = response['data']['seniority']; 
+        this.responsibilities = response['data']['responsibility']; 
+        this.requirements = response['data']['requirement']; 
+        this.categories = response['data']['categories'];  
          } else if (response.statusCode == 401) {
-          that.toastr.error(response.message)
-          that.auth.logOut();
-          that.router.navigate(['auth/login']);
+          this.toastr.error(response.message)
+          this.auth.logOut();
+          this.router.navigate(['auth/login']);
           }
-          else that.toastr.error(response.message)
+          else this.toastr.error(response.message)
           
     });
     
@@ -517,16 +517,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     let JobData = this.companiesService.getJobs(this.postArry)
     .subscribe(response => {
       this.dataSourceOne.data = response['data']['jobs'] as JobsElements[];
-      setTimeout(() => {this.dataSourceOne.paginator = this.tableOnePaginator;
+      this.dataSourceOne.paginator = this.tableOnePaginator;
         this.dataSourceOne.sort = this.tableOneSort;
-      });
+     
+      this.jobs = response['data']['jobs'];
+      console.log("View Jobs>>",this.jobs);
       
-      this.dataSourceFour.data = response['data']['jobs'] as Question[];
-      setTimeout(() => {this.dataSourceFour.paginator = this.tableFourPaginator;
-        this.dataSourceFour.sort = this.tableFourSort;
-      });
-    
-      this.jobs = response['data']['jobs'];  
     });
     this.isLoder=false;
   }
@@ -539,9 +535,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     let JobData = this.companiesService.getJobsUser(this.postArry)
     .subscribe(response => {
       this.dataSourceThree.data = response['data']['user'] as User[];
-      setTimeout(() => {this.dataSourceThree.paginator = this.tableThreePaginator;
+      this.dataSourceThree.paginator = this.tableThreePaginator;
         this.dataSourceThree.sort = this.tableThreeSort;
-      });
+      
       
     });
     this.isLoder=false;
@@ -550,12 +546,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     $("#show-job").modal("show");
     $("#show-job").appendTo("body");
     this.singleJob =this.jobs[index];
+    //console.log("Index>>",index,"Single jOB>>",this.singleJob);
   }
   editJob(index){
     this.singleJob =this.jobs[index];
     
     if(this.singleJob ){
-        $('#pills-tab a[href="#create-job"]').tab('show');
+        // $('#pills-tab a[href="#create-job"]').tab('show');
+        this.selectedV(1);
         this.jobForm.patchValue({
           jobId:this.jobs[index].id,
           date_opened:new Date(this.jobs[index].dateOpened).toISOString().substring(0, 10),
@@ -591,15 +589,32 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
   }
   listQuestion(){
-    this.getJobs();
+    //this.getJobs();
+    this.isLoder=true;
+    this.postArry = {
+      companyId:this.companyData.id
+    }
+    let JobData = this.companiesService.getJobs(this.postArry)
+    .subscribe(response => {
+      this.dataSourceFour.data = response['data']['jobs'] as Question[];
+      this.dataSourceFour.paginator = this.tableFourPaginator;
+        this.dataSourceFour.sort = this.tableFourSort;
+      
+      this.jobs = response['data']['jobs'];
+      console.log("View Jobs>>",this.jobs);
+      
+    });
+    this.isLoder=false;
   }
   showQuestions(jobId){
+    console.log("JobId>>",jobId);
     this.postArry = {
       jobId:jobId,
     }
     this.companiesService.showQuestion(this.postArry).subscribe(response => {
       if(Object.keys(response['data']).length > 0){
         this.questions = response['data']['question'];
+        console.log("Questions>>",this.questions);
         $("#show-question").modal("show");
       } else {
         this.toastr.error('No question found');
@@ -709,11 +724,11 @@ showCandidateAnswers(index){
 
 selectedV(value){
   let select = +value;
-  this.status = !this.status;
-  let that = this;
+  this.status = false;
+  // let that = this;
   switch(select) {
     case 0: { 
-      setTimeout(function(){ that.lineChartMethod(); }, 1000)
+      // setTimeout(function(){ that.lineChartMethod(); }, 1000)
       this.home = true;
       this.addJobs = false;
       this.viewjobs = false;
@@ -748,7 +763,7 @@ selectedV(value){
        break; 
     }
     case 3: { 
-      this.getJobs();
+      this.addQuestion();
       this.home = false;
       this.addJobs = false;
       this.viewjobs = false;
@@ -760,7 +775,7 @@ selectedV(value){
       break; 
     }
     case 4: { 
-      this.getJobs();
+      this.listQuestion();
       this.home = false;
       this.addJobs = false;
       this.viewjobs = false;
