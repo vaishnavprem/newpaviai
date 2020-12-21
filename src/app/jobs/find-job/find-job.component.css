@@ -22,8 +22,7 @@
 /* .colIndex{z-index: -1;} */
 .notFound{text-align: center;font-size: 40px;font-weight: bolder;font-family: 'Montserrat Ultra Light';color:black;display: table-cell;vertical-align: middle;}
 
-
-.bootstrap-select .dropdown-menu{width:100% !important;min-width: 290px !important;min-height: 100px !important;}
+.bootstrap-select .dropdown-menu .show{min-width: 290px !important;min-height: 100px !important;}
 
 @media (max-width: 767px) {
 .find-job-section-1{padding:30px 10px 30px 10px;}

@@ -13,11 +13,11 @@ import {COUNTRY_LIST} from '../../core/constants/countries';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 declare var $: any;
 declare function initialize(): any;
-// declare function typewriterSearch(params1, param2): any;
 declare function typingEffect(params1, param2): any;
 
 declare function panTo(coords): any;
 declare function geocodeAddress(value): any;
+
 
 @Component({
   selector: 'app-search-job',
@@ -32,6 +32,14 @@ export class SearchJobComponent implements OnInit {
   public city =[];
   public jobSearchData;
   public locationSearchData;
+
+  formattedaddress=" "; 
+  options={ 
+    componentRestrictions:{ 
+      country:["us"] 
+    } 
+  } 
+
   constructor(public router: Router,
     private companiesService: CompaniesService,
     private toastr: ToastrService,
@@ -72,16 +80,16 @@ export class SearchJobComponent implements OnInit {
    }
  
   getLocation(value){
-    let that = this;
+    //let that = this;
 
     //pass value is id for navigate
     //  this.router.navigate(['jobs/find-job']);
     //this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } })
-    const city = this.locationSearchData.find( ({ city }) => city === value );
+    //const city = this.locationSearchData.find( ({ city }) => city === value );
     
     //console.log(city);
-    geocodeAddress(city.city);
-    setTimeout(function(){ that.router.navigate(['jobs/find-job'],{ queryParams: { cityId: city.id } }) }, 10000);
+    //geocodeAddress(city.city);
+    // setTimeout(function(){ that.router.navigate(['jobs/find-job'],{ queryParams: { cityId: city.id } }) }, 10000);
     
   }
 
@@ -93,4 +101,26 @@ export class SearchJobComponent implements OnInit {
   setCoords(coords){
     panTo(coords);
   }
+
+  public AddressChange(address: any) {
+    let cityName;
+    let state; 
+    //setting address from API to local variable 
+     this.formattedaddress=address.formatted_address;
+    //  console.log("Address is ",address);
+     let arr = [address.geometry.location.lat(),address.geometry.location.lng()];
+     panTo(arr);
+
+     for (let i = 0; i < address.address_components.length; i++) {
+      let fullAddress = address.address_components[i];
+      if(fullAddress.types[0] == "locality"){
+        cityName = fullAddress.long_name;
+      }
+      if(fullAddress.types[0] == "administrative_area_level_1"){
+        state = fullAddress.long_name;
+      }
+     }
+     console.log("City>>>>",cityName,"State>>>>",state);
+  } 
+  
 }

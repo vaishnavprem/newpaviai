@@ -36,13 +36,19 @@
     <div class="logo-inner">
       <figure><a routerLink="/" routerLinkActive="active"><img src="assets/images/inner-logo.png" alt="Pavi" title="Pavi" class="img-responsive" /></a></figure>
     </div>
+    <div class="nav-tiker hidden-sm hidden-md hidden-lg"><a (click)="clickEvent()"><img src="assets/images/nav.png" class="nav-tikerimg" /> </a></div>
     
-    <ul>
-    <li><a routerLink="/users/work"  routerLinkActive="active">How iT Works</a></li>
-    <li><a routerLink="/users/partner"  routerLinkActive="active">Partners</a></li>
-    <li><a routerLink="/users/about"  routerLinkActive="active">About</a></li>
-    <li *ngIf="!auth.loggedIn()"><a (click)="goToLogin()" class="login-sec" >Login</a></li>
-    <li *ngIf="auth.loggedIn()"><a (click)="auth.logOut()" class="login-sec" >Logout</a></li>
-    </ul>
+    <div [ngClass]="status ? 'nav-show' : ''">
+      <div class="new-head-mobile">
+        <div class="nav-tiker-close hidden-sm hidden-md hidden-lg"><a (click)="clickEvent()"><img src="assets/images/nav-close.png" class="nav-tikerimg-close" /> </a></div>
+        <ul>
+        <li><a routerLink="/users/work" routerLinkActive="active">How iT Works</a></li>
+        <li><a routerLink="/users/partner" routerLinkActive="active">Partners</a></li>
+        <li><a routerLink="/users/about" routerLinkActive="active">About</a></li>
+        <li *ngIf="!auth.loggedIn()"><a (click)="goToLogin()" class="login-sec" >Login</a></li>
+        <li *ngIf="auth.loggedIn()"><a (click)="auth.logOut()" class="login-sec" >Logout</a></li>
+        </ul>
+      </div>
+    </div>
     
     </header>

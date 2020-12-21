@@ -38,13 +38,15 @@
               <div class="input-group-btn">
                 <div class="btn-group"> <i class="pin"><img src="assets/images/pin.png" /></i> </div>
               </div>
-              <input type="text" class="form-control" placeholder="City, State / Zip Code" 
+              <input type="text" class="form-control" placeholder="City, State / Zip Code" formControlName="location" ngx-google-places-autocomplete [options]= 
+              'options'  (onAddressChange)="AddressChange($event)">
+              <!-- <input type="text" class="form-control" placeholder="City, State / Zip Code" 
                   formControlName="location"
                   (keyup)="onKeyUp($event,'location')"
-                   [matAutocomplete]="locationauto">
-              <mat-autocomplete #locationauto="matAutocomplete" (optionSelected)='getLocation($event.option.value)'>
+                   [matAutocomplete]="locationauto"> -->
+              <!-- <mat-autocomplete #locationauto="matAutocomplete" (optionSelected)='getLocation($event.option.value)'>
                 <mat-option *ngFor="let city of locationSearchData" [value]="city.city"> {{city.city}} </mat-option>
-              </mat-autocomplete>
+              </mat-autocomplete> -->
             </div>
             <p>(Enter manually the location you’re looking for)</p>
             <div class="input-group">
@@ -64,5 +66,5 @@
     </div>
   </div>
 </div>
-<div style="position: absolute;right: 0;bottom: 10px;width: 600px; border-radius: 100%;z-index:-1;"><div id="earth_div" style="border-radius:100px"></div></div>
+<div style="position: absolute;right: 10px;bottom: 10px;width: 520px; border-radius: 100%;z-index:-1;"><div id="earth_div" style="border-radius:100px"></div></div>
 <div class="sound-icon"><a href="javascript:void(0);"><img src="assets/images/sound-off.png" alt="Sound" title="Sound" /> </a></div>
