@@ -100,7 +100,7 @@ function initializeSession() {
       console.log('There was an error connecting to the session: ', error.name, error.message);
     }
   });
-
+	$('.loader').hide();
 }
 
 // Start recording
@@ -153,6 +153,10 @@ console.log("session close");
 session.disconnect(); 
 session.destroy();
 session.unpublish(publisher);
+publisher.destroy();
+
+
+
 
 }
 // Get the archive status. If it is  "available", download it. Otherwise, keep checking

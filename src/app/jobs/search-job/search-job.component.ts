@@ -95,7 +95,7 @@ export class SearchJobComponent implements OnInit {
 
   onCheckboxChecked(e){
     if(e.target.checked){      
-      this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: 0 } })  
+      this.router.navigate(['jobs/find-job'])  
     }
   }
   setCoords(coords){
@@ -107,7 +107,7 @@ export class SearchJobComponent implements OnInit {
     let state; 
     //setting address from API to local variable 
      this.formattedaddress=address.formatted_address;
-    //  console.log("Address is ",address);
+      console.log("Address is ",address);
      let arr = [address.geometry.location.lat(),address.geometry.location.lng()];
      panTo(arr);
 
@@ -117,10 +117,11 @@ export class SearchJobComponent implements OnInit {
         cityName = fullAddress.long_name;
       }
       if(fullAddress.types[0] == "administrative_area_level_1"){
-        state = fullAddress.long_name;
+        state = fullAddress.short_name;
       }
      }
-     console.log("City>>>>",cityName,"State>>>>",state);
+  //   console.log("City>>>>",cityName,"State>>>>",state);
+     this.router.navigate(['jobs/find-job'],{ queryParams: { city: cityName, state_code:state} })
   } 
   
 }

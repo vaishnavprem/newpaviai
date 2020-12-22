@@ -178,15 +178,29 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-8">
-              <iframe id="vid_frame" src="https://paviai.s3-us-west-2.amazonaws.com/46905104/01f0409f-bc95-4c1e-87cb-e8b1aa59da08/archive.mp4" width="100%" height="315" frameborder="0"></iframe>
-              </div>
-              <div class="col-sm-4">
-                <ul>
-                  <li>Question One</li>
-                  <li>Question Two</li>
-                  <li>Question Three</li>
-                </ul>
-              </div>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Question</th>
+                  <th style="text-align:right;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let userquestion of userquestions; let i=index">
+                  <td>{{i+1}}</td>
+                  <td>{{userquestion.question}}</td>
+                 
+                  <td align="right"> 
+                    <a *ngIf="userquestion.recorded_url==undefined" class="go-back-to-job-btn" style=" float:right;"> No Answer Recorder</a>
+                    <a *ngIf="userquestion.recorded_url!=undefined" class="go-back-to-job-btn" style=" float:right;"> <i class="fa fa-eye"  (click)="showRecordedAnswer(userquestion.recorded_url)"></i></a>
+                  </td>
+                </tr>
+                
+              </tbody>
+            </table>
+            </div>
+            
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
