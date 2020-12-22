@@ -260,7 +260,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void{
     //This for Chart
-    this.lineChartMethod();
+    //this.lineChartMethod();
   }
 
     getCompanyData(){
