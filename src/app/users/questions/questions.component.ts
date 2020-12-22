@@ -112,13 +112,7 @@ export class QuestionsComponent implements OnInit {
              // this.startRecording(nextQuestion);
              this.stopRecordingArchive(questionID,this.questions[questionID].id)
             } else {
-              navigator.mediaDevices.getUserMedia({video: true, audio: true})
-              .then(mediaStream => {
-                const stream = mediaStream;
-                const tracks = stream.getTracks();
-
-                tracks[0].stop;
-              })
+              clearInterval(this.interval);
               this.startTest =false;
               this.result =true;
             } 
@@ -165,7 +159,7 @@ export class QuestionsComponent implements OnInit {
       // this.startRecording(nextQuestion);
       this.startRecording((questioKey +1));
      } else {
-       
+      clearInterval(this.interval);
       closeWebCam();
        this.startTest =false;
        this.result =true;
@@ -180,7 +174,7 @@ export class QuestionsComponent implements OnInit {
 
   checkDevice(){
     let that=this;
-    navigator.mediaDevices.getUserMedia({ video: true,audio: true})
+    /*navigator.mediaDevices.getUserMedia({ video: true,audio: true})
     .then(function(stream) {
       that.localStream = stream;
           $('#media-device').modal('show');
@@ -193,8 +187,10 @@ export class QuestionsComponent implements OnInit {
     })
     .catch(function(err) {
       alert("audio or video device no found");
-    });
-    
+    });*/
+    that.lastminutefinal=false;
+    that.startTest=true; 
+    that.startRecording('start');  
    
   }
   gotoVideoPage(){

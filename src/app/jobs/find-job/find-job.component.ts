@@ -51,6 +51,7 @@ export class FindJobComponent implements OnInit, AfterViewInit {
   
   }
   public location;
+  public state_code;
   searchForm: FormGroup;
   config: any;
   public avatar_url= AVATAR_URL;
@@ -84,9 +85,11 @@ export class FindJobComponent implements OnInit, AfterViewInit {
     });
     this.sub = this.route.queryParams.subscribe(params => {
       console.log(params);
-      this.location = params['cityId'];
+      this.location = params['city'];
+      this.state_code = params['state_code'];
       this.checkedList = {
-        'city':this.location
+        'city':this.location,
+        'state_code':this.state_code
       }
       this.isLoder=true;
       let JobData = this.companiesService.searchJob(this.checkedList)
@@ -249,7 +252,7 @@ export class FindJobComponent implements OnInit, AfterViewInit {
       value = 0;
     }
       setTimeout(function(){$('.selectpicker').selectpicker('refresh');$(".bootstrap-select .dropdown-menu show").css("width","290px !important"); },3000);
-      this.router.navigate(['jobs/find-job'],{ queryParams: { cityId: value } })
+      this.router.navigate(['jobs/find-job'],{ queryParams: { city: value ,state_code:this.state_code} })
     
   }
 }

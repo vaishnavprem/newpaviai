@@ -65,7 +65,7 @@ strong {color: #09c;}
 #countdown-number span {font-size: 40px; font-weight: 100;}
 #countdown svg {position: absolute; top: 0; right: 0; width: 120px; height: 120px; transform: rotateY(-180deg) rotateZ(-90deg);}
 #countdown svg circle {stroke-dasharray: 339px; stroke-dashoffset: 0px; stroke-linecap: round;	stroke-width: 4px; stroke: white; fill: none; }
-.micro-icon .buttonschat{padding:0px; margin:0px; list-style:none; margin:0px auto; position:fixed; bottom:60px; left:0px; right:0px;}
+.micro-icon .buttonschat{padding:0px; margin:0px; list-style:none; margin:0px auto; position:fixed; bottom:70px; left:0px; right:0px;}
 .micro-icon{text-align: center;}
 .micro-icon .btn{padding:0px; border:none; background:transparent; }
 .micro-icon .btn + .btn{margin-left:20px;}

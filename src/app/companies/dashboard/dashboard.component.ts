@@ -110,6 +110,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public responsibilities:any[];
   public requirements:any[];
   public questions:any[];
+  public userquestions:any;
   public companyData;
   public categories;
   public  show = true;
@@ -272,6 +273,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     .subscribe((response : any)=> {
       this.isLoder=false;
       if (response.statusCode == 200) {
+        $('.loader').hide();
         this.companyData = response['data']['companydata'];
         this.employments = response['data']['employment']; 
         this.seniorityLevels = response['data']['seniority']; 
@@ -286,9 +288,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
           else this.toastr.error(response.message)
           
     });
-    
-    
-    this.isLoder = false; 
+
   }
 
   applyFilterOne(filterValue: string) {
@@ -537,7 +537,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.dataSourceThree.data = response['data']['user'] as User[];
       this.dataSourceThree.paginator = this.tableThreePaginator;
         this.dataSourceThree.sort = this.tableThreeSort;
-      
+      console.log(response['data']['user']);
       
     });
     this.isLoder=false;
@@ -719,9 +719,29 @@ changeCoverImage(event){
 }
 
 showCandidateAnswers(index){
-  $("#add-modal-candidate").modal("show");
+   this.isLoder=true;
+    let parmsa ={
+      jobId:this.dataSourceThree.data[index]['job_id'],
+      user_id:this.dataSourceThree.data[index]['id']
+    }
+    this.companiesService.showQuestionAnswer(parmsa)
+    .subscribe((response : any) => {
+      
+      if (response.statusCode == 200) {
+        
+          this.userquestions = response['data']['question']; 
+          $('.loader').hide();
+          $("#add-modal-candidate").modal("show");
+      } else {
+        this.toastr.error(response.message);
+      }
+      
+    });
+  
 }
-
+showRecordedAnswer(recordString){
+  window.open("https://d1iruxeyl67hmv.cloudfront.net/web/index.php/archive/"+recordString+"/view" , "_blank");
+}
 selectedV(value){
   let select = +value;
   this.status = false;
