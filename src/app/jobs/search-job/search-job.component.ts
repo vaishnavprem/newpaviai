@@ -98,10 +98,7 @@ export class SearchJobComponent implements OnInit {
       this.router.navigate(['jobs/find-job'])  
     }
   }
-  setCoords(coords){
-    panTo(coords);
-  }
-
+  
   public AddressChange(address: any) {
     let cityName;
     let state; 
@@ -120,8 +117,8 @@ export class SearchJobComponent implements OnInit {
         state = fullAddress.short_name;
       }
      }
-  //   console.log("City>>>>",cityName,"State>>>>",state);
-     this.router.navigate(['jobs/find-job'],{ queryParams: { city: cityName, state_code:state} })
+    
+     setTimeout(() => { this.router.navigate(['jobs/find-job'],{ queryParams: { city: cityName, state_code:state} }) }, 10000);
   } 
   
 }
