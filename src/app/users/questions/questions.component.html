@@ -207,12 +207,12 @@
           <ul class="parent_question animate__fadeInLeftBig animate__animated">
             <li>
               <input type="radio" id="close" name="radio-btn" />
-              <label for="close" (click)="router.navigate(['jobs/search-job'])">Close</label>
+              <label (click)="gotoSearchPage()" for="close">Close</label>
               <div class="check"></div>
             </li>
             <li>
               <input type="radio" id="continue" name="radio-btn" checked="" />
-              <label for="continue">Continue</label>
+              <label for="continue" (click)="gotoSearchPage()">Continue</label>
               <div class="check"></div>
             </li>
           </ul>

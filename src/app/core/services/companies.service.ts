@@ -105,4 +105,10 @@ authUser;
   getJobsUser(params){
     return this.httpClient.post(`${API_URL}companies/get-jobs-user`, params,{headers:this.getHeaders()}); 
   }
+  saveInterview(params){
+    return this.httpClient.post(`${API_URL}companies/save-interview`, params,{headers:this.getHeaders()}); 
+  }
+  updateInterview(params){
+    return this.httpClient.post(`${API_URL}companies/update-interview`, params,{headers:this.getHeaders()}); 
+  }
 }

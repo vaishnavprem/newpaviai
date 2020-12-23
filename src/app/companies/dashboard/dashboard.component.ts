@@ -20,7 +20,7 @@ import { Chart } from 'chart.js';
 import {startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,addHours,} from 'date-fns';
 import { Subject } from 'rxjs';
 import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
-
+import { DomSanitizer } from '@angular/platform-browser';
 declare var $: any;
 
 interface PeriodicElement {
@@ -116,7 +116,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public  show = true;
   public dataSourceOne;
   public displayedColumnsOne: string[];
- 
+  public allusers;
   public dataSourceThree;
   public displayedColumnsThree: string[];
 
@@ -132,6 +132,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public Applicants = false;
   public Profile = false;
   public status: boolean = false;
+  safeUrl: any;
   today: number = Date.now()
   viewDate: Date = new Date();
   events = [];
@@ -166,13 +167,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private usersService: UsersService,
     public auth: AuthService,
     private paviAdminService:PaviAdminService,
-    public router: Router
+    public router: Router,
+    private sanitizer: DomSanitizer
   ) { 
     this.dataSourceOne = new MatTableDataSource<JobsElements>();
     this.displayedColumnsOne=['jobTitle', 'email', 'experience', 'level','employment','salary','action'];
 
     this.dataSourceThree = new MatTableDataSource<User>();
-    this.displayedColumnsThree=['first_name', 'last_name', 'email', 'gender','jobTitle','action'];
+    this.displayedColumnsThree=['first_name', 'last_name', 'email', 'gender','jobTitle','created_at','action'];
 
     this.dataSourceFour = new MatTableDataSource<Question>();
     this.displayedColumnsFour=['jobTitle','action'];
@@ -537,7 +539,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.dataSourceThree.data = response['data']['user'] as User[];
       this.dataSourceThree.paginator = this.tableThreePaginator;
         this.dataSourceThree.sort = this.tableThreeSort;
-      console.log(response['data']['user']);
+        this.allusers = response['data']['user'];
+      console.log(this.allusers);
       
     });
     this.isLoder=false;
@@ -718,27 +721,30 @@ changeCoverImage(event){
   }
 }
 
-showCandidateAnswers(index){
+showCandidateAnswers(element){
+
    this.isLoder=true;
     let parmsa ={
-      jobId:this.dataSourceThree.data[index]['job_id'],
-      user_id:this.dataSourceThree.data[index]['id']
+      jobId:element.job_id,
+      user_id:element.id,
+      interview_id:element.interview_id
     }
     this.companiesService.showQuestionAnswer(parmsa)
     .subscribe((response : any) => {
       
       if (response.statusCode == 200) {
-        
           this.userquestions = response['data']['question']; 
           $('.loader').hide();
           $("#add-modal-candidate").modal("show");
-          console.log("Answer is>>",this.userquestions);
       } else {
         this.toastr.error(response.message);
       }
       
     });
   
+}
+getSafeUrl(url){
+  return this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url); 
 }
 showRecordedAnswer(recordString){
   window.open("https://d1iruxeyl67hmv.cloudfront.net/web/index.php/archive/"+recordString+"/view" , "_blank");

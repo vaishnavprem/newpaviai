@@ -2,7 +2,6 @@
 
 var apiKey;
 var sessionId ;
-var session;
 var token;
 var archiveID;
 var publisher;
@@ -24,7 +23,6 @@ var SAMPLE_SERVER_BASE_URL = 'https://d1iruxeyl67hmv.cloudfront.net/web/index.ph
     };
 })();*/
 function initVonge() {
-  archiveID = null;
 
   // Make an Ajax request to get the OpenTok API key, session ID, and token from the server
   $.get(SAMPLE_SERVER_BASE_URL + '/session', function get(res) {
@@ -39,12 +37,11 @@ function initVonge() {
 
 function initializeSession() {
   $('.loader').show();
-   session = OT.initSession(apiKey, sessionId);
+  var session = OT.initSession(apiKey, sessionId);
 //alert("dafdaf");
 
   // Subscribe to a newly created stream
   session.on('streamCreated', function streamCreated(event) {
-													 	//alert("test");
     var subscriberOptions = {
       insertMode: 'append',
       width: '100%',
@@ -133,7 +130,6 @@ function startArchive() { // eslint-disable-line no-unused-vars
 // Stop recording
 function stopArchive(answer_id) { // eslint-disable-line no-unused-vars
   $.post(SAMPLE_SERVER_BASE_URL + '/archive/' + archiveID + '/stop');
-
  // alert("adfafasdf");
  //alert(answer_id);
   var posting = $.post('https://d39smmql2m03vn.cloudfront.net/webservice/v1/companies/save-answer-recording', {
@@ -150,9 +146,7 @@ function stopArchive(answer_id) { // eslint-disable-line no-unused-vars
 }
 function closeWebCam(){
 console.log("session close");
-session.disconnect(); 
-session.destroy();
-session.unpublish(publisher);
+
 publisher.destroy();
 
 
