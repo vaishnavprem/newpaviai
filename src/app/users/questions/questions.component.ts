@@ -38,6 +38,7 @@ export class QuestionsComponent implements OnInit {
   public startTest:boolean=false;
   public result:boolean=false;
   public questionArrayKey;
+  public interviewId;
   authUser;
   postParamas;
   public show = false;
@@ -107,15 +108,7 @@ export class QuestionsComponent implements OnInit {
         //  this.calculateTotalElapsedTime(elapsedTimes);
           if (this.timeLeft === 0 ) {  
          //   stopArchive(questionID);
-            let nextQuestion =  questionID + 1;
-            if(this.questions[nextQuestion]){
-             // this.startRecording(nextQuestion);
-             this.stopRecordingArchive(questionID,this.questions[questionID].id)
-            } else {
-              clearInterval(this.interval);
-              this.startTest =false;
-              this.result =true;
-            } 
+            this.stopRecordingArchive(questionID,this.questions[questionID].id)
             
           }
         }
@@ -150,15 +143,35 @@ export class QuestionsComponent implements OnInit {
   }
 
   stopRecordingArchive(questioKey,answerID){
+    $('.loader').show();
     this.recordingStopClicked=true;
     this.recordingClicked=false;
-    stopArchive(answerID)
+    this.postParamas = {
+      job_id:this.id,
+      user_id:this.authUser.user_id,
+      question_id:answerID,
+      interview_id:this.interviewId,
+     }
+    let JobData =  this.companiesService.recordAnswer(this.postParamas)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((response : any) => {
+      $('.loader').hide();
+      if (response.statusCode == 200) {
+        
+       let answerId = response['data']['record_id']; 
+       stopArchive(answerId);
+      } else {
+        this.toastr.error(response.message);
+      }  
+    });
+    
     
     let nextQuestion =  questioKey + 1;
     if(this.questions[nextQuestion]){
       // this.startRecording(nextQuestion);
       this.startRecording((questioKey +1));
      } else {
+       this.updateInterview();
       clearInterval(this.interval);
       closeWebCam();
        this.startTest =false;
@@ -173,7 +186,6 @@ export class QuestionsComponent implements OnInit {
   }
 
   checkDevice(){
-    let that=this;
     /*navigator.mediaDevices.getUserMedia({ video: true,audio: true})
     .then(function(stream) {
       that.localStream = stream;
@@ -188,10 +200,44 @@ export class QuestionsComponent implements OnInit {
     .catch(function(err) {
       alert("audio or video device no found");
     });*/
-    that.lastminutefinal=false;
-    that.startTest=true; 
-    that.startRecording('start');  
-   
+    $('.loader').show();
+    this.postParamas = {
+      job_id:this.id,
+      user_id:this.authUser.user_id,
+     }
+    this.companiesService.saveInterview(this.postParamas)
+    .subscribe((response : any) => {
+      $('.loader').hide();
+      if (response.statusCode == 200) {
+      this.interviewId = response['data']['interview_id']; 
+       $('.loader').hide();
+       this.lastminutefinal=false;
+       this.startTest=true; 
+       this.startRecording('start'); 
+      
+      } else {
+        this.toastr.error(response.message);
+      }
+    });
+  }
+
+  updateInterview(){
+    let JobData =  this.companiesService.updateInterview({interview_id:this.interviewId})
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((response : any) => {
+      $('.loader').hide();
+      if (response.statusCode == 200) {
+        this.toastr.success("Interview completed");
+      } else {
+        this.toastr.error(response.message);
+      }  
+    }); 
+  }
+
+  gotoSearchPage(){
+  
+      this.router.navigate(['jobs/search-job'])  
+
   }
   gotoVideoPage(){
     //console.log(questionId);
