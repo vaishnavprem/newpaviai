@@ -33,7 +33,7 @@
           <ul class="parent_question animate__fadeInLeftBig animate__animated">
             <li>
               <input type="radio" id="cancel" name="radio-btn" />
-              <label for="cancel">Cancel</label>
+              <label for="cancel" (click)="router.navigate(['jobs/search-job'])">Cancel</label>
               <div class="check"></div>
             </li>
             <li>
@@ -83,7 +83,7 @@
           <ul class="parent_question animate__fadeInLeftBig animate__animated">
             <li>
               <input type="radio" id="close" name="radio-btn" />
-              <label for="close">Back</label>
+              <label for="close" (click)="start=true;lastminute=false">Back</label>
               <div class="check"></div>
             </li>
             <li>
@@ -125,7 +125,7 @@
           <ul class="parent_question animate__fadeInLeftBig animate__animated">
             <li>
               <input type="radio" id="close" name="radio-btn" />
-              <label for="close">Back</label>
+              <label for="close" (click)="lastminute=true;lastminutefinal=false;">Back</label>
               <div class="check"></div>
             </li>
             <li>
@@ -207,7 +207,7 @@
           <ul class="parent_question animate__fadeInLeftBig animate__animated">
             <li>
               <input type="radio" id="close" name="radio-btn" />
-              <label for="close">Close</label>
+              <label for="close" (click)="router.navigate(['jobs/search-job'])">Close</label>
               <div class="check"></div>
             </li>
             <li>

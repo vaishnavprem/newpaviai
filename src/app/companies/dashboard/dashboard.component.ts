@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectionStrategy, TemplateRef} from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectionStrategy} from '@angular/core';
 import {AuthService} from '../../core/services/auth.service';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -58,7 +58,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 @Component({
   selector: 'app-dashboard',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './dashboard.component.html',
   styleUrls: [
     './dashboard.component.css']
@@ -732,6 +732,7 @@ showCandidateAnswers(index){
           this.userquestions = response['data']['question']; 
           $('.loader').hide();
           $("#add-modal-candidate").modal("show");
+          console.log("Answer is>>",this.userquestions);
       } else {
         this.toastr.error(response.message);
       }
