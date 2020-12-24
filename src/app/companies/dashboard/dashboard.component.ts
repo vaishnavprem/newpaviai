@@ -265,6 +265,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     //this.lineChartMethod();
   }
 
+  stopPlayer(){
+    console.log("Player Stopped");
+    $('#add-modal-candidate').on('hide.bs.modal', function() {
+      var memory = $(this).html();
+      $(this).html(memory);
+    });
+  }
+
     getCompanyData(){
       //let that=this;
       this.isLoder=true;

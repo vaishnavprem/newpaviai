@@ -5,9 +5,11 @@
 export const environment = {
   production: false,
   // apiUrl: 'http://freelancedeveloper.site:3001/',
-  apiUrl: 'https://d39smmql2m03vn.cloudfront.net/webservice/v1/',
+  //apiUrl: 'http://localpavi.io/webservice/v1/',
   // apiUrl: 'http://pavi12.herokuapp.com/'
-  avatarUrl:'http://localpavi.io/',
+  //avatarUrl:'http://localpavi.io/',
+  apiUrl: 'https://d39smmql2m03vn.cloudfront.net/webservice/v1/',
+  avatarUrl:'https://d39smmql2m03vn.cloudfront.net/',
 };
 
 /*

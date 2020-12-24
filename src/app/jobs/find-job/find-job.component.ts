@@ -58,6 +58,7 @@ export class FindJobComponent implements OnInit, AfterViewInit {
   private sub: any;
   public singleJob;
   public stateData;
+  public selectedCity;
   constructor(
     public router: Router,
     private companiesService: CompaniesService,
@@ -99,12 +100,15 @@ export class FindJobComponent implements OnInit, AfterViewInit {
         this.jobs = response['data']['jobs'];
         this.singleJob = response['data']['cityData'];
         this.stateData = response['data']['stateData'];
-       // console.log("Single City", this.singleJob );
-       // console.log("All City",  this.stateData );
+        if(this.singleJob[0]){
+          this.selectedCity = this.singleJob[0].id
+        }
+      //  console.log("Single City", this.singleJob );
+      //  console.log("All City",  this.stateData );
       });
     });
     
-     setTimeout(function(){$('.selectpicker').selectpicker('refresh');$(".dropdown-toggle").append("<span class='bs-caret'><span class='caret'></span></span>");$(".bootstrap-select .dropdown-menu show").css("width","290px !important"); }, 3000);
+     setTimeout(()=>{$( "option[value="+this.selectedCity+"]" ).prop( 'selected', 'selected' );$('.selectpicker').selectpicker('refresh');$(".dropdown-toggle").append("<span class='bs-caret'><span class='caret'></span></span>");$(".bootstrap-select .dropdown-menu show").css("width","290px !important"); }, 3000);
   }
 
   ngAfterViewInit(){
@@ -251,8 +255,8 @@ export class FindJobComponent implements OnInit, AfterViewInit {
     if(value == 'All'){
       value = 0;
     }
-      setTimeout(function(){$('.selectpicker').selectpicker('refresh');$(".bootstrap-select .dropdown-menu show").css("width","290px !important"); },3000);
-      this.router.navigate(['jobs/find-job'],{ queryParams: { city: value ,state_code:this.state_code} })
+      setTimeout(()=>{$( "option[value="+this.selectedCity+"]" ).prop( 'selected', 'selected' );$('.selectpicker').selectpicker('refresh');$(".bootstrap-select .dropdown-menu show").css("width","290px !important"); },3000);
+       this.router.navigate(['jobs/find-job'],{ queryParams: { city: value ,state_code:this.state_code} })
     
   }
 }
