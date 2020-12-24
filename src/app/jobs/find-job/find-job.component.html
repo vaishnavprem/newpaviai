@@ -24,9 +24,9 @@
       <div class="row">
         <div class="col-sm-3">
           <h1 class="animate__fadeInRight animate__animated job-title"> Here are the Jobs in
-            <select class="selectpicker select-job" (change)="changeCity($event.target.value)">
+            <select class="selectpicker select-job" (change)="changeCity($event.target.value)" autocomplete="off">
               <option *ngIf="singleJob">All</option>
-              <option *ngFor="let city of singleJob" [value]="city.id" selected>{{city.city}},{{city.state_code}}</option>
+              <option *ngFor="let city of singleJob" [value]="city.id">{{city.city}},{{city.state_code}}</option>
               <option *ngFor="let city of stateData" [value]="city.city">{{city.city}}</option>
             </select>
             I can always refine the seach if you have an industry or a job title in mind? <i class="hr-line"></i> </h1>
