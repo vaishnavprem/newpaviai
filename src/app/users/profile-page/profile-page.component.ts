@@ -11,6 +11,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { DomSanitizer } from '@angular/platform-browser';
 declare var $: any;
 
 interface User {
@@ -42,6 +43,8 @@ export class ProfilePageComponent implements OnInit {
   public profile = false;
   public interview = false;
   public postArry:{};
+  public userquestions:any;
+  safeUrl: any;
 
   today: number = Date.now()
 
@@ -58,6 +61,7 @@ export class ProfilePageComponent implements OnInit {
     private usersService: UsersService,
     private getAuthUser: GetAuthUserPipe,
     private toastr: ToastrService,
+    private sanitizer: DomSanitizer
 
   ) {
 
@@ -70,13 +74,13 @@ export class ProfilePageComponent implements OnInit {
     });
 
     this.dataSourceOne = new MatTableDataSource<User>();
-    this.displayedColumnsOne=['jobTitle','action'];
+    this.displayedColumnsOne=['jobTitle','created_at','action'];
   }
 
   ngOnInit(): void {
     this.authUser = this.getAuthUser.transform();
 
-    console.log("Auth User",this.authUser.user_id)
+    //console.log("Auth User",this.authUser.user_id)
     if (this.authUser.avatar) {
       this.profileImage = `${API_URL}uploads/avatars/${this.authUser.avatar}`;
     }
@@ -90,19 +94,18 @@ export class ProfilePageComponent implements OnInit {
      let anchors = $(".left-bar ul li a").click(function() {
       $(this).addClass("active")
       anchors.not(this).removeClass("active")
-    })
-
-    //For InterView Hard Coded Data
-    this.dataSourceOne.data = [{jobTitle:'PHP'},{jobTitle:'Web Developer'},{jobTitle:'Angular'},{jobTitle:'Java'}] as User[];
-    this.dataSourceOne.paginator = this.tableOnePaginator;
-    this.dataSourceOne.sort = this.tableOneSort;
-      
+    })      
   }
 
   stepChanged(e) {
     this.currentStep = e.selectedIndex + 1;
   }
 
+  stopPlayer(){
+    console.log("Player Stopped");
+      var memory = $('#add-modal-candidate .modal-body .select-your-job').html();
+      $('#add-modal-candidate .modal-body .select-your-job').html("");
+  }
   
   clickEvent(){
     //console.log("ClickEvent>>>",this.status);
@@ -170,24 +173,41 @@ export class ProfilePageComponent implements OnInit {
     this.showProfileImgTextControls = !this.showProfileImgTextControls;
   }
 
-  showCandidateAnswers(element){   
-    $("#add-modal-candidate").modal("show"); 
+  getSafeUrl(url){
+    return this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url); 
+  }
+  showCandidateAnswers(element){
+    //console.log("Element",element);
+    let parmsa ={
+      interview_id:element.interview_id
+    }
+    this.usersService.showQuestionAnswer(parmsa)
+    .subscribe((response : any) => {
+      
+      if (response.statusCode == 200) {
+          this.userquestions = response['data']['question']; 
+          $("#add-modal-candidate").modal("show");
+         console.log("User Answer>>",response);
+      } else {
+        this.toastr.error(response.message);
+      }
+      
+    });
  }
 
  getAppliedJob(){
-   console.log("Get Applied Job Called");
   this.postArry = {
     user_id:this.authUser.user_id
   }
   let JobData = this.usersService.getJobsUser(this.postArry)
   .subscribe(response => {
-    // let latest = response['data']['user'].sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-    this.dataSourceOne.data = response['data']['user'] as User[];
+    let latest = response['data']['user'].sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+    this.dataSourceOne.data = latest as User[];
     this.dataSourceOne.paginator = this.tableOnePaginator;
       this.dataSourceOne.sort = this.tableOneSort;
       // this.allusers = response['data']['user'];
       
-    console.log(response);
+    //console.log(response);
     
   });
 }

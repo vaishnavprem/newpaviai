@@ -1,10 +1,10 @@
 <div class="section-block-10-info">
   <p class="profile-text-3">Contact Information</p>
   <!--  <a class="profile-delete-btn-2">Delete Profile</a>-->
-  <a class="profile-save-btn" *ngIf="showEditProfileForm && !showChangeEmail && !showChangePass"
-     (click)="saveProfileDetails()">Save</a>
-  <a class="profile-edit-profile-btn" *ngIf="!showChangeEmail && !showChangePass && !showEditProfileForm"
-     (click)="editProfileForm()">Edit Profile</a>
+  <button class="btn btn-primary" *ngIf="showEditProfileForm && !showChangeEmail && !showChangePass"
+     (click)="saveProfileDetails()">Save</button>
+  <button class="btn btn-primary" *ngIf="!showChangeEmail && !showChangePass && !showEditProfileForm"
+     (click)="editProfileForm()">Edit Profile</button>
 </div>
 <div class="section-block-10-form Company Profile">
   <form [formGroup]="profileForm" *ngIf="!showChangeEmail && !showChangePass">
@@ -72,12 +72,12 @@
     </div>
       <div class="col-xl-6 col-md-6">
         <div class="form-group">
-          <a class="change-email-btn" (click)="showChangeEmailForm()">Change E-mail</a>
+          <button class="btn btn-primary" (click)="showChangeEmailForm()">Change E-mail</button>
         </div>
       </div>
       <div class="col-xl-6 col-md-6">
         <div class="form-group">
-          <a class="change-email-btn-2" (click)="showChangePassForm()">Change Password</a>
+          <button class="btn btn-primary" (click)="showChangePassForm()">Change Password</button>
         </div>
       </div>
     
