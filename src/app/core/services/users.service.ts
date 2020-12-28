@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {API_URL} from '../constants/general';
 
 @Injectable({
@@ -10,6 +10,13 @@ export class UsersService {
   constructor(
     private httpClient: HttpClient
   ) {
+  }
+  getHeaders(){
+    let accessToken = localStorage.getItem('token');
+    let headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', 'Bearer '+accessToken);
+    return headers;
   }
 
   uploadProfileImg(params) {
@@ -43,5 +50,11 @@ export class UsersService {
 
   getAboutText(params) {
     return this.httpClient.get(`${API_URL}users/get_description`, params);
+  }
+  getJobsUser(params){
+    return this.httpClient.post(`${API_URL}users/get-jobs`, params,{headers:this.getHeaders()}); 
+  }
+  showQuestionAnswer(params){
+    return this.httpClient.post(`${API_URL}users/show-question-answer`, params);
   }
 }

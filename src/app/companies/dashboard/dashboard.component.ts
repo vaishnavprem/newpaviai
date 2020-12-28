@@ -267,10 +267,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   stopPlayer(){
     console.log("Player Stopped");
-    $('#add-modal-candidate').on('hide.bs.modal', function() {
-      var memory = $(this).html();
-      $(this).html(memory);
-    });
+      var memory = $('#add-modal-candidate .modal-body .select-your-job').html();
+        //console.log("modal Hide",memory);
+      // $('#add-modal-candidate .modal-body').empty();
+      $('#add-modal-candidate .modal-body .select-your-job').html("");
   }
 
     getCompanyData(){
@@ -544,11 +544,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
     let JobData = this.companiesService.getJobsUser(this.postArry)
     .subscribe(response => {
-      this.dataSourceThree.data = response['data']['user'] as User[];
+      let latest = response['data']['user'].sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+      this.dataSourceThree.data = latest as User[];
       this.dataSourceThree.paginator = this.tableThreePaginator;
         this.dataSourceThree.sort = this.tableThreeSort;
         this.allusers = response['data']['user'];
-      console.log(this.allusers);
+        
+      console.log(latest);
       
     });
     this.isLoder=false;
@@ -730,7 +732,6 @@ changeCoverImage(event){
 }
 
 showCandidateAnswers(element){
-
    this.isLoder=true;
     let parmsa ={
       jobId:element.job_id,
@@ -744,6 +745,7 @@ showCandidateAnswers(element){
           this.userquestions = response['data']['question']; 
           $('.loader').hide();
           $("#add-modal-candidate").modal("show");
+         
       } else {
         this.toastr.error(response.message);
       }
