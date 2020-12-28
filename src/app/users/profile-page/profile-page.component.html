@@ -1,3 +1,65 @@
+<div class="modal fade in" id="add-modal-candidate">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Answers</h5>
+        <button type="button" class="close" data-dismiss="modal" >&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- <div class="row">
+           <div class="col-sm-8">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Question</th>
+                    <th style="text-align:right;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let userquestion of userquestions; let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{userquestion.question}}</td>
+                  
+                    <td align="right"> 
+                      <a *ngIf="userquestion.recorded_url==undefined" class="go-back-to-job-btn" style=" float:right;"> No Answer Recorder</a>
+                      <a *ngIf="userquestion.recorded_url!=undefined" class="go-back-to-job-btn" style=" float:right;"> <i class="fa fa-eye"  (click)="showRecordedAnswer(userquestion.recorded_url)"></i></a>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div> 
+          </div> 
+          
+      </div> -->
+        <div class="bg-profile-chat">
+          <div class="row" >
+            <div class="col-sm-4 col-xs-12 interview-warp">
+              <div class="contact_form">
+                <div class="form-group">
+                  <label for="name" class="control-label">Question </label>
+                </div>
+              </div>
+              <h5>userquestion.question</h5>
+            </div>
+            
+            <div class="col-sm-8 col-xs-12">
+              <div class="select-your-job animate__fadeInUpBig animate__animated" >
+               
+               <iframe [attr.id]="'vid_frame'" [src]=""    frameborder="0" ></iframe>
+              </div>
+
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="bg-images-1">
   <div class="content-warp">
     <div class="content-bg-inner">
@@ -7,13 +69,13 @@
             
             <figure><img src="assets/images/logowithpavi.png" /></figure>
             <ul>
-              <li><a class="active" href="javascript:void(0);">Dashboard Menu</a></li>
-              <li><a href="javascript:void(0);">Add Jobs</a></li>
-              <li><a href="javascript:void(0);">View Jobs</a></li>
-              <li><a href="javascript:void(0);">Add Interview Questions</a></li>
+              <li><a class="active" (click)="selectedV(0)">Dashboard Menu</a></li>
+              <li><a (click)="selectedV(1)">Profile</a></li>
+              <li><a (click)="selectedV(2)">Interview</a></li>
+              <!-- <li><a href="javascript:void(0);">Add Interview Questions</a></li>
               <li><a href="javascript:void(0);">View Questions</a></li>
               <li><a href="javascript:void(0);">Applicants</a></li>
-              <li><a href="javascript:void(0);">My Profile</a></li>
+              <li><a href="javascript:void(0);">My Profile</a></li> -->
             </ul>
           
         </div>
@@ -27,8 +89,8 @@
           </div>
             <div class="col-sm-7 col-xs-9 pull-right">
               <ul>
-                <li><a href="#">Company Name &nbsp;&nbsp;|</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a >{{authUser.full_name}} &nbsp;&nbsp;|</a></li>
+                <li><a (click)="auth.logOut()">Logout</a></li>
               </ul>
             </div>
             <div class="col-sm-5 col-xs-12">
@@ -47,65 +109,66 @@
         </div>
         <div class="dashboard-right-mid">
           <div class="title-warp">
-            <h2>Dashboard <span>December 02, 2020</span></h2>
+            <h2>Dashboard <span>{{today | date:'longDate'}}</span></h2>
           </div>
-          <div class="dashboard-list-view">
-            <div class="row">
-              <div class="col-sm-3 col-xs-6">
-                <div class="dashboard-grid-info">
-                  <h4 style="color:#000">55</h4>
-                  <p>open jobs</p>
+          <div *ngIf="home" id="home">
+            <div class="dashboard-list-view">
+              <div class="row">
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:rgb(222, 29, 240)">55</h4>
+                    <p>open jobs</p>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-3 col-xs-6">
-                <div class="dashboard-grid-info">
-                  <h4 style="color:#6e8cd7">255</h4>
-                  <p>applicants</p>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#6e8cd7">255</h4>
+                    <p>applicants</p>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-3 col-xs-6">
-                <div class="dashboard-grid-info">
-                  <h4 style="color:#29b6f6">45</h4>
-                  <p>interviews completed</p>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#29b6f6">45</h4>
+                    <p>interviews completed</p>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-3 col-xs-6">
-                <div class="dashboard-grid-info">
-                  <h4 style="color:#0cc2aa">10</h4>
-                  <p> interviews to review</p>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#c5c5c5">0</h4>
+                    <p> interviews to review</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="dashboard-list-view">
-            <div class="row">
-              <div class="col-sm-3 col-xs-6">
-                <div class="dashboard-grid-info">
-                  <h4 style="color:#18f513;">45</h4>
-                  <p>moving to a final interview</p>
+            <div class="dashboard-list-view">
+              <div class="row">
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#c5c5c5;">0</h4>
+                    <p>moving to a final interview</p>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-3 col-xs-6">
-                <div class="dashboard-grid-info">
-                  <h4 style="color:#f39c12;">65</h4>
-                  <p>Days the jobs have been open</p>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#c5c5c5;">0</h4>
+                    <p>Days the jobs have been open</p>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-3 col-xs-6">
-                <div class="dashboard-grid-info">
-                  <h4 style="color:#000;">10</h4>
-                  <p>pending offers</p>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#c5c5c5;">0</h4>
+                    <p>pending offers</p>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-3 col-xs-6">
-                <div class="dashboard-grid-info">
-                  <h4 style="color:#29b6f6;">10</h4>
-                  <p>accepted offers</p>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#c5c5c5;">0</h4>
+                    <p>accepted offers</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="map-warp">
+            <!-- <div class="map-warp">
             <div class="row">
               <div class="col-sm-7">
                 <figure><img src="assets/images/map-img.jpg" class="img-responsive" /></figure>
@@ -151,81 +214,81 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="clander-warp">
-            <div class="row">
-              <div class="col-sm-6">
-                <figure><img src="assets/images/clander.jpg" class="img-responsive" /></figure>
-              </div>
-              <div class="col-sm-6">
-                <div class="clander-table">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Candidates </th>
-                        <th>&nbsp;</th>
-                        <th>Pending</th>
-                        <th>Complete</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Jack Richard
-                          <p>Rejected Offer</p></td>
-                        <td><span>LA DODGER Enterprises</span>
-                          <p>Public relations specialist</p></td>
-                        <td></td>
-                        <td align="center"><a href="#"><img src="assets/images/close.png" /></a></td>
-                      </tr>
-                      <tr>
-                        <td>Bond Smithon
-                          <p>Pending for approval</p></td>
-                        <td><span>Pierre Design Co</span>
-                          <p>Web developer</p></td>
-                        <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>Jack Richard
-                          <p>Moving to final interview</p></td>
-                        <td><span>Stallone & Co</span>
-                          <p>Multimedia animator</p></td>
-                        <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>Ellen Richard
-                          <p>Accepted Offer</p></td>
-                        <td><span>Stallone & Co</span>
-                          <p>Multimedia animator</p></td>
-                        <td></td>
-                        <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
-                      </tr>
-                      <tr>
-                        <td>Ellen Richard
-                          <p>Accepted Offer</p></td>
-                        <td><span>Stallone & Co</span>
-                          <p>Multimedia animator</p></td>
-                        <td></td>
-                        <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
-                      </tr>
-                      <tr>
-                        <td>Ellen Richard
-                          <p>Accepted Offer</p></td>
-                        <td><span>Stallone & Co</span>
-                          <p>Multimedia animator</p></td>
-                        <td></td>
-                        <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
-                      </tr>
-                    </tbody>
-                  </table>
+          </div> -->
+            <!-- <div class="clander-warp">
+              <div class="row">
+                <div class="col-sm-6">
+                  <figure><img src="assets/images/clander.jpg" class="img-responsive" /></figure>
+                </div>
+                <div class="col-sm-6">
+                  <div class="clander-table">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Candidates </th>
+                          <th>&nbsp;</th>
+                          <th>Pending</th>
+                          <th>Complete</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Jack Richard
+                            <p>Rejected Offer</p></td>
+                          <td><span>LA DODGER Enterprises</span>
+                            <p>Public relations specialist</p></td>
+                          <td></td>
+                          <td align="center"><a href="#"><img src="assets/images/close.png" /></a></td>
+                        </tr>
+                        <tr>
+                          <td>Bond Smithon
+                            <p>Pending for approval</p></td>
+                          <td><span>Pierre Design Co</span>
+                            <p>Web developer</p></td>
+                          <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td>Jack Richard
+                            <p>Moving to final interview</p></td>
+                          <td><span>Stallone & Co</span>
+                            <p>Multimedia animator</p></td>
+                          <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td>Ellen Richard
+                            <p>Accepted Offer</p></td>
+                          <td><span>Stallone & Co</span>
+                            <p>Multimedia animator</p></td>
+                          <td></td>
+                          <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
+                        </tr>
+                        <tr>
+                          <td>Ellen Richard
+                            <p>Accepted Offer</p></td>
+                          <td><span>Stallone & Co</span>
+                            <p>Multimedia animator</p></td>
+                          <td></td>
+                          <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
+                        </tr>
+                        <tr>
+                          <td>Ellen Richard
+                            <p>Accepted Offer</p></td>
+                          <td><span>Stallone & Co</span>
+                            <p>Multimedia animator</p></td>
+                          <td></td>
+                          <td align="center"><a href="#"><img src="assets/images/check.png" /></a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="application-warp">
+            </div> -->
+            <!-- <div class="application-warp">
             <h3>APLICATION DETAILS <a href="#"><img src="assets/images/refesh.png" /></a></h3>
             <div class="table-responsive">
             <table class="table">
@@ -297,6 +360,122 @@
                 </tr>
               </tbody>
             </table>
+            </div>
+          </div> -->
+          </div>
+          
+          <div *ngIf="profile" id="profile">
+            <div class="inner-page">
+              <mat-tab-group>
+                <!-- <mat-tab label="Logo/Cover Image">
+                  <div class="row">
+                    <div class="col-xl-6 col-md-6">
+                      <form [formGroup]="profileImgTextForm">
+                      <div class="form-group">
+                        <label>Change Logo</label>
+                        <input id="profile-image" type="file" (change)="changeProfileImage($event)">
+                        <div class="profile-image change-photo-img" [style.backgroundImage]="'url('+profileImage+')'"></div>
+                      </div>
+                      </form>
+                      </div>
+
+                      <div class="col-xl-6 col-md-6">
+                      <form [formGroup]="coverImgForm">
+                        <div class="form-group">
+                          <label>Change Cover</label>
+                          <input id="cover-image" type="file" (change)="changeCoverImage($event)">
+                          <div class="cover-image change-photo-img" [style.backgroundImage]="'url('+coverImage+')'"></div>
+                        </div>
+                        </form>
+                        </div>
+
+                  </div>
+                  
+
+                </mat-tab> -->
+                <mat-tab label="Profile">
+                  <mat-horizontal-stepper [linear]="isLinear" #stepper [selectedIndex]="currentStep-1" labelPosition="bottom"
+                                    (selectionChange)="stepChanged($event)" style="background: transparent;">
+      
+                    <ng-template matStepperIcon="edit" let-index="index">
+                      <i class="fa fa-user" *ngIf="index === 0"></i>
+                      <i class="far fa-file-user" *ngIf="index === 1"></i>
+                      <i class="fas fa-file-pdf" *ngIf="index === 2"></i>
+                    </ng-template>
+            
+                    <!-- Custom icon with a context variable. -->
+                    <ng-template matStepperIcon="number" let-index="index">
+                      <i class="fa fa-user" *ngIf="index === 0"></i>
+                      <i class="far fa-file-user" *ngIf="index === 1"></i>
+                      <i class="fas fa-file-pdf" *ngIf="index === 2"></i>
+                    </ng-template>
+            
+                    <!-- Step 1 -->
+                    <mat-step label="Step 1">
+                      <ng-template matStepLabel>About</ng-template>
+                      <app-about-tab></app-about-tab>
+                    </mat-step>
+            
+                    <!-- Step 2 -->
+                    <mat-step label="Step 2">
+                      <ng-template matStepLabel>CV/Resume</ng-template>
+                      <app-cv-portfolio-tab></app-cv-portfolio-tab>
+                    </mat-step>
+            
+                    <!-- Step 3 -->
+                    <mat-step label="Step 3">
+                      <ng-template matStepLabel>Social Medias<br> PDF</ng-template>
+                      <app-social-medias-tab></app-social-medias-tab>
+                    </mat-step>
+            
+                  </mat-horizontal-stepper>
+      
+                </mat-tab>
+              </mat-tab-group>
+            </div>
+          </div>
+
+          <div *ngIf="interview" id="interview">
+            <div class="table-responsive">
+              <mat-form-field>
+                <input
+                  matInput
+                  (keyup)="applyFilterOne($event.target.value)"
+                  placeholder="Search Keyword"
+                />
+              </mat-form-field>
+              <table
+                mat-table
+                matSort
+                [dataSource]="dataSourceOne"
+              
+                class="table table-bordered"
+                style="width: 100%;"
+              >
+                <!--- Note that these columns can be defined in any order.
+                        The actual rendered columns are set as a property on the row definition" -->
+            
+                
+                <ng-container matColumnDef="jobTitle">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Title</th>
+                  <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
+                </ng-container>
+                
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef >Action</th>
+                  <td mat-cell *matCellDef="let element"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil"></i></a> 
+                    <a class="btn"> <i class="fa fa-eye" (click)="showCandidateAnswers(element)"></i></a> 
+                    <a class="btn red"> <i class="fa fa-trash"></i></a>
+                  </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsOne"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsOne"></tr>
+              </table>
+            
+              <mat-paginator
+              #TableOnePaginator
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              ></mat-paginator>
             </div>
           </div>
           <footer>© PAVI AI ALL RIGHT RESERVED 2020</footer>
