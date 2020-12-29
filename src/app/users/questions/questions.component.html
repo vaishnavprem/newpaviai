@@ -20,7 +20,7 @@
     </svg>
     </div>   
   <div class="container">
-    <div class="sound-icon"><a href="javascript:void(0);"><img src="assets/images/sound-off.png" alt="Sound" title="Sound" /> </a></div>
+    
     <!--<div class="global-icon animate__fadeInBottomRight animate__animated"><img src="assets/images/global.png" alt="Global" title="Global" class="img-responsive" /> </div>-->
     <div *ngIf="start" class="content-info interview-warp" >
       <div class="row">
@@ -201,7 +201,7 @@
       <div class="row">
         <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
         <div class="col-sm-10">
-          <h1 class="animate__fadeInRight animate__animated">Thank you for interview.<i class="hr-line"></i></h1>
+          <h1 class="animate__fadeInRight animate__animated">Thank you for interview with {{companyName}}.<i class="hr-line"></i></h1>
           <h5 class="gray">Let us know your feedback on your PAVI interview experience.</h5>
           <h6><strong>Note:</strong> You will be able to view your responses to each question when you will be given feedback on your responses. </h6>
           <ul class="parent_question animate__fadeInLeftBig animate__animated">
@@ -221,6 +221,7 @@
     </div>
   </div>
 </div>
+<div class="sound-icon"><a href="javascript:void(0);"><img src="assets/images/sound-off.png" alt="Sound" title="Sound" /> </a></div>
 
 <div class="modal fade in" id="media-device">
   <div class="modal-dialog" role="document">

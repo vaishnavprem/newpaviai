@@ -201,7 +201,8 @@ export class ProfilePageComponent implements OnInit {
   }
   let JobData = this.usersService.getJobsUser(this.postArry)
   .subscribe(response => {
-    let latest = response['data']['user'].sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+    let latest = [];
+    latest = response['data']['user'].sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
     this.dataSourceOne.data = latest as User[];
     this.dataSourceOne.paginator = this.tableOnePaginator;
       this.dataSourceOne.sort = this.tableOneSort;
