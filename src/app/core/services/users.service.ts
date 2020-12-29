@@ -52,9 +52,9 @@ export class UsersService {
     return this.httpClient.get(`${API_URL}users/get_description`, params);
   }
   getJobsUser(params){
-    return this.httpClient.post(`${API_URL}users/get-jobs`, params,{headers:this.getHeaders()}); 
+    return this.httpClient.post(`${API_URL}user/get-jobs`, params,{headers:this.getHeaders()}); 
   }
   showQuestionAnswer(params){
-    return this.httpClient.post(`${API_URL}users/show-question-answer`, params);
+    return this.httpClient.post(`${API_URL}user/show-question-answer`, params,{headers:this.getHeaders()});
   }
 }

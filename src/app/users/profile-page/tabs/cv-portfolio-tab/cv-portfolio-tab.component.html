@@ -6,8 +6,8 @@
       <mat-form-field [hidden]="!editPosition">
         <input matInput formControlName="position" (keyup)="saveOnEnter($event)">
       </mat-form-field>
-      <a class="resume-change-btn" (click)="changePosition()" *ngIf="!editPosition">Change</a>
-      <a class="resume-change-btn" *ngIf="editPosition" (click)="savePosition()">Save</a>
+      <button class="btn btn-primary" (click)="changePosition()" *ngIf="!editPosition">Change</button>
+      <button class="btn btn-primary" *ngIf="editPosition" (click)="savePosition()">Save</button>
     </div>
   </div>
 </form>
