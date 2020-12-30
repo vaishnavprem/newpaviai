@@ -1,8 +1,8 @@
 <form [formGroup]="positionForm">
   <div class="form-elements resume-items">
     <div class="profile-item">
-      <img src="assets/images/hand.svg">
-      <p class="resume-text-1" *ngIf="!editPosition">{{authUser.position}}</p>
+      <img src="assets/images/hand.svg" class="img-block" />
+      <!--<p class="resume-text-1" *ngIf="!editPosition">{{authUser.position}}</p>-->
       <mat-form-field [hidden]="!editPosition">
         <input matInput formControlName="position" (keyup)="saveOnEnter($event)">
       </mat-form-field>

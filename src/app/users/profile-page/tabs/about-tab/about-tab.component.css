@@ -9,3 +9,7 @@
 .form-group textarea.form-control{height:200px; max-height:200px; min-height:200px;}
 .form-group .fa-plus {color: green; font-size: 18px; cursor: pointer;}
 .form-group label{padding-left: 2px !important;}
+
+.form-group .btn + .btn{margin-left:15px;}
+.profile-header{font-size:30px; border-bottom:solid 1px #001621; color:#fff; padding-bottom:7px; margin-bottom:15px;}
+:host ::ng-deep .mat-input-element{background:#fff;}
