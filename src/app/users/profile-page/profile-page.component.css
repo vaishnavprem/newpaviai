@@ -84,6 +84,22 @@ footer{background:#000714; bottom:0px; padding:15px 10px; text-transform:upperca
 .select-your-job{position: relative;padding-bottom: 56.25%;height: 0;width: 100%;}
 .select-your-job iframe{position: absolute;top: 0;left: 0;width: 100%;height: 100% ;}
 
+/*mat icon*/
+
+
+:host ::ng-deep .mat-horizontal-stepper-header-container {max-width:500px; margin:0px auto;}
+:host ::ng-deep .mat-step-icon{width:50px; height:50px;}
+
+:host ::ng-deep .mat-step-header .mat-step-icon-selected, :host ::ng-deep .mat-step-header .mat-step-icon-state-done, :host ::ng-deep .mat-step-header .mat-step-icon-state-edit{font-size:23px;}
+:host ::ng-deep .mat-stepper-label-position-bottom .mat-stepper-horizontal-line{top:49px;}
+
+:host ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before, :host ::ng-deep [dir="rtl"] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before, :host ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after, :host ::ng-deep [dir="rtl"] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after{top:49px;}
+
+
+:host ::ng-deep .mat-icon-button{position:absolute; top:27px; right:6px;}
+
+
+
 @media (min-width:1200px) and (max-width:1300px){
 
 }
