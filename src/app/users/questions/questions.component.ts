@@ -90,7 +90,7 @@ export class QuestionsComponent implements OnInit {
         console.log(response);
           this.questions = response['data']['question']; 
           this.jobs = response['data']['jobs'];
-          this.companyName = 'PAVI'
+          this.companyName = this.jobs[0].company_name;
       } else {
         this.toastr.error(response.message);
       }

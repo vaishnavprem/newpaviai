@@ -7,7 +7,7 @@
 .mid-content {position: relative !important;}
 
 .select-your-job{height:500px;}
-.content-info h1{font-size:30px;}
+.content-info h1{font-size:40px;}
 
 html{height:100%;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 20%;}
@@ -38,7 +38,7 @@ strong {color: #09c;}
 .content-info .job-title {line-height: 46px;}
 .contact_form .form-group .control-label{left:15px;}
 .contact_form{padding:15px 0px 0px;}
-.interview-warp h5{color:#99a0bf;}
+.interview-warp h5{color:#dee662;}
 
 .select-your-job{width:100%;  margin:20px auto; }
 .bg-profile-chat{background:url(../../../assets/images/live-chat-bg.jpg) no-repeat center fixed; height:auto;margin-top: -50px;}
@@ -50,7 +50,7 @@ strong {color: #09c;}
 #buttons .btn{padding:7px 10px;}
 .contact_form .form-group .control-label{position:relative;}
 .contact_form .form-group{margin:0px;}
-.interview-warp h5{margin:0px; padding-left: 15px;}
+
 
 
 @media (max-width: 767px){

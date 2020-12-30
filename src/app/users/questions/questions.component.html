@@ -38,7 +38,7 @@
             </li>
             <li>
               <input type="radio" id="start" name="radio-btn" checked="" />
-              <label *ngIf="questions && questions.length > 0" for="start"><a style=" float:right;cursor:pointer;"  (click)="start=false;lastminute=true">Start</a></label>
+              <label *ngIf="questions && questions.length > 0" for="start"><a style=" float:right;cursor:pointer;color:white;"  (click)="start=false;lastminute=true">Start</a></label>
               <div class="check"></div>
             </li>
           </ul>
@@ -49,7 +49,7 @@
       <div class="row">
         <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
         <div class="col-sm-10">
-          <h1 class="animate__fadeInRight animate__animated">Last Minute Checklist <i class="hr-line"></i></h1>
+          <h1 class="animate__fadeInRight animate__animated" style="font-size:38px;">Last Minute Checklist <i class="hr-line"></i></h1>
           <div class="row">
             <div class="col-sm-3">
               <div class="last-mint-info">
@@ -157,7 +157,7 @@
                   <label for="name" class="control-label">Question {{questionNo}} of {{totalQuestion}} </label>
                 </div>
               </div>
-              <h5>{{questionName}}</h5>
+              <h5 style="margin-left:15px;">{{questionName}}</h5>
             </div>
             <div class="col-sm-3 col-xs-6 pull-right">
               <div id="countdown">
@@ -201,8 +201,8 @@
       <div class="row">
         <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
         <div class="col-sm-10">
-          <h1 class="animate__fadeInRight animate__animated">Thank you for interview with {{companyName}}.<i class="hr-line"></i></h1>
-          <h5 class="gray">Let us know your feedback on your PAVI interview experience.</h5>
+          <h1 class="animate__fadeInRight animate__animated" style="font-size:38px;">Thank you for interview with {{companyName}}.<i class="hr-line"></i></h1>
+          <h5 class="gray" style="color:#3d445a;">Let us know your feedback on your PAVI interview experience.</h5>
           <h6><strong>Note:</strong> You will be able to view your responses to each question when you will be given feedback on your responses. </h6>
           <ul class="parent_question animate__fadeInLeftBig animate__animated">
             <li>

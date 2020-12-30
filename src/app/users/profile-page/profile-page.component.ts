@@ -200,15 +200,19 @@ export class ProfilePageComponent implements OnInit {
     user_id:this.authUser.user_id
   }
   let JobData = this.usersService.getJobsUser(this.postArry)
-  .subscribe(response => {
+  .subscribe((response: any) => {
     let latest = [];
-    latest = response['data']['user'].sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-    this.dataSourceOne.data = latest as User[];
-    this.dataSourceOne.paginator = this.tableOnePaginator;
-      this.dataSourceOne.sort = this.tableOneSort;
-      // this.allusers = response['data']['user'];
-      
-    //console.log(response);
+    if(response.statusCode == 200){
+      latest = response['data']['user'].sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+      this.dataSourceOne.data = latest as User[];
+      this.dataSourceOne.paginator = this.tableOnePaginator;
+        this.dataSourceOne.sort = this.tableOneSort;
+        // this.allusers = response['data']['user'];
+        
+      //console.log(response);
+    } else {
+      this.toastr.error(response.message);
+    }
     
   });
 }
