@@ -32,6 +32,7 @@ export class QuestionsComponent implements OnInit {
   public questions:any;
   public isLoder=false;
   public jobs;
+  public companyName;
   public start:boolean;
   public lastminute:boolean=false;
   public lastminutefinal:boolean=false;
@@ -89,6 +90,7 @@ export class QuestionsComponent implements OnInit {
         console.log(response);
           this.questions = response['data']['question']; 
           this.jobs = response['data']['jobs'];
+          this.companyName = 'PAVI'
       } else {
         this.toastr.error(response.message);
       }
