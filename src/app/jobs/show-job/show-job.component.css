@@ -6,23 +6,26 @@
 
 .top-job-header-abs{background: #d9dbdb; width:51%;}
 
-.content-info{padding-top: 10px}
+.content-info{padding-top: 10px;padding-right: 20px;padding-left: 20px;}
 
 .select-your-job{height:auto;min-height:490px;overflow:unset;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 15%;}
 .global-icon{bottom:0px;}
 .apply-btn{cursor:pointer;}
-.content-info h1{font-size:33px;padding-left: 5px;}
+.content-info h1{font-size:33px;padding-left: 0px;}
 
 .select-your-job ul li h4 span a{cursor:pointer;color: #acadcae6;}
 .select-your-job ul li h4 span a:hover{color:#7478f3e6;}
 
+/* .container{padding-left: 0px;padding-right: 0px;} */
 
 @media (max-width: 767px) {
-.content-info{padding-top: 18px}
+.content-info{padding-top: 18px;padding-left: 0px;padding-right: 0px;}
 .global-icon{bottom:0px; left:inherit; max-width: 50px;}	
 .content-info .job-title{padding-left:0px; font-size:30px; line-height:40px;}
 .content-info .job-title .hr-line{height:45px;}
 .select-your-job{margin-bottom: 10%;}
 .mid-bar{top: 10%;}
+
+/* .container{padding-left: 15px;padding-right: 15px;} */
 }

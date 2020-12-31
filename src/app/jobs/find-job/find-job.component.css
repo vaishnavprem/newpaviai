@@ -8,7 +8,7 @@
 .find-job-right-icon { position: absolute; left: 17px; top: 15px; color: #0265C9; right: inherit;}
 .find-job-section-1 .login-btn:hover .find-job-right-icon{color:#fff;}
 .find-job-block .logos-item-img{background: #d9dbdb;}
-.content-info{padding-top: 10px !important;}
+.content-info{padding-top: 10px !important;padding-left: 20px;padding-right: 20px;}
 /* .mid-content{position:relative !important;} */
 .job-title{width:100%;}
 .select-job{width:100%;font-size: x-large;}
@@ -16,7 +16,7 @@
 .select-your-job{height:auto;min-height:500px;overflow:unset;display: table;width: 100%;}
 .content-info .job-title{font-size:33px;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 15%;bottom: 10%;}
-.content-info h1{width:100%;padding-left: 5px;}
+.content-info h1{width:100%;padding-left: 0px;}
 .select-your-job ul li h4 span a{cursor:pointer;color: #acadcae6;}
 /* .global-icon{bottom:0px;} */
 /* .colIndex{z-index: -1;} */
@@ -24,6 +24,9 @@
 .select-your-job ul li h4 span a:hover{color:#7478f3e6;}
 
 .bootstrap-select .dropdown-menu .show{min-width: 290px !important;min-height: 100px !important;}
+/* .container{padding-left: 0px;padding-right: 0px;} */
+.search-btn .btn{font-weight:100;}
+.search-box-location .search-btn .btn{font-size:22px;}
 
 @media (max-width: 767px) {
 .find-job-section-1{padding:30px 10px 30px 10px;}
@@ -41,5 +44,7 @@
 
 .select-your-job{margin-bottom: 10%;}
 
+.content-info{padding-left: 0px;padding-right: 0px;}
 .mid-bar{margin-bottom: 12%;}
+/* .container{padding-left: 15px;padding-right: 15px;} */
 }

@@ -19,13 +19,14 @@
         </g>
     </svg>
     </div>   
-  <div class="container">
+  <div class="container-fluid">
     
     <!--<div class="global-icon animate__fadeInBottomRight animate__animated"><img src="assets/images/global.png" alt="Global" title="Global" class="img-responsive" /> </div>-->
     <div *ngIf="start" class="content-info interview-warp" >
       <div class="row">
         <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
+          <div class="horizontalAlien">
           <h1 class="animate__fadeInRight animate__animated">You are interviewing for
             <span *ngIf="jobs && jobs.length > 0" class="interviewinput">{{jobs[0].jobTitle}}</span>
             Position, you will be asked a series of questions. You will be given 5 mins to answer each question. <i class="hr-line"></i></h1>
@@ -44,11 +45,13 @@
           </ul>
         </div>
       </div>
+      </div>
     </div>
     <div *ngIf="lastminute" class="content-info interview-warp interview-company">
       <div class="row">
         <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
+          <div class="horizontalAlien">
           <h1 class="animate__fadeInRight animate__animated" style="font-size:38px;">Last Minute Checklist <i class="hr-line"></i></h1>
           <div class="row">
             <div class="col-sm-3">
@@ -92,13 +95,15 @@
               <div class="check"></div>
             </li>
           </ul>
+          </div>
         </div>
       </div>
     </div>
     <div *ngIf="lastminutefinal" class="content-info interview-warp audio-test-warp">
       <div class="row">
         <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
+          <div class="horizontalAlien">
           <h1 class="animate__fadeInRight animate__animated">Test your audio and video <i class="hr-line"></i></h1>
           <div class="video-signal-info">
             <div class="row">
@@ -134,65 +139,68 @@
               <div class="check"></div>
             </li>
           </ul>
+          </div>
         </div>
       </div>
     </div>
     <div *ngIf="startTest" class="content-info" style="padding-top: 10px !important;">
-      <div class="row">
-        <!--<div class="col-sm-3">
-          <h1 class="animate__fadeInRight animate__animated job-title"> Please press record to record your answer to the question above. <i class="hr-line"></i> </h1>
-          <br>
-          <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4"><img src="https://dq84tlhr1cf2j.cloudfront.net/assets/images/sparkle-test.png" class="welcome-img img-responsive"/></div>
-            <div class="col-sm-4"></div>
-          </div>
-        </div>-->
-        <div class="col-sm-12">
-        <div class="bg-profile-chat">
-          <div class="row">
-            <div class="col-sm-3 col-xs-6 interview-warp">
-              <div class="contact_form">
-                <div class="form-group">
-                  <label for="name" class="control-label">Question {{questionNo}} of {{totalQuestion}} </label>
-                </div>
-              </div>
-              <h5 style="margin-left:15px;">{{questionName}}</h5>
+      <div class="container">
+        <div class="row">
+          <!--<div class="col-sm-3">
+            <h1 class="animate__fadeInRight animate__animated job-title"> Please press record to record your answer to the question above. <i class="hr-line"></i> </h1>
+            <br>
+            <div class="row">
+              <div class="col-sm-4"></div>
+              <div class="col-sm-4"><img src="https://dq84tlhr1cf2j.cloudfront.net/assets/images/sparkle-test.png" class="welcome-img img-responsive"/></div>
+              <div class="col-sm-4"></div>
             </div>
-            <div class="col-sm-3 col-xs-6 pull-right">
-              <div id="countdown">
-                <div id="countdown-number">{{ minutes  | number:'2.0-0'}}<span>:</span>{{seconds | number:'2.0-0'}}</div>
-                <svg>
-                <circle r="54" cx="60" cy="60"></circle>
-                </svg> </div>
-            </div>
-            <div class="col-sm-6 col-xs-12">
-            <div class="select-your-job post-job-info animate__fadeInUpBig animate__animated" style="overflow: hidden !important;background: none !important;padding: 0px !important;">
-            <ul>
-              <li>
-                <div >
-                  <div id="subscriber"></div>
-                  <div id="publisher"></div>
-                  <div id="buttonholder">
-                    
+          </div>-->
+          <div class="col-sm-12">
+          <div class="bg-profile-chat">
+            <div class="row">
+              <div class="col-sm-3 col-xs-6 interview-warp">
+                <div class="contact_form">
+                  <div class="form-group">
+                    <label for="name" class="control-label">Question {{questionNo}} of {{totalQuestion}} </label>
                   </div>
                 </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="micro-icon">
-            <div id="buttons" class="buttonschat">
-              <button type="button" id="start" [disabled]="recordingClicked" (click)="startRecordingArchive(questionArrayKey)" title="Start Recording" class="btn"><img src="assets/images/chat-2.png" /></button>
-              <button type="button" id="stop" [disabled]="recordingStopClicked" (click)="stopRecordingArchive(questionArrayKey,question_id)" title="Stop Recording" class="btn"><img src="assets/images/chat-3.png" /></button>
-              
+                <h5 style="margin-left:15px;">{{questionName}}</h5>
+              </div>
+              <div class="col-sm-3 col-xs-6 pull-right">
+                <div id="countdown">
+                  <div id="countdown-number">{{ minutes  | number:'2.0-0'}}<span>:</span>{{seconds | number:'2.0-0'}}</div>
+                  <svg>
+                  <circle r="54" cx="60" cy="60"></circle>
+                  </svg> </div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+              <div class="select-your-job post-job-info animate__fadeInUpBig animate__animated" style="overflow: hidden !important;background: none !important;padding: 0px !important;">
+              <ul>
+                <li>
+                  <div >
+                    <div id="subscriber"></div>
+                    <div id="publisher"></div>
+                    <div id="buttonholder">
+                      
                     </div>
                   </div>
-                    
+                </li>
+              </ul>
+            </div>
+
+            <div class="micro-icon">
+              <div id="buttons" class="buttonschat">
+                <button type="button" id="start" [disabled]="recordingClicked" (click)="startRecordingArchive(questionArrayKey)" title="Start Recording" class="btn"><img src="assets/images/chat-2.png" /></button>
+                <button type="button" id="stop" [disabled]="recordingStopClicked" (click)="stopRecordingArchive(questionArrayKey,question_id)" title="Stop Recording" class="btn"><img src="assets/images/chat-3.png" /></button>
+                
+                      </div>
+                    </div>
+                      
+              </div>
+              
             </div>
             
-          </div>
-          
+            </div>
           </div>
         </div>
       </div>
@@ -200,7 +208,8 @@
     <div *ngIf="result" class="content-info interview-warp interview-company">
       <div class="row">
         <div class="col-sm-2"><img src="assets/images/sparkle-test.png" class="welcome-img" /></div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
+          <div class="horizontalAlien">
           <h1 class="animate__fadeInRight animate__animated" style="font-size:38px;">Thank you for interview with {{companyName}}.<i class="hr-line"></i></h1>
           <h5 class="gray" style="color:#3d445a;">Let us know your feedback on your PAVI interview experience.</h5>
           <h6><strong>Note:</strong> You will be able to view your responses to each question when you will be given feedback on your responses. </h6>
@@ -216,6 +225,7 @@
               <div class="check"></div>
             </li>
           </ul>
+          </div>
         </div>
       </div>
     </div>
