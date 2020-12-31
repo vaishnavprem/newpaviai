@@ -111,6 +111,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public requirements:any[];
   public questions:any[];
   public userquestions:any;
+  public firstQuestion:any;
+  public nextIndex = 0;
+  // public previousIndex = 0;
+  public questionLenth = 0;
   public companyData;
   public categories;
   public  show = true;
@@ -271,6 +275,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         //console.log("modal Hide",memory);
       // $('#add-modal-candidate .modal-body').empty();
       $('#add-modal-candidate .modal-body .select-your-job').html("");
+      this.userquestions = '';
+      this.firstQuestion = '';
+      this.nextIndex = 0;
+      this.questionLenth = 0;
   }
 
     getCompanyData(){
@@ -743,16 +751,30 @@ showCandidateAnswers(element){
       
       if (response.statusCode == 200) {
           this.userquestions = response['data']['question']; 
-          $('.loader').hide();
+          this.isLoder=false;
           $("#add-modal-candidate").modal("show");
-         
+          this.firstQuestion = response['data']['question'][0];
+          this.questionLenth = response['data']['question'].length;
+          console.log("First Question>>", this.questionLenth);
       } else {
+        this.isLoder=false;
         this.toastr.error(response.message);
       }
       
     });
   
 }
+
+nextQuestion(){
+  this.nextIndex = this.nextIndex+1;
+  this.firstQuestion = this.userquestions[this.nextIndex];
+}
+
+previousQoestion(){
+  this.nextIndex = this.nextIndex-1;
+  this.firstQuestion = this.userquestions[this.nextIndex];
+}
+
 getSafeUrl(url){
   return this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url); 
 }
