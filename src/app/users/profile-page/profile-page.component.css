@@ -95,7 +95,7 @@ footer{background:#000714; bottom:0px; padding:15px 10px; text-transform:upperca
 :host ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before, :host ::ng-deep [dir="rtl"] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before, :host ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after, :host ::ng-deep [dir="rtl"] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after{top:49px;}
 
 
-:host ::ng-deep .mat-icon-button{position:absolute; top:27px; right:6px;}
+:host ::ng-deep .date-age .mat-icon-button{position:absolute; top:27px; right:6px;}
 ::ng-deep .height-min{height:100%;}
 
 
