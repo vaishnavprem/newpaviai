@@ -534,6 +534,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
     let JobData = this.companiesService.getJobs(this.postArry)
     .subscribe(response => {
+      this.isLoder=false;
       this.dataSourceOne.data = response['data']['jobs'] as JobsElements[];
       this.dataSourceOne.paginator = this.tableOnePaginator;
         this.dataSourceOne.sort = this.tableOneSort;
@@ -542,7 +543,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       console.log("View Jobs>>",this.jobs);
       
     });
-    this.isLoder=false;
+    
   }
 
   getUsers(){
@@ -552,6 +553,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
     let JobData = this.companiesService.getJobsUser(this.postArry)
     .subscribe(response => {
+      this.isLoder=false;
       let latest = response['data']['user'].sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
       this.dataSourceThree.data = latest as User[];
       this.dataSourceThree.paginator = this.tableThreePaginator;
@@ -561,7 +563,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       console.log(latest);
       
     });
-    this.isLoder=false;
+    
   }
   showJob(index){
     $("#show-job").modal("show");
@@ -617,6 +619,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
     let JobData = this.companiesService.getJobs(this.postArry)
     .subscribe(response => {
+      this.isLoder=false;
       this.dataSourceFour.data = response['data']['jobs'] as Question[];
       this.dataSourceFour.paginator = this.tableFourPaginator;
         this.dataSourceFour.sort = this.tableFourSort;
@@ -625,19 +628,22 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       console.log("View Jobs>>",this.jobs);
       
     });
-    this.isLoder=false;
+    
   }
   showQuestions(jobId){
+    this.isLoder=true;
     console.log("JobId>>",jobId);
     this.postArry = {
       jobId:jobId,
     }
     this.companiesService.showQuestion(this.postArry).subscribe(response => {
       if(Object.keys(response['data']).length > 0){
+        this.isLoder=false;
         this.questions = response['data']['question'];
         console.log("Questions>>",this.questions);
         $("#show-question").modal("show");
       } else {
+        this.isLoder=false;
         this.toastr.error('No question found');
       }
      });
@@ -766,11 +772,13 @@ showCandidateAnswers(element){
 }
 
 nextQuestion(){
+  console.log("NextQuestion");
   this.nextIndex = this.nextIndex+1;
   this.firstQuestion = this.userquestions[this.nextIndex];
 }
 
 previousQoestion(){
+  console.log("PreviousQuestion");
   this.nextIndex = this.nextIndex-1;
   this.firstQuestion = this.userquestions[this.nextIndex];
 }
