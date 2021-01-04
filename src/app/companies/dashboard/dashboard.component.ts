@@ -111,8 +111,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public requirements:any[];
   public questions:any[];
   public userquestions:any;
+  public firstQuestion:any;
+  public nextIndex = 0;
+  public questionLenth = 0;
   public companyData;
   public categories;
+  public openJobs = 6;
+  public applicants = 55;
+  public interviewCompleted = 0;
   public  show = true;
   public dataSourceOne;
   public displayedColumnsOne: string[];
@@ -271,6 +277,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         //console.log("modal Hide",memory);
       // $('#add-modal-candidate .modal-body').empty();
       $('#add-modal-candidate .modal-body .select-your-job').html("");
+      this.userquestions = '';
+      this.firstQuestion = '';
+      this.nextIndex = 0;
+      this.questionLenth = 0;
   }
 
     getCompanyData(){
@@ -284,12 +294,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.isLoder=false;
       if (response.statusCode == 200) {
         $('.loader').hide();
+        //console.log("Company Data>>",response);
         this.companyData = response['data']['companydata'];
         this.employments = response['data']['employment']; 
         this.seniorityLevels = response['data']['seniority']; 
         this.responsibilities = response['data']['responsibility']; 
         this.requirements = response['data']['requirement']; 
-        this.categories = response['data']['categories'];  
+        this.categories = response['data']['categories']; 
          } else if (response.statusCode == 401) {
           this.toastr.error(response.message)
           this.auth.logOut();
@@ -526,15 +537,17 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
     let JobData = this.companiesService.getJobs(this.postArry)
     .subscribe(response => {
+      this.isLoder=false;
+      // $('.loader').hide();
       this.dataSourceOne.data = response['data']['jobs'] as JobsElements[];
       this.dataSourceOne.paginator = this.tableOnePaginator;
         this.dataSourceOne.sort = this.tableOneSort;
      
       this.jobs = response['data']['jobs'];
-      console.log("View Jobs>>",this.jobs);
+      //console.log("View Jobs>>",this.jobs);
       
     });
-    this.isLoder=false;
+    
   }
 
   getUsers(){
@@ -544,21 +557,24 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
     let JobData = this.companiesService.getJobsUser(this.postArry)
     .subscribe(response => {
+      this.isLoder=false;
+      // $('.loader').hide();
       let latest = response['data']['user'].sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
       this.dataSourceThree.data = latest as User[];
       this.dataSourceThree.paginator = this.tableThreePaginator;
         this.dataSourceThree.sort = this.tableThreeSort;
         this.allusers = response['data']['user'];
         
-      console.log(latest);
+      //console.log(latest);
       
     });
-    this.isLoder=false;
+    
   }
   showJob(index){
+    this.singleJob =this.jobs[index];
     $("#show-job").modal("show");
     $("#show-job").appendTo("body");
-    this.singleJob =this.jobs[index];
+    
     //console.log("Index>>",index,"Single jOB>>",this.singleJob);
   }
   editJob(index){
@@ -609,27 +625,29 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
     let JobData = this.companiesService.getJobs(this.postArry)
     .subscribe(response => {
+      this.isLoder=false;
       this.dataSourceFour.data = response['data']['jobs'] as Question[];
       this.dataSourceFour.paginator = this.tableFourPaginator;
         this.dataSourceFour.sort = this.tableFourSort;
       
       this.jobs = response['data']['jobs'];
-      console.log("View Jobs>>",this.jobs);
+      //console.log("View Jobs>>",this.jobs);
       
     });
-    this.isLoder=false;
+    
   }
   showQuestions(jobId){
-    console.log("JobId>>",jobId);
+    this.isLoder=true;
     this.postArry = {
       jobId:jobId,
     }
     this.companiesService.showQuestion(this.postArry).subscribe(response => {
       if(Object.keys(response['data']).length > 0){
+        this.isLoder=false;
         this.questions = response['data']['question'];
-        console.log("Questions>>",this.questions);
         $("#show-question").modal("show");
       } else {
+        this.isLoder=false;
         this.toastr.error('No question found');
       }
      });
@@ -743,16 +761,29 @@ showCandidateAnswers(element){
       
       if (response.statusCode == 200) {
           this.userquestions = response['data']['question']; 
-          $('.loader').hide();
+          this.isLoder=false;
           $("#add-modal-candidate").modal("show");
-         
+          this.firstQuestion = response['data']['question'][0];
+          this.questionLenth = response['data']['question'].length;
       } else {
+        this.isLoder=false;
         this.toastr.error(response.message);
       }
       
     });
   
 }
+
+nextQuestion(){
+  this.nextIndex = this.nextIndex+1;
+  this.firstQuestion = this.userquestions[this.nextIndex];
+}
+
+previousQoestion(){
+  this.nextIndex = this.nextIndex-1;
+  this.firstQuestion = this.userquestions[this.nextIndex];
+}
+
 getSafeUrl(url){
   return this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url); 
 }

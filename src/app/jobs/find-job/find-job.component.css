@@ -28,6 +28,15 @@
 .search-btn .btn{font-weight:100;}
 .search-box-location .search-btn .btn{font-size:22px;}
 
+@media (min-width:768px) and (max-width:1023px){
+.content-info .job-title{line-height:44px;}	
+.bootstrap-select .dropdown-toggle{font-size:28px !important;}
+.search-box-location .form-control{font-size:19px;}
+.bootstrap-select .dropdown-toggle .filter-option-inner-inner{font-size:26px !important;}
+.search-box-location .search-btn .btn{font-size:18px; padding:10px;}
+	
+}
+
 @media (max-width: 767px) {
 .find-job-section-1{padding:30px 10px 30px 10px;}
 .find-job-section-1 img{top: 12px;}
