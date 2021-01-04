@@ -22,7 +22,7 @@
     
     <div class="content-info">
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-5 col-md-3">
           <h1 class="animate__fadeInRight animate__animated job-title"> Here are the Jobs in
             <select class="selectpicker select-job" (change)="changeCity($event.target.value)" autocomplete="off">
               <option *ngIf="singleJob">All</option>
@@ -59,7 +59,7 @@
             <div class="col-sm-4"></div>
           </div>
         </div>
-        <div class="col-sm-9 colIndex">
+        <div class="col-sm-7 col-md-9 colIndex">
           <div class="select-your-job animate__fadeInUpBig animate__animated">
             <div *ngIf="jobs && jobs.length == 0" class="notFound"><i class="fa fa-exclamation" aria-hidden="true"></i>No record found</div>
             <ul>

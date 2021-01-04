@@ -6,6 +6,16 @@
 .global-icon{bottom:0px; right:60px;}
 
 
+@media (min-width:768px) and (max-width:1023px){
+.content-info h1{font-size:41px; line-height: 50px;}
+.content-info h1 .hr-line{height:50px;}	
+.parent_question li label{font-size:30px; line-height: 30px;}
+.parent_question li label ~ span{font-size:20px;}
+.search-box-location p{font-size:18px;}
+.search-box-location .form-control{font-size:20px;}
+	
+}
+
 @media (max-width:767px){
 .mid-bar{position:inherit!important ;margin-bottom: 10%;}
 .content-info h1 {line-height: 40px; font-size: 34px; padding-left:0px;}

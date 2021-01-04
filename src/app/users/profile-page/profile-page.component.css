@@ -31,7 +31,7 @@ a, a:hover, a:focus{text-decoration:none;cursor: pointer;}
 .dashboard-list-view{margin-right:30px; margin-bottom:20px; padding-bottom:5px; border-bottom: solid 1px #fff;}
 .dashboard-list-view:nth-child(2n + 1){border-bottom:none;}
 
-.content-warp{width:90%; margin:0px auto; background:#979ebd; min-height: 100%; }
+.content-warp{width:90%; margin:0px auto; background:#99a0bf; min-height: 100%; }
 .blck{background:#000614;}
 .wht{background:#fff;}
 .dashboard-right-mid{display: inline-block; width: 100%; margin-top:82px;}
@@ -99,7 +99,27 @@ footer{background:#000714; bottom:0px; padding:15px 10px; text-transform:upperca
 ::ng-deep .height-min{height:100%;}
 
 
-@media (min-width:1200px) and (max-width:1300px){
+@media (min-width:768px) and (max-width:1023px){
+.left-bar{width: 300px; z-index: 3; transform:translate(-100%,0px); transition: all ease-in-out 0.3s; left: 0;}
+.nav-show .left-bar{transform:translate(0%,0px); transition: all ease-in-out 0.3s;}
+.nav-tiker-close{float: right; margin-right: 20px; margin-top: 10px;}
+.nav-tiker{margin-left:10px; margin-top:8px;}
+.left-bar ul{padding:10px  0px;}
+.left-bar ul li a.active{border-radius: 0px;}
+.left-bar ul li a:hover{border-radius: 0px;}
+.left-bar ul li{padding:0px;}
+.left-bar ul li a{padding:10px 30px;}
+
+.right-bar{width: 100%; float: none; padding-left: 0px;}
+.right-header{float: none; left: 0; width: 100%; padding: 10px;}
+footer{width:100%; padding-left:0px;}
+.dashboard-right-mid{margin-top: 61px;}
+.content-warp{width:100%;}
+
+.dashboard-right-mid{padding:0px 15px;}
+.dashboard-list-view{margin-right:0px;}
+.title-warp h2{padding-right: 0px;}
+.title-warp{padding:10px 0px;}
 
 }
 
