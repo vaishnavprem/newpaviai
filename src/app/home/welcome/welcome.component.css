@@ -220,6 +220,12 @@
 
 /* Image Transition End */
 
+@media (min-width:768px) and (max-width:1023px){
+.content-info h1{font-size:45px; line-height: 45px;}
+.content-info h1 .hr-line{height:50px;}	
+	
+}
+
 @media (max-width: 767px){
   .content-info h1 {line-height: 55px;text-align: center;font-size: 32px;}
   .frame{margin: 0px auto; text-align: center; display: table;}

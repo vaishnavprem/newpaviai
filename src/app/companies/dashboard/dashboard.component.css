@@ -134,7 +134,7 @@ html, body {height: 100%; margin: 0;}
 /*New Dashboard Design Start*/
 a, a:hover, a:focus{text-decoration:none;cursor:pointer;}
 .bg-images-1{background:url(assets/images/bg-images-1.jpg) no-repeat center fixed; height:100%; width:100%; font-family: "Montserrat Ultra Light"; background-size:cover;}
-.content-warp{width:90%; margin:0px auto; background:#979ebd; height:100%;}
+.content-warp{width:90%; margin:0px auto; background:#99a0bf; height:100%;}
 
 .content-bg-inner{background:#99a0bf; width:100%; float:left; padding-bottom: 75px;}
 
@@ -196,6 +196,30 @@ footer{background:#000714; bottom:0px; padding:15px 10px; text-transform:upperca
 /*New Dashboard Design End*/
 ::ng-deep .height-min{height:100%;}
 
+@media (min-width:768px) and (max-width:1023px){
+.left-bar{width: 300px; z-index: 3; transform:translate(-100%,0px); transition: all ease-in-out 0.3s; left: 0;}
+.nav-show .left-bar{transform:translate(0%,0px); transition: all ease-in-out 0.3s;}
+.nav-tiker-close{float: right; margin-right: 20px; margin-top: 10px;}
+.nav-tiker{margin-left:10px; margin-top:8px;}
+.left-bar ul{padding:10px  0px;}
+.left-bar ul li a.active{border-radius: 0px;}
+.left-bar ul li a:hover{border-radius: 0px;}
+.left-bar ul li{padding:0px;}
+.left-bar ul li a{padding:10px 30px;}
+
+.right-bar{width: 100%; float: none; padding-left: 30px;}
+.right-header{float: none; left: 0; width: 100%; padding: 10px;}
+footer{width:100%; padding-left:0px;}
+.dashboard-right-mid{margin-top: 61px;}
+.content-warp{width:100%;}
+.right-bar{padding-left:0px;}
+.dashboard-list-view{margin-right:0px;}
+.title-warp{padding:10px 15px;}
+.title-warp h2{padding:0px;}
+
+
+
+}
 
 @media(max-width:767px){
 /* .left-bar aside{padding: 15px 0 15px 0px !important;} */
