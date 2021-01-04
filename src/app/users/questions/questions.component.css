@@ -7,7 +7,7 @@
 .mid-content {position: relative !important;}
 
 .select-your-job{height:500px;}
-.content-info h1{font-size:40px;}
+.content-info h1{font-size:40px;padding-left: 0px;}
 
 html{height:100%;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 30%;}
@@ -55,6 +55,8 @@ strong {color: #09c;}
 .content-info .welcome-img {margin-right: 0px;position: absolute;right: 0;margin-top: 10px;}
 .parent_question li label{padding-left: 0px;}
 .parent_question li .check{position: absolute;left: -25px;}
+.video-signal-info{padding-top: 45px;}
+.lastminutitem{padding-top: 45px;}
 
 @media (max-width: 767px){
 .select-your-job {margin-top: 15px;margin-bottom: 13%;}
@@ -64,6 +66,8 @@ strong {color: #09c;}
 
 .horizontalAlien{display: inline-block;width: 100%;padding-right: 0}
 .content-info .welcome-img {position: relative;margin: 0 auto;}
+.video-signal-info{padding-top: 30px;}
+.lastminutitem{padding-top: 30px;}
 }
 #countdown {position: relative; float:right; height: 120px; width: 120px; text-align: center; margin-top: 20px; margin-right: 30px;}
 #countdown-number {color: white; display: inline-block;	line-height: 110px; font-size: 30px; font-weight: 600;}

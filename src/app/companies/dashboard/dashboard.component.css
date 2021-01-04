@@ -91,7 +91,11 @@ input[type=radio]:checked ~ label {color: #16c8e4;}
 .modal-footer {display:inline-block;}
 .form-group label{padding-left: 2px !important;}
 
-
+a.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    color: gray; 
+ }
 
 html, body {height: 100%; margin: 0;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 12%;bottom: 10%;}
