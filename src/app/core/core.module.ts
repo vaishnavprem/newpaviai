@@ -17,6 +17,7 @@ import {InvitationDialogComponent} from './components/dialogs/invitation-dialog/
 import {CarouselModule} from 'ngx-owl-carousel-o';
 import {SidebarComponent} from './components/layout/sidebar/sidebar.component';
 import { ShowConfirmDialogComponent } from './components/dialogs/show-confirm-dialog/show-confirm-dialog.component';
+import { UserSidebarComponent } from './components/layout/user-sidebar/user-sidebar.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ShowConfirmDialogComponent } from './components/dialogs/show-confirm-di
     AddSocialLinksDialogComponent,
     InvitationDialogComponent,
     SidebarComponent,
-    ShowConfirmDialogComponent
+    ShowConfirmDialogComponent,
+    UserSidebarComponent
   ],
   imports: [
     CommonModule,
@@ -49,6 +51,7 @@ import { ShowConfirmDialogComponent } from './components/dialogs/show-confirm-di
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
+    UserSidebarComponent,
     SaveWorkExperienceDialogComponent,
     SaveProgrammingSkillsDialogComponent,
     SaveEducationDialogComponent,

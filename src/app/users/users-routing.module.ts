@@ -10,6 +10,7 @@ import { QuestionsComponent } from './questions/questions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PartnerComponent } from './partner/partner.component';
 import { WorkComponent } from './work/work.component';
+import { UserInterviewComponent } from './user-interview/user-interview.component';
 const routes: Routes = [
   {
     path: 'profile-page',
@@ -44,6 +45,11 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'company-interview',
+    component: UserInterviewComponent,
     canActivate: [AuthGuard]
   },
 ];

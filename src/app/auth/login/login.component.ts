@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
               if(this.id){
                 await this.router.navigate(['users/job-question',this.id]);
               } else {
-                 await this.router.navigate(['users/profile-page']);
+                 await this.router.navigate(['users/dashboard']);
               }
             }
           

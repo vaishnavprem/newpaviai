@@ -15,7 +15,9 @@ declare var $: any;
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  today: number = Date.now();
+  public status: boolean = false;
+  authUser;
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
@@ -26,6 +28,10 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.authUser = this.getAuthUser.transform();
   }
-
+  clickEvent(){
+    //console.log("ClickEvent>>>",this.status);
+    this.status = !this.status;       
+  }
 }

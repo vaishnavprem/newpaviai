@@ -11,33 +11,19 @@
     <div class="row">
       <div class="col-xl-6 col-md-6">
         <div class="form-group">
-          <label>Phone:</label>
-          <input class="form-control" formControlName="phone">
+          <label>First Name:</label>
+          <input class="form-control" formControlName="first_name">
         </div>
-        <mat-error *ngIf="phone.hasError('patternInvalid')">Phone number is <strong>invalid</strong>. Only numbers
-          please. </mat-error>
+     
       </div>
       <div class="col-xl-6 col-md-6">
         <div class="form-group">
-          <label>Age:</label>
-          <input class="form-control" formControlName="age">
+          <label>Last Name:</label>
+          <input class="form-control" formControlName="last_name">
         </div>
+     
       </div>
-      </div>
-      <div class="row">
-      <div class="col-xl-6 col-md-6">
-        <div class="form-group">
-          <label>Country:</label>
-          <input class="form-control" formControlName="country">
-        </div>
-        <mat-error *ngIf="country.hasError('patternInvalid')">Country format is <strong>invalid</strong>. </mat-error>
-      </div>
-      <div class="col-xl-6 col-md-6">
-        <div class="form-group">
-          <label>Gender:</label>
-          <input class="form-control" formControlName="gender">
-        </div>
-      </div>
+     
       </div>
       <div class="row">
       <div class="col-xl-6 col-md-6">
@@ -48,36 +34,28 @@
       </div>
       <div class="col-xl-6 col-md-6">
         <div class="form-group">
-          <label>Birthday:</label>
-          <ng-container *ngIf="showEditProfileForm">
-            <div class="date-age" (click)="picker.open()">
-              <input matInput [matDatepicker]="picker" class="logos-small-input form-control" formControlName="birthday"
-                    [max]="maxBirthdayDate" (dateChange)="dateChanged($event)">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </div>
-            <!--                <mat-error *ngIf="birthday.hasError('required')">Birth day is <strong>required</strong>--> 
-            <!--                </mat-error>-->
-            <mat-error *ngIf="birthday.hasError('matDatepickerMax')">The date is <strong>not allowed</strong> </mat-error>
-          </ng-container>
-          <p *ngIf="!showEditProfileForm">{{getUserBirthdayFormatted()}}</p>
+          <label>Country:</label>
+          <select class="form-control" formControlName="country">
+            <option selected disabled [value]="''">Country*</option>
+            <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+          </select>
         </div>
+        <mat-error *ngIf="country.hasError('patternInvalid')">Country format is <strong>invalid</strong>. </mat-error>
       </div>
       
     </div>
     <div class="row">
     <div class="col-xl-6 col-md-6">
       <div class="form-group">
-        <button class="btn btn-primary" (click)="showChangeEmailForm()">Change E-mail</button>
         <button class="btn btn-primary" (click)="showChangePassForm()">Change Password</button>
       </div>
     </div>
     </div>
     
   </form>
-  <div class="old-new-email" *ngIf="showChangeEmail">
+<!--  <div class="old-new-email" *ngIf="showChangeEmail">
     <app-change-email-form (back)="backToMainForm()"></app-change-email-form>
-  </div>
+  </div>-->
   <div class="changes-passwords" *ngIf="showChangePass">
     <app-change-password-form (back)="backToMainForm()"></app-change-password-form>
   </div>
