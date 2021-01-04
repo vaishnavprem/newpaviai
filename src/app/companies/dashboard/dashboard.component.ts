@@ -113,10 +113,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public userquestions:any;
   public firstQuestion:any;
   public nextIndex = 0;
-  // public previousIndex = 0;
   public questionLenth = 0;
   public companyData;
   public categories;
+  public openJobs = 6;
+  public applicants = 55;
+  public interviewCompleted = 0;
   public  show = true;
   public dataSourceOne;
   public displayedColumnsOne: string[];
@@ -292,12 +294,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.isLoder=false;
       if (response.statusCode == 200) {
         $('.loader').hide();
+        //console.log("Company Data>>",response);
         this.companyData = response['data']['companydata'];
         this.employments = response['data']['employment']; 
         this.seniorityLevels = response['data']['seniority']; 
         this.responsibilities = response['data']['responsibility']; 
         this.requirements = response['data']['requirement']; 
-        this.categories = response['data']['categories'];  
+        this.categories = response['data']['categories']; 
          } else if (response.statusCode == 401) {
           this.toastr.error(response.message)
           this.auth.logOut();
@@ -535,12 +538,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     let JobData = this.companiesService.getJobs(this.postArry)
     .subscribe(response => {
       this.isLoder=false;
+      // $('.loader').hide();
       this.dataSourceOne.data = response['data']['jobs'] as JobsElements[];
       this.dataSourceOne.paginator = this.tableOnePaginator;
         this.dataSourceOne.sort = this.tableOneSort;
      
       this.jobs = response['data']['jobs'];
-      console.log("View Jobs>>",this.jobs);
+      //console.log("View Jobs>>",this.jobs);
       
     });
     
@@ -554,21 +558,23 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     let JobData = this.companiesService.getJobsUser(this.postArry)
     .subscribe(response => {
       this.isLoder=false;
+      // $('.loader').hide();
       let latest = response['data']['user'].sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
       this.dataSourceThree.data = latest as User[];
       this.dataSourceThree.paginator = this.tableThreePaginator;
         this.dataSourceThree.sort = this.tableThreeSort;
         this.allusers = response['data']['user'];
         
-      console.log(latest);
+      //console.log(latest);
       
     });
     
   }
   showJob(index){
+    this.singleJob =this.jobs[index];
     $("#show-job").modal("show");
     $("#show-job").appendTo("body");
-    this.singleJob =this.jobs[index];
+    
     //console.log("Index>>",index,"Single jOB>>",this.singleJob);
   }
   editJob(index){
@@ -625,14 +631,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.dataSourceFour.sort = this.tableFourSort;
       
       this.jobs = response['data']['jobs'];
-      console.log("View Jobs>>",this.jobs);
+      //console.log("View Jobs>>",this.jobs);
       
     });
     
   }
   showQuestions(jobId){
     this.isLoder=true;
-    console.log("JobId>>",jobId);
     this.postArry = {
       jobId:jobId,
     }
@@ -640,7 +645,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       if(Object.keys(response['data']).length > 0){
         this.isLoder=false;
         this.questions = response['data']['question'];
-        console.log("Questions>>",this.questions);
         $("#show-question").modal("show");
       } else {
         this.isLoder=false;
@@ -761,7 +765,6 @@ showCandidateAnswers(element){
           $("#add-modal-candidate").modal("show");
           this.firstQuestion = response['data']['question'][0];
           this.questionLenth = response['data']['question'].length;
-          console.log("First Question>>", this.questionLenth);
       } else {
         this.isLoder=false;
         this.toastr.error(response.message);
@@ -772,13 +775,11 @@ showCandidateAnswers(element){
 }
 
 nextQuestion(){
-  console.log("NextQuestion");
   this.nextIndex = this.nextIndex+1;
   this.firstQuestion = this.userquestions[this.nextIndex];
 }
 
 previousQoestion(){
-  console.log("PreviousQuestion");
   this.nextIndex = this.nextIndex-1;
   this.firstQuestion = this.userquestions[this.nextIndex];
 }
