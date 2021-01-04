@@ -90,7 +90,7 @@
 function typingEffect(param1,param2){
     console.log("Method Called",param2,param1);
     var str = param1;
-    var spans = '<span>' + str.split('').join('</span><span>') + '</span>';
+    var spans = '<span>' + str.split('').join('</span><span>') + '<i class="hr-line"></i></span>';
     $(spans).hide().appendTo('.'+param2).each(function (i) {
         $(this).delay(100 * i).css({
             display: 'inline',
