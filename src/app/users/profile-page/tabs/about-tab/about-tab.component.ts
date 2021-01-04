@@ -28,7 +28,7 @@ export class AboutTabComponent implements OnInit {
   showEditProfileForm = false;
   maxBirthdayDate = new Date(2009, 11, 31);
   countries = COUNTRY_LIST;
-
+  userData;
 
   constructor(
     private fb: FormBuilder,
@@ -42,14 +42,10 @@ export class AboutTabComponent implements OnInit {
         value: '',
         disabled: !this.showEditProfileForm
       }, [Validators.required, patternValidator(TEXT_ONLY_PATTERN)]],
-      phone: [{
-        value: 'n/a',
-        disabled: !this.showEditProfileForm
-      }, [Validators.required, patternValidator(NUMBERS_ONLY_PATTERN)]],
-      gender: [{value: '', disabled: true}, Validators.required],
-      birthday: [{value: 'n/a', disabled: true}, Validators.required],
-      email: [{value: '', disabled: true}, Validators.required],
-      age: [{value: '', disabled: true}]
+     
+      first_name: [{value: '', disabled: true}, Validators.required],
+      last_name: [{value: '', disabled: true}, Validators.required],
+      email: [{value: '', disabled: true}, Validators.required]
 
     });
 
@@ -59,8 +55,22 @@ export class AboutTabComponent implements OnInit {
   ngOnInit(): void {
     this.authUser = this.getAuthUser.transform();
     const age = this.countUsersAge();
-    this.profileForm.patchValue({...this.authUser, ...{age}});
-
+    this.usersService.getUserData({user_id:this.authUser.user_id})
+    .subscribe((response : any) => { 
+      if (response.statusCode == 200) {
+          this.userData = response['data']['user']; 
+          this.profileForm.patchValue({
+            first_name:this.userData.first_name,
+            last_name:this.userData.last_name,
+            country:this.userData.country,
+            email:this.userData.email
+          })
+         
+      } else {
+        this.toastr.error(response.message);
+      }
+      
+    });
 
   }
 
@@ -86,15 +96,21 @@ export class AboutTabComponent implements OnInit {
 
   saveProfileDetails() {
     if (this.profileForm.valid) {
-
       this.usersService.updateProfileInfo({
-        ...this.profileForm.value, ...{user_id: this.authUser._id}
-      }).subscribe((dt: any) => {
-        this.toastr.success('The profile changes has been saved successfully');
-        localStorage.setItem('token', dt.token);
-        this.authUser = this.getAuthUser.transform();
-        this.countUsersAge();
-        this.showEditProfileForm = false;
+        ...this.profileForm.value, ...{user_id: this.authUser.user_id}
+      }).subscribe((response: any) => {
+
+        if (response.statusCode == 200) {
+          this.toastr.success('The profile changes has been saved successfully');
+          this.showEditProfileForm = false;
+          this.country.disable();
+          this.first_name.disable();
+          this.last_name.disable();
+          this.email.disable();
+      } else {
+        this.toastr.error(response.message);
+      }
+        
       });
     }
   }
@@ -102,32 +118,30 @@ export class AboutTabComponent implements OnInit {
   editProfileForm() {
     this.showEditProfileForm = true;
     this.country.enable();
-    this.phone.enable();
-    this.birthday.enable();
+    this.first_name.enable();
+    this.last_name.enable();
+    this.email.enable();
   }
 
 
   backToMainForm() {
     this.showChangePass = false;
     this.showChangeEmail = false;
-    this.authUser = this.getAuthUser.transform();
-    this.profileForm.patchValue(this.authUser);
   }
 
-  dateChanged(e) {
-    this.birthday.patchValue(moment(e.value).format('YYYY-MM-DD'));
-  }
+ 
 
-  get phone(): AbstractControl {
-    return this.profileForm.get('phone');
+  get first_name(): AbstractControl {
+    return this.profileForm.get('first_name');
   }
-
+  get last_name(): AbstractControl {
+    return this.profileForm.get('last_name');
+  }
   get country(): AbstractControl {
     return this.profileForm.get('country');
   }
 
-  get birthday(): AbstractControl {
-    return this.profileForm.get('birthday');
+  get email(): AbstractControl {
+    return this.profileForm.get('email');
   }
-
 }

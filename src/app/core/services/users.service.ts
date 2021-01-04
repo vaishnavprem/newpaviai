@@ -29,15 +29,15 @@ export class UsersService {
   }
 
   updateProfileInfo(params) {
-    return this.httpClient.put(`${API_URL}users/change_PACG`, params);
+    return this.httpClient.post(`${API_URL}user/change-profile`, params,{headers:this.getHeaders()});
   }
 
   changeEmail(params) {
-    return this.httpClient.put(`${API_URL}users/change_email`, params);
+    return this.httpClient.post(`${API_URL}user/change-email`, params,{headers:this.getHeaders()});
   }
 
   changePassword(params) {
-    return this.httpClient.put(`${API_URL}users/change_pass`, params);
+    return this.httpClient.post(`${API_URL}user/change-pass`, params,{headers:this.getHeaders()});
   }
 
   changeAboutText(params) {
@@ -56,5 +56,9 @@ export class UsersService {
   }
   showQuestionAnswer(params){
     return this.httpClient.post(`${API_URL}user/show-question-answer`, params,{headers:this.getHeaders()});
+  }
+
+  getUserData(params){
+    return this.httpClient.post(`${API_URL}user/get-user-data`, params,{headers:this.getHeaders()});
   }
 }

@@ -4,24 +4,26 @@
       <div class="form-group">
         <label>Old Email:</label>
         <input class="form-control" placeholder="hello@name.com" formControlName="old_email" (keyup)="compareNewOldEmails()">
+        <mat-error *ngIf="(oldEmail.touched || isSubmitted) && oldEmail.hasError('required')">Old email is required
+        </mat-error>
+        <mat-error *ngIf="oldEmail.hasError('patternInvalid')">E-mail is <strong>invalid</strong>
+        </mat-error>
       </div>
-      <mat-error *ngIf="(oldEmail.touched || isSubmitted) && oldEmail.hasError('required')">Old email is required
-      </mat-error>
-      <mat-error *ngIf="oldEmail.hasError('patternInvalid')">E-mail is <strong>invalid</strong>
-      </mat-error>
+      
     </div>
 
     <div class="col-xl-6 col-md-6">
       <div class="form-group">
         <label>New E-mail Address:</label>
         <input class="form-control" placeholder="New E-mail" formControlName="new_email" (keyup)="compareEmails()">
+        <mat-error *ngIf="newEmail.hasError('patternInvalid') && !newOldEmailsMatch">E-mail is <strong>invalid</strong>
+        </mat-error>
+        <mat-error *ngIf="(newEmail.touched || isSubmitted) && newEmail.hasError('required')">New email is required
+        </mat-error>
+        <mat-error *ngIf="newOldEmailsMatch">Old and new emails are the same
+        </mat-error>
       </div>
-      <mat-error *ngIf="newEmail.hasError('patternInvalid') && !newOldEmailsMatch">E-mail is <strong>invalid</strong>
-      </mat-error>
-      <mat-error *ngIf="(newEmail.touched || isSubmitted) && newEmail.hasError('required')">New email is required
-      </mat-error>
-      <mat-error *ngIf="newOldEmailsMatch">Old and new emails are the same
-      </mat-error>
+     
     </div>
 
     <div class="col-xl-6 col-md-6">

@@ -27,7 +27,6 @@ export class ChangePasswordFormComponent implements OnInit {
         private toastr: ToastrService
     ) {
         this.changePasswordForm = this.fb.group({
-            old_pass: ['', [Validators.required, patternValidator(NO_SPACE_PATTERN)]],
             new_pass: ['', [Validators.required, patternValidator(NO_SPACE_PATTERN)]],
             confirm_password: ['', Validators.required]
         });
@@ -39,20 +38,18 @@ export class ChangePasswordFormComponent implements OnInit {
 
     comparePasswords() {
         this.passwordsMatch = this.newPass.value === this.confirmPass.value;
-        this.compareNewOldPasswords();
     }
 
-    compareNewOldPasswords() {
-        this.newOldPasswordsMatch = this.newPass.value && this.oldPass.value && this.newPass.value === this.oldPass.value;
-    }
-
+   
     changePassword() {
         this.isSubmitted = true;
-        if (this.changePasswordForm.valid && !this.newOldPasswordsMatch && this.passwordsMatch) {
-            this.usersService.changePassword({...this.changePasswordForm.value, ...{user_id: this.authUser._id}}).subscribe((dt: any) => {
-                localStorage.setItem('token', dt.token);
-                this.toastr.success('Password has been changed successfully');
-                this.backToMainForm();
+        if (this.changePasswordForm.valid  && this.passwordsMatch) {
+            this.usersService.changePassword({...this.changePasswordForm.value, ...{user_id: this.authUser.user_id}}).subscribe((response: any) => {
+                if (response.statusCode == 200) {
+                    this.toastr.success('Password has been changed successfully');
+                } else {
+                  this.toastr.error(response.message);
+                }
             });
         }
     }
@@ -61,9 +58,7 @@ export class ChangePasswordFormComponent implements OnInit {
         this.back.emit();
     }
 
-    get oldPass(): AbstractControl {
-        return this.changePasswordForm.get('old_pass');
-    }
+
 
     get newPass(): AbstractControl {
         return this.changePasswordForm.get('new_pass');

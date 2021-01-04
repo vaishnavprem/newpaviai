@@ -64,7 +64,7 @@ footer{background:#000714; bottom:0px; padding:15px 10px; text-transform:upperca
 /*Candidate Modal Design*/
 #add-modal-candidate .modal-dialog{width:auto;max-width: 1300px;}
 #add-modal-candidate .modal-dialog .modal-content .modal-body{padding: 0px;}
-.bg-profile-chat{background:url(../../../assets/images/live-chat-bg.jpg); min-height:450px;background-size: contain;}
+
 .interview-warp h5{color:#99a0bf;margin:0px; padding-left: 15px;}
 .contact_form .form-group .control-label{left:15px;}
 .contact_form{padding:15px 0px 0px;}

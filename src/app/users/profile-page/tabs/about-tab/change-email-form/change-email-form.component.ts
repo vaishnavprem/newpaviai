@@ -41,10 +41,12 @@ export class ChangeEmailFormComponent implements OnInit {
     changeEmail() {
         this.isSubmitted = true;
         if (this.changeEmailForm.valid && this.emailsMatch && !this.newOldEmailsMatch) {
-            this.usersService.changeEmail({...this.changeEmailForm.value, ...{user_id: this.authUser._id}}).subscribe((dt: any) => {
-                this.toastr.success('Email has been changed successfully');
-                localStorage.setItem('token', dt.token);
-                this.backToMainForm();
+            this.usersService.changeEmail({...this.changeEmailForm.value, ...{user_id: this.authUser.user_id}}).subscribe((response: any) => {
+                if (response.statusCode == 200) {
+                    this.toastr.success('Email has been changed successfully');
+                } else {
+                  this.toastr.error(response.message);
+                }
             });
         }
     }
