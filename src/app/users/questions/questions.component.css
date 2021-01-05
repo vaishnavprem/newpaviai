@@ -57,12 +57,13 @@ strong {color: #09c;}
 .parent_question li .check{position: absolute;left: -25px;}
 .video-signal-info{padding-top: 45px;}
 .lastminutitem{padding-top: 45px;}
+.sound-icon{position: fixed;}
 
 @media (max-width: 767px){
 .select-your-job {margin-top: 15px;margin-bottom: 13%;}
 .bg-profile-chat{height:auto;margin-top: 0px;}
 #buttons {margin-top: 30px; margin-bottom: 30px;text-align: center;}
-.mid-bar{top:12%;}
+.mid-bar{top:12%;overflow: auto;}
 
 .horizontalAlien{display: inline-block;width: 100%;padding-right: 0}
 .content-info .welcome-img {position: relative;margin: 0 auto;}

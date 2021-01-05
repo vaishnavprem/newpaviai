@@ -38,7 +38,7 @@
   }
 } */
 
-/* .frame{
+.frame{
   margin-right:30px;
   width:150px;
   height:150px;
@@ -172,9 +172,9 @@
   5%{transform:translateZ(-1px) rotateY(-180deg);}
   95%{transform:translateZ(0px) rotateY(0deg);}
   100%{transform:translateZ(0px) rotateY(0deg);}
-} */
+}
 
-.bb::before, .bb::after, .bb {
+/* .bb::before, .bb::after, .bb {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -216,7 +216,7 @@
   75% {
     clip: rect(0px, 220px, 220px, 218px);
   }
-}
+} */
 
 /* Image Transition End */
 
