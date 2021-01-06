@@ -30,6 +30,7 @@ function typewriterShow(params1,param2)
              iTextPos = 0; 
              sContents = ''; 
              iRow;
+             
         }
    
  sContents =  ' ';
@@ -40,7 +41,10 @@ function typewriterShow(params1,param2)
   sContents += aText[iRow++] + '<br />';
  }
  
+ if(header == 1){
     destination = document.getElementById("showText");
+ }
+    
  
  
  destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos)+"<i class='hr-line'></i>";

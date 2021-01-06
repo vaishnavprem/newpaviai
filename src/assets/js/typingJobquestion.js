@@ -17,9 +17,9 @@ function typewriterQuestion(params1,param2)
 {
    
         //console.log("Employer");
-        if(params1 == "Question"){
+        if(params1 == "Start"){
             //console.log("Employee");
-             aText = new Array("Thank you for your interest in this role. Please read each question then click record answer to submit your response.");
+             aText = new Array("Position, you will be asked a series of questions. You will be given 5 mins to answer each question.");
              //destination = document.getElementById("seekertext");
              iArrLength = aText[0].length; // the length of the text array
              iSpeed = 100; 
@@ -30,7 +30,38 @@ function typewriterQuestion(params1,param2)
              iTextPos = 0; 
              sContents = ''; 
              iRow;
+             
         }
+        if(params1 == "LastMinute"){
+         //console.log("Employee");
+          aText = new Array("Last Minute Checklist");
+          //destination = document.getElementById("seekertext");
+          iArrLength = aText[0].length; // the length of the text array
+          iSpeed = 100; 
+          iIndex = 0; 
+         
+          iScrollAt = 20; 
+          header = 2;
+          iTextPos = 0; 
+          sContents = ''; 
+          iRow;
+          
+     }
+     if(params1 == "lastMinuteFinal"){
+      //console.log("Employee");
+       aText = new Array("Test your audio and video");
+       //destination = document.getElementById("seekertext");
+       iArrLength = aText[0].length; // the length of the text array
+       iSpeed = 100; 
+       iIndex = 0; 
+      
+       iScrollAt = 20; 
+       header = 3;
+       iTextPos = 0; 
+       sContents = ''; 
+       iRow;
+       
+      }
    
  sContents =  ' ';
  iRow = Math.max(0, iIndex-iScrollAt);
@@ -40,7 +71,15 @@ function typewriterQuestion(params1,param2)
   sContents += aText[iRow++] + '<br />';
  }
  
-    destination = document.getElementById("questionText");
+    if(header == 1){
+      destination = document.getElementById("startText");
+    }
+    if(header == 2){
+      destination = document.getElementById("lastMinutText");
+    }
+    if(header == 3){
+      destination = document.getElementById("lastMinuteFinalText");
+    }
  
  
  destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos)+"<i class='hr-line'></i>";

@@ -42,17 +42,17 @@
                         <mat-error *ngIf="lastName.hasError('patternInvalid')">Last name has <strong>incorrect format</strong>
                         </mat-error>
                       </div>
-                      <div class="col-sm-12">
+                      <!-- <div class="col-sm-12">
                         <div class="form-group">
-                          <!-- <label>Date of Birth</label> -->
+                          <label>Date of Birth</label>
                           <input class="form-control inputField" type="date" id="birthday" placeholder="Date of Birth" formControlName="birthday" [max]="maxBirthdayDate" (change)="getDate()" />
-                          <!-- <i class="fa fa-calendar"></i>  -->
+                          
                         </div>
                           <mat-error *ngIf="isSubmitted && birthday.hasError('required')">Birth day is <strong>required</strong>
                           </mat-error>
                           <mat-error *ngIf="birthday.hasError('matDatepickerMax')">The date is <strong>not allowed</strong>
                           </mat-error>
-                      </div>
+                      </div> -->
                       <div class="col-sm-12">
                         <div class="form-group">
                           <!-- <label>Country</label> -->
@@ -60,7 +60,8 @@
                             <option selected disabled [value]="''">Country*</option>
                             <option *ngFor="let country of countries" [value]="country">{{country}}</option>
                           </select>
-                          <i class="fa fa-angle-down"></i> </div>
+                          <!-- <i class="fa fa-angle-down"></i>  -->
+                        </div>
                           <mat-error *ngIf="isSubmitted && userRegisterForm.get('country').hasError('required')">Country is <strong>required</strong>
                           </mat-error>
                       </div>
@@ -76,7 +77,20 @@
                       </div>
                       <div class="col-sm-12">
                         <div class="form-group">
-                          <!-- <label>Gender</label> -->
+                          <!-- <label>LinkedIn URL</label> -->
+                          <input class="form-control inputField" type="text" placeholder="LinkedIn URL*" formControlName="linkedin_url" />
+                        </div>
+                        <mat-error *ngIf="(linkedUrl.touched||isSubmitted) && linkedUrl.hasError('required')">LinkedIn Url is <strong>required</strong>
+                        </mat-error>
+                        <!-- <mat-error *ngIf="linkedUrl.errors?.minlength || linkedUrl.errors?.maxlength">
+                          Last name must be <strong>2-15 characters</strong> long.
+                        </mat-error>
+                        <mat-error *ngIf="linkedUrl.hasError('patternInvalid')">Last name has <strong>incorrect format</strong>
+                        </mat-error> -->
+                      </div>
+                      <!-- <div class="col-sm-12">
+                        <div class="form-group">
+                          <label>Gender</label>
                           <ul class="parent_question-genral">
                             <li>
                               <input type="radio" id="male" name="gender" value="male" formControlName="gender">
@@ -90,7 +104,7 @@
                             </li>
                           </ul>
                         </div>
-                      </div>
+                      </div> -->
                       <div class="col-sm-12">
                         <div class="form-group">
                           <!-- <label>Password</label> -->

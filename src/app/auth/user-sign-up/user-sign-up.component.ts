@@ -43,11 +43,12 @@ export class UserSignUpComponent implements OnInit {
         }),
         password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15), patternValidator(NO_SPACE_PATTERN)]],
         confirm_password: ['', Validators.required],
-        birthday: ['', [Validators.required]], // patternValidator(DATE_ONLY_PATTERN)
+        //birthday: ['', [Validators.required]], // patternValidator(DATE_ONLY_PATTERN)
         first_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
         last_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
-        gender: ['male', Validators.required],
+        //gender: ['male', Validators.required],
         country: ['', Validators.required],
+        linkedin_url: ['', Validators.required],
         agreed: ['', Validators.required],
 
       },
@@ -125,6 +126,10 @@ export class UserSignUpComponent implements OnInit {
     return this.userRegisterForm.get('email');
   }
 
+  get linkedUrl(): AbstractControl {
+    return this.userRegisterForm.get(`linkedin_url`);
+  }
+
   /**
    * Password field getter
    */
@@ -150,9 +155,9 @@ export class UserSignUpComponent implements OnInit {
     // });
   }
 
-  get birthday(): AbstractControl {
-   return this.userRegisterForm.get('birthday');
-  }
+  // get birthday(): AbstractControl {
+  //  return this.userRegisterForm.get('birthday');
+  // }
 
   async goToPage(url) {
     await this.router.navigate([url]);

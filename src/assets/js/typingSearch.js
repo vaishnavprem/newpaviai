@@ -31,7 +31,24 @@ function typewriterSearch(params1,param2)
          iTextPos = 0; 
          sContents = ''; 
          iRow;
+         
+         
     }
+    if(params1 == "Find-job"){
+      //console.log("Employee");
+       aText = new Array("I can always refine the seach if you have an industry or a job title in mind?");
+       //destination = document.getElementById("seekertext");
+       iArrLength = aText[0].length; // the length of the text array
+       iSpeed = 100; 
+       iIndex = 0; 
+      
+       iScrollAt = 20; 
+       header = 2;
+       iTextPos = 0; 
+       sContents = ''; 
+       iRow;
+       
+  }
    
  sContents =  ' ';
  iRow = Math.max(0, iIndex-iScrollAt);
@@ -41,7 +58,12 @@ function typewriterSearch(params1,param2)
   sContents += aText[iRow++] + '<br />';
  }
  
-    destination = document.getElementById("searchText");
+ if(header ==1){
+   destination = document.getElementById("searchText");
+ }else{
+   destination = document.getElementById("findJobText");
+ }
+    
  
  
  destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos)+"<i class='hr-line'></i>";
