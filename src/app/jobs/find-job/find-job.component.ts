@@ -13,6 +13,7 @@ import {COUNTRY_LIST} from '../../core/constants/countries';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 declare var $: any;
+declare function typewriterSearch(params1, param2): any;
 @Component({
   selector: 'app-find-job',
   templateUrl: './find-job.component.html',
@@ -113,6 +114,7 @@ export class FindJobComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(){
     console.log("AfterViewInit Called");
+    typewriterSearch('Find-job', 'findJobText');
     // $('.selectpicker').selectpicker('refresh');
     // $(".dropdown-toggle").append("<span class='bs-caret'><span class='caret'></span></span>");
     // $(".dropdown-menu").css("min-width","290px !important");

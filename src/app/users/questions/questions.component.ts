@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import {CompaniesService} from '../../core/services/companies.service';
@@ -9,7 +9,8 @@ import { map, tap, takeUntil,startWith,takeWhile, share,switchMap, filter} from 
 import {GetAuthUserPipe} from '../../shared/pipes/get-auth-user.pipe';
 declare var $: any;
 
-// declare function typewriterQuestion(params1, param2): any; startArchive
+//  startArchive
+declare function typewriterQuestion(params1, param2): any;
 declare function typingEffect(params1, param2): any;
 declare function initVonge(): any;
 declare function stopArchive(answerID): any;
@@ -22,7 +23,7 @@ declare function viewArchive();
   styleUrls: ['./questions.component.css']
 })
 
-export class QuestionsComponent implements OnInit {
+export class QuestionsComponent implements OnInit, AfterViewInit {
   id: number;
   public questionName;
   public questionNo;
@@ -73,8 +74,29 @@ export class QuestionsComponent implements OnInit {
    });
    this.start=true;
    this.getQuestionData(this.id );
-   typingEffect("Thank you for your interest in this role. Please read each question then click record answer to submit your response.", "questionText");
+  //  typingEffect("Thank you for your interest in this role. Please read each question then click record answer to submit your response.", "questionText");
+  
    this.timeLeft=this.timePerQuestion;
+  }
+  ngAfterViewInit() {
+    typewriterQuestion("Start", "startText");
+  }
+  gotoStart(){
+    this.start=true;
+    this.lastminute=false;
+    setTimeout(()=>{ typewriterQuestion("Start", "startText"); },);
+    
+  }
+  gotoLastMinut(){
+    this.start=false;
+    this.lastminute=true;
+    this.lastminutefinal=false;
+    setTimeout(()=>{ typewriterQuestion("LastMinute", "lastMinutText"); },);
+  }
+  gotoLastMinutFinal(){
+    this.lastminute=false;
+    this.lastminutefinal=true;
+    setTimeout(()=>{ typewriterQuestion("lastMinuteFinal", "lastMinuteFinalText"); },);
   }
   getQuestionData(job_id){
     $('.loader').show();

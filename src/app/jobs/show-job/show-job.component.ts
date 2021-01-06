@@ -8,7 +8,7 @@ import {API_URL,AVATAR_URL} from '../../core/constants/general';
 import { map, tap, takeUntil,startWith} from 'rxjs/operators';
 import {AuthService} from '../../core/services/auth.service';
 import {Location} from '@angular/common';
-// declare function typewriterShow(params1, param2): any;
+declare function typewriterShow(params1, param2): any;
 declare function typingEffect(params1, param2): any;
 @Component({
   selector: 'app-show-job',
@@ -41,7 +41,8 @@ export class ShowJobComponent implements OnInit {
    });
    this.getJobData(this.id);
    this.token=localStorage.getItem('token');
-   typingEffect("Great, if you like this job please click on the apply button below to be considered for this job.","showText");
+  //  typingEffect("Great, if you like this job please click on the apply button below to be considered for this job.","showText");
+  typewriterShow("Show-job","showText");
   }
   getJobData(job_id){
     this.isLoder=true;

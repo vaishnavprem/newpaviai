@@ -40,9 +40,13 @@
                 (selectionChange)="stepChanged($event)" style="background: transparent;">
                 
                 <div class="icon-user-mat">
-                <ng-template matStepperIcon="edit" let-index="index"> <i class="fa fa-user" *ngIf="index === 0"></i> <i class="fa fa fa-file " *ngIf="index === 1"></i> <i class="fa fa-file-pdf-o " *ngIf="index === 2"></i> </ng-template>
+                <ng-template matStepperIcon="edit" let-index="index"> <i class="fa fa-user" *ngIf="index === 0"></i> <i class="fa fa fa-file " *ngIf="index === 1"></i> 
+                  <!-- <i class="fa fa-file-pdf-o " *ngIf="index === 2"></i>  -->
+                </ng-template>
                 <!-- Custom icon with a context variable. -->
-                <ng-template matStepperIcon="number" let-index="index"> <i class="fa fa-user " *ngIf="index === 0"></i> <i class="fa fa fa-file " *ngIf="index === 1"></i> <i class="fa fa-file-pdf-o " *ngIf="index === 2"></i> </ng-template>
+                <ng-template matStepperIcon="number" let-index="index"> <i class="fa fa-user " *ngIf="index === 0"></i> <i class="fa fa fa-file " *ngIf="index === 1"></i> 
+                  <!-- <i class="fa fa-file-pdf-o " *ngIf="index === 2"></i> -->
+                 </ng-template>
                 <!-- Step 1 -->
                 <mat-step label="Step 1">
                   <ng-template matStepLabel>About</ng-template>
@@ -54,11 +58,11 @@
                   <app-cv-portfolio-tab></app-cv-portfolio-tab>
                 </mat-step>
                 <!-- Step 3 -->
-                <mat-step label="Step 3">
+                <!-- <mat-step label="Step 3">
                   <ng-template matStepLabel>Social Medias<br>
                     PDF</ng-template>
                   <app-social-medias-tab></app-social-medias-tab>
-                </mat-step>
+                </mat-step> -->
                 </div>
               </mat-horizontal-stepper>
               

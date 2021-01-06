@@ -149,6 +149,7 @@ input[type=radio]:checked ~ label {color: #fff;}
 
 .content-info .job-title{line-height: 60px; font-size: 40px;}
 .content-info .job-title .hr-line{height: 60px;}
+.content-info .showText .hr-line{height: 65px;}
 
 .private-user{background:rgba(255,255,255,0.50); padding:15px;}
 

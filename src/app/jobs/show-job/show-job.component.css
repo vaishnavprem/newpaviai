@@ -12,11 +12,12 @@
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 15%;}
 .global-icon{bottom:0px;}
 .apply-btn{cursor:pointer;}
-.content-info h1{font-size:33px;padding-left: 0px;}
+.content-info h1{font-size:35px;padding-left: 0px;}
 
 .select-your-job ul li h4 span a{cursor:pointer;color: #acadcae6;}
 .select-your-job ul li h4 span a:hover{color:#7478f3e6;}
 
+/* .content-info .showText .hr-line{height:65px !important;} */
 /* .container{padding-left: 0px;padding-right: 0px;} */
 
 @media (max-width: 767px) {

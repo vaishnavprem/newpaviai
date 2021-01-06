@@ -14,6 +14,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 declare var $: any;
 declare function initialize(): any;
 declare function typingEffect(params1, param2): any;
+declare function typewriterSearch(params1, param2): any;
 
 declare function panTo(coords): any;
 declare function geocodeAddress(value): any;
@@ -47,7 +48,8 @@ export class SearchJobComponent implements OnInit {
 
   ngOnInit(): void {
     initialize();
-    typingEffect("I will help you find an opportunity in your area, please share your location","searchText");
+    // typingEffect("I will help you find an opportunity in your area, please share your location","searchText");
+    typewriterSearch("Search","searchText");
   }
   onKeyUp(event: any,serachTerm) { // without type info
     if(event.target.value.length > 2 && event.target.value){
