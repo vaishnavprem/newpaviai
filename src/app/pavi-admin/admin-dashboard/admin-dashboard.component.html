@@ -384,465 +384,105 @@
 
 
 <div class="bg-images-1">
-  <app-header></app-header>
-
-  <div class="mid-col-sec-dashbord">
-    <div class="mid-content mid-bar">
-      <div class="container-fluid">
-        
-        <!--<div class="global-icon animate__fadeInBottomRight animate__animated"><img src="assets/images/global.png" alt="Global" title="Global" class="img-responsive" /> </div>-->
-        <div class="content-info">
-          <div class="row rowContent">
-            <div class="col-sm-4">
-              <h1 class="animate__fadeInRight animate__animated job-title"> Welcome Company. What would you like to do next? <i class="hr-line"></i> </h1>
-          
-              <select [(ngModel)]="selectedValue" id="pills-tab" class="form-control selectMenu" (change)="selectedV()" >
-                <option selected [value]=0>Dashboard Menu</option>
-                <option [value]=1>Companies</option>
-                <option [value]=2>Users</option>
-                <option [value]=3>Job Category</option>
-                <option [value]=4>Job Terms</option>
-                <option [value]=5>Job Specialist Level</option>
-                <option [value]=6>Country List</option>
-                <option [value]=7>Add City</option>
-                <option [value]=8>My Profile</option>
-                <option [value]=9>Log Out</option>
-              </select>
-              <div class="pavi-them-logo">
-            <img src="/assets/images/sparkle-test.png" class="img-responsive" />
-            </div>
+  <div class="content-warp">
+    <div class="content-bg-inner"> 
+     <app-admin-sidebar></app-admin-sidebar>
+      <div class="right-bar">
+        <div class="right-header">
+              <div class="row">
+              <div class="col-xs-3 col-sm-1 hidden-md hidden-lg">
+              <div class="nav-tiker"><a (click)="clickEvent()"><img src="assets/images/nav.png" class="nav-tikerimg" /> </a></div>
+              
               </div>
-
-              <div class="toggle-mobile-section" [ngClass]="{'mobile-in':!show}">
-                <!-- <div (click)="show = !show" class="bugger-menu-mobile">
-                  <h5><img src="assets/images/nav.png" /></h5>
-                </div> -->
-                <div class="col-sm-8 coltoggle-mobile-section">
-                <div class="dashbaord-info-warp animate__fadeInUpBig animate__animated " id="pills-tabContent">
-                  
-                  <ul *ngIf="home" id="home">
-                    <li style="border-left: solid 4px #00cd84">
-                    <div class="dashbaord-info">
-                    <h5 style="color:#00cd84;">Companies</h5>
-                    <span>{{companyCount}}</span>
-                    <abbr><img src="/assets/images/dashbaord-user.png" /></abbr>           
-                    
-                    
-                    </div>
-                    </li>
-                    
-                    <li style="border-left: solid 4px #00bccf">
-                    <div class="dashbaord-info">
-                    <h5 style="color:#00bccf;">Users</h5>
-                    <span>{{userCount}}</span>
-                    
-                    <span class="bar"><i class="bar-inner" style="width:30%; background:#00a4bb; "></i></span>
-                    <abbr><img src="/assets/images/dashbaord-job.png" /></abbr>           
-                    
-                    
-                    </div>
-                    </li>
-                    
-                    <li style="border-left: solid 4px #ffd03f">
-                    <div class="dashbaord-info">
-                    <h5 style="color:#ffd03f;">Jobs</h5>
-                    <span>300</span>
-                    <abbr><img src="/assets/images/dashbaord-pending.png" /></abbr>           
-                    
-                    
-                    </div>
-                    </li>
-
-                    <li style="border-left: solid 4px #ffd03f">
-                      <div class="dashbaord-info">
-                      <h5 style="color:#ffd03f;">Pending Requests</h5>
-                      <span>18</span>
-                      <abbr><img src="/assets/images/dashbaord-pending.png" /></abbr>           
-                      
-                      
-                      </div>
-                      </li>
-                    
-                    
+                <div class="col-sm-5 col-md-7 col-xs-9 pull-right">
+                  <ul>
+                    <li><a >Admin &nbsp;&nbsp;|</a></li>
+                    <li><a (click)="auth.logOut()">Logout</a></li>
                   </ul>
-
-                  <div  *ngIf="viewCompanies" id="create-job">
-                    <div *ngIf="!companies">No record found</div>
-                    <div *ngIf="companies" class="table-responsive">
-                      <mat-form-field>
-                        <input
-                          matInput
-                          (keyup)="applyFilterOne($event.target.value)"
-                          placeholder="Search Keyword"
-                        />
-                      </mat-form-field>
-                      <table
-                        mat-table
-                        matSort
-                        [dataSource]="dataSourceOne"
-                      
-                        class="table table-bordered"
-                        style="width: 100%;"
-                      >
-                        <!--- Note that these columns can be defined in any order.
-                                The actual rendered columns are set as a property on the row definition" -->
-                    
-                        <!-- Position Column -->
-                        <ng-container matColumnDef="name">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Company Name</th>
-                          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-                        </ng-container>
-                    
-                        <!-- Name Column -->
-                        <ng-container matColumnDef="address">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Company Address</th>
-                          <td mat-cell *matCellDef="let element">{{ element.address }}</td>
-                        </ng-container>
-                    
-                        <!-- Weight Column -->
-                        <ng-container matColumnDef="country">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
-                          <td mat-cell *matCellDef="let element">{{ element.country }}</td>
-                        </ng-container>
-                    
-                        <!-- Symbol Column -->
-                        <ng-container matColumnDef="phone">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone No</th>
-                          <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
-                        </ng-container>
-            
-                        <ng-container matColumnDef="email">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-                          <td mat-cell *matCellDef="let element">{{ element.email}}</td>
-                        </ng-container>
-      
-                        <ng-container matColumnDef="action">
-                          <th mat-header-cell *matHeaderCellDef>Action</th>
-                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editCompany(i)"></i></a>  
-                            <a class="btn red"> <i class="fa fa-trash"></i></a>
-                          </td>
-                        </ng-container>
-                    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumnsOne"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumnsOne"></tr>
-                      </table>
-                    
-                      <mat-paginator
-                      #TableOnePaginator
-                      [pageSizeOptions]="[5, 10, 25, 100]"
-                    ></mat-paginator>
-                    </div>
-                  </div>
-
-                  <div *ngIf="viewUsers" id="interviews">
-                    <div *ngIf="!users">No record found</div>
-                    <div *ngIf="users" class="table-responsive">
-                      <mat-form-field>
-                        <input
-                          matInput
-                          (keyup)="applyFilterTwo($event.target.value)"
-                          placeholder="Search Keyword"
-                        />
-                      </mat-form-field>
-                      <table
-                        mat-table
-                        matSort
-                        [dataSource]="dataSourceTwo"
-                      
-                        class="table table-bordered"
-                        style="width: 100%;"
-                      >
-                        <!--- Note that these columns can be defined in any order.
-                                The actual rendered columns are set as a property on the row definition" -->
-                    
-                        <!-- Position Column -->
-                        <ng-container matColumnDef="first_name">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
-                          <td mat-cell *matCellDef="let element">{{ element.first_name }}</td>
-                        </ng-container>
-                    
-                        <!-- Name Column -->
-                        <ng-container matColumnDef="last_name">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
-                          <td mat-cell *matCellDef="let element">{{ element.last_name }}</td>
-                        </ng-container>
-            
-                        <ng-container matColumnDef="email">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-                          <td mat-cell *matCellDef="let element">{{ element.email}}</td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="gender">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
-                          <td mat-cell *matCellDef="let element">{{ element.gender}}</td>
-                        </ng-container>
-      
-                        <ng-container matColumnDef="action">
-                          <th mat-header-cell *matHeaderCellDef >Action</th>
-                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editUser(i)"></i></a>  
-                            <a class="btn red"> <i class="fa fa-trash"></i></a>
-                          </td>
-                        </ng-container>
-                    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumnsTwo"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumnsTwo"></tr>
-                      </table>
-                    
-                      <mat-paginator
-                      #TableTwoPaginator
-                      [pageSizeOptions]="[5, 10, 25, 100]"
-                    ></mat-paginator>
-                    </div>
-                  </div>
-
-                  <div *ngIf="jobCategory" id="Job-category">
-                    <div *ngIf="categories==undefined || categories.length==0">No record found</div>
-                    <div class="row">
-                      <div class="col-xl-12 col-md-12 mb-12">
-                        <button type="button" class="btn btn-outline-dark float-right" data-toggle="modal" data-target="#add-modal-job-catgory">Add Job Category</button>
+                </div>
+                <div class="col-sm-6 col-md-5 col-xs-12">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" />
+                    <div class="input-group-btn">
+                      <div class="btn-group">
+                        <button type="button" class="btn"><i class="fa fa-search"></i></button>
                       </div>
                     </div>
-                    &nbsp;
-                    <div *ngIf="categories!=undefined && categories.length > 0" class="table-responsive">
-                      <mat-form-field>
-                        <input
-                          matInput
-                          (keyup)="applyFilterThree($event.target.value)"
-                          placeholder="Search Keyword"
-                        />
-                      </mat-form-field>
-                      <table
-                        mat-table
-                        matSort
-                        [dataSource]="dataSourceThree"
-                      
-                        class="table table-bordered"
-                        style="width: 100%;"
-                      >
-                        <!--- Note that these columns can be defined in any order.
-                                The actual rendered columns are set as a property on the row definition" -->
-                    
-                        <!-- Position Column -->
-                        <ng-container matColumnDef="category">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Category</th>
-                          <td mat-cell *matCellDef="let element">{{ element.category }}</td>
-                        </ng-container>
-                    
-                        <ng-container matColumnDef="action">
-                          <th mat-header-cell *matHeaderCellDef >Action</th>
-                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editJobCategory(i)"></i></a>  
-                            <a class="btn red"> <i class="fa fa-trash"></i></a>
-                          </td>
-                        </ng-container>
-                    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumnsThree"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumnsThree"></tr>
-                      </table>
-                    
-                      <mat-paginator
-                      #TableThreePaginator
-                      [pageSizeOptions]="[5, 10, 25, 100]"
-                    ></mat-paginator>
-                    </div>
                   </div>
-
-                  <div *ngIf="jobTerms" id="Job-terms">
-                    <div *ngIf="terms==undefined || terms.length==0">No record found</div>
-                    <div class="row">
-                      <div class="col-xl-12 col-md-12 mb-12">
-                        <button type="button" class="btn btn-outline-dark float-right" data-toggle="modal" data-target="#add-modal-job-terms">Add Job Terms</button>
-                      </div>
-                    </div>
-                    &nbsp;
-                    <div *ngIf="terms!=undefined && terms.length > 0" class="table-responsive">
-                      <mat-form-field>
-                        <input
-                          matInput
-                          (keyup)="applyFilterFour($event.target.value)"
-                          placeholder="Search Keyword"
-                        />
-                      </mat-form-field>
-                      <table
-                        mat-table
-                        matSort
-                        [dataSource]="dataSourceFour"
-                      
-                        class="table table-bordered"
-                        style="width: 100%;"
-                      >
-                        <!--- Note that these columns can be defined in any order.
-                                The actual rendered columns are set as a property on the row definition" -->
-                    
-                        <!-- Position Column -->
-                        <ng-container matColumnDef="term">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Term</th>
-                          <td mat-cell *matCellDef="let element">{{ element.term }}</td>
-                        </ng-container>
-                    
-                        <ng-container matColumnDef="action">
-                          <th mat-header-cell *matHeaderCellDef >Action</th>
-                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editJobTerm(i)"></i></a>  
-                            <a class="btn red"> <i class="fa fa-trash"></i></a>
-                          </td>
-                        </ng-container>
-                    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumnsFour"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumnsFour"></tr>
-                      </table>
-                    
-                      <mat-paginator
-                      #TableFourPaginator
-                      [pageSizeOptions]="[5, 10, 25, 100]"
-                    ></mat-paginator>
-                    </div>
-                  </div>
-
-                  <div *ngIf="jobSpecialistLevel" id="Job-specialist">
-                    <div *ngIf="levels==undefined || levels.length==0">No record found</div>
-                    <div class="row">
-                      <div class="col-xl-12 col-md-12 mb-12">
-                        <button type="button" class="btn btn-outline-dark float-right" data-toggle="modal" data-target="#add-modal-job-specialist">Add Job Specialist Level</button>
-                      </div>
-                    </div>
-                    &nbsp;
-                    <div *ngIf="levels!=undefined && levels.length > 0" class="table-responsive">
-                      <mat-form-field>
-                        <input
-                          matInput
-                          (keyup)="applyFilterFive($event.target.value)"
-                          placeholder="Search Keyword"
-                        />
-                      </mat-form-field>
-                      <table
-                        mat-table
-                        matSort
-                        [dataSource]="dataSourceFive"
-                      
-                        class="table table-bordered"
-                        style="width: 100%;"
-                      >
-                        <!--- Note that these columns can be defined in any order.
-                                The actual rendered columns are set as a property on the row definition" -->
-                    
-                        <!-- Position Column -->
-                        <ng-container matColumnDef="specialist_level">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Specialist level</th>
-                          <td mat-cell *matCellDef="let element">{{ element.specialist_level }}</td>
-                        </ng-container>
-                    
-                        <ng-container matColumnDef="action">
-                          <th mat-header-cell *matHeaderCellDef >Action</th>
-                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editJobSpecialty(i)"></i></a>  
-                            <a class="btn red"> <i class="fa fa-trash"></i></a>
-                          </td>
-                        </ng-container>
-                    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumnsFive"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumnsFive"></tr>
-                      </table>
-                    
-                      <mat-paginator
-                      #TableFivePaginator
-                      [pageSizeOptions]="[5, 10, 25, 100]"
-                    ></mat-paginator>
-                    </div>
-                  </div>
-
-                  <div *ngIf="countryList" id="countries">
-                    <div *ngIf="allcountries==undefined || allcountries.length==0">No record found</div>
-                    <div class="row">
-                      <div class="col-xl-12 col-md-12 mb-12">
-                        <button type="button" class="btn btn-outline-dark float-right" data-toggle="modal" data-target="#add-modal-country">Add Country</button>
-                      </div>
-                    </div>
-                    &nbsp;
-                    <div *ngIf="allcountries!=undefined && allcountries.length > 0" class="table-responsive">
-                      <mat-form-field>
-                        <input
-                          matInput
-                          (keyup)="applyFilterSix($event.target.value)"
-                          placeholder="Search Keyword"
-                        />
-                      </mat-form-field>
-                      <table
-                        mat-table
-                        matSort
-                        [dataSource]="dataSourceSix"
-                      
-                        class="table table-bordered"
-                        style="width: 100%;"
-                      >
-                        <!--- Note that these columns can be defined in any order.
-                                The actual rendered columns are set as a property on the row definition" -->
-                    
-                        <!-- Position Column -->
-                        <ng-container matColumnDef="country_name">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Country Name</th>
-                          <td mat-cell *matCellDef="let element">{{ element.country_name }}</td>
-                        </ng-container>
-                    
-                        <ng-container matColumnDef="action">
-                          <th mat-header-cell *matHeaderCellDef >Action</th>
-                          <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editCountry(i)"></i></a>  
-                            <a class="btn red"> <i class="fa fa-trash"></i></a>
-                          </td>
-                        </ng-container>
-                    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumnsSix"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumnsSix"></tr>
-                      </table>
-                    
-                      <mat-paginator
-                      #TableSixPaginator
-                      [pageSizeOptions]="[5, 10, 25, 100]"
-                    ></mat-paginator>
-                    </div>
-                  </div>
-
-                  <div *ngIf="viewAddCity" id="add-city">
-                    <div *ngIf="allcountries && allcountries.length == 0">Add Country First</div>
-                    <div *ngIf="allcountries && allcountries.length > 0" class="inner-page">
-                      <h2>Add City </h2>
-                      <form [formGroup]="cityForm" (ngSubmit)="saveCity()">
-                        <div class="row">
-                          <div class="col-xl-12 col-md-12">
-                            <div class="form-group">
-                              <label>Select Job</label>
-                              <select class="form-control" formControlName="country_id">
-                                <option selected disabled [value]="''">Select Country*</option>
-                                <option *ngFor="let country of allcountries" [value]="country.id">{{country.country_name}}</option>
-                              </select>
-                            </div>
-                            <div *ngIf="cityForm.get('country_id').touched && cityForm.get('country_id').invalid"class="alert alert-danger">Country required</div>
-                          </div>
-                          <div class="col-xl-12 col-md-12">
-                            <div class="form-group">
-                              <label>City Name</label>
-                              <input class="form-control"  placeholder="city name" type="text" formControlName="city"/>
-                            </div>
-                            <div *ngIf="cityForm.get('city').touched && cityForm.get('city').invalid"class="alert alert-danger">city name is required</div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-sm-12">
-                            <div class="form-group">
-                              <button type="submit" class="btn btn-primary ">Submit</button>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-
-                  <div *ngIf="myProfile" id="profile">My Profile</div>
-
-                  </div>
-                  </div>
+                </div>
+                
+                
               </div>
-              <div class="overlay"></div>
-          </div>
         </div>
-      </div>
+        <div class="dashboard-right-mid" id="pills-tabContent">
+          <div class="title-warp">
+            <h2>Dashboard <span>{{today | date:'longDate'}}</span></h2>
+          </div>
+
+          <div  id="home">
+            <div class="dashboard-list-view">
+              <div class="row">
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:rgb(222, 29, 240)">55</h4>
+                    <p>open jobs</p>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#6e8cd7">255</h4>
+                    <p>applicants</p>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#29b6f6">45</h4>
+                    <p>interviews completed</p>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#c5c5c5">0</h4>
+                    <p> interviews to review</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dashboard-list-view">
+              <div class="row">
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#c5c5c5;">0</h4>
+                    <p>moving to a final interview</p>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#c5c5c5;">0</h4>
+                    <p>Days the jobs have been open</p>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#c5c5c5;">0</h4>
+                    <p>pending offers</p>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="dashboard-grid-info">
+                    <h4 style="color:#c5c5c5;">0</h4>
+                    <p>accepted offers</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+          <div class="overlay"></div>
+
+        </div>
+      </div>         
     </div>
-    </div>
+  </div>
+  <footer>© PAVI AI ALL RIGHT RESERVED 2020</footer>
 </div>

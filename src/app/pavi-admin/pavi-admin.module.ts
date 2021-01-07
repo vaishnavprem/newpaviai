@@ -4,10 +4,18 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PaviAdminRoutingModule } from './pavi-admin-routing.module';
 import {CoreModule} from '../core/core.module';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { CompanyComponent } from './company/company.component';
+import { UsersComponent } from './users/users.component';
+import { JobCategoryComponent } from './job-category/job-category.component';
+import { JobTermComponent } from './job-term/job-term.component';
+import { JobSpecialistComponent } from './job-specialist/job-specialist.component';
+import { CountryListComponent } from './country-list/country-list.component';
+import { CityComponent } from './city/city.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
-  declarations: [ AdminDashboardComponent],
+  declarations: [ AdminDashboardComponent, CompanyComponent, UsersComponent, JobCategoryComponent, JobTermComponent, JobSpecialistComponent, CountryListComponent, CityComponent, ProfileComponent],
   imports: [
     CommonModule,
     PaviAdminRoutingModule,

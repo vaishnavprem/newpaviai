@@ -1,0 +1,154 @@
+html, body {height: 100%; margin: 0;}
+a, a:hover, a:focus{text-decoration:none;cursor: pointer;}
+.bg-images-1{background:url(assets/images/bg-images-1.jpg) no-repeat center fixed; height:100%; width:100%; font-family: "Montserrat Ultra Light"; background-size:cover;}
+
+.content-bg-inner{background:#99a0bf; width:100%; float:left; padding-bottom: 75px;}
+
+.left-bar figure{margin: 20px auto 0px; display: table;}
+.left-bar{width:20%;  float:left; background:#001621; position:fixed; height:100%;}
+.right-bar{width:76%; float:right; padding-left:15px;}
+.left-bar ul {padding-left:70px; margin:0px; list-style:none;}
+.left-bar ul li{padding:13px 0px;}
+.left-bar ul li a{color:#fff; font-family: "Montserrat Ultra Light"; font-size:18px; padding:8px 20px; display:block;}
+.left-bar ul li a.active{background:#99a0bf; border-radius: 30px 0px 0px 30px; font-weight:700;}
+.left-bar ul li a:hover{background:#99a0bf; border-radius: 30px 0px 0px 30px;}
+.right-header{width:67.3%; float:left; padding:20px 10px; background:#fff; position:fixed; top:0px; z-index:1;}
+.right-header ul{padding:0px; margin:0px; float:right; padding-top: 10px;}
+.right-header ul li{display:inline-block;}
+.right-header ul li a{color:#404447; font-family: "Montserrat Ultra Light"; font-weight:600; font-size:16px; text-transform:uppercase; padding:10px 8px;}
+
+.right-header .input-group{margin-left:30px;}
+.right-header .input-group .form-control{height:42px; background:#f0f1f3; color:#404447; font-family: "Montserrat Ultra Light"; font-weight:600; box-shadow:none; border-color:#f0f1f3; border-radius: 30px 0px 0px 30px; padding:6px 30px;}
+.right-header .input-group .form-control:focus{box-shadow:none; border-color:#fff;}
+.right-header .input-group .btn{background:#001621; color:#fff; border-radius: 0px 30px 30px 0px; font-size: 18px; padding: 7px 30px; height:42px;}
+.title-warp{display:inline-block; width:100%; padding:15px 0px}
+.title-warp h2{color:#f1fa5b; font-weight:600; font-size:28px; font-family: 'Montserrat'; padding-right:30px;}
+.title-warp h2 span{font-size:14px; float:right; color:#fff; line-height:25px;}
+
+.dashboard-grid-info{background:#fff; text-align:center; padding:10px 10px; margin-bottom:20px; min-height: 120px; border-radius:4px; box-shadow: 0px 5px 5px rgba(0,0,0,0.15);}
+.dashboard-grid-info h4{font-weight:600; font-size:24px; font-family: 'Montserrat'; margin:0px; padding:13px 0px;}
+.dashboard-grid-info p{font-weight:400; font-size:13px; font-family: 'Montserrat'; color:#9b9c9c; text-transform:uppercase;}
+.dashboard-list-view{margin-right:30px; margin-bottom:20px; padding-bottom:5px; border-bottom: solid 1px #fff;}
+.dashboard-list-view:nth-child(2n + 1){border-bottom:none;}
+
+.content-warp{width:90%; margin:0px auto; background:#979ebd; min-height: 100%; }
+.blck{background:#000614;}
+.wht{background:#fff;}
+.dashboard-right-mid{display: inline-block; width: 100%; margin-top:82px;}
+.map-company-view .table thead th{color:#fff; font-family: 'Montserrat'; font-weight:500; font-size:15px; text-transform:uppercase; padding:12px 10px;}
+.map-company-view .table thead th span{float: right; padding-right: 10px; font-size: 15px;}
+.map-company-view .table tbody td{font-family: 'Montserrat'; font-weight:400; font-size:15px; padding:12px 6px;}
+.map-company-view .table tfoot td{color:#fff; font-family: 'Montserrat'; font-weight:500; font-size:15px;}
+.clander-table{background:#fff; height:325px; overflow:auto; scrollbar-width: thin; scrollbar-color: #fff #999aa1; margin-right:30px;}
+.clander-warp{padding-top:30px;}
+
+.clander-table thead{background:#001621;}
+.clander-table table > thead > tr > th{padding:12px 10px; color:#fff; font-family: 'Montserrat'; font-weight:500; font-size:15px;}
+.clander-table table tr td{font-family: 'Montserrat'; font-weight:500; font-size:13px;}
+.clander-table table tr td p{color:#a3a4a4; font-size:12px;}
+.clander-table table tr td span{color:#a3a4a4; font-size:12px;}
+
+.application-warp{margin-right:30px;}
+.application-warp h3{background:#001621; color:#fff; padding:20px 15px; font-size:14px; font-family: 'Montserrat'; font-weight:500; letter-spacing:1px;}
+.application-warp h3 img{float:right;}
+.application-warp{background:#fff;}
+.application-warp table > thead > tr > th{padding:10px 10px; color:#484848; font-family: 'Montserrat'; font-weight:500; font-size:15px; background:#f0f1f3;}
+.application-warp table tr td{font-family: 'Montserrat'; font-weight:500; font-size:13px; color:#8f8f8f;}
+
+footer{background:#000714; bottom:0px; padding:15px 10px; text-transform:uppercase; color:#fff; font-family: 'Montserrat'; font-weight:500; font-size:13px; letter-spacing:1px; text-align:center; margin: -50px auto 0px; width:90%; clear:both; padding-left:23%;}
+
+.mat-tab-body-content{overflow: hidden !important;}
+.profile-image{background-size: cover;height: 180px;width: 230px;}
+.cover-image{background-size: cover;height: 180px;width: 95%;}
+
+/*Candidate Modal Design*/
+#add-modal-candidate .modal-dialog{width:auto;max-width: 1300px;}
+#add-modal-candidate .modal-dialog .modal-content .modal-body{padding: 0px;}
+.bg-profile-chat{background:url(assets/images/live-chat-bg.jpg); min-height:450px;background-size: contain;}
+.interview-warp h5{color:#99a0bf;margin:0px; padding-left: 15px;}
+.contact_form .form-group .control-label{left:15px;}
+.contact_form{padding:15px 0px 0px;}
+.contact_form .form-group .control-label{font-size: 23px;}
+.contact_form .form-group .control-label{position:relative;}
+.contact_form .form-group{margin:0px;}
+/* .select-your-job {height:350px;margin-top:0px;width:100%;  margin:20px auto;} */
+#buttons{margin-top:20px; text-align: center;}
+#buttons #start{margin-right:20px;}
+#buttons .btn{padding:7px 10px;}
+.micro-icon .buttonschat{padding:0px; margin:0px; list-style:none; margin:0px auto; bottom:0px; left:0px; right:0px;}
+.micro-icon{text-align: center;}
+.micro-icon .btn{padding:0px; border:none; background:transparent; }
+.btn-arrow{font-size: 28px;color: #fff;padding:20px}
+
+.select-your-job{position: relative;padding-bottom: 56.25%;height: 0;width: 100%;}
+.select-your-job iframe{position: absolute;top: 0;left: 0;width: 100%;height: 100% ;}
+
+/*mat icon*/
+
+
+:host ::ng-deep .mat-horizontal-stepper-header-container {max-width:500px; margin:0px auto;}
+:host ::ng-deep .mat-step-icon{width:50px; height:50px;}
+
+:host ::ng-deep .mat-step-header .mat-step-icon-selected, :host ::ng-deep .mat-step-header .mat-step-icon-state-done, :host ::ng-deep .mat-step-header .mat-step-icon-state-edit{font-size:23px;}
+:host ::ng-deep .mat-stepper-label-position-bottom .mat-stepper-horizontal-line{top:49px;}
+
+:host ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before, :host ::ng-deep [dir="rtl"] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before, :host ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after, :host ::ng-deep [dir="rtl"] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after{top:49px;}
+
+
+:host ::ng-deep .date-age .mat-icon-button{position:absolute; top:27px; right:6px;}
+::ng-deep .height-min{height:100%;}
+
+
+@media (min-width:1200px) and (max-width:1300px){
+
+}
+
+
+@media(max-width:767px){
+.content-warp{width: 100%;}
+.content-bg-inner{padding-bottom:0px;}
+.left-bar{width: 300px; z-index: 3; transform:translate(-100%,0px); transition: all ease-in-out 0.3s;}
+.nav-show .left-bar{transform:translate(0%,0px); transition: all ease-in-out 0.3s;}
+.nav-tiker-close{float: right; margin-right: 20px; margin-top: 10px;}
+.left-bar ul{padding:10px  0px;}
+.left-bar ul li a.active{border-radius: 0px;}
+.left-bar ul li a:hover{border-radius: 0px;}
+.left-bar ul li{padding:0px;}
+.left-bar ul li a{padding:10px 30px;}
+
+.right-bar{width: 100%; float: none; padding-left: 0px;}
+.right-header{float: none; left: 0; width: 100%; padding: 10px;}
+
+.right-header ul{padding-top: 0px;}
+.right-header .input-group{margin-left: 0px; margin-top: 10px;}
+.title-warp h2{padding-right: 0px; margin: 0;}
+.dashboard-list-view{margin-right: 0px;}
+.map-company-view{margin-right: 0px; margin-top: 20px;}
+.map-company-view .table{margin-bottom: 0px;}
+.dashboard-right-mid{height:auto;}
+.dashboard-right-mid{margin-top: 95px; padding: 0px 15px;}
+.right-header ul li a{font-family: 'Montserrat'; font-weight:500; font-size: 14px;}
+.title-warp h2{font-size: 24px;}
+.title-warp h2 span{font-size: 12px; font-weight: 500;}
+.dashboard-list-view:nth-child(2n+1){margin: 0;}
+
+.dashboard-list-view .col-xs-6:nth-child(2n) {padding-left: 8px;}
+.dashboard-list-view .col-xs-6:nth-child(2n+1) { padding-right: 8px;}
+.clander-table{margin-right: 0px; margin-top:20px; overflow: inherit; height:auto;}
+.application-warp{margin-right: 0px;}
+.application-warp h3{margin-bottom:0px; margin-top: 10px;}
+footer{padding:15px; width:100%;}
+
+/*Candidate Modal Design*/
+.bg-profile-chat{height:auto;margin-top: 0px;}
+.select-your-job {margin-top: 15px;margin-bottom: 13%;}
+#buttons {margin-top: 30px; margin-bottom: 30px;text-align: center;}
+
+}
+
+@media(max-width:413px){
+.dashboard-list-view .col-xs-6 { width: 100%;}
+.dashboard-list-view .col-xs-6:nth-child(2n) {padding-left: 15px;}
+.dashboard-list-view .col-xs-6:nth-child(2n+1) { padding-right: 15px; }
+	
+}

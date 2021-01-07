@@ -1,0 +1,17 @@
+<div [ngClass]="status ? 'nav-show' : ''">
+    <div class="left-bar">
+        <div class="nav-tiker-close hidden-md hidden-lg"><a (click)="clickEvent()"><img src="assets/images/nav-close.png" class="nav-tikerimg-close" /> </a></div>
+        <figure><img src="assets/images/logowithpavi.png" /></figure>
+        <ul>
+          <li><a  routerLink="/pavi-admin/admin-dashboard" routerLinkActive="active" >Dashboard</a></li>
+          <li><a routerLink="/pavi-admin/company" routerLinkActive="active">Companies</a></li>
+          <li><a  routerLink="/pavi-admin/usres" routerLinkActive="active">Users</a></li>
+          <li><a  routerLink="/pavi-admin/job-category" routerLinkActive="active">Job Category</a></li>
+          <li><a  routerLink="/pavi-admin/job-term" routerLinkActive="active">Job Terms</a></li>
+          <li><a  routerLink="/pavi-admin/job-specialist" routerLinkActive="active">Job Specialist Level</a></li>
+          <li><a  routerLink="/pavi-admin/country-list" routerLinkActive="active">Country List</a></li>
+          <li><a  routerLink="/pavi-admin/city" routerLinkActive="active">Add City</a></li>
+          <li><a  routerLink="/pavi-admin/profile" routerLinkActive="active">My Profile</a></li>
+        </ul>
+      </div>
+    </div>
