@@ -65,7 +65,7 @@ export class AboutTabComponent implements OnInit {
             last_name:this.userData.last_name,
             country:this.userData.country,
             email:this.userData.email,
-            linkedin_url: 'https://www.linkedin.com/in/chandan-kumar-8307b71b0/'
+            linkedin_url: (this.userData.linkedin_url?this.userData.linkedin_url:'N/A')
           })
          
       } else {

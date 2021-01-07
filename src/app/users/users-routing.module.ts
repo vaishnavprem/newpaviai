@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PartnerComponent } from './partner/partner.component';
 import { WorkComponent } from './work/work.component';
 import { UserInterviewComponent } from './user-interview/user-interview.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 const routes: Routes = [
   {
     path: 'profile-page',
@@ -50,6 +51,11 @@ const routes: Routes = [
   {
     path: 'company-interview',
     component: UserInterviewComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'thank-you',
+    component: ThankYouComponent,
     canActivate: [AuthGuard]
   },
 ];
