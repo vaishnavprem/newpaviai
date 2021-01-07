@@ -71,6 +71,7 @@ export class AdminDashboardComponent implements OnInit {
   countryForm: FormGroup;
   addCountryForm: FormGroup;
   countries = COUNTRY_LIST;
+  today: number = Date.now()
 
   public selectedValue = 0;  //SelectMenu Of Dashboard
   public home = true;
@@ -83,6 +84,7 @@ export class AdminDashboardComponent implements OnInit {
   public viewAddCity = false;
   public myProfile = false;
   public logout = false;
+  public status: boolean = false;
 
   public dataSourceOne;
   public displayedColumnsOne: string[];
@@ -216,6 +218,11 @@ export class AdminDashboardComponent implements OnInit {
 
     });
   }
+  clickEvent(){
+    //console.log("ClickEvent>>>",this.status);
+    this.status = !this.status;       
+  }
+
   getComapnies(){
     this.isLoder=true;
     let companData = this.paviAdminService.getComapnies()

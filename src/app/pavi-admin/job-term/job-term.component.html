@@ -1,0 +1,174 @@
+<div *ngIf="isLoder" class="loader">
+    <svg width="80" height="80" viewBox="0 0 38 38" stroke="#fff">
+        <g fill="none" fill-rule="evenodd">
+            <g transform="translate(1 1)" stroke-width="2">
+                <circle stroke-opacity=".2" cx="18" cy="18" r="18"/>
+                <path d="M36 18c0-9.94-8.06-18-18-18">
+                    <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 18 18"
+                        to="360 18 18"
+                        dur="1s"
+                        repeatCount="indefinite"/>
+                </path>
+            </g>
+        </g>
+    </svg>
+    </div>
+    
+    <div class="modal fade in" id="add-modal-job-terms">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Add Job Terms</h5>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="termsForm" (ngSubmit)="saveJobTerms()">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Job Term:</label>
+                      <input type="text" class="form-control" formControlName="term">
+                      <div *ngIf="termsForm.get('term').touched && termsForm.get('term').invalid" class="alert alert-danger">Job Term is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary ">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade in" id="edit-modal-popup-jobTerm">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Update Job Term</h5>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="jobTermForm" (ngSubmit)="updateJobTerm()">
+            <div class="row">
+                <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="term-name" class="col-form-label">Job Term Name:</label>
+                    <input type="text" class="form-control" formControlName="jobTermName">
+                    <div *ngIf="jobTermForm.get('jobTermName').invalid" class="alert alert-danger">Job Term Name is required</div>
+                </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+    
+  
+  
+  <div class="bg-images-1">
+    <div class="content-warp">
+      <div class="content-bg-inner"> 
+       <app-admin-sidebar></app-admin-sidebar>
+        <div class="right-bar">
+          <div class="right-header">
+                <div class="row">
+                <div class="col-xs-3 col-sm-1 hidden-md hidden-lg">
+                <div class="nav-tiker"><a (click)="clickEvent()"><img src="assets/images/nav.png" class="nav-tikerimg" /> </a></div>
+                
+                </div>
+                  <div class="col-sm-5 col-md-7 col-xs-9 pull-right">
+                    <ul>
+                      <li><a >Admin &nbsp;&nbsp;|</a></li>
+                      <li><a (click)="auth.logOut()">Logout</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-6 col-md-5 col-xs-12">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search" />
+                      <div class="input-group-btn">
+                        <div class="btn-group">
+                          <button type="button" class="btn"><i class="fa fa-search"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                </div>
+          </div>
+          <div class="dashboard-right-mid" id="pills-tabContent">
+            <div class="title-warp">
+              <h2>Dashboard <span>{{today | date:'longDate'}}</span></h2>
+            </div>
+  
+            <div id="Job-terms">
+                <div *ngIf="terms==undefined || terms.length==0">No record found</div>
+                <div class="row">
+                  <div class="col-xl-12 col-md-12 mb-12">
+                    <button type="button" class="btn btn-outline-dark float-right" data-toggle="modal" data-target="#add-modal-job-terms">Add Job Terms</button>
+                  </div>
+                </div>
+                &nbsp;
+                <div *ngIf="terms!=undefined && terms.length > 0" class="table-responsive">
+                  <mat-form-field>
+                    <input
+                      matInput
+                      (keyup)="applyFilterFour($event.target.value)"
+                      placeholder="Search Keyword"
+                    />
+                  </mat-form-field>
+                  <table
+                    mat-table
+                    matSort
+                    [dataSource]="dataSourceFour"
+                  
+                    class="table table-bordered"
+                    style="width: 100%;"
+                  >
+                    <!--- Note that these columns can be defined in any order.
+                            The actual rendered columns are set as a property on the row definition" -->
+                
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="term">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Job Term</th>
+                      <td mat-cell *matCellDef="let element">{{ element.term }}</td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="action">
+                      <th mat-header-cell *matHeaderCellDef >Action</th>
+                      <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editJobTerm(i)"></i></a>  
+                        <a class="btn red"> <i class="fa fa-trash"></i></a>
+                      </td>
+                    </ng-container>
+                
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsFour"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsFour"></tr>
+                  </table>
+                
+                  <mat-paginator
+                  #TableFourPaginator
+                  [pageSizeOptions]="[5, 10, 25, 100]"
+                ></mat-paginator>
+                </div>
+              </div>
+            <div class="overlay"></div>
+  
+          </div>
+        </div>         
+      </div>
+    </div>
+    <footer>© PAVI AI ALL RIGHT RESERVED 2020</footer>
+  </div>
+   
+
+

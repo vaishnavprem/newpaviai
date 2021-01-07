@@ -18,6 +18,7 @@ import {CarouselModule} from 'ngx-owl-carousel-o';
 import {SidebarComponent} from './components/layout/sidebar/sidebar.component';
 import { ShowConfirmDialogComponent } from './components/dialogs/show-confirm-dialog/show-confirm-dialog.component';
 import { UserSidebarComponent } from './components/layout/user-sidebar/user-sidebar.component';
+import { AdminSidebarComponent } from './components/layout/admin-sidebar/admin-sidebar.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { UserSidebarComponent } from './components/layout/user-sidebar/user-side
     InvitationDialogComponent,
     SidebarComponent,
     ShowConfirmDialogComponent,
-    UserSidebarComponent
+    UserSidebarComponent,
+    AdminSidebarComponent
   ],
   imports: [
     CommonModule,
@@ -52,6 +54,7 @@ import { UserSidebarComponent } from './components/layout/user-sidebar/user-side
     SidebarComponent,
     FooterComponent,
     UserSidebarComponent,
+    AdminSidebarComponent,
     SaveWorkExperienceDialogComponent,
     SaveProgrammingSkillsDialogComponent,
     SaveEducationDialogComponent,

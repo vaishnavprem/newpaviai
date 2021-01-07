@@ -45,7 +45,8 @@ export class AboutTabComponent implements OnInit {
      
       first_name: [{value: '', disabled: true}, Validators.required],
       last_name: [{value: '', disabled: true}, Validators.required],
-      email: [{value: '', disabled: true}, Validators.required]
+      email: [{value: '', disabled: true}, Validators.required],
+      linkedin_url: [{value: '', disabled: true}, Validators.required]
 
     });
 
@@ -63,7 +64,8 @@ export class AboutTabComponent implements OnInit {
             first_name:this.userData.first_name,
             last_name:this.userData.last_name,
             country:this.userData.country,
-            email:this.userData.email
+            email:this.userData.email,
+            linkedin_url: 'https://www.linkedin.com/in/chandan-kumar-8307b71b0/'
           })
          
       } else {
@@ -107,6 +109,7 @@ export class AboutTabComponent implements OnInit {
           this.first_name.disable();
           this.last_name.disable();
           this.email.disable();
+          this.linkedin_url.disable();
       } else {
         this.toastr.error(response.message);
       }
@@ -121,6 +124,7 @@ export class AboutTabComponent implements OnInit {
     this.first_name.enable();
     this.last_name.enable();
     this.email.enable();
+    this.linkedin_url.enable();
   }
 
 
@@ -143,5 +147,9 @@ export class AboutTabComponent implements OnInit {
 
   get email(): AbstractControl {
     return this.profileForm.get('email');
+  }
+
+  get linkedin_url(): AbstractControl {
+    return this.profileForm.get('linkedin_url');
   }
 }
