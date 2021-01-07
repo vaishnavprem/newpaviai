@@ -26,6 +26,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { PartnerComponent } from './partner/partner.component';
 import { WorkComponent } from './work/work.component';
 import { UserInterviewComponent } from './user-interview/user-interview.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 
 
@@ -53,6 +54,7 @@ import { UserInterviewComponent } from './user-interview/user-interview.componen
     PartnerComponent,
     WorkComponent,
     UserInterviewComponent,
+    ThankYouComponent,
   ],
   imports: [
     CommonModule,

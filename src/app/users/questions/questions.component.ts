@@ -143,6 +143,7 @@ export class QuestionsComponent implements OnInit, AfterViewInit {
     if(this.startTest){
       clearInterval(this.interval);
       if(questionID=='start'){
+        initVonge();   
         questionID=0;
       }
         this.questionArrayKey=questionID;
@@ -153,8 +154,8 @@ export class QuestionsComponent implements OnInit, AfterViewInit {
         this.timeLeft=120;
         this.minutes = Math.floor(this.timeLeft / 60);
       this.seconds = Math.floor(this.timeLeft - this.minutes * 60);
-           
-        initVonge();
+   
+        
         
     }
     
@@ -181,7 +182,7 @@ export class QuestionsComponent implements OnInit, AfterViewInit {
     .subscribe((response : any) => {
       $('.loader').hide();
       if (response.statusCode == 200) {
-        
+ 
        let answerId = response['data']['record_id']; 
        stopArchive(answerId);
       } else {

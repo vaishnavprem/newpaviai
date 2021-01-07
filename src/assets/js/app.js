@@ -5,6 +5,7 @@ var sessionId ;
 var token;
 var archiveID;
 var publisher;
+var session;
 var SAMPLE_SERVER_BASE_URL = 'https://d1iruxeyl67hmv.cloudfront.net/web/index.php';
 /*(function() {
     var cors_api_host = 'cors-anywhere.herokuapp.com';
@@ -23,13 +24,12 @@ var SAMPLE_SERVER_BASE_URL = 'https://d1iruxeyl67hmv.cloudfront.net/web/index.ph
     };
 })();*/
 function initVonge() {
-
+  $.post(SAMPLE_SERVER_BASE_URL + '/session/clear');
   // Make an Ajax request to get the OpenTok API key, session ID, and token from the server
   $.get(SAMPLE_SERVER_BASE_URL + '/session', function get(res) {
     apiKey = res.apiKey;
     sessionId = res.sessionId;
     token = res.token;
-
     initializeSession();
     
   });
@@ -37,7 +37,7 @@ function initVonge() {
 
 function initializeSession() {
   $('.loader').show();
-  var session = OT.initSession(apiKey, sessionId);
+ session = OT.initSession(apiKey, sessionId);
 //alert("dafdaf");
 
   // Subscribe to a newly created stream
@@ -145,13 +145,11 @@ function stopArchive(answer_id) { // eslint-disable-line no-unused-vars
   });
 }
 function closeWebCam(){
+  $("#publisher").empty();
 console.log("session close");
-
 publisher.destroy();
-
-
-
-
+session.disconnect(); 
+session.destroy();
 }
 // Get the archive status. If it is  "available", download it. Otherwise, keep checking
 // every 5 secs until it is "available"
