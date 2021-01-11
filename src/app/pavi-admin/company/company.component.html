@@ -1,21 +1,20 @@
- <div *ngIf="isLoder" class="loader">
-    <svg width="80" height="80" viewBox="0 0 38 38" stroke="#fff">
-        <g fill="none" fill-rule="evenodd">
-            <g transform="translate(1 1)" stroke-width="2">
-                <circle stroke-opacity=".2" cx="18" cy="18" r="18"/>
-                <path d="M36 18c0-9.94-8.06-18-18-18">
-                    <animateTransform
-                        attributeName="transform"
-                        type="rotate"
-                        from="0 18 18"
-                        to="360 18 18"
-                        dur="1s"
-                        repeatCount="indefinite"/>
-                </path>
-            </g>
-        </g>
-    </svg>
-    </div>
+<div *ngIf="isLoder" class="loader"> <svg width="80" height="80" viewBox="0 0 38 38" stroke="#fff">
+  <g fill="none" fill-rule="evenodd">
+    <g transform="translate(1 1)" stroke-width="2">
+      <circle stroke-opacity=".2" cx="18" cy="18" r="18"/>
+      <path d="M36 18c0-9.94-8.06-18-18-18">
+        <animateTransform
+                      attributeName="transform"
+                      type="rotate"
+                      from="0 18 18"
+                      to="360 18 18"
+                      dur="1s"
+                      repeatCount="indefinite"/>
+              </path>
+          </g>
+      </g>
+  </svg> 
+  </div> 
     
     <div class="modal fade in" id="edit-modal-popup-company">
       <div class="modal-dialog" role="document">
@@ -105,7 +104,24 @@
   <div class="bg-images-1">
     <div class="content-warp">
       <div class="content-bg-inner"> 
-       <app-admin-sidebar></app-admin-sidebar>
+       <!-- <app-admin-sidebar></app-admin-sidebar> -->
+       <div [ngClass]="status ? 'nav-show' : ''">
+        <div class="left-bar">
+            <div class="nav-tiker-close hidden-md hidden-lg"><a (click)="clickEvent()"><img src="assets/images/nav-close.png" class="nav-tikerimg-close" /> </a></div>
+            <figure><img src="assets/images/logowithpavi.png" /></figure>
+            <ul>
+              <li><a  routerLink="/pavi-admin/admin-dashboard" routerLinkActive="active" >Dashboard</a></li>
+              <li><a routerLink="/pavi-admin/company" routerLinkActive="active">Companies</a></li>
+              <li><a  routerLink="/pavi-admin/usres" routerLinkActive="active">Users</a></li>
+              <li><a  routerLink="/pavi-admin/job-category" routerLinkActive="active">Job Category</a></li>
+              <li><a  routerLink="/pavi-admin/job-term" routerLinkActive="active">Job Terms</a></li>
+              <li><a  routerLink="/pavi-admin/job-specialist" routerLinkActive="active">Job Specialist Level</a></li>
+              <li><a  routerLink="/pavi-admin/country-list" routerLinkActive="active">Country List</a></li>
+              <li><a  routerLink="/pavi-admin/city" routerLinkActive="active">Add City</a></li>
+              <li><a  routerLink="/pavi-admin/profile" routerLinkActive="active">My Profile</a></li>
+            </ul>
+          </div>
+        </div>
         <div class="right-bar">
           <div class="right-header">
                 <div class="row">
@@ -190,7 +206,7 @@
     
                     <ng-container matColumnDef="action">
                       <th mat-header-cell *matHeaderCellDef>Action</th>
-                      <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editCompany(i)"></i></a>  
+                      <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editCompany(tableOnePaginator.pageSize * tableOnePaginator.pageIndex + i)"></i></a>  
                         <a class="btn red"> <i class="fa fa-trash"></i></a>
                       </td>
                     </ng-container>
@@ -201,6 +217,7 @@
                 
                   <mat-paginator
                   #TableOnePaginator
+                  [pageSize]="5"
                   [pageSizeOptions]="[5, 10, 25, 100]"
                 ></mat-paginator>
                 </div>

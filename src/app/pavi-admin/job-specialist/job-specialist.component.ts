@@ -84,6 +84,7 @@ export class JobSpecialistComponent implements OnInit {
     this.isLoder=true;
     let JobData = this.paviAdminService.getJobSpecialistLevel()
     .subscribe(response => {
+      this.isLoder=false;
       //console.log("Job Specialty>>>",response['data']['levels']);
       this.dataSourceFive.data = response['data']['levels'] as JobSpecialty[];
       setTimeout(() => {this.dataSourceFive.paginator = this.tableFivePaginator;
@@ -91,7 +92,7 @@ export class JobSpecialistComponent implements OnInit {
       });
       this.levels = response['data']['levels'];  
     });
-    this.isLoder=false;
+    
   }
 
   saveJobSpecialistLevel(){
