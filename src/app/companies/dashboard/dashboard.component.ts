@@ -301,6 +301,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.responsibilities = response['data']['responsibility']; 
         this.requirements = response['data']['requirement']; 
         this.categories = response['data']['categories']; 
+        this.openJobs= response['data']['jobs']; 
+        this.applicants= response['data']['applicants']; 
+        this.interviewCompleted= response['data']['interview_com']; 
          } else if (response.statusCode == 401) {
           this.toastr.error(response.message)
           this.auth.logOut();
