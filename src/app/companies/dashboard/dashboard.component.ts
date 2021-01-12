@@ -830,6 +830,9 @@ selectedV(value){
       this.viewQuestions = false;
       this.Applicants = false;
       this.Profile = false;
+
+      $(".left-bar ul li:nth-child(1) a").removeClass('active');
+      $(".left-bar ul li:nth-child(3) a").addClass('active');
       
        break; 
     }
@@ -866,6 +869,9 @@ selectedV(value){
       this.viewQuestions = false;
       this.Applicants = true;
       this.Profile = false;
+
+      $(".left-bar ul li:nth-child(1) a").removeClass('active');
+      $(".left-bar ul li:nth-child(6) a").addClass('active');
       
       break; 
     }
