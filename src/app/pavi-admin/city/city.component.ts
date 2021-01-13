@@ -86,6 +86,7 @@ export class CityComponent implements OnInit {
     this.isLoder=true;
     let JobData = this.paviAdminService.getCountry()
     .subscribe(response => {
+      this.isLoder=false;
       //console.log("Job Specialty>>>",response['data']['countries']);
       this.dataSourceSix.data = response['data']['countries'] as Country[];
       setTimeout(() => {this.dataSourceSix.paginator = this.tableSixPaginator;
@@ -93,7 +94,7 @@ export class CityComponent implements OnInit {
       });
       this.allcountries = response['data']['countries'];  
     });
-    this.isLoder=false;
+    
   }
   addCity(){
     this.getCountries();

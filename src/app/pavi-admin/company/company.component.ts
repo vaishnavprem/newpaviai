@@ -88,6 +88,7 @@ export class CompanyComponent implements OnInit {
     this.isLoder=true;
     let companData = this.paviAdminService.getComapnies()
     .subscribe((response : any) => {
+      this.isLoder=false;
       if (response.statusCode == 200) {
         this.dataSourceOne.data = response['data']['companies'] as Company[];
         setTimeout(() => {this.dataSourceOne.paginator = this.tableOnePaginator;
@@ -103,7 +104,7 @@ export class CompanyComponent implements OnInit {
          this.toastr.error(response.message)
       }
     });
-    this.isLoder=false;
+    
   }
 
   updateCompany(){

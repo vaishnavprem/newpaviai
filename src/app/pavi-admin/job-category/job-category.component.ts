@@ -85,6 +85,7 @@ export class JobCategoryComponent implements OnInit {
    
     let JobData = this.paviAdminService.getJobCategory()
     .subscribe(response => {
+      this.isLoder=false;
       //console.log("Job Category>>>",response['data']['categories']);
       this.dataSourceThree.data = response['data']['categories'] as JobCategory[];
       setTimeout(() => {this.dataSourceThree.paginator = this.tableThreePaginator;
@@ -92,7 +93,7 @@ export class JobCategoryComponent implements OnInit {
       });
       this.categories = response['data']['categories'];  
     });
-    this.isLoder=false;
+    
   }
   saveJobCategory(){
     if(this.categoryForm.valid){

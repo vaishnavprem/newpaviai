@@ -84,6 +84,7 @@ export class JobTermComponent implements OnInit {
     this.isLoder=true;
     let JobData = this.paviAdminService.getJobTerms()
     .subscribe(response => {
+      this.isLoder=false;
       //console.log("Job Term>>>",response['data']['terms']);
       this.dataSourceFour.data = response['data']['terms'] as JobTerm[];
       setTimeout(() => {this.dataSourceFour.paginator = this.tableFourPaginator;
@@ -91,7 +92,7 @@ export class JobTermComponent implements OnInit {
       });
       this.terms = response['data']['terms'];  
     });
-    this.isLoder=false;
+    
   }
 
   saveJobTerms(){

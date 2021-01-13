@@ -35,6 +35,7 @@ html{height:100%;}
 
 @media (max-width: 767px){
 .mid-bar{top: 20%;}	
-.content-info h1{font-size:45px; line-height:50px;}
+.content-info h1{font-size:32px; line-height:50px;}
 .content-info h1 .hr-line {height: 43px;}
+.parent_question li label{font-size: 32px;}
 }

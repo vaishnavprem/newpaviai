@@ -357,13 +357,13 @@
               <div class="dashboard-list-view">
                 <div class="row">
                   <div class="col-sm-3 col-xs-6">
-                    <div class="dashboard-grid-info">
+                    <div class="dashboard-grid-info" (click)="selectedV(2)" style="cursor: pointer;">
                       <h4 style="color:rgb(222, 29, 240)">{{openJobs}}</h4>
                       <p>open jobs</p>
                     </div>
                   </div>
                   <div class="col-sm-3 col-xs-6">
-                    <div class="dashboard-grid-info">
+                    <div class="dashboard-grid-info" (click)="selectedV(5)" style="cursor: pointer;">
                       <h4 style="color:#6e8cd7">{{applicants}}</h4>
                       <p>applicants</p>
                     </div>

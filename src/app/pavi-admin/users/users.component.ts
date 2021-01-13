@@ -85,13 +85,14 @@ export class UsersComponent implements OnInit {
     this.isLoder=true;
     let userData = this.paviAdminService.getUsers()
     .subscribe(response => {
+      this.isLoder=false;
       this.dataSourceTwo.data = response['data']['users'] as User[];
       setTimeout(() => {this.dataSourceTwo.paginator = this.tableTwoPaginator;
         this.dataSourceTwo.sort = this.tableTwoSort;
       });
       this.users = response['data']['users']; 
     });
-    this.isLoder=false;
+    
    }
 
    editUser(index){
