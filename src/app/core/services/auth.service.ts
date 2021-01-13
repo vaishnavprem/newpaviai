@@ -59,4 +59,7 @@ export class AuthService {
   register(params) {
     return this.httpClient.post(`${API_URL}user/register`, params);
   }
+  requestDemo(params) {
+    return this.httpClient.post(`${API_URL}user/request-demo`, params);
+  }
 }

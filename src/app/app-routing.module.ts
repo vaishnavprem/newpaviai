@@ -8,6 +8,7 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
 import { AskQuestionComponent } from './home/ask-question/ask-question.component';
 import { FindNewEmployeeComponent } from './home/find-new-employee/find-new-employee.component';
 import { EmployeeSignUpComponent } from './home/employee-sign-up/employee-sign-up.component';
+import { RequestDemoComponent } from './home/request-demo/request-demo.component';
 const routes: Routes = [
   {
     path: '',
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'help',
     component: AskQuestionComponent
+  },
+  {
+    path: 'request-demo',
+    component: RequestDemoComponent
   },
   // {
   //   path: 'find-new-employee',
