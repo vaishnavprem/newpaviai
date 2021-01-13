@@ -45,6 +45,7 @@
         <li><a routerLink="/users/work" routerLinkActive="active">How iT Works</a></li>
         <li><a routerLink="/users/partner" routerLinkActive="active">Partners</a></li>
         <li><a routerLink="/users/about" routerLinkActive="active">About</a></li>
+        <li><a routerLink="/request-demo" routerLinkActive="active">Request demo</a></li>
         <li *ngIf="!auth.loggedIn()"><a (click)="goToLogin()" class="login-sec" >Login</a></li>
         <li *ngIf="auth.loggedIn()"><a (click)="auth.logOut()" class="login-sec" >Logout</a></li>
         </ul>
