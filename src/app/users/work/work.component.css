@@ -1,6 +1,8 @@
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 20%;}
 .logo { cursor: pointer;}
 
+.steps{font-size: 25px;color: #edf568;}
+
 
 @media (min-width:768px) and (max-width:1023px){
 .about-inner .color-yellow{font-size:36px;}
