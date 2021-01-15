@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PaviAdminRoutingModule } from './pavi-admin-routing.module';
 import {CoreModule} from '../core/core.module';
+import {AuthModule} from '../auth/auth.module';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CompanyComponent } from './company/company.component';
 import { UsersComponent } from './users/users.component';
@@ -12,14 +13,17 @@ import { JobSpecialistComponent } from './job-specialist/job-specialist.componen
 import { CountryListComponent } from './country-list/country-list.component';
 import { CityComponent } from './city/city.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AddCompanyComponent } from './add-company/add-company.component';
+
 
 
 @NgModule({
-  declarations: [ AdminDashboardComponent, CompanyComponent, UsersComponent, JobCategoryComponent, JobTermComponent, JobSpecialistComponent, CountryListComponent, CityComponent, ProfileComponent],
+  declarations: [ AdminDashboardComponent, CompanyComponent, UsersComponent, JobCategoryComponent, JobTermComponent, JobSpecialistComponent, CountryListComponent, CityComponent, ProfileComponent, AddCompanyComponent],
   imports: [
     CommonModule,
     PaviAdminRoutingModule,
     CoreModule,
+    AuthModule,
     FormsModule,
     ReactiveFormsModule
   ]

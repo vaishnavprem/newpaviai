@@ -39,6 +39,11 @@ import {CoreModule} from '../core/core.module';
     CoreModule,
     ReactiveFormsModule
   ],
+  exports: [
+    Step1Component,
+    Step2Component,
+    Step3Component
+  ],
   providers: []
 })
 export class AuthModule {
