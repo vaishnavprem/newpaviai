@@ -111,4 +111,7 @@ authUser;
   updateInterview(params){
     return this.httpClient.post(`${API_URL}companies/update-interview`, params,{headers:this.getHeaders()}); 
   }
+  employeeRegister(params) {
+    return this.httpClient.post(`${API_URL}companies/emp-register`, params,{headers:this.getHeaders()});
+  }
 }

@@ -11,7 +11,7 @@ import {
   TEXT_ONLY_PATTERN
 } from '../../core/constants/general';
 import {AuthService} from '../../core/services/auth.service';
-
+import {GetAuthUserPipe} from '../../shared/pipes/get-auth-user.pipe';
 @Component({
   selector: 'app-add-company',
   templateUrl: './add-company.component.html',
@@ -26,6 +26,7 @@ export class AddCompanyComponent implements OnInit {
   accountInfo: FormGroup;
   contactDetails: FormGroup;
   public isLoder=false;
+  authUser;
   companyForm: FormGroup;
   public status: boolean = false;
   public allcountries:any[];
@@ -37,10 +38,12 @@ export class AddCompanyComponent implements OnInit {
     private fb: FormBuilder,
     private companiesService: CompaniesService,
     public router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private getAuthUser: GetAuthUserPipe,
   ) { }
 
   ngOnInit(): void {
+    this.authUser = this.getAuthUser.transform();
     this.initForm();
   }
 
@@ -50,6 +53,7 @@ export class AddCompanyComponent implements OnInit {
       name: ['', [Validators.required, patternValidator(NUMBER_AFTER_TEXT_PATTERN)]],
       industry: ['', Validators.required],
       country: ['', Validators.required],
+      parent_id: this.authUser.user_id
     });
     this.accountInfo = this.fb.group({
       first_name: ['', [Validators.required, patternValidator(TEXT_ONLY_PATTERN)]],
@@ -79,9 +83,7 @@ export class AddCompanyComponent implements OnInit {
 
   registerCompany() {
     if (this.companyRegistrationForm.valid) {
-
       this.companiesService.register(this.companyRegistrationForm.getRawValue()).subscribe(async (dt: any) => {
-        console.log("dt>>>>>>.",this.companyRegistrationForm.getRawValue());
         if(dt.statusCode==200){
           this.toastr.success('The company has been successfully registered and you are logged in');
           // localStorage.setItem('token', dt['data'].token);
