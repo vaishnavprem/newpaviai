@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectionStrategy} f
 import {AuthService} from '../../core/services/auth.service';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {API_URL,AVATAR_URL, TEXT_ONLY_PATTERN,EMAIL_PATTERN} from '../../core/constants/general';
+import {API_URL,AVATAR_URL, TEXT_ONLY_PATTERN,EMAIL_PATTERN,NO_SPACE_PATTERN} from '../../core/constants/general';
 import {patternValidator} from '../../core/helpers/pattern-validator';
 import {ToastrService} from 'ngx-toastr';
 import {GetAuthUserPipe} from '../../shared/pipes/get-auth-user.pipe';
@@ -39,6 +39,14 @@ interface JobsElements {
 }
 
 interface User {
+  first_name: string;
+  last_name: string;
+  email: string;
+  gender: string;
+  jobTitle: string;
+}
+
+interface Employee {
   first_name: string;
   last_name: string;
   email: string;
@@ -129,6 +137,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public dataSourceFour;
   public displayedColumnsFour: string[];
 
+  public dataSourceFive;
+  public displayedColumnsFive: string[];
+  employeeForm: FormGroup;
+
   public selectedValue = 0;  //SelectMenu Of Dashboard
   public home = true;
   public addJobs = false;
@@ -137,6 +149,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public viewQuestions = false;
   public Applicants = false;
   public Profile = false;
+  public my_employee = false;
   public status: boolean = false;
   safeUrl: any;
   today: number = Date.now()
@@ -163,6 +176,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   @ViewChild('TableFourPaginator', {static: false}) tableFourPaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableFourSort: MatSort;
 
+  @ViewChild('TableFivePaginator', {static: false}) tableFivePaginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) tableFiveSort: MatSort;
+
   @ViewChild('lineCanvas',{static: false}) lineCanvas;
   lineChart: any;
   constructor(
@@ -184,6 +200,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     this.dataSourceFour = new MatTableDataSource<Question>();
     this.displayedColumnsFour=['jobTitle','action'];
+
+    this.dataSourceFive = new MatTableDataSource<Employee>();
+    this.displayedColumnsFive=['first_name', 'last_name', 'email', 'gender','jobTitle','action'];
     
     this.dataSourceTwo = new MatTableDataSource;
   }
@@ -256,6 +275,16 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.coverImgForm = this.fb.group({
         cover: ['']
       });
+
+      this.employeeForm = this.fb.group({
+        name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
+        position: ['', Validators.required],
+        user_id:['', Validators.required,patternValidator(EMAIL_PATTERN)],
+        password:['', Validators.required,Validators.minLength(5), Validators.maxLength(15), patternValidator(NO_SPACE_PATTERN)],
+  
+      });
+
+
         this.getCompanyData();
         // this.isLoder=false;
 
@@ -329,6 +358,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   applyFilterFour(filterValue: string) {
     this.dataSourceFour.filter = filterValue.trim().toLowerCase();
+  }
+
+  applyFilterFive(filterValue: string) {
+    this.dataSourceFive.filter = filterValue.trim().toLowerCase();
   }
 
   clickEvent(){
@@ -793,6 +826,28 @@ getSafeUrl(url){
 showRecordedAnswer(recordString){
   window.open("https://d1iruxeyl67hmv.cloudfront.net/web/index.php/archive/"+recordString+"/view" , "_blank");
 }
+
+getEmployee(){
+  //this.isLoder=true;
+  this.postArry = {
+    companyId:this.companyData.id
+  }
+  
+    this.dataSourceFive.data = [{first_name:'Ray',last_name:'kumar',gender:'Male',jobTitle:'PHP',email:'ray@pavi.com'},{first_name:'Ray2',last_name:'kumar',gender:'Male',jobTitle:'PHP',email:'ray2@pavi.com'},{first_name:'Ray3',last_name:'kumar',gender:'Male',jobTitle:'PHP',email:'ray3@pavi.com'},{first_name:'Ray4',last_name:'kumar',gender:'Male',jobTitle:'PHP',email:'ray4@pavi.com'}] as Employee[];
+    this.dataSourceFive.paginator = this.tableFivePaginator;
+      this.dataSourceFive.sort = this.tableFiveSort;
+  
+}
+
+saveEmployee(){
+  console.log("Employee Form>>>",this.employeeForm.getRawValue())
+}
+
+addEmployee(){
+  $("#add-modal-popup-employee").modal("show");
+    $("#add-modal-popup-employee").appendTo("body");
+}
+
 selectedV(value){
   let select = +value;
   this.status = false;
@@ -807,6 +862,7 @@ selectedV(value){
       this.viewQuestions = false;
       this.Applicants = false;
       this.Profile = false;
+      this.my_employee = false;
       
        break; 
     } 
@@ -818,6 +874,7 @@ selectedV(value){
       this.viewQuestions = false;
       this.Applicants = false;
       this.Profile = false;
+      this.my_employee = false;
       
        break; 
     } 
@@ -830,6 +887,7 @@ selectedV(value){
       this.viewQuestions = false;
       this.Applicants = false;
       this.Profile = false;
+      this.my_employee = false;
 
       $(".left-bar ul li:nth-child(1) a").removeClass('active');
       $(".left-bar ul li:nth-child(3) a").addClass('active');
@@ -845,6 +903,7 @@ selectedV(value){
       this.viewQuestions = false;
       this.Applicants = false;
       this.Profile = false;
+      this.my_employee = false;
       
       break; 
     }
@@ -857,6 +916,7 @@ selectedV(value){
       this.viewQuestions = true;
       this.Applicants = false;
       this.Profile = false;
+      this.my_employee = false;
       
       break; 
     }
@@ -869,6 +929,7 @@ selectedV(value){
       this.viewQuestions = false;
       this.Applicants = true;
       this.Profile = false;
+      this.my_employee = false;
 
       $(".left-bar ul li:nth-child(1) a").removeClass('active');
       $(".left-bar ul li:nth-child(6) a").addClass('active');
@@ -884,8 +945,22 @@ selectedV(value){
       this.viewQuestions = false;
       this.Applicants = false;
       this.Profile = true;
+      this.my_employee = false;
       
       break; 
+    }
+    case 7: { 
+      this.getEmployee();
+      this.home = false;
+      this.addJobs = false;
+      this.viewjobs = false;
+      this.addInterviewQuestions = false;
+      this.viewQuestions = false;
+      this.Applicants = false;
+      this.Profile = false;
+      this.my_employee = true;
+      
+       break; 
     }  
     default: { 
        
