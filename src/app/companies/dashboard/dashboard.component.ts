@@ -47,11 +47,9 @@ interface User {
 }
 
 interface Employee {
-  first_name: string;
-  last_name: string;
-  email: string;
-  gender: string;
-  jobTitle: string;
+  name: string;
+  user_id: string;
+  position: string;
 }
 
 interface Question {
@@ -202,7 +200,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.displayedColumnsFour=['jobTitle','action'];
 
     this.dataSourceFive = new MatTableDataSource<Employee>();
-    this.displayedColumnsFive=['first_name', 'last_name', 'email', 'gender','jobTitle','action'];
+    this.displayedColumnsFive=['name', 'user_id', 'position','action'];
     
     this.dataSourceTwo = new MatTableDataSource;
   }
@@ -833,13 +831,14 @@ getEmployee(){
     companyId:this.companyData.id
   }
   
-    this.dataSourceFive.data = [{first_name:'Ray',last_name:'kumar',gender:'Male',jobTitle:'PHP',email:'ray@pavi.com'},{first_name:'Ray2',last_name:'kumar',gender:'Male',jobTitle:'PHP',email:'ray2@pavi.com'},{first_name:'Ray3',last_name:'kumar',gender:'Male',jobTitle:'PHP',email:'ray3@pavi.com'},{first_name:'Ray4',last_name:'kumar',gender:'Male',jobTitle:'PHP',email:'ray4@pavi.com'}] as Employee[];
+    this.dataSourceFive.data = [{name:'Ray',position:'PHP',user_id:'ray@pavi.com'},{name:'Ray2',position:'PHP',user_id:'ray2@pavi.com'},{name:'Ray3',position:'PHP',user_id:'ray3@pavi.com'},{name:'Ray4',position:'PHP',user_id:'ray4@pavi.com'}] as Employee[];
     this.dataSourceFive.paginator = this.tableFivePaginator;
       this.dataSourceFive.sort = this.tableFiveSort;
   
 }
 
 saveEmployee(){
+
   this.isLoder=true;
   if (this.employeeForm.valid) {
     this.companiesService.employeeRegister(this.employeeForm.getRawValue()).subscribe(async (dt: any) => {
@@ -852,6 +851,7 @@ saveEmployee(){
       this.isLoder=false;
     });
   }
+
 }
 
 addEmployee(){
