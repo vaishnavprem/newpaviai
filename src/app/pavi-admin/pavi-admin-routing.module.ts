@@ -9,6 +9,7 @@ import { JobSpecialistComponent } from './job-specialist/job-specialist.componen
 import { JobTermComponent } from './job-term/job-term.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './users/users.component';
+import { AddCompanyComponent } from './add-company/add-company.component';
 
 const routes: Routes = [
  
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'usres',
     component: UsersComponent
+  },
+  {
+    path: 'add-company',
+    component: AddCompanyComponent
   }
 ];
 

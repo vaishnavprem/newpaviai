@@ -139,6 +139,12 @@
   
             <div id="create-job">
                 <div *ngIf="!companies">No record found</div>
+                <div class="row">
+                  <div class="col-xl-12 col-md-12 mb-12">
+                    <button type="button" class="btn btn-outline-dark float-right" (click)="router.navigate(['/pavi-admin/add-company'])">Add Company</button>
+                  </div>
+                </div>
+                &nbsp;
                 <div *ngIf="companies" class="table-responsive">
                   <mat-form-field>
                     <input

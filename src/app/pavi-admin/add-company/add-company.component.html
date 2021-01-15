@@ -1,0 +1,118 @@
+<div *ngIf="isLoder" class="loader"> <svg width="80" height="80" viewBox="0 0 38 38" stroke="#fff">
+    <g fill="none" fill-rule="evenodd">
+      <g transform="translate(1 1)" stroke-width="2">
+        <circle stroke-opacity=".2" cx="18" cy="18" r="18"/>
+        <path d="M36 18c0-9.94-8.06-18-18-18">
+          <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 18 18"
+                        to="360 18 18"
+                        dur="1s"
+                        repeatCount="indefinite"/>
+                </path>
+            </g>
+        </g>
+    </svg> 
+    </div> 
+      
+    
+    <div class="bg-images-1">
+      <div class="content-warp">
+        <div class="content-bg-inner"> 
+         <app-admin-sidebar></app-admin-sidebar>
+          <div class="right-bar">
+            <div class="right-header">
+                  <div class="row">
+                 
+                    <div class="col-sm-5 col-md-7 col-xs-9 pull-right">
+                      <ul>
+                        <li><a >Admin &nbsp;&nbsp;|</a></li>
+                        <li><a (click)="auth.logOut()">Logout</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-5 col-xs-12">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" />
+                        <div class="input-group-btn">
+                          <div class="btn-group">
+                            <button type="button" class="btn"><i class="fa fa-search"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    
+                  </div>
+            </div>
+            <div class="dashboard-right-mid" id="pills-tabContent">
+              <div class="title-warp">
+                <h2>Add Company <span>{{today | date:'longDate'}}</span></h2>
+              </div>
+    
+              <div class="private-user animate__fadeInBottomBig animate__animated">
+                <div class="signup-warp">
+                 
+                  <form [formGroup]="companyRegistrationForm" class="company-registration-form">
+  
+                    <mat-horizontal-stepper class="steper" [linear]="isLinear" #stepper [selectedIndex]="currentStep-1" labelPosition="bottom">
+          
+          
+                      <ng-template matStepperIcon="edit" let-index="index">
+                        <i class="fa fa-user" aria-hidden="true" *ngIf="index === 0"></i>
+                        <i class="fa fa-info" aria-hidden="true" *ngIf="index === 1"></i>
+                        <i class="fa fa-phone" aria-hidden="true" *ngIf="index === 2"></i>
+                      </ng-template>
+          
+                      <!-- Custom icon with a context variable. -->
+                      <ng-template matStepperIcon="number" let-index="index">
+                        <i class="fa fa-user" aria-hidden="true" *ngIf="index === 0"></i>
+                        <i class="fa fa-info" aria-hidden="true" *ngIf="index === 1"></i>
+                        <i class="fa fa-phone" aria-hidden="true" *ngIf="index === 2"></i>
+                      </ng-template>
+          
+                    <mat-step [stepControl]="companyInfo">
+                        <ng-template matStepLabel>Company info</ng-template>
+                        <app-step1 [group]="companyInfo" [stepper]="stepper"></app-step1>
+                      </mat-step>
+          
+                      <!-- Step 2 -->
+                      <mat-step [stepControl]="accountInfo">
+                        <ng-template matStepLabel>Account info</ng-template>
+                        <app-step2 [group]="accountInfo"></app-step2>
+                      </mat-step>
+          
+                      <!-- Step 3 -->
+                      <mat-step>
+                        <ng-template matStepLabel>Company details</ng-template>
+                        <app-step3 [group]="contactDetails" (registerCompany)="registerCompany()"></app-step3>
+                      </mat-step>
+                    </mat-horizontal-stepper>
+          
+                  </form>
+              </div>
+            </div>
+              <div class="overlay"></div>
+    
+            </div>
+          </div>         
+        </div>
+      </div>
+      <footer>© PAVI AI ALL RIGHT RESERVED 2020</footer>
+    </div>
+     
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
