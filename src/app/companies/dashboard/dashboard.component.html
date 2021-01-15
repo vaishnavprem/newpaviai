@@ -247,28 +247,35 @@
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Name:</label>
                   <input type="text" class="form-control" formControlName="name">
-                  <div *ngIf="isSubmitted && employeeForm.get('name').invalid"class="alert alert-danger">Name is required</div>
+                  <div *ngIf="employeeForm.get('name').invalid && (employeeForm.get('name').dirty || employeeForm.get('name').touched)"class="alert alert-danger">Name is required</div>
+
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Position:</label>
                   <input type="text" class="form-control"  formControlName="position">
-                  <div *ngIf="isSubmitted && employeeForm.get('position').invalid"class="alert alert-danger">Position is required</div>
+
+                  <div *ngIf="employeeForm.get('position').invalid && (employeeForm.get('position').dirty || employeeForm.get('position').touched)"class="alert alert-danger">Position is required</div>
+
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">User Id:</label>
                   <input type="text" class="form-control"  formControlName="user_id">
-                  <div *ngIf="isSubmitted && employeeForm.get('user_id').invalid" class="alert alert-danger">User Id is required</div>
+
+                  <div *ngIf="employeeForm.get('user_id').invalid && (employeeForm.get('user_id').dirty || employeeForm.get('user_id').touched)" class="alert alert-danger">User Id is required</div>
+                  <div *ngIf="employeeForm.get('user_id').hasError('patternInvalid')" class="alert alert-danger">User Id has <strong>incorrect format</strong> Only Text Allowed</div>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Password:</label>
                   <input type="password" class="form-control"  formControlName="password">
-                  <div *ngIf="isSubmitted && employeeForm.get('password').invalid" class="alert alert-danger">Password is required</div>
+
+                  <div *ngIf="employeeForm.get('password').invalid && (employeeForm.get('password').dirty || employeeForm.get('password').touched)" class="alert alert-danger">Password is required</div>
+
                 </div>
               </div>
             </div>

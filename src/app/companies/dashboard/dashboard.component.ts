@@ -277,9 +277,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.employeeForm = this.fb.group({
         name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
         position: ['', Validators.required],
-        user_id:['', Validators.required,patternValidator(EMAIL_PATTERN)],
-        password:['', Validators.required,Validators.minLength(5), Validators.maxLength(15), patternValidator(NO_SPACE_PATTERN)],
-  
+        user_id:['', [Validators.required,patternValidator(TEXT_ONLY_PATTERN)]],
+        password:['', [Validators.required,Validators.minLength(5), Validators.maxLength(15), patternValidator(NO_SPACE_PATTERN)]],
+        parent_id:this.authUser.user_id
       });
 
 
@@ -838,8 +838,20 @@ getEmployee(){
 }
 
 saveEmployee(){
-  this.isSubmitted = true;
-  console.log("Employee Form>>>",this.employeeForm.getRawValue())
+
+  this.isLoder=true;
+  if (this.employeeForm.valid) {
+    this.companiesService.employeeRegister(this.employeeForm.getRawValue()).subscribe(async (dt: any) => {
+      if(dt.statusCode==200){
+        this.toastr.success('Employee successfully registered and you are logged in');
+        (<any>$(`#add-modal-popup-employee`)).modal('hide');
+      }else {
+        this.toastr.error(dt.message);
+      }
+      this.isLoder=false;
+    });
+  }
+
 }
 
 addEmployee(){
