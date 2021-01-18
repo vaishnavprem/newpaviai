@@ -1,0 +1,97 @@
+
+
+<div *ngIf="isLoder" class="loader"> <svg width="80" height="80" viewBox="0 0 38 38" stroke="#fff">
+    <g fill="none" fill-rule="evenodd">
+      <g transform="translate(1 1)" stroke-width="2">
+        <circle stroke-opacity=".2" cx="18" cy="18" r="18"/>
+        <path d="M36 18c0-9.94-8.06-18-18-18">
+          <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 18 18"
+                        to="360 18 18"
+                        dur="1s"
+                        repeatCount="indefinite"/>
+                </path>
+            </g>
+        </g>
+    </svg> 
+</div> 
+   
+  <div class="bg-images-1">
+    <div class="content-warp">
+      <div class="content-bg-inner"> 
+        <app-company-sidebar></app-company-sidebar>
+          
+            <div class="right-bar">
+              <div class="right-header">
+                <div class="row">
+                
+                  <div class="col-sm-5 col-md-7 col-xs-9 pull-right">
+                    <ul>
+                      <li><a >{{companyData?.name}} &nbsp;&nbsp;|</a></li>
+                      <li><a (click)="auth.logOut()">Logout</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-6 col-md-5 col-xs-12">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search" />
+                      <div class="input-group-btn">
+                        <div class="btn-group">
+                          <button type="button" class="btn"><i class="fa fa-search"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                </div>
+              </div>
+            <div class="dashboard-right-mid" id="pills-tabContent">
+              <div class="title-warp">
+                <h2>Dashboard <span>{{today | date:'longDate'}}</span></h2>
+              </div>
+  
+              <div id="add-interview-questions">
+                <div *ngIf="jobs && jobs.length == 0">Add Job First</div>
+                <div  class="inner-page">
+                  <h2>Add Interview Questions</h2>
+                  <form [formGroup]="questionForm" (ngSubmit)="saveQuestion()">
+                    <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                      <div class="form-group">
+                        <label>Select Job</label>
+                        <select class="form-control" formControlName="jobId">
+                          <option selected disabled [value]="''">Select Job*</option>
+                          <option *ngFor="let job of jobs" [value]="job.id">{{job.jobTitle}}</option>
+                        </select>
+                      </div>
+                      <div *ngIf="questionForm.get('jobId').touched && questionForm.get('jobId').invalid"class="alert alert-danger">Job required</div>
+                    </div>
+                    <div class="col-xl-12 col-md-12">
+                      <div class="form-group">
+                        <label>Interview Question</label>
+                        <input class="form-control"  placeholder="Interview Question" type="text" formControlName="questionText"/>
+                      </div>
+                      <div *ngIf="questionForm.get('questionText').touched && questionForm.get('questionText').invalid"class="alert alert-danger">Interview Questions is required</div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary ">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                  </form>
+                </div>
+              </div>
+  
+              
+              </div>
+              </div>
+                  
+      </div>
+      </div>
+    <footer>© PAVI AI ALL RIGHT RESERVED 2020</footer>
+  </div>

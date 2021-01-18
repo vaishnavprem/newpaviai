@@ -15,6 +15,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 //For Calender
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { AddJobsComponent } from './add-jobs/add-jobs.component';
+import { ViewJobsComponent } from './view-jobs/view-jobs.component';
+import { AddQuestionComponent } from './add-question/add-question.component';
+import { ViewQuestionComponent } from './view-question/view-question.component';
+import { ApplicantsComponent } from './applicants/applicants.component';
+import { MyEmployeeComponent } from './my-employee/my-employee.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +33,15 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     JobCreationStep3Component,
     DashboardMoreArchiveJobsComponent,
     JobCreationStepperFormComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddJobsComponent,
+    ViewJobsComponent,
+    AddQuestionComponent,
+    ViewQuestionComponent,
+    ApplicantsComponent,
+    MyEmployeeComponent,
+    MyProfileComponent,
+    AddEmployeeComponent
   ],
   imports: [
     CommonModule,

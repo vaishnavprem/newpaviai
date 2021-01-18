@@ -837,22 +837,22 @@ getEmployee(){
   
 }
 
-saveEmployee(){
+// saveEmployee(){
 
-  this.isLoder=true;
-  if (this.employeeForm.valid) {
-    this.companiesService.employeeRegister(this.employeeForm.getRawValue()).subscribe(async (dt: any) => {
-      if(dt.statusCode==200){
-        this.toastr.success('Employee successfully registered and you are logged in');
-        (<any>$(`#add-modal-popup-employee`)).modal('hide');
-      }else {
-        this.toastr.error(dt.message);
-      }
-      this.isLoder=false;
-    });
-  }
+//   this.isLoder=true;
+//   if (this.employeeForm.valid) {
+//     this.companiesService.employeeRegister(this.employeeForm.getRawValue()).subscribe(async (dt: any) => {
+//       if(dt.statusCode==200){
+//         this.toastr.success('Employee successfully registered and you are logged in');
+//         (<any>$(`#add-modal-popup-employee`)).modal('hide');
+//       }else {
+//         this.toastr.error(dt.message);
+//       }
+//       this.isLoder=false;
+//     });
+//   }
 
-}
+// }
 
 addEmployee(){
   $("#add-modal-popup-employee").modal("show");
