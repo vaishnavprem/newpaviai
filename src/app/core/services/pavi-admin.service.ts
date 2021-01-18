@@ -24,6 +24,9 @@ export class PaviAdminService {
   updateCompany(params){
     return this.httpClient.post(`${API_URL}admin/company-update`, params);
   }
+  deleteCompany(params){
+    return this.httpClient.post(`${API_URL}admin/delete-company`, params, {headers:this.getHeaders()});
+  }
   getDashboardcount(){
     return this.httpClient.post(`${API_URL}admin/dashboard-count`,'', {headers:this.getHeaders()});
   }

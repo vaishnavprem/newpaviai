@@ -61,7 +61,8 @@ export class AddEmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.authUser = this.getAuthUser.transform();
     this.employeeForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
+      first_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
+      last_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
       position: ['', Validators.required],
       user_id:['', [Validators.required,patternValidator(TEXT_ONLY_PATTERN)]],
       password:['', [Validators.required,Validators.minLength(5), Validators.maxLength(15), patternValidator(NO_SPACE_PATTERN)]],
@@ -97,7 +98,7 @@ export class AddEmployeeComponent implements OnInit {
        } else if (response.statusCode == 401) {
         this.toastr.error(response.message)
         this.auth.logOut();
-        this.router.navigate(['auth/login']);
+        this.router.navigate(['auth/login',2]);
         }
         else this.toastr.error(response.message)
         
@@ -106,17 +107,18 @@ export class AddEmployeeComponent implements OnInit {
 
 saveEmployee(){
 
-  
+  //console.log("Save Employee>>>>",this.employeeForm.getRawValue())
   if (this.employeeForm.valid) {
     this.isLoder=true;
     this.companiesService.employeeRegister(this.employeeForm.getRawValue()).subscribe(async (dt: any) => {
+      this.isLoder=false;
       if(dt.statusCode==200){
         this.toastr.success('Employee successfully registered and you are logged in');
-        this.router.navigate(['companies/my-employee'])
+        this.router.navigate(['/companies/my-employee'])
       }else {
         this.toastr.error(dt.message);
       }
-      this.isLoder=false;
+      
     });
   }else{
     this.toastr.error('check all fields');
