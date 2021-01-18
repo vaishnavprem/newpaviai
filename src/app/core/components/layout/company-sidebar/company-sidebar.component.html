@@ -1,0 +1,22 @@
+
+<div class="col-xs-3 col-sm-1  hidden-lg">
+    <div class="nav-tiker"><a (click)="clickEvent()"><img src="assets/images/nav.png" class="nav-tikerimg" /> </a></div>
+  </div>
+  
+  <div [ngClass]="status ? 'nav-show' : ''">
+      <div class="left-bar">
+          <div class="nav-tiker-close hidden-md hidden-lg"><a (click)="clickEvent()"><img src="assets/images/nav-close.png" class="nav-tikerimg-close" /> </a></div>
+          <figure><img src="assets/images/logowithpavi.png" /></figure>
+          <ul>
+            <li><a  routerLink="/companies/dashboard" routerLinkActive="active" >Dashboard</a></li>
+            <li><a routerLink="/companies/add-jobs" routerLinkActive="active">Add Jobs</a></li>
+            <li><a  routerLink="/companies/view-jobs" routerLinkActive="active">View Jobs</a></li>
+            <li><a  routerLink="/companies/add-question" routerLinkActive="active">Add Interview Questions</a></li>
+            <li><a  routerLink="/companies/view-question" routerLinkActive="active">View Questions</a></li>
+            <li><a  routerLink="/companies/applicants" routerLinkActive="active">Applicants</a></li>
+            <li><a  routerLink="/companies/my-employee" routerLinkActive="active">My Employees</a></li>
+            <li><a  routerLink="/companies/my-profile" routerLinkActive="active">My Profile</a></li>
+          </ul>
+        </div>
+      </div>
+  

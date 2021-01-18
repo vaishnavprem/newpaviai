@@ -19,6 +19,7 @@ import {SidebarComponent} from './components/layout/sidebar/sidebar.component';
 import { ShowConfirmDialogComponent } from './components/dialogs/show-confirm-dialog/show-confirm-dialog.component';
 import { UserSidebarComponent } from './components/layout/user-sidebar/user-sidebar.component';
 import { AdminSidebarComponent } from './components/layout/admin-sidebar/admin-sidebar.component';
+import { CompanySidebarComponent } from './components/layout/company-sidebar/company-sidebar.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AdminSidebarComponent } from './components/layout/admin-sidebar/admin-s
     SidebarComponent,
     ShowConfirmDialogComponent,
     UserSidebarComponent,
-    AdminSidebarComponent
+    AdminSidebarComponent,
+    CompanySidebarComponent
   ],
   imports: [
     CommonModule,
@@ -55,6 +57,7 @@ import { AdminSidebarComponent } from './components/layout/admin-sidebar/admin-s
     FooterComponent,
     UserSidebarComponent,
     AdminSidebarComponent,
+    CompanySidebarComponent,
     SaveWorkExperienceDialogComponent,
     SaveProgrammingSkillsDialogComponent,
     SaveEducationDialogComponent,

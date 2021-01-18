@@ -1,0 +1,336 @@
+
+<div *ngIf="isLoder" class="loader"> <svg width="80" height="80" viewBox="0 0 38 38" stroke="#fff">
+    <g fill="none" fill-rule="evenodd">
+      <g transform="translate(1 1)" stroke-width="2">
+        <circle stroke-opacity=".2" cx="18" cy="18" r="18"/>
+        <path d="M36 18c0-9.94-8.06-18-18-18">
+          <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 18 18"
+                        to="360 18 18"
+                        dur="1s"
+                        repeatCount="indefinite"/>
+                </path>
+            </g>
+        </g>
+    </svg> 
+    </div> 
+    <div class="modal fade in" id="add-modal-seniority">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Seniority Level</h5>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="seniorityForm" (ngSubmit)="saveSeniority()">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Seniority Level:</label>
+                    <input type="text" class="form-control" formControlName="seniority">
+                    <div *ngIf="seniorityForm.get('seniority').touched && seniorityForm.get('seniority').invalid" class="alert alert-danger">Seniority Level is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary ">Submit</button>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="modal fade in" id="add-modal-employment">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Employment</h5>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="employmentForm" (ngSubmit)="saveEmployment()">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Employment:</label>
+                    <input type="text" class="form-control" formControlName="employment">
+                    <div *ngIf="employmentForm.get('employment').touched && employmentForm.get('employment').invalid" class="alert alert-danger">Employment is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary ">Submit</button>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade in" id="add-modal-responsibilities">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Responsibilities</h5>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="responsibilityForm" (ngSubmit)="saveResponsibility()">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Responsibilities:</label>
+                    <input type="text" class="form-control" formControlName="responsibility">
+                    <div *ngIf="responsibilityForm.get('responsibility').touched && responsibilityForm.get('responsibility').invalid" class="alert alert-danger">Responsibility is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary ">Submit</button>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="modal fade in" id="add-modal-requirements">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Requirements</h5>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="requirementsForm" (ngSubmit)="saveRequirements()">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Requirement:</label>
+                    <input type="text" class="form-control" formControlName="requirement">
+                    <div *ngIf="requirementsForm.get('requirement').touched && requirementsForm.get('requirement').invalid" class="alert alert-danger">Requirements is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary ">Submit</button>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+  
+  <div class="bg-images-1">
+    <div class="content-warp">
+      <div class="content-bg-inner"> 
+        <app-company-sidebar></app-company-sidebar>
+          
+            <div class="right-bar">
+              <div class="right-header">
+                <div class="row">
+                
+                  <div class="col-sm-5 col-md-7 col-xs-9 pull-right">
+                    <ul>
+                      <li><a >{{companyData?.name}} &nbsp;&nbsp;|</a></li>
+                      <li><a (click)="auth.logOut()">Logout</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-6 col-md-5 col-xs-12">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search" />
+                      <div class="input-group-btn">
+                        <div class="btn-group">
+                          <button type="button" class="btn"><i class="fa fa-search"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                </div>
+              </div>
+            <div class="dashboard-right-mid" id="pills-tabContent">
+              <div class="title-warp">
+                <h2>Dashboard <span>{{today | date:'longDate'}}</span></h2>
+              </div>
+  
+             
+              <div id="create-job"> 
+                <div class="inner-page">
+                  <h2>Create Job</h2>
+                  <form [formGroup]="jobForm" (ngSubmit)="saveJob()">
+                    <div class="row">
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Job Title</label>
+                          <input class="form-control" id="username" placeholder="Job Title" type="text" formControlName="jobTitle"/>
+                        </div>
+                        <div *ngIf="jobForm.get('jobTitle').touched && jobForm.get('jobTitle').invalid"class="alert alert-danger">Job Title is required</div>
+                      </div>
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Country</label>
+                          <select class="form-control" formControlName="country">
+                            <option selected disabled [value]="''">Country*</option>
+                            <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+                          </select>
+                        </div>
+                        <div *ngIf="jobForm.get('country').touched && jobForm.get('country').invalid"class="alert alert-danger">country is required</div>
+                      </div>
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Company Email</label>
+                          <input class="form-control" id="company" placeholder="Company Email" type="email" formControlName="email"/>
+                        </div>
+                        <div *ngIf="jobForm.get('email').touched && jobForm.get('email').invalid"class="alert alert-danger">Email is required</div>
+                      </div>
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Company Address</label>
+                          <input class="form-control" id="CompanyAddress" placeholder="Company Address" type="text" formControlName="companyAddress"/>
+                        </div>
+                        <div *ngIf="jobForm.get('companyAddress').touched && jobForm.get('companyAddress').invalid"class="alert alert-danger">Company Address is required</div>
+                      </div>
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Job category</label>
+                          <select class="form-control" formControlName="category">
+                            <option selected disabled [value]="''">category*</option>
+                            <option *ngFor="let category of categories " [value]="category.category">{{category.category}}</option>
+                          </select>
+                        </div>
+                        <div *ngIf="jobForm.get('category').touched && jobForm.get('category').invalid"class="alert alert-danger">category is required</div>
+                      </div>
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Experience (Years) </label>
+                          <select class="form-control" formControlName="experience">
+                            <option selected disabled [value]="''">Experience*</option>
+                            <option [value]="0">0-1</option>
+                            <option [value]="1">1-2</option>
+                            <option [value]="2">2-3</option>
+                            <option [value]="3">3-4</option>
+                            <option [value]="4">4-5</option>
+                            <option [value]="5">5-6</option>
+                            <option [value]="6">6-7</option>
+                            <option [value]="7">7-8</option>
+                            <option [value]="8">8-9</option>
+                            <option [value]="9">9-10</option>
+                          </select>
+                        </div>
+                        <div *ngIf="jobForm.get('experience').touched && jobForm.get('experience').invalid"class="alert alert-danger">Experience is required</div>
+                      </div>
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Seniority Level &nbsp;<i class="fa fa-plus" aria-hidden="true" title="Add Seniority Level" (click)="addSeniority()"></i></label>
+                          <select class="form-control" formControlName="level">
+                            <option selected disabled [value]="''">Seniority Level*</option>
+                            <option *ngFor="let seniority of seniorityLevels" [value]="seniority['seniority']">{{seniority['seniority']}}</option>
+                          </select>
+                        </div>
+                        <div *ngIf="jobForm.get('level').touched && jobForm.get('level').invalid"class="alert alert-danger">Seniority Level is required</div>
+                      </div>
+  
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Employment &nbsp;<i class="fa fa-plus" aria-hidden="true" title="Add Employment" (click)="addEmployment()"></i></label>
+                          <select class="form-control" formControlName="employment">
+                            <option selected disabled [value]="''">Employment*</option>
+                            <option *ngFor="let employment of employments" [value]="employment['employment']">{{employment['employment']}}</option>
+                          </select>
+                        </div>
+                        <div *ngIf="jobForm.get('employment').touched && jobForm.get('employment').invalid"class="alert alert-danger">Employment is required</div>
+                      </div>
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Salary</label>
+                          <input class="form-control" id="Salary" placeholder="Salary" type="text" formControlName="salary"/>
+                        </div>
+                        <div *ngIf="jobForm.get('salary').touched && jobForm.get('salary').invalid"class="alert alert-danger">Salary is required</div>
+                      </div>
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Job Brief</label>
+                          <textarea class="form-control" placeholder="Job Brief" formControlName="job_brief"></textarea>
+                        </div>
+                        <div *ngIf="jobForm.get('job_brief').touched && jobForm.get('job_brief').invalid"class="alert alert-danger">Job Brief is required</div>
+                      </div>
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Job Description</label>
+                          <textarea class="form-control" placeholder="Job Description" formControlName="job_description"></textarea>
+                        </div>
+                        <div *ngIf="jobForm.get('job_description').touched && jobForm.get('job_description').invalid"class="alert alert-danger">Job Description is required</div>
+                      </div>
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Responsibilities &nbsp;<i class="fa fa-plus" aria-hidden="true" title="Add Responsibilities" (click)="addResponsibilities()"></i></label>
+                          <select class="form-control" multiple style="height: 100px;" formControlName="responsibility">
+                            <option *ngFor="let responsibility of responsibilities"  [value]="responsibility['responsibility']">{{responsibility['responsibility']}}</option>
+                          </select>
+                        </div>
+                        <div *ngIf="jobForm.get('responsibility').touched && jobForm.get('responsibility').invalid"class="alert alert-danger">Responsibilities required</div>
+                      </div>
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Requirements  &nbsp;<i class="fa fa-plus" aria-hidden="true" title="Add Requirements" (click)="addRequirements()"></i></label>
+                          <select class="form-control" multiple style="height: 100px;" formControlName="requirement">
+                            <option *ngFor="let requirement of requirements" [value]="requirement['requirement']">{{requirement['requirement']}}</option>
+                          </select>
+                        </div>
+                        <div *ngIf="jobForm.get('requirement').touched && jobForm.get('requirement').invalid"class="alert alert-danger">Requirements required</div>
+                      </div>
+  
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Job Start Date</label>
+                          <input class="form-control" id="start-date" placeholder="Job Start Date" type="date" formControlName="date_opened"/>
+                        </div>
+                        <div *ngIf="jobForm.get('date_opened').touched && jobForm.get('date_opened').invalid"class="alert alert-danger">Job Start Date is required</div>
+                      </div>
+                      <div class="col-xl-6 col-md-6">
+                        <div class="form-group">
+                          <label>Job End Date</label>
+                          <input class="form-control" id="end-date" placeholder="Job End Date" type="date" formControlName="date_closed"/>
+                        </div>
+                        <div *ngIf="jobForm.get('date_closed').touched && jobForm.get('date_closed').invalid"class="alert alert-danger">Job End Date is required</div>
+                        <input type="hidden" formControlName="jobId">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary ">Submit</button> &nbsp; &nbsp;
+                          <button *ngIf="!jobForm.get('jobId').value" (click)= "jobFormRest()" type="button" class="btn btn-primary ">Reset</button>
+                        </div>
+  
+                        
+                      </div>
+                    </div>
+                
+                    
+                  </form>
+                </div>
+              </div>
+  
+            
+  
+              
+              </div>
+              </div>
+                  
+      </div>
+      </div>
+    <footer>© PAVI AI ALL RIGHT RESERVED 2020</footer>
+  </div>
