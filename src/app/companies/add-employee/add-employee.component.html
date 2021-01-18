@@ -64,9 +64,16 @@
                           <div class="col-sm-12">
                             <div class="form-group">
                               <!-- <label>First Name</label> -->
-                              <input class="form-control inputField" type="text" placeholder="Name*" formControlName="name" />
+                              <input class="form-control inputField" type="text" placeholder="First Name*" formControlName="first_name" />
                             </div>
-                            <div *ngIf="employeeForm.get('name').invalid && (employeeForm.get('name').dirty || employeeForm.get('name').touched)"class="alert alert-danger">Name is required</div>
+                            <div *ngIf="employeeForm.get('first_name').invalid && (employeeForm.get('first_name').dirty || employeeForm.get('first_name').touched)"class="alert alert-danger">First Name is required</div>
+                          </div>
+                          <div class="col-sm-12">
+                            <div class="form-group">
+                              <!-- <label>First Name</label> -->
+                              <input class="form-control inputField" type="text" placeholder="Last Name*" formControlName="last_name" />
+                            </div>
+                            <div *ngIf="employeeForm.get('last_name').invalid && (employeeForm.get('last_name').dirty || employeeForm.get('last_name').touched)"class="alert alert-danger">Last Name is required</div>
                           </div>
                           <div class="col-sm-12">
                             <div class="form-group">

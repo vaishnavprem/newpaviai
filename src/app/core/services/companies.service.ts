@@ -114,4 +114,13 @@ authUser;
   employeeRegister(params) {
     return this.httpClient.post(`${API_URL}companies/emp-register`, params,{headers:this.getHeaders()});
   }
+  updateEmployee(params) {
+    return this.httpClient.post(`${API_URL}companies/edit-employee`, params,{headers:this.getHeaders()});
+  }
+  deleteEmployee(params) {
+    return this.httpClient.post(`${API_URL}companies/delete-employee`, params,{headers:this.getHeaders()});
+  }
+  getEmployee(params) { 
+    return this.httpClient.post(`${API_URL}companies/get-employee`, params,{headers:this.getHeaders()});
+  }
 }

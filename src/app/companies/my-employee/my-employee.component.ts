@@ -23,9 +23,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 declare var $: any;
 
 interface Employee {
-  name: string;
+  id:string,
+  first_name: string;
+  last_name: string;
   user_id: string;
   position: string;
+  password: string;
 }
 
 @Component({
@@ -54,6 +57,11 @@ export class MyEmployeeComponent implements OnInit {
   public displayedColumnsFive: string[];
   employeeForm: FormGroup;
 
+  view_employee = true;
+  edit_employee = false;
+  employees:any[];
+  singleEmployee;
+
   @ViewChild('TableFivePaginator', {static: false}) tableFivePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableFiveSort: MatSort;
 
@@ -69,16 +77,18 @@ export class MyEmployeeComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     this.dataSourceFive = new MatTableDataSource<Employee>();
-    this.displayedColumnsFive=['name', 'user_id', 'position','action'];
+    this.displayedColumnsFive=['first_name', 'last_name', 'user_id', 'position','action'];
    }
 
   ngOnInit(): void {
     this.authUser = this.getAuthUser.transform();
     this.employeeForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
+      first_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
+      last_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
       position: ['', Validators.required],
       user_id:['', [Validators.required,patternValidator(TEXT_ONLY_PATTERN)]],
-      password:['', [Validators.required,Validators.minLength(5), Validators.maxLength(15), patternValidator(NO_SPACE_PATTERN)]],
+      password:[''],
+      id:[''],
       parent_id:this.authUser.user_id
     });
     this.getCompanyData();
@@ -124,37 +134,81 @@ export class MyEmployeeComponent implements OnInit {
 }
 
 getEmployee(){
-  //this.isLoder=true;
+  this.isLoder=true;
   this.postArry = {
-    companyId:this.companyData.id
+    parent_id:this.authUser.user_id
   }
-  
-    this.dataSourceFive.data = [{name:'Ray',position:'PHP',user_id:'ray@pavi.com'},{name:'Ray2',position:'PHP',user_id:'ray2@pavi.com'},{name:'Ray3',position:'PHP',user_id:'ray3@pavi.com'},{name:'Ray4',position:'PHP',user_id:'ray4@pavi.com'}] as Employee[];
-    this.dataSourceFive.paginator = this.tableFivePaginator;
-      this.dataSourceFive.sort = this.tableFiveSort;
+  let employeeData = this.companiesService.getEmployee(this.postArry)
+    .subscribe((response : any) => {
+      this.isLoder=false;
+      //console.log("Response Of get Employee",response);
+      this.employees = response['data']['empdata'] as Employee[];
+      this.dataSourceFive.data = this.employees;
+      this.dataSourceFive.paginator = this.tableFivePaginator;
+        this.dataSourceFive.sort = this.tableFiveSort;
+      
+    });
   
 }
 
-// saveEmployee(){
+saveEmployee(){
+  //console.log('Edit Employee>>',this.employeeForm.getRawValue());
+  this.isLoder=true;
+  if (this.employeeForm.valid) {
+    this.companiesService.updateEmployee(this.employeeForm.getRawValue()).subscribe(async (dt: any) => {
+      this.isLoder=false;
+      if(dt.statusCode==200){
+        this.toastr.success('Employee successfully updated');
+        // (<any>$(`#add-modal-popup-employee`)).modal('hide');
+        this.edit_employee = false;
+        this.view_employee = true;
+        this.getEmployee();
+      }else {
+        this.toastr.error(dt.message);
+      }
+      
+    });
+  }else{
+    this.toastr.error('Please check all fields');
+    this.isLoder=false;
+  }
 
-//   this.isLoder=true;
-//   if (this.employeeForm.valid) {
-//     this.companiesService.employeeRegister(this.employeeForm.getRawValue()).subscribe(async (dt: any) => {
-//       if(dt.statusCode==200){
-//         this.toastr.success('Employee successfully registered and you are logged in');
-//         (<any>$(`#add-modal-popup-employee`)).modal('hide');
-//       }else {
-//         this.toastr.error(dt.message);
-//       }
-//       this.isLoder=false;
-//     });
-//   }
+}
 
-// }
+editEmployee(index){
+  this.employeeForm.reset();
+  this.singleEmployee =this.employees[index];
+  
+  if(this.singleEmployee ){
+  this.edit_employee = true;
+  this.view_employee = false;
+  this.employeeForm.patchValue({
+    id:this.employees[index].id,
+    first_name:this.employees[index].first_name,
+    last_name:this.employees[index].last_name,
+    user_id:this.employees[index].user_id,
+    position:this.employees[index].position,
+    // password:this.employees[index].password,
+  });
+  //this.employeeForm.patchValue(this.singleEmployee);
+  }
+}
 
-// addEmployee(){
-//   $("#add-modal-popup-employee").modal("show");
-//     $("#add-modal-popup-employee").appendTo("body");
-// }
+deleteEmployee(employeeId){
+  //console.log("EmployeeId>>>>",employeeId);
+  this.postArry = {
+    id:employeeId,
+  }
+  this.companiesService.deleteEmployee(this.postArry).subscribe(response => {
+    this.getEmployee();
+    this.toastr.success('Data deleted suceesfully');
+   });
+}
+
+backToEmployee(){
+  this.edit_employee = false;
+  this.view_employee = true;
+  this.getEmployee();
+}
 
 }
