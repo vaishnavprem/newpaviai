@@ -20,14 +20,23 @@ import {startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,add
 import { Subject } from 'rxjs';
 import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
 declare var $: any;
+
+interface Employee {
+  id:string,
+  first_name: string;
+  last_name: string;
+  user_id: string;
+  position: string;
+  password: string;
+}
+
 @Component({
-  selector: 'app-add-employee',
-  templateUrl: './add-employee.component.html',
-  styleUrls: ['./add-employee.component.css']
+  selector: 'app-my-employee',
+  templateUrl: './my-employee.component.html',
+  styleUrls: ['./my-employee.component.css']
 })
-export class AddEmployeeComponent implements OnInit {
+export class MyEmployeeComponent implements OnInit {
   authUser;
   public isLoder=false;
   isSubmitted = false;
@@ -44,9 +53,17 @@ export class AddEmployeeComponent implements OnInit {
   public employmentArry:{};
   public jobs:any[];
 
+  public dataSourceFive;
+  public displayedColumnsFive: string[];
   employeeForm: FormGroup;
-  public domain;
-  private sub: any;
+
+  view_employee = true;
+  edit_employee = false;
+  employees:any[];
+  singleEmployee;
+
+  @ViewChild('TableFivePaginator', {static: false}) tableFivePaginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) tableFiveSort: MatSort;
 
 
   constructor(
@@ -58,25 +75,30 @@ export class AddEmployeeComponent implements OnInit {
     public auth: AuthService,
     private paviAdminService:PaviAdminService,
     public router: Router,
-    private route: ActivatedRoute,
-    private sanitizer: DomSanitizer
-  ) { }
+  ) {
+    this.dataSourceFive = new MatTableDataSource<Employee>();
+    this.displayedColumnsFive=['first_name', 'last_name', 'user_id', 'position','action'];
+   }
 
   ngOnInit(): void {
-    // this.sub = this.route.queryParams.subscribe(params => { 
-    //   this.domain = params['domain'] || null; // (+) converts string 'id' to a number
-    // });
     this.authUser = this.getAuthUser.transform();
+    // this.authUser = {user_id: 4};
+    //console.log("Auth User>>>", this.authUser)
     this.employeeForm = this.fb.group({
       first_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
       last_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
       position: ['', Validators.required],
       user_id:['', [Validators.required,patternValidator(TEXT_ONLY_PATTERN)]],
-      password:['', [Validators.required,Validators.minLength(5), Validators.maxLength(15), patternValidator(NO_SPACE_PATTERN)]],
-      parent_id:this.authUser.user_id,
-      roles: 'employee'
+      password:[''],
+      id:[''],
+      parent_id:this.authUser.user_id
     });
-    this.getCompanyData();
+    //this.getCompanyData();
+    this.getEmployee();
+  }
+
+  applyFilterFive(filterValue: string) {
+    this.dataSourceFive.filter = filterValue.trim().toLowerCase();
   }
 
   getCompanyData(){
@@ -90,11 +112,10 @@ export class AddEmployeeComponent implements OnInit {
     this.isLoder=false;
     if (response.statusCode == 200) {
 
-      $('.loader').hide();
+      
       
       //console.log("Company Data>>",response);
       this.companyData = response['data']['companydata'];
-      this.domain = "@pavi.ai";
       // this.employments = response['data']['employment']; 
       // this.seniorityLevels = response['data']['seniority']; 
       // this.responsibilities = response['data']['responsibility']; 
@@ -103,36 +124,95 @@ export class AddEmployeeComponent implements OnInit {
       this.openJobs= response['data']['jobs']; 
       this.applicants= response['data']['applicants']; 
       this.interviewCompleted= response['data']['interview_com']; 
-      //this.getEmployee();
+      this.getEmployee();
+      $('.loader').hide();
        } else if (response.statusCode == 401) {
         this.toastr.error(response.message)
         this.auth.logOut();
-        this.router.navigate(['auth/login',2]);
+        this.router.navigate(['auth/login', 2]);
         }
         else this.toastr.error(response.message)
         
   });
 }
 
-saveEmployee(){
+getEmployee(){
+  this.isLoder=true;
+  this.postArry = {
+    parent_id:this.authUser.user_id
+  }
+  let employeeData = this.companiesService.getEmployee(this.postArry)
+    .subscribe((response : any) => {
+      this.isLoder=false;
+      //console.log("Response Of get Employee",response);
+      this.employees = response['data']['empdata'] as Employee[];
+      this.dataSourceFive.data = this.employees;
+      this.dataSourceFive.paginator = this.tableFivePaginator;
+        this.dataSourceFive.sort = this.tableFiveSort;
+      
+    });
+  
+}
 
-  //console.log("Save Employee>>>>",this.employeeForm.getRawValue())
+saveEmployee(){
+  //console.log('Edit Employee>>',this.employeeForm.getRawValue());
+  this.isLoder=true;
   if (this.employeeForm.valid) {
-    this.isLoder=true;
-    this.companiesService.employeeRegister(this.employeeForm.getRawValue()).subscribe(async (dt: any) => {
+    this.companiesService.updateEmployee(this.employeeForm.getRawValue()).subscribe(async (dt: any) => {
       this.isLoder=false;
       if(dt.statusCode==200){
-        this.toastr.success('Employee successfully registered and you are logged in');
-        this.router.navigate(['/companies/my-employee'])
+        this.toastr.success('Employee successfully updated');
+        // (<any>$(`#add-modal-popup-employee`)).modal('hide');
+        this.edit_employee = false;
+        this.view_employee = true;
+        this.getEmployee();
       }else {
         this.toastr.error(dt.message);
       }
       
     });
   }else{
-    this.toastr.error('check all fields');
+    this.toastr.error('Please check all fields');
+    this.isLoder=false;
   }
 
 }
+
+editEmployee(index){
+  this.employeeForm.reset();
+  this.singleEmployee =this.employees[index];
+  
+  if(this.singleEmployee ){
+  this.edit_employee = true;
+  this.view_employee = false;
+  this.employeeForm.patchValue({
+    id:this.employees[index].id,
+    first_name:this.employees[index].first_name,
+    last_name:this.employees[index].last_name,
+    user_id:this.employees[index].user_id,
+    position:this.employees[index].position,
+    // password:this.employees[index].password,
+  });
+  //this.employeeForm.patchValue(this.singleEmployee);
+  }
+}
+
+deleteEmployee(employeeId){
+  //console.log("EmployeeId>>>>",employeeId);
+  this.postArry = {
+    id:employeeId,
+  }
+  this.companiesService.deleteEmployee(this.postArry).subscribe(response => {
+    this.getEmployee();
+    this.toastr.success('Data deleted suceesfully');
+   });
+}
+
+backToEmployee(){
+  this.edit_employee = false;
+  this.view_employee = true;
+  this.getEmployee();
+}
+
 
 }

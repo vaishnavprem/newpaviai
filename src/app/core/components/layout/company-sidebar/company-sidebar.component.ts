@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {GetAuthUserPipe} from '../../../../shared/pipes/get-auth-user.pipe';
 
 @Component({
   selector: 'app-company-sidebar',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanySidebarComponent implements OnInit {
   public status: boolean = false;
-  constructor() { }
+  public authUser;
+  roles;
+  constructor(
+    private getAuthUser: GetAuthUserPipe,
+  ) { }
 
   ngOnInit(): void {
+    this.authUser = this.getAuthUser.transform();
+    this.roles = this.authUser.roles;
+    //console.log("Auth user At Company Sidebar",this.authUser);
   }
 
   clickEvent(){

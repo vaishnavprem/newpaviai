@@ -72,6 +72,8 @@ export class LoginComponent implements OnInit {
               await this.router.navigate(['pavi-admin/admin-dashboard']);
             } else if(dt['data'].roles=='company_user'){
               await this.router.navigate(['companies/dashboard']);
+            } else if(dt['data'].roles=='employee'){
+              await this.router.navigate(['companies/dashboard']);
             } else {
               if(this.id){
                 await this.router.navigate(['users/job-question',this.id]);

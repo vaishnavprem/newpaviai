@@ -22,7 +22,7 @@ export class PaviAdminService {
     return this.httpClient.post(`${API_URL}admin/user`,'', {headers:this.getHeaders()});
   }
   updateCompany(params){
-    return this.httpClient.post(`${API_URL}admin/company-update`, params);
+    return this.httpClient.post(`${API_URL}admin/company-update`, params,{headers:this.getHeaders()});
   }
   deleteCompany(params){
     return this.httpClient.post(`${API_URL}admin/delete-company`, params, {headers:this.getHeaders()});

@@ -131,6 +131,39 @@ html, body {height: 100%; margin: 0;}
 .dashbaord-info-warp{max-height: 100%; margin-top: 82px;overflow: hidden auto;background: #99a0bf;}
 /*End For Vertical Middle*/
 
+/*------ Start Input Suffix----------- */
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    width: 10%;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+}
+.suffixInput {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+    display: table-cell;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    margin: 0;
+} 
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+/*------------End Input Suffix-----------*/
+
 /*New Dashboard Design Start*/
 a, a:hover, a:focus{text-decoration:none;cursor:pointer;}
 .bg-images-1{background:url(assets/images/bg-images-1.jpg) no-repeat center fixed; height:100%; width:100%; font-family: "Montserrat Ultra Light"; background-size:cover;}
