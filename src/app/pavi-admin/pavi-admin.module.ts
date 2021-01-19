@@ -14,11 +14,13 @@ import { CountryListComponent } from './country-list/country-list.component';
 import { CityComponent } from './city/city.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { MyEmployeeComponent } from './my-employee/my-employee.component';
 
 
 
 @NgModule({
-  declarations: [ AdminDashboardComponent, CompanyComponent, UsersComponent, JobCategoryComponent, JobTermComponent, JobSpecialistComponent, CountryListComponent, CityComponent, ProfileComponent, AddCompanyComponent],
+  declarations: [ AdminDashboardComponent, CompanyComponent, UsersComponent, JobCategoryComponent, JobTermComponent, JobSpecialistComponent, CountryListComponent, CityComponent, ProfileComponent, AddCompanyComponent, AddEmployeeComponent, MyEmployeeComponent],
   imports: [
     CommonModule,
     PaviAdminRoutingModule,

@@ -20,8 +20,8 @@ import {startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,add
 import { Subject } from 'rxjs';
 import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
 declare var $: any;
+
 @Component({
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
@@ -45,9 +45,6 @@ export class AddEmployeeComponent implements OnInit {
   public jobs:any[];
 
   employeeForm: FormGroup;
-  public domain;
-  private sub: any;
-
 
   constructor(
     private fb: FormBuilder,
@@ -58,15 +55,11 @@ export class AddEmployeeComponent implements OnInit {
     public auth: AuthService,
     private paviAdminService:PaviAdminService,
     public router: Router,
-    private route: ActivatedRoute,
-    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
-    // this.sub = this.route.queryParams.subscribe(params => { 
-    //   this.domain = params['domain'] || null; // (+) converts string 'id' to a number
-    // });
     this.authUser = this.getAuthUser.transform();
+    // this.authUser = {user_id: 4};
     this.employeeForm = this.fb.group({
       first_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
       last_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
@@ -74,9 +67,9 @@ export class AddEmployeeComponent implements OnInit {
       user_id:['', [Validators.required,patternValidator(TEXT_ONLY_PATTERN)]],
       password:['', [Validators.required,Validators.minLength(5), Validators.maxLength(15), patternValidator(NO_SPACE_PATTERN)]],
       parent_id:this.authUser.user_id,
-      roles: 'employee'
+      roles: 'admin'
     });
-    this.getCompanyData();
+    //this.getCompanyData();
   }
 
   getCompanyData(){
@@ -94,7 +87,6 @@ export class AddEmployeeComponent implements OnInit {
       
       //console.log("Company Data>>",response);
       this.companyData = response['data']['companydata'];
-      this.domain = "@pavi.ai";
       // this.employments = response['data']['employment']; 
       // this.seniorityLevels = response['data']['seniority']; 
       // this.responsibilities = response['data']['responsibility']; 
@@ -123,7 +115,7 @@ saveEmployee(){
       this.isLoder=false;
       if(dt.statusCode==200){
         this.toastr.success('Employee successfully registered and you are logged in');
-        this.router.navigate(['/companies/my-employee'])
+        this.router.navigate(['/pavi-admin/my-employee'])
       }else {
         this.toastr.error(dt.message);
       }

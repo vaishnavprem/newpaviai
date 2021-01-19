@@ -14,7 +14,7 @@
             <li><a  routerLink="/companies/add-question" routerLinkActive="active">Add Interview Questions</a></li>
             <li><a  routerLink="/companies/view-question" routerLinkActive="active">View Questions</a></li>
             <li><a  routerLink="/companies/applicants" routerLinkActive="active">Applicants</a></li>
-            <li><a  routerLink="/companies/my-employee" routerLinkActive="active">My Employees</a></li>
+            <li *ngIf="roles == 'company_user'"><a  routerLink="/companies/my-employee" routerLinkActive="active">My Employees</a></li>
             <li><a  routerLink="/companies/my-profile" routerLinkActive="active">My Profile</a></li>
           </ul>
         </div>

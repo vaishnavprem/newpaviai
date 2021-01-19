@@ -72,9 +72,10 @@ export class CompanyComponent implements OnInit {
       country: ['', Validators.required],
       phone:['', Validators.required],
       email:['', Validators.required],
-      first_name:['', Validators.required],
-      last_name:['', Validators.required],
+      // first_name:['', Validators.required],
+      // last_name:['', Validators.required],
       status:['', Validators.required],
+      company_id:['']
 
     });
   }
@@ -113,7 +114,7 @@ export class CompanyComponent implements OnInit {
   }
 
   updateCompany(){
-    console.log("Update Company>>>",this.companyForm.getRawValue());
+    //console.log("Update Company>>>",this.companyForm.getRawValue());
     if(this.companyForm.valid){    
       this.paviAdminService.updateCompany(this.companyForm.getRawValue()).subscribe(response => {
        this.getComapnies();
@@ -129,7 +130,7 @@ export class CompanyComponent implements OnInit {
   }
 
   editCompany(index){
-    console.log('Status>>>',this.companies[index].status);
+    //console.log('Status>>>',this.companies[index]);
     this.view_company = false;
     this.edit_company = true;
     // $("#edit-modal-popup-company").modal("show");
@@ -137,13 +138,14 @@ export class CompanyComponent implements OnInit {
     // let element = document.getElementById('edit-modal-popup-company');
     // element.className = 'modal fade in';
     this.companyForm.patchValue({
+      company_id: this.companies[index].company_id,
       name: this.companies[index].name,
       address: this.companies[index].address,
       country: this.companies[index].country,
       phone: this.companies[index].phone,
       email: this.companies[index].email,
-      first_name: this.companies[index].first_name,
-      last_name: this.companies[index].last_name,
+      // first_name: this.companies[index].first_name,
+      // last_name: this.companies[index].last_name,
       status: this.companies[index].status
     });
    }

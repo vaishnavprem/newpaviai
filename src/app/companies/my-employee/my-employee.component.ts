@@ -56,6 +56,7 @@ export class MyEmployeeComponent implements OnInit {
   public dataSourceFive;
   public displayedColumnsFive: string[];
   employeeForm: FormGroup;
+  public domain;
 
   view_employee = true;
   edit_employee = false;
@@ -82,6 +83,7 @@ export class MyEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.authUser = this.getAuthUser.transform();
+    //console.log("Auth User>>>",this.authUser);
     this.employeeForm = this.fb.group({
       first_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
       last_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
@@ -113,6 +115,8 @@ export class MyEmployeeComponent implements OnInit {
       
       //console.log("Company Data>>",response);
       this.companyData = response['data']['companydata'];
+      this.domain = "@pavi.ai";
+      //console.log("Company Data>>>",this.companyData.name)
       // this.employments = response['data']['employment']; 
       // this.seniorityLevels = response['data']['seniority']; 
       // this.responsibilities = response['data']['responsibility']; 

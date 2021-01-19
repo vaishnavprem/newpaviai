@@ -248,20 +248,20 @@
                         <div *ngIf="companyForm.get('country').invalid"class="alert alert-danger">Country is required</div>
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <!-- <div class="col-sm-6">
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">First Name:</label>
                         <input type="text" class="form-control"  formControlName="first_name">
                         <div *ngIf="companyForm.get('first_name').invalid"class="alert alert-danger">First Name is required</div>
                       </div>
-                    </div>
-                    <div class="col-sm-6">
+                    </div> -->
+                    <!-- <div class="col-sm-6">
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Last Name:</label>
                         <input type="text" class="form-control"  formControlName="last_name">
                         <div *ngIf="companyForm.get('last_name').invalid"class="alert alert-danger">Last Name is required</div>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Email:</label>
@@ -286,6 +286,7 @@
                     <button type="button" class="btn btn-danger" (click)="backToCompany();">Back</button>
                     <button type="submit" class="btn btn-primary ">Submit</button>
                   </div>
+                  <input type="hidden" formControlName="company_id">
                 </form>
               </div>
             </div>
