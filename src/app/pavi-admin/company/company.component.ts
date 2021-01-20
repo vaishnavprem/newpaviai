@@ -167,5 +167,12 @@ export class CompanyComponent implements OnInit {
       this.toastr.success('Data deleted suceesfully');
      });
    }
-
+   goToUrl(userId){
+    localStorage.setItem("user_id", userId);
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree(['companies/dashboard'])
+    );
+  
+    window.open(url, '_blank');
+   }
 }

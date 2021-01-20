@@ -210,6 +210,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
    // this.isLoder=true;
     this.authUser = this.getAuthUser.transform();
+    if(localStorage.getItem("user_id") != null){
+      console.log(localStorage.getItem("user_id"));
+      this.authUser.user_id = localStorage.getItem("user_id");
+    }
     this.jobForm = this.fb.group({
       date_opened: ['', Validators.required],
         country: ['', Validators.required],

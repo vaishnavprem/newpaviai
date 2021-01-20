@@ -14,7 +14,7 @@ import {Observable} from 'rxjs';
 
 import {ToastrService} from 'ngx-toastr';
 import {CommonService} from '../services/common.service';
-
+import {AuthService} from '../services/auth.service';
 // import {CommonService} from '../services/common.service';
 
 @Injectable()
@@ -22,13 +22,18 @@ export class RequestInterceptor implements HttpInterceptor {
 
   constructor(public router: Router,
               public toastr: ToastrService,
-              private common: CommonService
+              private common: CommonService,
+              public auth: AuthService
   ) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    
     return next.handle(request).pipe(tap((res: HttpResponse<any>) => {
-
+      if(res.body && res.body.statusCode==401){
+        this.toastr.error('Your session has expired');
+        this.auth.logOut();
+      }
     }, (err: any) => {
       if (err instanceof HttpErrorResponse) {
         // this.common.formProcessing = false;
