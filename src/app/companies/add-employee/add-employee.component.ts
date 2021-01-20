@@ -67,6 +67,9 @@ export class AddEmployeeComponent implements OnInit {
     //   this.domain = params['domain'] || null; // (+) converts string 'id' to a number
     // });
     this.authUser = this.getAuthUser.transform();
+    if(localStorage.getItem("user_id") != null){
+      this.authUser.user_id = localStorage.getItem("user_id");
+    }
     this.employeeForm = this.fb.group({
       first_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
       last_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
