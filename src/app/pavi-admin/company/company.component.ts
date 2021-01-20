@@ -147,6 +147,7 @@ export class CompanyComponent implements OnInit {
       // first_name: this.companies[index].first_name,
       // last_name: this.companies[index].last_name,
       status: this.companies[index].status
+      //status: true 
     });
    }
 

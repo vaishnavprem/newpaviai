@@ -172,7 +172,7 @@ saveEmployee(){
       
     });
   }else{
-    this.toastr.error('Please check all fields');
+    this.toastr.error('All fields are required');
     this.isLoder=false;
   }
 

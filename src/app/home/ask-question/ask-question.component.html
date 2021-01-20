@@ -14,12 +14,14 @@
           <ul class="parent_question animate__fadeInLeftBig animate__animated">
             <li>
               <input type="radio" id="no" name="radio-btn" checked=""/>
-              <label for="no" (click)="newEmployee()">Employer</label>
+              <!-- <label for="no" (click)="newEmployee()">Employer</label> -->
+              <label for="no" (click)="router.navigate(['auth/login', 2])">Employer</label>
               <div class="check"></div>
             </li>
             <li>
               <input type="radio" id="yes" name="radio-btn"  />
-              <label for="yes" (click)="helpJob()">Interviewer</label>
+              <!-- <label for="yes" (click)="helpJob()">Interviewer</label> -->
+              <label for="yes" (click)="routeYes('jobs/search-job')">Interviewer</label>
               <div class="check"></div>
             </li>
           </ul>
