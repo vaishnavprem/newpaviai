@@ -60,7 +60,7 @@
                 <div class="last-mint-info">
                   <figure> <img src="assets/images/last-mint-icon.png" /> </figure>
                   <h3>Close Tabs</h3>
-                  <p>Close all other applications, browsers, etc., to free up as much as resources.</p>
+                  <p>Close all other applications, browsers, etc., to free up resources as much as possible.</p>
                 </div>
               </div>
               <div class="col-sm-3">
@@ -74,7 +74,7 @@
                 <div class="last-mint-info">
                   <figure> <img src="assets/images/last-mint-icon3.png" /> </figure>
                   <h3>Internet</h3>
-                  <p>Make sure nothing won't disrupt your internet connection bandwidth.</p>
+                  <p>Make sure nothing will disrupt your internet connection bandwidth.</p>
                 </div>
               </div>
               <div class="col-sm-3">
@@ -216,7 +216,7 @@
           <div class="horizontalAlien">
           <h1 class="animate__fadeInRight animate__animated" style="font-size:38px;">Thank you for interview with {{companyName}}.<i class="hr-line"></i></h1>
           <h5 class="gray" style="color:#3d445a;">Let us know your feedback on your PAVI interview experience.</h5>
-          <h6><strong>Note:</strong> You will be able to view your responses to each question when you will be given feedback on your responses. </h6>
+          <h6><strong>Note:</strong> You are able to view your responses to each questions in your candidate profile. </h6>
           <ul class="parent_question animate__fadeInLeftBig animate__animated">
             <li>
               <input type="radio" id="close" name="radio-btn" />
@@ -225,7 +225,8 @@
             </li>
             <li>
               <input type="radio" id="continue" name="radio-btn" checked="" />
-              <label for="continue" (click)="gotoSearchPage()">Continue</label>
+              <!-- <label for="continue" (click)="gotoSearchPage()">Continue</label> -->
+              <label for="continue" (click)="router.navigate(['users/company-interview'])">Continue</label>
               <div class="check"></div>
             </li>
           </ul>
