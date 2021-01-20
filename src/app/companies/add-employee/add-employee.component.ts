@@ -97,7 +97,8 @@ export class AddEmployeeComponent implements OnInit {
       
       //console.log("Company Data>>",response);
       this.companyData = response['data']['companydata'];
-      this.domain = "@pavi.ai";
+      let email = response['data']['email'].split("@");
+      this.domain ='@'+email[1];
       // this.employments = response['data']['employment']; 
       // this.seniorityLevels = response['data']['seniority']; 
       // this.responsibilities = response['data']['responsibility']; 
