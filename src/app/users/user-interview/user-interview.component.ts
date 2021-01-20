@@ -26,11 +26,15 @@ export class UserInterviewComponent implements OnInit {
 
   today: number = Date.now();
   public status: boolean = false;
+  public isLoder=false;
   authUser;
   public userquestions:any;
   public dataSourceOne;
   public displayedColumnsOne: string[];
   public postArry:{};
+  public nextIndex = 0;
+  public questionLenth = 0;
+  public firstQuestion:any;
   @ViewChild('TableOnePaginator', {static: false}) tableOnePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableOneSort: MatSort;
   constructor(
@@ -47,11 +51,13 @@ export class UserInterviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoder=true;
     this.authUser = this.getAuthUser.transform();
     this.usersService.getJobsUser({
       user_id:this.authUser.user_id
     })
   .subscribe((response: any) => {
+    this.isLoder=false;
     let latest = [];
     if(response.statusCode == 200){
       latest = response['data']['user'].sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
@@ -66,12 +72,18 @@ export class UserInterviewComponent implements OnInit {
     }
     
   });
+  
   }
   stopPlayer(){
     console.log("Player Stopped");
       var memory = $('#add-modal-candidate .modal-body .select-your-job').html();
       $('#add-modal-candidate .modal-body .select-your-job').html("");
+      this.userquestions = '';
+      this.firstQuestion = '';
+      this.nextIndex = 0;
+      this.questionLenth = 0;
   }
+  
   applyFilterOne(filterValue: string) {
     this.dataSourceOne.filter = filterValue.trim().toLowerCase();
   }
@@ -83,6 +95,7 @@ export class UserInterviewComponent implements OnInit {
     this.status = !this.status;       
   }
   showCandidateAnswers(element){
+    this.isLoder=true;
     //console.log("Element",element);
     let parmsa ={
       interview_id:element.interview_id
@@ -91,15 +104,29 @@ export class UserInterviewComponent implements OnInit {
     .subscribe((response : any) => {
       
       if (response.statusCode == 200) {
-          this.userquestions = response['data']['question']; 
+          this.userquestions = response['data']['question'];
+          this.isLoder=false; 
           $("#add-modal-candidate").modal("show");
          console.log("User Answer>>",response);
+         this.firstQuestion = response['data']['question'][0];
+         this.questionLenth = response['data']['question'].length;
       } else {
+        this.isLoder=false;
         this.toastr.error(response.message);
       }
       
     });
  }
+
+ nextQuestion(){
+  this.nextIndex = this.nextIndex+1;
+  this.firstQuestion = this.userquestions[this.nextIndex];
+}
+
+previousQoestion(){
+  this.nextIndex = this.nextIndex-1;
+  this.firstQuestion = this.userquestions[this.nextIndex];
+}
 
 
 }

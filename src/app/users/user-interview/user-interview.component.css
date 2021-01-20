@@ -98,6 +98,15 @@ footer{background:#000714; bottom:0px; padding:15px 10px; text-transform:upperca
 :host ::ng-deep .date-age .mat-icon-button{position:absolute; top:27px; right:6px;}
 ::ng-deep .height-min{height:100%;}
 
+.loader{background:rgba(0,0,0,0.5); position:fixed; left:0px; right:0px; top:0px; bottom:0px; z-index:9;}
+.loader svg{margin: 20% auto; display: table;}
+
+a.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    color: gray; 
+ }
+
 
 @media (min-width:768px) and (max-width:1023px){
 .left-bar{width: 300px; z-index: 3; transform:translate(-100%,0px); transition: all ease-in-out 0.3s; left: 0;}
