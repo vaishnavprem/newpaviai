@@ -20,6 +20,7 @@ import {startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,add
 import { Subject } from 'rxjs';
 import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
 import { DomSanitizer } from '@angular/platform-browser';
+import yesno from "yesno-dialog";
 declare var $: any;
 
 interface JobsElements {
@@ -442,14 +443,17 @@ getJobs(){
         this.jobForm.patchValue(this.singleJob);
     } 
   }
-  deleteJob(jobId){
-    this.postArry = {
-      jobId:jobId,
-    }
-    this.companiesService.deleteJob(this.postArry).subscribe(response => {
-      this.getJobs();
-      this.toastr.success('Data deleted suceesfully');
-     });
+  async deleteJob(jobId){
+    const yes = await yesno();
+    if(yes){
+      this.postArry = {
+        jobId:jobId,
+      }
+      this.companiesService.deleteJob(this.postArry).subscribe(response => {
+        this.getJobs();
+        this.toastr.success('Data deleted suceesfully');
+       });
+    } 
   }
   
 

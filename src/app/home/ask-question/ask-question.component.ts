@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit  } from '@angular/core';
-import {Router} from '@angular/router';
+import {Router,ActivatedRoute} from '@angular/router';
+
 declare function typewriter(params1, param2): any;
 //declare function typingEffect(params1, param2): any;
 
@@ -14,12 +15,18 @@ export class AskQuestionComponent implements OnInit, AfterViewInit  {
   public helpFlag = false;
   public findNewEmployee = false;
   public jobExp = true;
+  private sub: any;
+  status;
 
-  constructor(   public router: Router) { }
-public step1=false;
-public step2 =true;
-public step3 = false;
+  constructor(   public router: Router,private route: ActivatedRoute) { }
+  public step1=false;
+  public step2 =true;
+  public step3 = false;
   ngOnInit(): void {
+    this.sub = this.route.queryParams.subscribe(params => { 
+      this.status = params['status'] || null; 
+    });
+    //console.log("Status>>>",this.status);
   }
 
   ngAfterViewInit(){
@@ -30,8 +37,11 @@ public step3 = false;
   }
   
   routeYes(routerLink){
-    this.router.navigate(['/'+ routerLink ]);
-
+    if(this.status == 'login'){
+      this.router.navigate(['auth/login',1]);
+    }else{
+      this.router.navigate(['/'+ routerLink ]);
+    }
   }
 
   helpJob(){

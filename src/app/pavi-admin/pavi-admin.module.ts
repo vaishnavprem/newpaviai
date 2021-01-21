@@ -16,11 +16,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { MyEmployeeComponent } from './my-employee/my-employee.component';
+import { DemoRequestComponent } from './demo-request/demo-request.component';
 
 
 
 @NgModule({
-  declarations: [ AdminDashboardComponent, CompanyComponent, UsersComponent, JobCategoryComponent, JobTermComponent, JobSpecialistComponent, CountryListComponent, CityComponent, ProfileComponent, AddCompanyComponent, AddEmployeeComponent, MyEmployeeComponent],
+  declarations: [ AdminDashboardComponent, CompanyComponent, UsersComponent, JobCategoryComponent, JobTermComponent, JobSpecialistComponent, CountryListComponent, CityComponent, ProfileComponent, AddCompanyComponent, AddEmployeeComponent, MyEmployeeComponent, DemoRequestComponent],
   imports: [
     CommonModule,
     PaviAdminRoutingModule,
