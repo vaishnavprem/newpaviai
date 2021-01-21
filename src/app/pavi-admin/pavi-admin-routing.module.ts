@@ -12,6 +12,7 @@ import { UsersComponent } from './users/users.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { MyEmployeeComponent } from './my-employee/my-employee.component';
+import { DemoRequestComponent } from './demo-request/demo-request.component';
 
 const routes: Routes = [
  
@@ -62,6 +63,10 @@ const routes: Routes = [
   {
     path: 'my-employee',
     component: MyEmployeeComponent
+  },
+  {
+    path: 'demo-request',
+    component: DemoRequestComponent
   }
 ];
 

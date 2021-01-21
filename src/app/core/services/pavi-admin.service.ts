@@ -67,4 +67,8 @@ export class PaviAdminService {
   updateJobSpecialties(params){
     return this.httpClient.post(`${API_URL}admin/edit-job-specialist-level`,params, {headers:this.getHeaders()});
   }
+
+  getDemoRequest(){
+    return this.httpClient.post(`${API_URL}admin/demo-request`,'', {headers:this.getHeaders()});
+  }
 }

@@ -97,6 +97,14 @@ a.disabled {
     color: gray; 
  }
 
+ .checked {color: orange;}
+ .comment-body{width: 100%;height: 250px;margin-top: 40px;}
+ .rating{font-size: x-large;}
+ .rating .fa{padding-left: 20px;}
+ .comment{padding-left: 20px;margin-top: 15px;padding-right:25px;}
+ .comment .form-group textarea{min-height: 130px;max-height: 130px;}
+ .comment-body .btn{margin-left: 20px;}
+
 html, body {height: 100%; margin: 0;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 12%;bottom: 10%;}
 

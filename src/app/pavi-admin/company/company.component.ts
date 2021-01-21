@@ -14,6 +14,7 @@ import {COUNTRY_LIST} from '../../core/constants/countries';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import yesno from "yesno-dialog";
 
 declare var $: any;
 
@@ -157,16 +158,21 @@ export class CompanyComponent implements OnInit {
     this.getComapnies();
    }
 
-   deleteCompany(company_id){
+   async deleteCompany(company_id){
      //console.log("Company_id",company_id);
-    this.postArry = {
-      company_id:company_id,
+     const yes = await yesno();
+     if(yes){
+      this.postArry = {
+        company_id:company_id,
+      }
+      this.paviAdminService.deleteCompany(this.postArry).subscribe(response => {
+        this.getComapnies();
+        this.toastr.success('Data deleted suceesfully');
+       });
     }
-    this.paviAdminService.deleteCompany(this.postArry).subscribe(response => {
-      this.getComapnies();
-      this.toastr.success('Data deleted suceesfully');
-     });
+    
    }
+   
    goToUrl(userId){
     localStorage.setItem("user_id", userId);
     const url = this.router.serializeUrl(

@@ -22,8 +22,36 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Candidate Answers</h5>
-          <button type="button" class="close" data-dismiss="modal" (click)="stopPlayer()">&times;</button>
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4"><h4>{{candidate_name}}</h4></div>
+                <div class="col-sm-4 col-md-4 col-lg-4"><h4>{{position}}</h4></div>
+                <div class="col-sm-4 col-md-4 col-lg-4"><h4>{{companyData?.name}}</h4></div>
+              </div>
+              <!-- <div class="candidateHeader">
+                <h6 class="modal-title">{{candidate_name}}</h6>
+                <h6 class="modal-title">{{position}}</h6>
+                <h6 class="modal-title">{{companyData?.name}}</h6>
+              </div> -->
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <button type="button" class="close" data-dismiss="modal" (click)="stopPlayer()">&times;</button>
+              <div style="float: right;margin-right: 100px;">
+                <select name="final_decision" id="final_decision">
+                  <option value="Reject">Reject</option>
+                  <option value="Advance">Advance</option>
+                  <option value="Offer">Offer</option>
+                  <option value="Hired">Hired</option>
+                </select>
+              </div>
+              
+            </div>
+            
+          </div>
+          
+          <!-- <h5 class="modal-title">Candidate Answers</h5> -->
+          
         </div>
         <div class="modal-body">
           <!-- <div class="row">
@@ -63,6 +91,21 @@
                   </div>
                 </div>
                 <h5>{{firstQuestion.question}}</h5>
+                <div class="comment-body">
+                  <div class="rating" [(ngModel)]="rating">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                  </div>
+                  <div class="comment">
+                    <div class="form-group">
+                      <textarea [(ngModel)]="comment" id="comment" name="comment" class="form-control" placeholder="Comment" rows="2"></textarea>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary">Submit</button>
+                </div>
               </div>
               
               <div class="col-sm-8 col-xs-12">
@@ -173,9 +216,10 @@
                     </ng-container>
                     <ng-container matColumnDef="action">
                       <th mat-header-cell *matHeaderCellDef >Action</th>
-                      <td mat-cell *matCellDef="let element"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil"></i></a> 
+                      <td mat-cell *matCellDef="let element"> 
+                        <!-- <a class="btn" data-toggle="modal" > <i class="fa fa-pencil"></i></a>  -->
                         <a class="btn"> <i class="fa fa-eye" (click)="showCandidateAnswers(element)"></i></a> 
-                        <a class="btn red"> <i class="fa fa-trash"></i></a>
+                        <!-- <a class="btn red"> <i class="fa fa-trash"></i></a> -->
                       </td>
                     </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumnsThree"></tr>

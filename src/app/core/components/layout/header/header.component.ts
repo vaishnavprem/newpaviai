@@ -17,6 +17,6 @@ export class HeaderComponent implements OnInit {
   }
 
   goToLogin(){
-    this.router.navigate(['/help']);
+    this.router.navigate(['/help'],{ queryParams: { status: 'login' } });
   }
 }

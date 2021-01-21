@@ -20,6 +20,7 @@ import {startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,add
 import { Subject } from 'rxjs';
 import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
 import { DomSanitizer } from '@angular/platform-browser';
+import yesno from "yesno-dialog";
 declare var $: any;
 
 interface Employee {
@@ -202,15 +203,18 @@ editEmployee(index){
   }
 }
 
-deleteEmployee(employeeId){
+async deleteEmployee(employeeId){
   //console.log("EmployeeId>>>>",employeeId);
-  this.postArry = {
-    id:employeeId,
-  }
-  this.companiesService.deleteEmployee(this.postArry).subscribe(response => {
-    this.getEmployee();
-    this.toastr.success('Data deleted suceesfully');
-   });
+  const yes = await yesno();
+  if(yes){
+    this.postArry = {
+      id:employeeId,
+    }
+    this.companiesService.deleteEmployee(this.postArry).subscribe(response => {
+      this.getEmployee();
+      this.toastr.success('Data deleted suceesfully');
+     });
+  }  
 }
 
 backToEmployee(){

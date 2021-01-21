@@ -60,6 +60,10 @@ export class ApplicantsComponent implements OnInit {
   public allusers;
   public dataSourceThree;
   public displayedColumnsThree: string[];
+  position;
+  candidate_name;
+  comment = "Comment";
+  rating;
 
   @ViewChild('TableThreePaginator', {static: false}) tableThreePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableThreeSort: MatSort;
@@ -161,6 +165,8 @@ getUsers(){
 }
 
 showCandidateAnswers(element){
+  this.position = element.jobTitle;
+  this.candidate_name = element.first_name;
   this.isLoder=true;
    let parmsa ={
      jobId:element.job_id,
