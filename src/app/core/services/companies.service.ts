@@ -123,4 +123,12 @@ authUser;
   getEmployee(params) { 
     return this.httpClient.post(`${API_URL}companies/get-employee`, params,{headers:this.getHeaders()});
   }
+
+  saveFeedback(params){
+    return this.httpClient.post(`${API_URL}companies/save-rating`, params,{headers:this.getHeaders()}); 
+  }
+
+  saveFinalDecision(params){
+    return this.httpClient.post(`${API_URL}companies/save-interview-status`, params,{headers:this.getHeaders()}); 
+  }
 }

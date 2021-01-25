@@ -17,6 +17,7 @@ declare function stopArchive(answerID): any;
 declare function closeWebCam();
 declare function startArchive();
 declare function viewArchive();
+declare function audiovideotest();
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
@@ -77,6 +78,8 @@ export class QuestionsComponent implements OnInit, AfterViewInit {
   //  typingEffect("Thank you for your interest in this role. Please read each question then click record answer to submit your response.", "questionText");
   
    this.timeLeft=this.timePerQuestion;
+   //console.log("Audio Video Status22",audiovideotest());
+   //audiovideotest().then(result=> console.log("Audio Video Status11",result))
   }
   ngAfterViewInit() {
     typewriterQuestion("Start", "startText");
@@ -97,6 +100,7 @@ export class QuestionsComponent implements OnInit, AfterViewInit {
     this.lastminute=false;
     this.lastminutefinal=true;
     setTimeout(()=>{ typewriterQuestion("lastMinuteFinal", "lastMinuteFinalText"); },);
+    setTimeout(()=>{ audiovideotest() });
   }
   getQuestionData(job_id){
     $('.loader').show();
