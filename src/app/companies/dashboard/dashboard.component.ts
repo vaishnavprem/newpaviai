@@ -338,7 +338,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
          } else if (response.statusCode == 401) {
           this.toastr.error(response.message)
           this.auth.logOut();
-          this.router.navigate(['auth/login']);
+          this.router.navigate(['/']);
           }
           else this.toastr.error(response.message)
           

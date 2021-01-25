@@ -52,7 +52,7 @@ export class AuthService {
    logOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('data');
-    console.log('++' + localStorage.getItem('token'));
+    localStorage.removeItem('user_id');
      this.router.navigate(['/']);
   }
 
