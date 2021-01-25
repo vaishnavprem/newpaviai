@@ -173,3 +173,35 @@ function viewArchive() { // eslint-disable-line no-unused-vars
   
 }
 
+async function audiovideotest(){
+ 
+   navigator.mediaDevices.getUserMedia({ audio: true, video: true})
+  .then( function(stream) {
+    document.getElementById('microphone').src = 'assets/images/microgreen-1.png'
+    document.getElementById('webcam').src = 'assets/images/microgreen-2.png'
+    //stream.getVideoTracks().stop();
+    const tracks = stream.getTracks();
+
+    tracks[0].stop;
+    
+  })
+  .catch( function(err) {
+    document.getElementById('microphone').src = 'assets/images/micro-red1.png'
+    document.getElementById('webcam').src = 'assets/images/micro-red2.png'
+   
+  });
+
+//   navigator.mediaDevices.getUserMedia({ audio: true, video: true},function (stream) {
+//     console.log("In Function22");
+//     if(stream.getVideoTracks().length > 0 && stream.getAudioTracks().length > 0){
+//         //code for when none of the devices are available 
+//        console.log("In Function33");
+//         return false;                      
+//     }else{
+//        // code for when both devices are available
+//        return true;
+//     }
+// });
+
+}
+

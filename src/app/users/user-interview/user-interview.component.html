@@ -66,7 +66,13 @@
             <div class="col-sm-8 col-xs-12">
               <div class="select-your-job animate__fadeInUpBig animate__animated" >
                
-               <iframe [attr.id]="'vid_frame'" [src]="getSafeUrl('https://paviai.s3-us-west-2.amazonaws.com/46905104/'+ firstQuestion.recorded_url +'/archive.mp4')"    frameborder="0" ></iframe>
+               <iframe *ngIf="firstQuestion.recorded_url != null; else elseBlock" [attr.id]="'vid_frame'" [src]="getSafeUrl('https://paviai.s3-us-west-2.amazonaws.com/46905104/'+ firstQuestion.recorded_url +'/archive.mp4')"    frameborder="0" ></iframe>
+
+               <ng-template #elseBlock >
+                <div class="notFound">
+                  <i class="fa fa-exclamation" aria-hidden="true"></i>No Video Found
+                </div>
+               </ng-template>
               </div>
 
               <div class="micro-icon">

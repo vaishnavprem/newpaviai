@@ -29,21 +29,17 @@
                 <div class="col-sm-4 col-md-4 col-lg-4"><h4>{{position}}</h4></div>
                 <div class="col-sm-4 col-md-4 col-lg-4"><h4>{{companyData?.name}}</h4></div>
               </div>
-              <!-- <div class="candidateHeader">
-                <h6 class="modal-title">{{candidate_name}}</h6>
-                <h6 class="modal-title">{{position}}</h6>
-                <h6 class="modal-title">{{companyData?.name}}</h6>
-              </div> -->
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
               <button type="button" class="close" data-dismiss="modal" (click)="stopPlayer()">&times;</button>
-              <div style="float: right;margin-right: 100px;">
-                <select name="final_decision" id="final_decision">
+              <div class="final-parent">
+                <select [(ngModel)]="final_decision" class="final-decision" name="final_decision" id="final_decision">
                   <option value="Reject">Reject</option>
                   <option value="Advance">Advance</option>
                   <option value="Offer">Offer</option>
                   <option value="Hired">Hired</option>
                 </select>
+                <button (click)="saveFinalDecision()" class="btn btn-primary" style="border-radius: 0px;"><i class="fa fa-cloud" aria-hidden="true"></i></button>
               </div>
               
             </div>
@@ -92,26 +88,34 @@
                 </div>
                 <h5>{{firstQuestion.question}}</h5>
                 <div class="comment-body">
-                  <div class="rating" [(ngModel)]="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <div class="comment">
-                    <div class="form-group">
-                      <textarea [(ngModel)]="comment" id="comment" name="comment" class="form-control" placeholder="Comment" rows="2"></textarea>
+                    <div class="rating">
+                      <ul class="list-inline rating-list" 
+                        *ngFor="let star of stars" style="display: inline-block" >
+                          <li (click)="countStar(star)"
+                              [ngClass]="{'selected': (star <= selectedValue)}">
+                            <i class="fa fa-star"></i>
+                          </li> 
+                      </ul>
                     </div>
-                  </div>
-                  <button type="button" class="btn btn-primary">Submit</button>
+                    <div class="comment">
+                      <div class="form-group">
+                        <textarea [(ngModel)]="comment" id="comment" name="comment" class="form-control" placeholder="Comment" rows="2"></textarea>
+                      </div>
+                    </div>
+                  <button type="button" class="btn btn-primary" (click)="saveFeedBack()">Submit</button>
                 </div>
               </div>
               
               <div class="col-sm-8 col-xs-12">
                 <div class="select-your-job animate__fadeInUpBig animate__animated" >
                  
-                 <iframe [attr.id]="'vid_frame'" [src]="getSafeUrl('https://paviai.s3-us-west-2.amazonaws.com/46905104/'+ firstQuestion.recorded_url +'/archive.mp4')"    frameborder="0" ></iframe>
+                 <iframe *ngIf="firstQuestion.recorded_url != null; else elseBlock" [attr.id]="'vid_frame'" [src]="getSafeUrl('https://paviai.s3-us-west-2.amazonaws.com/46905104/'+ firstQuestion.recorded_url +'/archive.mp4')"    frameborder="0" ></iframe>
+
+                 <ng-template #elseBlock >
+                  <div class="notFound">
+                    <i class="fa fa-exclamation" aria-hidden="true"></i>No Video Found
+                  </div>
+                 </ng-template>
                 </div>
 
                 <div class="micro-icon">
@@ -143,6 +147,7 @@
                 
                   <div class="col-sm-5 col-md-7 col-xs-9 pull-right">
                     <ul>
+                      <li><img src="assets/images/man-user.png"></li>
                       <li><a >{{companyData?.name}} &nbsp;&nbsp;|</a></li>
                       <li><a (click)="auth.logOut()">Logout</a></li>
                     </ul>
@@ -213,6 +218,10 @@
                     <ng-container matColumnDef="created_at">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header>Interview Date</th>
                       <td mat-cell *matCellDef="let element">{{ element.created_at |  date:"MM/dd/yy h:mm a" }}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="final_decision">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Final Decision</th>
+                      <td mat-cell *matCellDef="let element">{{element.interview_status? element.interview_status : 'Pending'}}</td>
                     </ng-container>
                     <ng-container matColumnDef="action">
                       <th mat-header-cell *matHeaderCellDef >Action</th>

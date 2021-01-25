@@ -20,6 +20,7 @@ import {startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,add
 import { Subject } from 'rxjs';
 import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
 import { DomSanitizer } from '@angular/platform-browser';
+
 declare var $: any;
 
 interface User {
@@ -28,6 +29,7 @@ interface User {
   email: string;
   gender: string;
   jobTitle: string;
+  final_decision: string;
 }
 
 @Component({
@@ -62,8 +64,11 @@ export class ApplicantsComponent implements OnInit {
   public displayedColumnsThree: string[];
   position;
   candidate_name;
-  comment = "Comment";
-  rating;
+  comment = "";
+  final_decision = "Reject";
+  
+  stars: number[] = [1, 2, 3, 4, 5];
+  selectedValue: number;
 
   @ViewChild('TableThreePaginator', {static: false}) tableThreePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableThreeSort: MatSort;
@@ -81,7 +86,7 @@ export class ApplicantsComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) { 
     this.dataSourceThree = new MatTableDataSource<User>();
-    this.displayedColumnsThree=['first_name', 'last_name', 'email', 'gender','jobTitle','created_at','action'];
+    this.displayedColumnsThree=['first_name', 'last_name', 'email', 'gender','jobTitle','created_at','final_decision','action'];
   }
 
   ngOnInit(): void {
@@ -90,10 +95,11 @@ export class ApplicantsComponent implements OnInit {
       this.authUser.user_id = localStorage.getItem("user_id");
     }
     this.getCompanyData();
+
   }
 
   stopPlayer(){
-    console.log("Player Stopped");
+    //console.log("Player Stopped");
       var memory = $('#add-modal-candidate .modal-body .select-your-job').html();
         //console.log("modal Hide",memory);
       // $('#add-modal-candidate .modal-body').empty();
@@ -102,6 +108,8 @@ export class ApplicantsComponent implements OnInit {
       this.firstQuestion = '';
       this.nextIndex = 0;
       this.questionLenth = 0;
+      this.selectedValue = 0;
+      this.comment = '';
   }
 
   applyFilterThree(filterValue: string) {
@@ -158,7 +166,7 @@ getUsers(){
       this.dataSourceThree.sort = this.tableThreeSort;
       this.allusers = response['data']['user'];
       
-    //console.log(latest);
+    //console.log("Job User>>>>>",latest);
     
   });
   
@@ -167,6 +175,7 @@ getUsers(){
 showCandidateAnswers(element){
   this.position = element.jobTitle;
   this.candidate_name = element.first_name;
+  this.final_decision = element.interview_status ? element.interview_status : 'Reject';
   this.isLoder=true;
    let parmsa ={
      jobId:element.job_id,
@@ -182,6 +191,9 @@ showCandidateAnswers(element){
          $("#add-modal-candidate").modal("show");
          this.firstQuestion = response['data']['question'][0];
          this.questionLenth = response['data']['question'].length;
+         this.comment = this.firstQuestion.comment;
+         this.selectedValue = this.firstQuestion.rating;
+         //console.log("First Question>>",this.firstQuestion);
      } else {
        this.isLoder=false;
        this.toastr.error(response.message);
@@ -194,18 +206,68 @@ showCandidateAnswers(element){
 nextQuestion(){
   this.nextIndex = this.nextIndex+1;
   this.firstQuestion = this.userquestions[this.nextIndex];
+  this.selectedValue = this.firstQuestion.rating;
+  this.comment = this.firstQuestion.comment;
+  //console.log("First Question Next>>",this.firstQuestion);
 }
 
 previousQoestion(){
   this.nextIndex = this.nextIndex-1;
   this.firstQuestion = this.userquestions[this.nextIndex];
+  this.selectedValue = this.firstQuestion.rating;
+  this.comment = this.firstQuestion.comment;
 }
 
 getSafeUrl(url){
+  //console.log("gerSafeUrl Called>>>>>");
   return this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url); 
 }
 showRecordedAnswer(recordString){
   window.open("https://d1iruxeyl67hmv.cloudfront.net/web/index.php/archive/"+recordString+"/view" , "_blank");
+}
+
+saveFeedBack(){
+  if(this.selectedValue != 0 && this.comment != ''){
+    this.isLoder=true;
+    this.employmentArry = {
+      id:this.firstQuestion.id,
+      rating:this.selectedValue,
+      comment:this.comment
+    }
+    //console.log("Form Data>>>",this.employmentArry);
+    this.companiesService.saveFeedback(this.employmentArry).subscribe((response : any)=> {
+      this.isLoder=false;
+      if(response.statusCode == 200){
+        this.toastr.success('Data save suceesfully');
+      }else{
+        this.toastr.error(response.message);
+      }    
+     });
+  } else {
+    this.toastr.error('Comment and rating are required');
+  }
+}
+
+countStar(star) {
+  this.selectedValue = star;
+}
+
+saveFinalDecision(){
+    this.isLoder=true;
+    this.employmentArry = {
+      interview_id:this.firstQuestion.interview_id,
+      interview_status:this.final_decision,
+    }
+    //console.log("Form Data>>>",this.employmentArry);
+    this.companiesService.saveFinalDecision(this.employmentArry).subscribe((response : any)=> {
+      this.isLoder=false;
+      if(response.statusCode == 200){
+        this.toastr.success('Data save suceesfully');
+      }else{
+        this.toastr.error(response.message);
+      }    
+     });
+  
 }
 
 }

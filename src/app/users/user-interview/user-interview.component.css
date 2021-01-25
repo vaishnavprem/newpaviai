@@ -80,8 +80,10 @@ footer{background:#000714; bottom:0px; padding:15px 10px; text-transform:upperca
 .micro-icon .btn{padding:0px; border:none; background:transparent; }
 .btn-arrow{font-size: 28px;color: #fff;padding:20px}
 
-.select-your-job{position: relative;padding-bottom: 56.25%;height: 0;width: 100%;}
+.select-your-job{position: relative;padding-bottom: 56.25%;height: 0;width: 100%;overflow: hidden;}
 .select-your-job iframe{position: absolute;top: 0;left: 0;width: 100%;height: 100% ;}
+
+.notFound{text-align: center;font-size: 40px;font-weight: bolder;font-family: 'Montserrat Ultra Light';color:black;display: table-cell;vertical-align: middle;}
 
 /*mat icon*/
 
