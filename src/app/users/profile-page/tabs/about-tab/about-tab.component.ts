@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {
   NUMBERS_ONLY_PATTERN,
-  TEXT_ONLY_PATTERN
+  TEXT_ONLY_PATTERN,
+  AVATAR_URL
 } from '../../../../core/constants/general';
 import {GetAuthUserPipe} from '../../../../shared/pipes/get-auth-user.pipe';
 import {UsersService} from '../../../../core/services/users.service';
@@ -29,6 +30,7 @@ export class AboutTabComponent implements OnInit {
   maxBirthdayDate = new Date(2009, 11, 31);
   countries = COUNTRY_LIST;
   userData;
+  resumeLink;
 
   constructor(
     private fb: FormBuilder,
@@ -59,13 +61,14 @@ export class AboutTabComponent implements OnInit {
     this.usersService.getUserData({user_id:this.authUser.user_id})
     .subscribe((response : any) => { 
       if (response.statusCode == 200) {
-          this.userData = response['data']['user']; 
+          this.userData = response['data']['user'];
+          this.resumeLink = (this.userData.resume_file?`${AVATAR_URL}uploads/avatars/${this.userData.resume_file}`: 'N/A'); 
           this.profileForm.patchValue({
             first_name:this.userData.first_name,
             last_name:this.userData.last_name,
             country:this.userData.country,
             email:this.userData.email,
-            linkedin_url: (this.userData.linkedin_url?this.userData.linkedin_url:'N/A')
+            linkedin_url: (this.userData.linkedin_url?this.userData.linkedin_url:'N/A'),    
           })
          
       } else {

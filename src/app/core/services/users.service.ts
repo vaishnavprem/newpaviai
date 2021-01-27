@@ -61,4 +61,8 @@ export class UsersService {
   getUserData(params){
     return this.httpClient.post(`${API_URL}user/get-user-data`, params,{headers:this.getHeaders()});
   }
+
+  uploadResume(params) {
+    return this.httpClient.post(`${API_URL}companies/save-user-resume`, params);
+  }
 }

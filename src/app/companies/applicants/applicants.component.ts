@@ -86,7 +86,7 @@ export class ApplicantsComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) { 
     this.dataSourceThree = new MatTableDataSource<User>();
-    this.displayedColumnsThree=['first_name', 'last_name', 'email', 'gender','jobTitle','created_at','final_decision','action'];
+    this.displayedColumnsThree=['first_name', 'last_name', 'email','jobTitle','created_at','final_decision','action'];
   }
 
   ngOnInit(): void {
