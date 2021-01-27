@@ -53,13 +53,14 @@ export class AddCompanyComponent implements OnInit {
       name: ['', [Validators.required, patternValidator(NUMBER_AFTER_TEXT_PATTERN)]],
       industry: ['', Validators.required],
       country: ['', Validators.required],
+      logo : ['', Validators.required],
       parent_id: this.authUser.user_id
     });
     this.accountInfo = this.fb.group({
       first_name: ['', [Validators.required, patternValidator(TEXT_ONLY_PATTERN)]],
       last_name: ['', [Validators.required, patternValidator(TEXT_ONLY_PATTERN)]],
       password: ['', [Validators.required, patternValidator(NO_SPACE_PATTERN)]],
-      gender: ['', Validators.required],
+      //gender: ['', Validators.required],
     });
 
     this.contactDetails = this.fb.group({

@@ -55,7 +55,7 @@ export class UsersComponent implements OnInit {
     private toastr: ToastrService,
   ) {
     this.dataSourceTwo = new MatTableDataSource<User>();
-    this.displayedColumnsTwo=['first_name', 'last_name', 'email', 'gender','action'];
+    this.displayedColumnsTwo=['first_name', 'last_name', 'email','action'];
    }
 
   ngOnInit(): void {
@@ -65,7 +65,7 @@ export class UsersComponent implements OnInit {
     this.userForm = this.fb.group({
       first_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
       last_name: ['', Validators.required],
-      gender: ['', Validators.required],
+      //gender: ['', Validators.required],
       email:['', Validators.required],
       status:['', Validators.required],
 
@@ -105,7 +105,7 @@ export class UsersComponent implements OnInit {
       email: this.users[index].email,
       first_name: this.users[index].first_name,
       last_name: this.users[index].last_name,
-      gender: this.users[index].gender,
+      //gender: this.users[index].gender,
       status: this.users[index].status
     });
    }

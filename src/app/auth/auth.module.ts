@@ -16,6 +16,7 @@ import {SubmittedPasswordComponent} from './submitted-password/submitted-passwor
 import {AuthComponent} from './auth.component';
 import {ReceiveCodeComponent} from './receive-code/receive-code.component';
 import {CoreModule} from '../core/core.module';
+// import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {CoreModule} from '../core/core.module';
     SharedModule,
     FormsModule,
     CoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    //ImageCropperModule
   ],
   exports: [
     Step1Component,

@@ -15,6 +15,7 @@ export class CvPortfolioTabComponent implements OnInit {
 
   editPosition = false;
   positionForm: FormGroup;
+  resumeForm: FormGroup;
   authUser;
 
   constructor(
@@ -24,15 +25,21 @@ export class CvPortfolioTabComponent implements OnInit {
     private toastr: ToastrService
   ) {
 
-    this.authUser = this.getAuthUser.transform();
+    
 
-    this.positionForm = this.fb.group({
-      position: ['', [Validators.required, patternValidator(TEXT_ONLY_PATTERN)]],
-      user_id: this.authUser._id
-    });
+    
   }
 
   ngOnInit(): void {
+    this.authUser = this.getAuthUser.transform();
+    this.positionForm = this.fb.group({
+      position: ['', [Validators.required, patternValidator(TEXT_ONLY_PATTERN)]],
+      user_id: this.authUser.user_id
+    });
+
+    this.resumeForm = this.fb.group({
+      cover: ['']
+    });
   }
 
   changePosition() {
@@ -55,6 +62,29 @@ export class CvPortfolioTabComponent implements OnInit {
         this.toastr.success('The user position info has been changed successfully');
       });
     }
+  }
+
+  saveResume(event){
+    const file = event.target.files[0];
+    if(file.type != 'application/pdf'){
+      this.toastr.error('Please choose pdf file');
+      return;
+    }
+    if(file.size > 1000000){
+      this.toastr.error('File size must be under 1 MB');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('user_id', this.authUser.user_id);
+    formData.append('avatar', file);
+    //console.log("save Resume Called>>>>",formData.get('avatar'));
+    this.usersService.uploadResume(formData).subscribe((response: any) => {
+      this.toastr.success('Resume uploaded successfully');
+      //console.log("Response>>>>",response);
+
+      //this.profileImage = `${AVATAR_URL}uploads/avatars/${response['data']['image']}`;
+    });
   }
 
 }

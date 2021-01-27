@@ -36,6 +36,28 @@
     <!--      </div>-->
     <mat-error *ngIf="isSubmitted && countryCtrl.hasError('required')">Industry is <strong>required</strong> </mat-error>
   </div>
+  <div class="col-sm-12">
+    <div class="form-group"> 
+      <label for="logo" class="logos-item-label">Logo</label>
+      <input id="logo" type="file" (change)="changeLogo($event)">
+      <mat-error *ngIf="isSubmitted && logoCtrl.hasError('required')">Logo is <strong>required</strong> </mat-error>
+
+      <!-- <div *ngIf="showCroper">
+        <image-cropper 
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="4 / 3"
+            format="png,jpeg"
+            (imageCropped)="imageCropped($event)"
+            (imageLoaded)="imageLoaded($event)"
+            (cropperReady)="cropperReady()"
+            (loadImageFailed)="loadImageFailed()"
+        ></image-cropper>
+      </div>
+
+      <img [src]="croppedImage" /> -->
+    </div>
+  </div>
   <div class="col-sm-12"> 
     <!-- <div class="last-block-form"> --> 
     <!-- <div class="register-buttons">

@@ -65,14 +65,14 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  <!-- <div class="col-sm-6">
                     <div class="form-group">
                       <label>Gender</label>
                       <input type="radio" name="gender"  [value]="'male'" id="male" formControlName="gender">
                       Male
                       <input type="radio" name="gender" [value]="'female'" id="female" formControlName="gender">
                       Female </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -159,10 +159,10 @@
                       <td mat-cell *matCellDef="let element">{{ element.email}}</td>
                     </ng-container>
     
-                    <ng-container matColumnDef="gender">
+                    <!-- <ng-container matColumnDef="gender">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
                       <td mat-cell *matCellDef="let element">{{ element.gender}}</td>
-                    </ng-container>
+                    </ng-container> -->
     
                     <ng-container matColumnDef="action">
                       <th mat-header-cell *matHeaderCellDef >Action</th>

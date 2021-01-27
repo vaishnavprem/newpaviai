@@ -43,8 +43,8 @@ export class Step2Component implements OnInit {
     return this.accountInfo.get('password');
   }
 
-  get gender(): AbstractControl {
-    return this.accountInfo.get('gender');
-  }
+  // get gender(): AbstractControl {
+  //   return this.accountInfo.get('gender');
+  // }
 
 }
