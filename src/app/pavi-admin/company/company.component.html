@@ -232,6 +232,8 @@
                         <div *ngIf="companyForm.get('address').invalid"class="alert alert-danger">Company Address is required</div>
                       </div>
                     </div>
+                  </div>
+                  <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Phone No:</label>
@@ -249,6 +251,7 @@
                         <div *ngIf="companyForm.get('country').invalid"class="alert alert-danger">Country is required</div>
                       </div>
                     </div>
+                  </div>
                     <!-- <div class="col-sm-6">
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">First Name:</label>
@@ -263,26 +266,35 @@
                         <div *ngIf="companyForm.get('last_name').invalid"class="alert alert-danger">Last Name is required</div>
                       </div>
                     </div> -->
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Email:</label>
-                        <input type="text" class="form-control"  formControlName="email" readonly>
-                        <div *ngIf="companyForm.get('email').invalid"class="alert alert-danger">Email is required</div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="recipient-name" class="col-form-label">Email:</label>
+                          <input type="text" class="form-control"  formControlName="email" readonly>
+                          <div *ngIf="companyForm.get('email').invalid"class="alert alert-danger">Email is required</div>
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Status</label>
-                        <!-- <div class="custom-control custom-switch">
-                          <input type="checkbox" class="custom-control-input" id="customSwitch1" formControlName="status">
-                          <label class="custom-control-label" for="customSwitch1"></label>
-                        </div> -->
-                        <div>
-                          <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Status</label>
+                          <!-- <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1" formControlName="status">
+                            <label class="custom-control-label" for="customSwitch1"></label>
+                          </div> -->
+                          <div>
+                            <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="recipient-name" class="col-form-label">Update Logo:</label>
+                          <input id="logo" type="file" (change)="changeLogo($event)">
+                        </div>
+                      </div>
+                    </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-primary" (click)="backToCompany();">Back</button>
                     <button type="submit" class="btn btn-primary ">Submit</button>

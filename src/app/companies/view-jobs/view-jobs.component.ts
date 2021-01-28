@@ -26,7 +26,7 @@ declare var $: any;
 interface JobsElements {
   jobTitle: string;
   email: string;
-  experience: string;
+  average_rating: string;
   level: string;
   employment: string;
   salary: string;
@@ -105,7 +105,7 @@ export class ViewJobsComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     this.dataSourceOne = new MatTableDataSource<JobsElements>();
-    this.displayedColumnsOne=['jobTitle', 'email', 'experience', 'level','employment','salary','action'];
+    this.displayedColumnsOne=['jobTitle', 'email', 'average_rating', 'level','employer','salary','action'];
 
    }
 

@@ -66,25 +66,27 @@ export class CvPortfolioTabComponent implements OnInit {
 
   saveResume(event){
     const file = event.target.files[0];
-    if(file.type != 'application/pdf'){
-      this.toastr.error('Please choose pdf file');
+    if(file.type == 'application/pdf' || file.type =='application/vnd.openxmlformats-officedocument.wordprocessingml.document'){
+     
+      if(file.size > 1000000){
+        this.toastr.error('File size must be under 1 MB');
+        return;
+      }
+      
+      const formData = new FormData();
+      formData.append('user_id', this.authUser.user_id);
+      formData.append('avatar', file);
+      //console.log("save Resume Called>>>>",formData.get('avatar'));
+      this.usersService.uploadResume(formData).subscribe((response: any) => {
+        this.toastr.success('Resume uploaded successfully');
+        //console.log("Response>>>>",response);
+
+        //this.profileImage = `${AVATAR_URL}uploads/avatars/${response['data']['image']}`;
+      });
+    }else{
+      this.toastr.error('Please choose pdf/word file file');
       return;
     }
-    if(file.size > 1000000){
-      this.toastr.error('File size must be under 1 MB');
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('user_id', this.authUser.user_id);
-    formData.append('avatar', file);
-    //console.log("save Resume Called>>>>",formData.get('avatar'));
-    this.usersService.uploadResume(formData).subscribe((response: any) => {
-      this.toastr.success('Resume uploaded successfully');
-      //console.log("Response>>>>",response);
-
-      //this.profileImage = `${AVATAR_URL}uploads/avatars/${response['data']['image']}`;
-    });
   }
 
 }

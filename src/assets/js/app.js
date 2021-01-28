@@ -174,18 +174,19 @@ function viewArchive() { // eslint-disable-line no-unused-vars
 }
 
 async function audiovideotest(){
- 
+  $('.loader').show();
    navigator.mediaDevices.getUserMedia({ audio: true, video: true})
   .then( function(stream) {
     document.getElementById('microphone').src = 'assets/images/microgreen-1.png'
     document.getElementById('webcam').src = 'assets/images/microgreen-2.png'
-    //stream.getVideoTracks().stop();
-    const tracks = stream.getTracks();
 
-    tracks[0].stop;
-    
+    const tracks = stream.getTracks();
+    tracks.forEach(track => track.stop())
+  
+    $('.loader').hide();
   })
   .catch( function(err) {
+    $('.loader').hide();
     document.getElementById('microphone').src = 'assets/images/micro-red1.png'
     document.getElementById('webcam').src = 'assets/images/micro-red2.png'
    
