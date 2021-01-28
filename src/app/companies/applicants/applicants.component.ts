@@ -174,7 +174,7 @@ getUsers(){
 
 showCandidateAnswers(element){
   this.position = element.jobTitle;
-  this.candidate_name = element.first_name;
+  this.candidate_name = element.first_name+" "+element.last_name;
   this.final_decision = element.interview_status ? element.interview_status : 'Reject';
   this.isLoder=true;
    let parmsa ={

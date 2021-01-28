@@ -46,6 +46,7 @@ export class CompanyComponent implements OnInit {
   public view_company = true;
   public edit_company = false;
   public postArry;
+  authUser;
 
   @ViewChild('TableOnePaginator', {static: false}) tableOnePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableOneSort: MatSort;
@@ -64,6 +65,7 @@ export class CompanyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authUser = this.getAuthUser.transform();
 
     this.getComapnies();
 
@@ -181,4 +183,26 @@ export class CompanyComponent implements OnInit {
   
     window.open(url, '_blank');
    }
+
+   changeLogo(e){
+    const file = e.target.files[0];
+    //this.showCroper = true;
+    // if(file.type != 'image/jpg' && file.type != 'image/png'){
+    //   this.toastr.error('Please choose image file');
+    //   return;
+    // }
+    // if(file.size > 1000000){
+    //   this.toastr.error('File size must be under 1 MB');
+    //   return;
+    // }
+   
+    const formData = new FormData();
+    formData.append('company_id', this.authUser.user_id);
+    formData.append('column','logo');
+    formData.append('avatar', file);
+    this.usersService.uploadProfileImg(formData).subscribe((response: any) => {
+      //this.profileImage = `${AVATAR_URL}uploads/avatars/${response['data']['image']}`;
+      this.toastr.success('Logo Image is uploaded successfully');
+    });
+  }
 }
