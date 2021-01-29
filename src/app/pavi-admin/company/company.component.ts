@@ -185,6 +185,7 @@ export class CompanyComponent implements OnInit {
    }
 
    changeLogo(e){
+     this.isLoder = true;
     const file = e.target.files[0];
     //this.showCroper = true;
     // if(file.type != 'image/jpg' && file.type != 'image/png'){
@@ -203,6 +204,7 @@ export class CompanyComponent implements OnInit {
     this.usersService.uploadProfileImg(formData).subscribe((response: any) => {
       //this.profileImage = `${AVATAR_URL}uploads/avatars/${response['data']['image']}`;
       this.toastr.success('Logo Image is uploaded successfully');
+      this.isLoder = false;
     });
   }
 }

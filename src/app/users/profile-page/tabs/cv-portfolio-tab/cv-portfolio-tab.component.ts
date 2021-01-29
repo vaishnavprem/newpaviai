@@ -17,6 +17,7 @@ export class CvPortfolioTabComponent implements OnInit {
   positionForm: FormGroup;
   resumeForm: FormGroup;
   authUser;
+  isLoder;
 
   constructor(
     private fb: FormBuilder,
@@ -65,10 +66,12 @@ export class CvPortfolioTabComponent implements OnInit {
   }
 
   saveResume(event){
+    this.isLoder = true;
     const file = event.target.files[0];
     if(file.type == 'application/pdf' || file.type =='application/vnd.openxmlformats-officedocument.wordprocessingml.document'){
      
       if(file.size > 1000000){
+        this.isLoder = false;
         this.toastr.error('File size must be under 1 MB');
         return;
       }
@@ -79,11 +82,13 @@ export class CvPortfolioTabComponent implements OnInit {
       //console.log("save Resume Called>>>>",formData.get('avatar'));
       this.usersService.uploadResume(formData).subscribe((response: any) => {
         this.toastr.success('Resume uploaded successfully');
+        this.isLoder = false;
         //console.log("Response>>>>",response);
 
         //this.profileImage = `${AVATAR_URL}uploads/avatars/${response['data']['image']}`;
       });
     }else{
+      this.isLoder = false;
       this.toastr.error('Please choose pdf/word file file');
       return;
     }

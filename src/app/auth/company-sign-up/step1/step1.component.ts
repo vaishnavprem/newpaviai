@@ -26,6 +26,7 @@ export class Step1Component implements OnInit {
   showCroper = false;
   fileimage:any = '';
   authUser;
+  isLoder;
 
   constructor(
     private companiesService: CompaniesService,
@@ -49,6 +50,7 @@ export class Step1Component implements OnInit {
   }
 
   changeLogo(e){
+    this.isLoder = true;
     const file = e.target.files[0];
     this.showCroper = true;
     // if(file.type != 'image/jpg' && file.type != 'image/png'){
@@ -67,6 +69,7 @@ export class Step1Component implements OnInit {
     this.usersService.uploadProfileImg(formData).subscribe((response: any) => {
       //this.profileImage = `${AVATAR_URL}uploads/avatars/${response['data']['image']}`;
       this.toastr.success('Logo Image is uploaded successfully');
+      this.isLoder = false;
     });
 
     this.companyInfoFormGroup.patchValue({logo: "Test"});
@@ -102,7 +105,7 @@ export class Step1Component implements OnInit {
   }
 
   submit() {
-    console.log("CompanyInfo>>>>>",this.companyInfoFormGroup.getRawValue())
+    //console.log("CompanyInfo>>>>>",this.companyInfoFormGroup.getRawValue())
     this.isSubmitted = true;
     if (this.common.companyNameExists) {
       return false;

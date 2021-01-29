@@ -53,6 +53,8 @@ export class MyEmployeeComponent implements OnInit {
   countries = COUNTRY_LIST;
   public employmentArry:{};
   public jobs:any[];
+  profileImage = 'assets/images/no-profile.png';
+  coverImage = 'assets/images/no-cover.png';
 
   public dataSourceFive;
   public displayedColumnsFive: string[];
@@ -119,6 +121,9 @@ export class MyEmployeeComponent implements OnInit {
       
       //console.log("Company Data>>",response);
       this.companyData = response['data']['companydata'];
+      if(this.companyData.logo_image!=undefined){
+        this.profileImage= `${AVATAR_URL}uploads/avatars/${this.companyData.logo_image}`;
+      }
       let email = response['data']['email'].split("@");
       this.domain ='@'+email[1];
       //console.log("Company Data>>>",this.companyData.name)

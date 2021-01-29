@@ -52,6 +52,8 @@ export class ApplicantsComponent implements OnInit {
   public postArry:{};
   countries = COUNTRY_LIST;
   public employmentArry:{};
+  profileImage = 'assets/images/no-profile.png';
+  coverImage = 'assets/images/no-cover.png';
   public jobs:any[];
 
   public questions:any[];
@@ -66,6 +68,7 @@ export class ApplicantsComponent implements OnInit {
   candidate_name;
   comment = "";
   final_decision = "Reject";
+  play;
   
   stars: number[] = [1, 2, 3, 4, 5];
   selectedValue: number;
@@ -95,6 +98,7 @@ export class ApplicantsComponent implements OnInit {
       this.authUser.user_id = localStorage.getItem("user_id");
     }
     this.getCompanyData();
+    this.play= 0;
 
   }
 
@@ -110,6 +114,7 @@ export class ApplicantsComponent implements OnInit {
       this.questionLenth = 0;
       this.selectedValue = 0;
       this.comment = '';
+      this.play = 0;
   }
 
   applyFilterThree(filterValue: string) {
@@ -131,6 +136,9 @@ export class ApplicantsComponent implements OnInit {
       
       //console.log("Company Data>>",response);
       this.companyData = response['data']['companydata'];
+      if(this.companyData.logo_image!=undefined){
+        this.profileImage= `${AVATAR_URL}uploads/avatars/${this.companyData.logo_image}`;
+      }
       // this.employments = response['data']['employment']; 
       // this.seniorityLevels = response['data']['seniority']; 
       // this.responsibilities = response['data']['responsibility']; 
@@ -208,6 +216,7 @@ nextQuestion(){
   this.firstQuestion = this.userquestions[this.nextIndex];
   this.selectedValue = this.firstQuestion.rating;
   this.comment = this.firstQuestion.comment;
+  this.play = 0;
   //console.log("First Question Next>>",this.firstQuestion);
 }
 
@@ -216,11 +225,18 @@ previousQoestion(){
   this.firstQuestion = this.userquestions[this.nextIndex];
   this.selectedValue = this.firstQuestion.rating;
   this.comment = this.firstQuestion.comment;
+  this.play = 0;
 }
 
 getSafeUrl(url){
-  //console.log("gerSafeUrl Called>>>>>");
-  return this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url); 
+  if(this.play == 0){
+    //console.log("gerSafeUrl Called If>>>>>");
+    this.play = 1;
+    return this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);  
+  }else{ 
+    //console.log("gerSafeUrl Called Else>>>>>");
+    return this.safeUrl;
+  }
 }
 showRecordedAnswer(recordString){
   window.open("https://d1iruxeyl67hmv.cloudfront.net/web/index.php/archive/"+recordString+"/view" , "_blank");
