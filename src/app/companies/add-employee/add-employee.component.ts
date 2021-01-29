@@ -42,6 +42,8 @@ export class AddEmployeeComponent implements OnInit {
   public postArry:{};
   countries = COUNTRY_LIST;
   public employmentArry:{};
+  profileImage = 'assets/images/no-profile.png';
+  coverImage = 'assets/images/no-cover.png';
   public jobs:any[];
 
   employeeForm: FormGroup;
@@ -97,6 +99,9 @@ export class AddEmployeeComponent implements OnInit {
       
       //console.log("Company Data>>",response);
       this.companyData = response['data']['companydata'];
+      if(this.companyData.logo_image!=undefined){
+        this.profileImage= `${AVATAR_URL}uploads/avatars/${this.companyData.logo_image}`;
+      }
       let email = response['data']['email'].split("@");
       this.domain ='@'+email[1];
       // this.employments = response['data']['employment']; 

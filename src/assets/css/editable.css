@@ -10,6 +10,8 @@
 
 .logo-inner img{max-width:100px;}
 
+.dashboard-logo{height: 60px;width: 60px;border-radius: 50%;box-shadow: 1px 0px grey;}
+
 @media(max-width:767px){
   .content-info{padding-top: 60px;}
 }

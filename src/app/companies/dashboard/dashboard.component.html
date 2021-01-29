@@ -29,7 +29,7 @@
               
                 <div class="col-sm-5 col-md-7 col-xs-9 pull-right">
                   <ul>
-                    <li><img src="assets/images/man-user.png"></li>
+                    <li><img class="dashboard-logo" [src]="profileImage"></li>
                     <li><a >{{companyData?.name}} &nbsp;&nbsp;|</a></li>
                     <li><a (click)="auth.logOut()">Logout</a></li>
                   </ul>
@@ -87,7 +87,7 @@
                 <div class="row">
                   <div class="col-sm-3 col-xs-6">
                     <div class="dashboard-grid-info">
-                      <h4 style="color:#c5c5c5;">0</h4>
+                      <h4 style="color:#18f513;">{{interview_status?.Advance}}</h4>
                       <p>moving to a final interview</p>
                     </div>
                   </div>
@@ -99,13 +99,13 @@
                   </div>
                   <div class="col-sm-3 col-xs-6">
                     <div class="dashboard-grid-info">
-                      <h4 style="color:#c5c5c5;">0</h4>
+                      <h4 style="color:#000;">{{interview_status?.Offer}}</h4>
                       <p>pending offers</p>
                     </div>
                   </div>
                   <div class="col-sm-3 col-xs-6">
                     <div class="dashboard-grid-info">
-                      <h4 style="color:#c5c5c5;">0</h4>
+                      <h4 style="color:#29b6f6;">{{interview_status?.Hired}}</h4>
                       <p>accepted offers</p>
                     </div>
                   </div>
@@ -397,5 +397,5 @@
                 
     </div>
     </div>
-  <footer>© PAVI AI ALL RIGHT RESERVED 2020</footer>
+  <footer>© PAVI AI ALL RIGHTS RESERVED {{today | date:'yyyy'}}</footer>
 </div>

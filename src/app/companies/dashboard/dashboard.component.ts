@@ -157,6 +157,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   activeDayIsOpen: boolean = true;
 
   CalendarView = CalendarView;
+  interview_status;
   
 
   dataSourceTwo: MatTableDataSource<PeriodicElement>;
@@ -327,6 +328,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         $('.loader').hide();
         //console.log("Company Data>>",response);
         this.companyData = response['data']['companydata'];
+        this.interview_status = response['data']['interview_status'];
+        if(this.companyData.logo_image!=undefined){
+          this.profileImage= `${AVATAR_URL}uploads/avatars/${this.companyData.logo_image}`;
+        }
         this.employments = response['data']['employment']; 
         this.seniorityLevels = response['data']['seniority']; 
         this.responsibilities = response['data']['responsibility']; 
@@ -334,7 +339,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.categories = response['data']['categories']; 
         this.openJobs= response['data']['jobs']; 
         this.applicants= response['data']['applicants']; 
-        this.interviewCompleted= response['data']['interview_com']; 
+        this.interviewCompleted= response['data']['interview_com'];    
          } else if (response.statusCode == 401) {
           this.toastr.error(response.message)
           this.auth.logOut();

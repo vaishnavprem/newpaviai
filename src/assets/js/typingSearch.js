@@ -36,7 +36,7 @@ function typewriterSearch(params1,param2)
     }
     if(params1 == "Find-job"){
       //console.log("Employee");
-       aText = new Array("I can always refine the seach if you have an industry or a job title in mind?");
+       aText = new Array("I can always refine the search if you have an industry or a job title in mind?");
        //destination = document.getElementById("seekertext");
        iArrLength = aText[0].length; // the length of the text array
        iSpeed = 100; 
@@ -65,17 +65,22 @@ function typewriterSearch(params1,param2)
  }
     
  
- 
- destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos)+"<i class='hr-line'></i>";
+ //if(destination != null){
+  destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos)+"<i class='hr-line'></i>";
+ //}
  if ( iTextPos++ == iArrLength ) {
   iTextPos = 0;
   iIndex++;
   if ( iIndex != aText.length ) {
    iArrLength = aText[iIndex].length;
-   setTimeout("typewriterSearch()", 500);
+   //if(destination != null){
+     setTimeout("typewriterSearch()", 500);
+    //}
   }
  } else {
-  setTimeout("typewriterSearch()", iSpeed);
+  //if(destination != null){
+    setTimeout("typewriterSearch()", iSpeed);
+  //}
  }
  //console.log("Method Last>>>",iIndex);
 

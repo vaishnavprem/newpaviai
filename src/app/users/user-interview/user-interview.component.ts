@@ -35,6 +35,8 @@ export class UserInterviewComponent implements OnInit {
   public nextIndex = 0;
   public questionLenth = 0;
   public firstQuestion:any;
+  play;
+
   @ViewChild('TableOnePaginator', {static: false}) tableOnePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableOneSort: MatSort;
   constructor(
@@ -52,6 +54,7 @@ export class UserInterviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoder=true;
+    this.play= 0;
     this.authUser = this.getAuthUser.transform();
     this.usersService.getJobsUser({
       user_id:this.authUser.user_id
@@ -82,13 +85,19 @@ export class UserInterviewComponent implements OnInit {
       this.firstQuestion = '';
       this.nextIndex = 0;
       this.questionLenth = 0;
+      this.play = 0;
   }
   
   applyFilterOne(filterValue: string) {
     this.dataSourceOne.filter = filterValue.trim().toLowerCase();
   }
   getSafeUrl(url){
-    return this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url); 
+    if(this.play == 0){
+      this.play = 1;
+      return this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url); 
+    }else{
+      return this.safeUrl;
+    }
   }
   clickEvent(){
     //console.log("ClickEvent>>>",this.status);
@@ -121,11 +130,13 @@ export class UserInterviewComponent implements OnInit {
  nextQuestion(){
   this.nextIndex = this.nextIndex+1;
   this.firstQuestion = this.userquestions[this.nextIndex];
+  this.play = 0;
 }
 
 previousQoestion(){
   this.nextIndex = this.nextIndex-1;
   this.firstQuestion = this.userquestions[this.nextIndex];
+  this.play = 0;
 }
 
 

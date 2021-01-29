@@ -29,7 +29,7 @@
                 
                   <div class="col-sm-5 col-md-7 col-xs-9 pull-right">
                     <ul>
-                      <li><img src="assets/images/man-user.png"></li>
+                      <li><img class="dashboard-logo" [src]="profileImage"></li>
                       <li><a >{{companyData?.name}} &nbsp;&nbsp;|</a></li>
                       <li><a (click)="auth.logOut()">Logout</a></li>
                     </ul>
@@ -94,5 +94,5 @@
                   
       </div>
       </div>
-    <footer>© PAVI AI ALL RIGHT RESERVED 2020</footer>
+    <footer>© PAVI AI ALL RIGHTS RESERVED {{today | date:'yyyy'}}</footer>
   </div>

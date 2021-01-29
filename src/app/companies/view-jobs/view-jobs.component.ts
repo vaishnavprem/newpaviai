@@ -52,6 +52,8 @@ export class ViewJobsComponent implements OnInit {
   public postArry:{};
   countries = COUNTRY_LIST;
   public employmentArry:{};
+  profileImage = 'assets/images/no-profile.png';
+  coverImage = 'assets/images/no-cover.png';
 
   public view_jobs = true;
   public edit_jobs = false;
@@ -174,6 +176,9 @@ export class ViewJobsComponent implements OnInit {
       
       //console.log("Company Data>>",response);
       this.companyData = response['data']['companydata'];
+      if(this.companyData.logo_image!=undefined){
+        this.profileImage= `${AVATAR_URL}uploads/avatars/${this.companyData.logo_image}`;
+      }
       this.employments = response['data']['employment']; 
       this.seniorityLevels = response['data']['seniority']; 
       this.responsibilities = response['data']['responsibility']; 

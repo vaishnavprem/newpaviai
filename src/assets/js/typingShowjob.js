@@ -19,7 +19,7 @@ function typewriterShow(params1,param2)
         //console.log("Employer");
         if(params1 == "Show-job"){
             //console.log("Employee");
-             aText = new Array("Great, if you like this job please click on the apply button below to be considered for this job.");
+             aText = new Array("Great, if you like this job please click on the apply button below to be considered.");
              //destination = document.getElementById("seekertext");
              iArrLength = aText[0].length; // the length of the text array
              iSpeed = 100; 
