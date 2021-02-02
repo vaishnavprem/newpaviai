@@ -30,6 +30,8 @@ export class UserSignUpComponent implements OnInit {
   countries = COUNTRY_LIST;
   id: number;
   formatedDate;
+  isLoder;
+  
   constructor(
     public router: Router,
     private fb: FormBuilder,
@@ -50,6 +52,7 @@ export class UserSignUpComponent implements OnInit {
         country: ['', Validators.required],
         linkedin_url: ['', Validators.required],
         agreed: ['', Validators.required],
+        resume: ['', Validators.required]
 
       },
     );
@@ -64,9 +67,10 @@ export class UserSignUpComponent implements OnInit {
 
   register() {
     this.isSubmitted = true;
-    // console.log(this.userRegisterForm.value)
+    
     // console.log(this.userRegisterForm.valid)
     if (this.userRegisterForm.valid) {
+      console.log(this.userRegisterForm.value)
       this.auth.register(this.userRegisterForm.value).subscribe((dt: any) => {
         if(dt.statusCode==200){
           
@@ -82,6 +86,24 @@ export class UserSignUpComponent implements OnInit {
           this.toastr.error(dt.message);
         }
       });
+    }
+  }
+
+  saveResume(event){
+    const file = event.target.files[0];
+    if(file.type == 'application/pdf' || file.type =='application/vnd.openxmlformats-officedocument.wordprocessingml.document'){
+     
+      if(file.size > 1000000){
+        this.toastr.error('File size must be under 1 MB');
+        this.userRegisterForm.patchValue({resume: ''});
+        return false;
+      }
+      this.userRegisterForm.patchValue({resume: file});
+      return true;
+    }else{
+      this.userRegisterForm.patchValue({resume: ''});
+      this.toastr.error('Please choose pdf/word file file');
+      return false;
     }
   }
 
@@ -139,6 +161,10 @@ export class UserSignUpComponent implements OnInit {
 
   get confirmPass(): AbstractControl {
     return this.userRegisterForm.get('confirm_password');
+  }
+
+  get resumeCtrl(): AbstractControl {
+    return this.userRegisterForm.get('resume');
   }
 
   getDate(){
