@@ -81,32 +81,7 @@
        <app-admin-sidebar></app-admin-sidebar>
       
         <div class="right-bar">
-          <div class="right-header">
-                <div class="row">
-                <!-- <div class="col-xs-3 col-sm-1 hidden-md hidden-lg">
-                <div class="nav-tiker"><a (click)="clickEvent()"><img src="assets/images/nav.png" class="nav-tikerimg" /> </a></div>
-                
-                </div> -->
-                  <div class="col-sm-5 col-md-7 col-xs-9 pull-right">
-                    <ul>
-                      <li><a >Admin &nbsp;&nbsp;|</a></li>
-                      <li><a (click)="auth.logOut()">Logout</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-6 col-md-5 col-xs-12">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search" />
-                      <div class="input-group-btn">
-                        <div class="btn-group">
-                          <button type="button" class="btn"><i class="fa fa-search"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  
-                </div>
-          </div>
+          <app-admin-dashboard-header></app-admin-dashboard-header>
           <div class="dashboard-right-mid" id="pills-tabContent">
             <div class="title-warp">
               <h2>Dashboard <span>{{today | date:'longDate'}}</span></h2>
@@ -169,7 +144,8 @@
         </div>         
       </div>
     </div>
-    <footer>© PAVI AI ALL RIGHTS RESERVED {{today | date:'yyyy'}}</footer>
+    <!-- <footer>© PAVI AI ALL RIGHTS RESERVED {{today | date:'yyyy'}}</footer> -->
+    <app-dashboard-footer></app-dashboard-footer>
   </div>
    
 

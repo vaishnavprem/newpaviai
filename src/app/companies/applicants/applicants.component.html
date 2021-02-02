@@ -41,6 +41,8 @@
                 </select>
                 <button (click)="saveFinalDecision()" class="btn btn-primary" style="border-radius: 0px;"><i class="fa fa-cloud" aria-hidden="true"></i></button>
               </div>
+
+              <a *ngIf="resumeFile" [href]="'https://d39smmql2m03vn.cloudfront.net/uploads/avatars/'+resumeFile" title="View Resume" target="_blank" download style="margin-right: 50px;float:right;"> <i class="fa fa-file fa-2x" aria-hidden="true"></i></a>
               
             </div>
             
@@ -135,6 +137,104 @@
     </div>
   </div>
 
+  <div class="modal fade in" id="add-modal-candidate-feedback">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4"><h4>{{candidate_name}}</h4></div>
+                <div class="col-sm-4 col-md-4 col-lg-4"><h4>{{position}}</h4></div>
+                <div class="col-sm-4 col-md-4 col-lg-4"><h4>{{companyData?.name}}</h4></div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <button type="button" class="close" data-dismiss="modal" (click)="stopPlayer()">&times;</button>
+              <div class="final-parent">
+                <select [(ngModel)]="final_decision" class="final-decision" name="final_decision" id="final_decision">
+                  <option value="Reject">Reject</option>
+                  <option value="Advance">Advance</option>
+                  <option value="Offer">Offer</option>
+                  <option value="Hired">Hired</option>
+                </select>
+                <button (click)="saveFinalDecision()" class="btn btn-primary" style="border-radius: 0px;"><i class="fa fa-cloud" aria-hidden="true"></i></button>
+              </div>
+              
+            </div>
+            
+          </div> -->
+          
+          <h5 class="modal-title">Candidate Answers Feedback</h5>
+          <button type="button" class="close" data-dismiss="modal" (click)="stopPlayer()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="firstQuestion" >
+            <div class="row">
+              <div class="col-sm-12 col-xs-12 interview-warp">
+                <div class="contact_form">
+                  <div class="form-group">
+                    <label for="name" class="control-label">Question {{nextIndex+1}} of {{questionLenth}}</label>
+                  </div>
+                </div>
+                <h5>{{firstQuestion.question}}</h5>
+                <div class="comment-body">
+                    <div class="rating">
+                      <ul class="list-inline rating-list" 
+                        *ngFor="let star of stars" style="display: inline-block;pointer-events:none;" >
+                          <li (click)="countStar(star)"
+                              [ngClass]="{'selected': (star <= selectedValue)}">
+                            <i class="fa fa-star"></i>
+                          </li> 
+                      </ul>
+                    </div>
+                    <div class="comment">
+                      <div class="form-group">
+                        <label>Comment :-</label>
+                        <h3 id="comment" name="comment">{{this.comment?this.comment:'No Comment Found'}}</h3>
+                        <!-- <textarea [(ngModel)]="comment" id="comment" name="comment" class="form-control" placeholder="Comment" rows="2" disabled></textarea> -->
+                      </div>
+                    </div>
+                  <!-- <button type="button" class="btn btn-primary" (click)="saveFeedBack()">Submit</button> -->
+                </div>
+                <div class="micro-icon">
+                  <div id="buttons" class="buttonschat">
+                    <a [class.disabled]="nextIndex <= 0" (click)="previousQoestion()" class="btn-arrow"><i class="fa fa-chevron-left"></i></a>
+                    <a [class.disabled]="nextIndex == (questionLenth-1)" (click)="nextQuestion()" class="btn-arrow arrow-right"><i class="fa fa-chevron-right"></i></a>
+                   
+                  </div>
+                </div>
+              </div>
+              
+              <!-- <div class="col-sm-8 col-xs-12">
+                <div class="select-your-job animate__fadeInUpBig animate__animated" >
+                 
+                 <iframe *ngIf="firstQuestion.recorded_url != null; else elseBlock" [attr.id]="'vid_frame'" [src]="getSafeUrl('https://paviai.s3-us-west-2.amazonaws.com/46905104/'+ firstQuestion.recorded_url +'/archive.mp4')" frameborder="0"></iframe>
+
+                 <ng-template #elseBlock >
+                  <div class="notFound">
+                    <i class="fa fa-exclamation" aria-hidden="true"></i>No Video Found
+                  </div>
+                 </ng-template>
+                </div>
+
+                <div class="micro-icon">
+                  <div id="buttons" class="buttonschat">
+                    <a [class.disabled]="nextIndex <= 0" (click)="previousQoestion()" class="btn-arrow"><i class="fa fa-chevron-left"></i></a>
+                    <a [class.disabled]="nextIndex == (questionLenth-1)" (click)="nextQuestion()" class="btn-arrow arrow-right"><i class="fa fa-chevron-right"></i></a>
+                   
+                  </div>
+                </div>
+
+              </div> -->
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <div class="bg-images-1">
     <div class="content-warp">
@@ -142,30 +242,7 @@
         <app-company-sidebar></app-company-sidebar>
           
             <div class="right-bar">
-              <div class="right-header">
-                <div class="row">
-                
-                  <div class="col-sm-5 col-md-7 col-xs-9 pull-right">
-                    <ul>
-                      <li><img class="dashboard-logo" [src]="profileImage"></li>
-                      <li><a >{{companyData?.name}} &nbsp;&nbsp;|</a></li>
-                      <li><a (click)="auth.logOut()">Logout</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-6 col-md-5 col-xs-12">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search" />
-                      <div class="input-group-btn">
-                        <div class="btn-group">
-                          <button type="button" class="btn"><i class="fa fa-search"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  
-                </div>
-              </div>
+            <app-company-dashboard-header></app-company-dashboard-header>
             <div class="dashboard-right-mid" id="pills-tabContent">
               <div class="title-warp">
                 <h2>Dashboard <span>{{today | date:'longDate'}}</span></h2>
@@ -219,6 +296,10 @@
                       <th mat-header-cell *matHeaderCellDef mat-sort-header>Interview Date</th>
                       <td mat-cell *matCellDef="let element">{{ element.created_at |  date:"MM/dd/yy h:mm a" }}</td>
                     </ng-container>
+                    <ng-container matColumnDef="average_rating">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Average Rating</th>
+                      <td mat-cell *matCellDef="let element">{{element.avg_rating && element.avg_rating > 0 ?(element.avg_rating | number:'1.0-0') : 'Pending' }}</td>
+                    </ng-container>
                     <ng-container matColumnDef="final_decision">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header>Final Decision</th>
                       <td mat-cell *matCellDef="let element">{{element.interview_status? element.interview_status : 'Pending'}}</td>
@@ -227,7 +308,8 @@
                       <th mat-header-cell *matHeaderCellDef >Action</th>
                       <td mat-cell *matCellDef="let element"> 
                         <!-- <a class="btn" data-toggle="modal" > <i class="fa fa-pencil"></i></a>  -->
-                        <a class="btn"> <i class="fa fa-eye" (click)="showCandidateAnswers(element)"></i></a> 
+                        <a class="btn"> <i class="fa fa-eye" (click)="showCandidateAnswers(element)"></i></a>
+                        <a class="btn" title="View Feedback"> <i class="fa fa-comments" (click)="showCandidateFeedback(element)"></i></a> 
                         <!-- <a class="btn red"> <i class="fa fa-trash"></i></a> -->
                         <a *ngIf="element.resume_file" [href]="'https://d39smmql2m03vn.cloudfront.net/uploads/avatars/'+element.resume_file" title="View Resume" class="btn" target="_blank" download> <i class="fa fa-file" aria-hidden="true"></i></a>
                       </td>
@@ -247,7 +329,8 @@
                   
       </div>
       </div>
-    <footer>© PAVI AI ALL RIGHTS RESERVED {{today | date:'yyyy'}}</footer>
+    <!-- <footer>© PAVI AI ALL RIGHTS RESERVED {{today | date:'yyyy'}}</footer> -->
+    <app-dashboard-footer></app-dashboard-footer>
   </div>
 
 

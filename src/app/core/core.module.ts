@@ -20,6 +20,10 @@ import { ShowConfirmDialogComponent } from './components/dialogs/show-confirm-di
 import { UserSidebarComponent } from './components/layout/user-sidebar/user-sidebar.component';
 import { AdminSidebarComponent } from './components/layout/admin-sidebar/admin-sidebar.component';
 import { CompanySidebarComponent } from './components/layout/company-sidebar/company-sidebar.component';
+import { DashboardFooterComponent } from './components/layout/dashboard-footer/dashboard-footer.component';
+import { UserDashboardHeaderComponent } from './components/layout/user-dashboard-header/user-dashboard-header.component';
+import { CompanyDashboardHeaderComponent } from './components/layout/company-dashboard-header/company-dashboard-header.component';
+import { AdminDashboardHeaderComponent } from './components/layout/admin-dashboard-header/admin-dashboard-header.component';
 
 
 @NgModule({
@@ -38,7 +42,11 @@ import { CompanySidebarComponent } from './components/layout/company-sidebar/com
     ShowConfirmDialogComponent,
     UserSidebarComponent,
     AdminSidebarComponent,
-    CompanySidebarComponent
+    CompanySidebarComponent,
+    DashboardFooterComponent,
+    UserDashboardHeaderComponent,
+    CompanyDashboardHeaderComponent,
+    AdminDashboardHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -58,6 +66,10 @@ import { CompanySidebarComponent } from './components/layout/company-sidebar/com
     UserSidebarComponent,
     AdminSidebarComponent,
     CompanySidebarComponent,
+    DashboardFooterComponent,
+    UserDashboardHeaderComponent,
+    CompanyDashboardHeaderComponent,
+    AdminDashboardHeaderComponent,
     SaveWorkExperienceDialogComponent,
     SaveProgrammingSkillsDialogComponent,
     SaveEducationDialogComponent,
