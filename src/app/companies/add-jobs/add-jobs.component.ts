@@ -82,7 +82,7 @@ export class AddJobsComponent implements OnInit {
         jobTitle: ['', Validators.required],
         employment: ['', Validators.required],
         city: [''],
-        date_closed: ['', Validators.required],
+        // date_closed: ['', Validators.required],
         companyAddress: ['', Validators.required],
         experience:['', Validators.required],
         level: ['', Validators.required],
@@ -92,8 +92,8 @@ export class AddJobsComponent implements OnInit {
         job_description: ['', Validators.required],
         job_brief:['', Validators.required],
         assistant_job: [''],
-        requirement:['', Validators.required],
-        responsibility:['', Validators.required],
+        // requirement:['', Validators.required],
+        // responsibility:['', Validators.required],
         companyId:['' ],
         jobId:[''],
     });
@@ -337,12 +337,15 @@ saveJob(){
           else this.toastr.error(response.message);
        });
     } else {
-      this.companiesService.saveJobs(this.jobForm.getRawValue()).subscribe(response => {
-       
-        this.jobForm.reset();
-        this.toastr.success('Data added suceesfully');
-        this.getJobs();
-        this.router.navigate(['/companies/view-jobs']);
+      this.companiesService.saveJobs(this.jobForm.getRawValue()).subscribe((response :any) => {
+       if(response.statusCode == 200){
+          this.jobForm.reset();
+          this.toastr.success('Data added suceesfully');
+          this.getJobs();
+          this.router.navigate(['/companies/view-jobs']);
+       }else{
+        this.toastr.error(response.message);
+       }
        });
     }
   
