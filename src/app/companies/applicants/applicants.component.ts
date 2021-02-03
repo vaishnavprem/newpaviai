@@ -185,12 +185,21 @@ getUsers(){
       this.allusers = response['data']['user'];
 
       if(this.filterKey){
-        this.dataSourceThree.filterPredicate = function(data, filter: string): boolean {
-          if(data.interview_status){
-            return  data.interview_status.toLowerCase().includes(filter)
-          }
-        };
-        this.applyFilterThree(this.filterKey);
+        if(this.filterKey == 'Completed'){
+          this.dataSourceThree.filterPredicate = function(data, filter: string): boolean {
+            if(data.is_complete){
+              return  data.is_complete.toLowerCase().includes(filter)
+            }
+          };
+          this.applyFilterThree('1');
+        }else{
+          this.dataSourceThree.filterPredicate = function(data, filter: string): boolean {
+            if(data.interview_status){
+              return  data.interview_status.toLowerCase().includes(filter)
+            }
+          };
+          this.applyFilterThree(this.filterKey);
+        }
       }
       
     //console.log("Job User>>>>>",latest);

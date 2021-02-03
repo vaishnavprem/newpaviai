@@ -16,6 +16,7 @@
 
 .select-your-job ul li h4 span a{cursor:pointer;color: #acadcae6;}
 .select-your-job ul li h4 span a:hover{color:#7478f3e6;}
+.detailview-col p {font-size: 16px;font-weight: 400;font-family: 'Montserrat', sans-serif;}
 
 /* .content-info .showText .hr-line{height:65px !important;} */
 /* .container{padding-left: 0px;padding-right: 0px;} */

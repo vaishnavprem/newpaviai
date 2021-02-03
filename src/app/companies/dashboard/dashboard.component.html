@@ -47,7 +47,7 @@
                     </div>
                   </div>
                   <div class="col-sm-3 col-xs-6">
-                    <div class="dashboard-grid-info">
+                    <div class="dashboard-grid-info" (click)="router.navigate(['/companies/applicants'],{ queryParams: { filter: 'Completed' } })" style="cursor: pointer;">
                       <h4 style="color:#29b6f6">{{interviewCompleted}}</h4>
                       <p>interviews completed</p>
                     </div>
