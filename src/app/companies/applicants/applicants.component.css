@@ -135,7 +135,7 @@ html, body {height: 100%; margin: 0;}
 .micro-icon .buttonschat{padding:0px; margin:0px; list-style:none; margin:0px auto; bottom:0px; left:0px; right:0px;}
 .micro-icon{text-align: center;}
 .micro-icon .btn{padding:0px; border:none; background:transparent; }
-.btn-arrow{font-size: 28px;color: #fff;padding:20px}
+.btn-arrow{font-size: 28px;color:#a6bb34;padding:20px}
 
 .select-your-job{position: relative;padding-bottom: 56.25%;height: 0;width: 100%;overflow: hidden;}
 .select-your-job iframe{position: absolute;top: 0;left: 0;width: 100%;height: 100% ;}

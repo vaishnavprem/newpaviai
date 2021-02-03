@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectionStrategy} from '@angular/core';
 import {AuthService} from '../../core/services/auth.service';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
-import {API_URL,AVATAR_URL, TEXT_ONLY_PATTERN,EMAIL_PATTERN,NO_SPACE_PATTERN} from '../../core/constants/general';
+import {Router, ActivatedRoute} from '@angular/router';
+import {API_URL,AVATAR_URL, FINAL_DECISION, TEXT_ONLY_PATTERN,EMAIL_PATTERN,NO_SPACE_PATTERN} from '../../core/constants/general';
 import {patternValidator} from '../../core/helpers/pattern-validator';
 import {ToastrService} from 'ngx-toastr';
 import {GetAuthUserPipe} from '../../shared/pipes/get-auth-user.pipe';
@@ -68,7 +68,10 @@ export class ApplicantsComponent implements OnInit {
   candidate_name;
   comment = "";
   final_decision = "Reject";
+  resumeFile;
   play;
+  filterKey;
+  sub;
   
   stars: number[] = [1, 2, 3, 4, 5];
   selectedValue: number;
@@ -86,19 +89,26 @@ export class ApplicantsComponent implements OnInit {
     public auth: AuthService,
     private paviAdminService:PaviAdminService,
     public router: Router,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private route: ActivatedRoute,
   ) { 
     this.dataSourceThree = new MatTableDataSource<User>();
-    this.displayedColumnsThree=['first_name', 'last_name', 'email','jobTitle','created_at','final_decision','action'];
+    this.displayedColumnsThree=['first_name', 'last_name', 'email','jobTitle','created_at', 'average_rating','final_decision','action'];
   }
 
   ngOnInit(): void {
+    this.sub = this.route.queryParams.subscribe(params => {
+      this.filterKey = params['filter'] || null; // (+) converts string 'id' to a number
+    });
+
     this.authUser = this.getAuthUser.transform();
     if(localStorage.getItem("user_id") != null){
       this.authUser.user_id = localStorage.getItem("user_id");
     }
+
     this.getCompanyData();
     this.play= 0;
+    console.log("Final Decision", this.filterKey);
 
   }
 
@@ -173,6 +183,15 @@ getUsers(){
     this.dataSourceThree.paginator = this.tableThreePaginator;
       this.dataSourceThree.sort = this.tableThreeSort;
       this.allusers = response['data']['user'];
+
+      if(this.filterKey){
+        this.dataSourceThree.filterPredicate = function(data, filter: string): boolean {
+          if(data.interview_status){
+            return  data.interview_status.toLowerCase().includes(filter)
+          }
+        };
+        this.applyFilterThree(this.filterKey);
+      }
       
     //console.log("Job User>>>>>",latest);
     
@@ -184,6 +203,7 @@ showCandidateAnswers(element){
   this.position = element.jobTitle;
   this.candidate_name = element.first_name+" "+element.last_name;
   this.final_decision = element.interview_status ? element.interview_status : 'Reject';
+  this.resumeFile = element.resume_file;
   this.isLoder=true;
    let parmsa ={
      jobId:element.job_id,
@@ -209,6 +229,36 @@ showCandidateAnswers(element){
      
    });
  
+}
+
+showCandidateFeedback(element){
+  // this.position = element.jobTitle;
+  // this.candidate_name = element.first_name+" "+element.last_name;
+  // this.final_decision = element.interview_status ? element.interview_status : 'Reject';
+  this.isLoder=true;
+   let parmsa ={
+     jobId:element.job_id,
+     user_id:element.id,
+     interview_id:element.interview_id
+   }
+   this.companiesService.showQuestionAnswer(parmsa)
+   .subscribe((response : any) => {
+     
+     if (response.statusCode == 200) {
+         this.userquestions = response['data']['question']; 
+         this.isLoder=false;
+         $("#add-modal-candidate-feedback").modal("show");
+         this.firstQuestion = response['data']['question'][0];
+         this.questionLenth = response['data']['question'].length;
+         this.comment = this.firstQuestion.comment;
+         this.selectedValue = this.firstQuestion.rating;
+         //console.log("First Question>>",this.firstQuestion);
+     } else {
+       this.isLoder=false;
+       this.toastr.error(response.message);
+     }
+     
+   });
 }
 
 nextQuestion(){

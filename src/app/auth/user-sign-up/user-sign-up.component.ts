@@ -70,8 +70,19 @@ export class UserSignUpComponent implements OnInit {
     
     // console.log(this.userRegisterForm.valid)
     if (this.userRegisterForm.valid) {
-      console.log(this.userRegisterForm.value)
-      this.auth.register(this.userRegisterForm.value).subscribe((dt: any) => {
+      const formData = new FormData();
+      formData.append('resume', this.userRegisterForm.get('resume').value);
+      formData.append('email', this.userRegisterForm.get('email').value);
+      formData.append('password', this.userRegisterForm.get('password').value);
+      formData.append('confirm_password', this.userRegisterForm.get('confirm_password').value);
+      formData.append('first_name', this.userRegisterForm.get('first_name').value);
+      formData.append('last_name', this.userRegisterForm.get('last_name').value);
+      formData.append('country', this.userRegisterForm.get('country').value);
+      formData.append('linkedin_url', this.userRegisterForm.get('linkedin_url').value);
+      formData.append('agreed', this.userRegisterForm.get('agreed').value);
+      
+      //console.log("Form data>>>",formData.get('resume'));
+      this.auth.register(formData).subscribe((dt: any) => {
         if(dt.statusCode==200){
           
           localStorage.setItem('token', dt['data'].token);
@@ -98,6 +109,7 @@ export class UserSignUpComponent implements OnInit {
         this.userRegisterForm.patchValue({resume: ''});
         return false;
       }
+      
       this.userRegisterForm.patchValue({resume: file});
       return true;
     }else{

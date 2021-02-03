@@ -24,30 +24,7 @@
       <app-company-sidebar></app-company-sidebar>
         
           <div class="right-bar">
-            <div class="right-header">
-              <div class="row">
-              
-                <div class="col-sm-5 col-md-7 col-xs-9 pull-right">
-                  <ul>
-                    <li><img class="dashboard-logo" [src]="profileImage"></li>
-                    <li><a >{{companyData?.name}} &nbsp;&nbsp;|</a></li>
-                    <li><a (click)="auth.logOut()">Logout</a></li>
-                  </ul>
-                </div>
-                <div class="col-sm-6 col-md-5 col-xs-12">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" />
-                    <div class="input-group-btn">
-                      <div class="btn-group">
-                        <button type="button" class="btn"><i class="fa fa-search"></i></button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                
-              </div>
-            </div>
+          <app-company-dashboard-header></app-company-dashboard-header>
           <div class="dashboard-right-mid" id="pills-tabContent">
             <div class="title-warp">
               <h2>Dashboard <span>{{today | date:'longDate'}}</span></h2>
@@ -86,7 +63,7 @@
               <div class="dashboard-list-view">
                 <div class="row">
                   <div class="col-sm-3 col-xs-6">
-                    <div class="dashboard-grid-info">
+                    <div class="dashboard-grid-info" (click)="router.navigate(['/companies/applicants'],{ queryParams: { filter: 'Advance' } })" style="cursor: pointer;">
                       <h4 style="color:#18f513;">{{interview_status?.Advance}}</h4>
                       <p>moving to a final interview</p>
                     </div>
@@ -98,13 +75,13 @@
                     </div>
                   </div>
                   <div class="col-sm-3 col-xs-6">
-                    <div class="dashboard-grid-info">
+                    <div class="dashboard-grid-info" (click)="router.navigate(['/companies/applicants'],{ queryParams: { filter: 'Offer' } })" style="cursor: pointer;">
                       <h4 style="color:#000;">{{interview_status?.Offer}}</h4>
                       <p>pending offers</p>
                     </div>
                   </div>
                   <div class="col-sm-3 col-xs-6">
-                    <div class="dashboard-grid-info">
+                    <div class="dashboard-grid-info" (click)="router.navigate(['/companies/applicants'],{ queryParams: { filter: 'Hired' } })" style="cursor: pointer;">
                       <h4 style="color:#29b6f6;">{{interview_status?.Hired}}</h4>
                       <p>accepted offers</p>
                     </div>
@@ -397,5 +374,6 @@
                 
     </div>
     </div>
-  <footer>© PAVI AI ALL RIGHTS RESERVED {{today | date:'yyyy'}}</footer>
+  <!-- <footer>© PAVI AI ALL RIGHTS RESERVED {{today | date:'yyyy'}}</footer> -->
+  <app-dashboard-footer></app-dashboard-footer>
 </div>
