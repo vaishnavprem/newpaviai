@@ -254,10 +254,13 @@ showCandidateFeedback(element){
    .subscribe((response : any) => {
      
      if (response.statusCode == 200) {
-         this.userquestions = response['data']['question']; 
+         this.userquestions = response['data']['question'];
+         this.userquestions.forEach(element => {
+          delete element.recorded_url;
+         }); 
          this.isLoder=false;
          $("#add-modal-candidate-feedback").modal("show");
-         this.firstQuestion = response['data']['question'][0];
+         this.firstQuestion = this.userquestions[0];
          this.questionLenth = response['data']['question'].length;
          this.comment = this.firstQuestion.comment;
          this.selectedValue = this.firstQuestion.rating;
