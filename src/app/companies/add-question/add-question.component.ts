@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectionStrategy} from '@angular/core';
 import {AuthService} from '../../core/services/auth.service';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {API_URL,AVATAR_URL, TEXT_ONLY_PATTERN,EMAIL_PATTERN,NO_SPACE_PATTERN} from '../../core/constants/general';
 import {patternValidator} from '../../core/helpers/pattern-validator';
 import {ToastrService} from 'ngx-toastr';
@@ -45,6 +45,8 @@ export class AddQuestionComponent implements OnInit {
   profileImage = 'assets/images/no-profile.png';
   coverImage = 'assets/images/no-cover.png';
   public jobs:any[];
+  sub;
+  jobId;
 
   questionForm: FormGroup;
 
@@ -57,10 +59,15 @@ export class AddQuestionComponent implements OnInit {
     public auth: AuthService,
     private paviAdminService:PaviAdminService,
     public router: Router,
+    private route: ActivatedRoute,
     private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
+    this.sub = this.route.queryParams.subscribe(params => {
+      this.jobId = params['jobId'] || null; // (+) converts string 'id' to a number
+    });
+
     this.authUser = this.getAuthUser.transform();
     if(localStorage.getItem("user_id") != null){
       this.authUser.user_id = localStorage.getItem("user_id");
@@ -132,6 +139,9 @@ getJobs(){
 
 addQuestion(){
   this.getJobs();
+  if(this.jobId){
+    this.questionForm.patchValue({jobId : this.jobId});
+  }
 }
 
 saveQuestion(){
@@ -141,6 +151,9 @@ saveQuestion(){
     });
       this.companiesService.saveQuestion(this.questionForm.getRawValue()).subscribe(response => {
         this.questionForm.reset();
+        if(this.jobId){
+          this.questionForm.patchValue({jobId : this.jobId});
+        }
         this.toastr.success('Data added suceesfully');
        });
   } else {
