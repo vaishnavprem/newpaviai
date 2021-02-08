@@ -84,20 +84,24 @@ function initializeSession() {
        publisher = OT.initPublisher('publisher', publisherOptions, function initCallback(err) {
         if (err) {
           console.log('There was an error initializing the publisher: ', err.name, err.message);
+          $('.loader').hide();
           return;
         }
         session.publish(publisher, function publishCallback(pubErr) {
           if (pubErr) {
+            $('.loader').hide();
             console.log('There was an error publishing: ', pubErr.name, pubErr.message);
           }
         });
-		$('.loader').hide();
+		
       });
+      $('.loader').hide();
     } else {
+      $('.loader').hide();
       console.log('There was an error connecting to the session: ', error.name, error.message);
     }
   });
-	$('.loader').hide();
+	
 }
 
 // Start recording
