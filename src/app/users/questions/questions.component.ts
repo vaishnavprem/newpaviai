@@ -144,6 +144,7 @@ export class QuestionsComponent implements OnInit, AfterViewInit {
 
   }
   startRecording(questionID){
+    $('.loader').show();
     if(this.startTest){
       clearInterval(this.interval);
       if(questionID=='start'){
