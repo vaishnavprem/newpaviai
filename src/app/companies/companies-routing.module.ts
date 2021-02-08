@@ -13,7 +13,7 @@ import { ApplicantsComponent } from './applicants/applicants.component';
 import { MyEmployeeComponent } from './my-employee/my-employee.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
-
+import { VendorsComponent } from './vendors/vendors.component';
 
 const routes: Routes = [
   {
@@ -63,6 +63,10 @@ const routes: Routes = [
   {
     path: 'add-employee',
     component: AddEmployeeComponent
+  },
+  {
+    path: 'vendors',
+    component: VendorsComponent
   }
 ];
 
