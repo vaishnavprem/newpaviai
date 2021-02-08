@@ -23,6 +23,7 @@ import { ApplicantsComponent } from './applicants/applicants.component';
 import { MyEmployeeComponent } from './my-employee/my-employee.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { VendorsComponent } from './vendors/vendors.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
     ApplicantsComponent,
     MyEmployeeComponent,
     MyProfileComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    VendorsComponent
   ],
   imports: [
     CommonModule,
