@@ -49,7 +49,7 @@ export class QuestionsComponent implements OnInit, AfterViewInit {
 
   completionTime: number;
   timeLeft: number;
-  timePerQuestion = 120;
+  timePerQuestion = 300;
   interval: any;
   localStream;
   minutes:number;
@@ -156,7 +156,7 @@ export class QuestionsComponent implements OnInit, AfterViewInit {
         this.totalQuestion = Object.keys(this.questions).length;
         this.questionName =this.questions[questionID].question
         this.question_id = this.questions[questionID].id
-        this.timeLeft=120;
+        this.timeLeft=300;
         this.minutes = Math.floor(this.timeLeft / 60);
       this.seconds = Math.floor(this.timeLeft - this.minutes * 60);
    
