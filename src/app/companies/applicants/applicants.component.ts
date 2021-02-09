@@ -125,6 +125,7 @@ export class ApplicantsComponent implements OnInit {
       this.selectedValue = 0;
       this.comment = '';
       this.play = 0;
+      this.getUsers();
   }
 
   applyFilterThree(filterValue: string) {

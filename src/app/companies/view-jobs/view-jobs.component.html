@@ -195,7 +195,7 @@
                     <label for="recipient-name" class="col-form-label">Employment:</label> {{singleJob.employment}}
                   </div>
                   <div class="col-sm-6">
-                    <label for="recipient-name" class="col-form-label">Salary:</label> {{singleJob.salary}} K
+                    <label for="recipient-name" class="col-form-label">Salary:</label> {{singleJob.salary}}
                   </div>
                   <div class="col-sm-6">
                     <label for="recipient-name" class="col-form-label">Job Brief:</label>  {{singleJob.job_brief}}
@@ -203,18 +203,18 @@
                   <div class="col-sm-6">
                     <label for="recipient-name" class="col-form-label">Job Description:</label>  {{singleJob.job_description}}
                   </div>
-                  <div class="col-sm-6">
+                  <!-- <div class="col-sm-6">
                     <label for="recipient-name" class="col-form-label">Responsibilities:</label> <span *ngFor="let responsibility of singleJob.responsibility" > {{responsibility}} <br></span>
-                  </div>
-                  <div class="col-sm-6">
+                  </div> -->
+                  <!-- <div class="col-sm-6">
                     <label for="recipient-name" class="col-form-label">Requirements:</label>  <span *ngFor="let requirement of singleJob.requirement" > {{requirement}} <br></span>
-                  </div>
+                  </div> -->
                   <div class="col-sm-6">
-                    <label for="recipient-name" class="col-form-label">Job Start Date:</label> {{singleJob.dateOpened}}
+                    <label for="recipient-name" class="col-form-label">Job Posted Date:</label> {{singleJob.dateOpened | date: 'longDate'}}
                   </div>
-                  <div class="col-sm-6">
+                  <!-- <div class="col-sm-6">
                     <label for="recipient-name" class="col-form-label">Job End Date:</label> {{singleJob.dateClose}}
-                  </div>
+                  </div> -->
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

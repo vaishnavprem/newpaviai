@@ -17,7 +17,7 @@ function typewriterlogin(params1,param2)
     //console.log("Js Method Called>>>>>>>",params1);
     if(params1 == "Employee"){
         //console.log("Employee");
-         aText = new Array("Login as an Interviewer");
+         aText = new Array("Login as an Applicant");
          //destination = document.getElementById("seekertext");
          iArrLength = aText[0].length; // the length of the text array
          iSpeed = 100; 
