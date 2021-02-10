@@ -114,7 +114,7 @@ export class UsersComponent implements OnInit {
     if(this.userForm.valid){
       this.paviAdminService.updateUser(this.userForm.getRawValue()).subscribe(response => {
        this.getUsers();
-       this.toastr.success('Data updated suceesfully');
+       this.toastr.success('Data Updated Successfully');
       });
       
       (<any>$(`#edit-modal-popup-user`)).modal('hide');

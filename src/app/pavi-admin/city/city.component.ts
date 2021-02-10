@@ -106,7 +106,7 @@ export class CityComponent implements OnInit {
         this.paviAdminService.saveCity(this.cityForm.getRawValue()).subscribe((response : any) => {
           if(response.statusCode==200){
             this.cityForm.reset();
-            this.toastr.success('Data added suceesfully');
+            this.toastr.success('Data Saved Successfully');
           } else {
             this.toastr.error(response.message)
           }

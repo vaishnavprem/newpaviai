@@ -185,7 +185,7 @@ deleteQuestion(index,questionId){
   }
   this.companiesService.deleteQuestion(this.postArry).subscribe(response => {
     this.questions.splice(index, 1);     
-    this.toastr.success('Data deleted suceesfully');
+    this.toastr.success('Data deleted Successfully');
    });
 }
 

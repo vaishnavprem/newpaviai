@@ -101,7 +101,7 @@ export class JobTermComponent implements OnInit {
       this.paviAdminService.saveJobTerms({term:this.termsForm.get('term').value}).subscribe((response : any) => {
         if(response.statusCode==200){
         this.getJobTerms();
-        this.toastr.success('Data updated suceesfully');
+        this.toastr.success('Data Updated Successfully');
         (<any>$(`#add-modal-job-catgory`)).modal('hide');
         } else {
           this.toastr.error(response.message)
@@ -129,7 +129,7 @@ export class JobTermComponent implements OnInit {
           console.log("Update Job Term>>>>>>", response)
           if(response.statusCode==200){
             this.getJobTerms();
-            this.toastr.success('Data Updated suceesfully');
+            this.toastr.success('Data Updated Successfully');
             (<any>$(`#edit-modal-popup-jobTerm`)).modal('hide');
           } else {
             this.toastr.error(response.message)

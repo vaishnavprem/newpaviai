@@ -101,7 +101,7 @@ export class JobSpecialistComponent implements OnInit {
       this.paviAdminService.saveobSpecialistLevel({specialist_level:this.specialistForm.get('specialist_level').value}).subscribe((response : any) => {
         if(response.statusCode==200){
         this.getJobSpecialistLevel();
-        this.toastr.success('Data updated suceesfully');
+        this.toastr.success('Data Updated Successfully');
         (<any>$(`#add-modal-job-specialist`)).modal('hide');
         } else {
           this.toastr.error(response.message)
@@ -129,7 +129,7 @@ export class JobSpecialistComponent implements OnInit {
           console.log("Update Job Specialist>>>>>>", response)
           if(response.statusCode==200){
              this.getJobSpecialistLevel();
-             this.toastr.success('Data Updated suceesfully');
+             this.toastr.success('Data Updated Successfully');
              (<any>$(`#edit-modal-popup-jobSpecialty`)).modal('hide');
           } else {
              this.toastr.error(response.message)

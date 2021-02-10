@@ -53,8 +53,8 @@
                     </div>
                   </div>
                   <div class="col-sm-3 col-xs-6">
-                    <div class="dashboard-grid-info">
-                      <h4 style="color:#c5c5c5">0</h4>
+                    <div class="dashboard-grid-info" (click)="router.navigate(['/companies/applicants'],{ queryParams: { filter: 'Pending' } })" style="cursor: pointer;">
+                      <h4 style="color:#aa15d8">{{pending_overview}}</h4>
                       <p> interviews to review</p>
                     </div>
                   </div>

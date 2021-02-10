@@ -299,7 +299,7 @@ saveEmployment(){
     }
     this.companiesService.saveEmployment(this.employmentArry).subscribe(response => {
       this.getEmployment();
-      this.toastr.success('Data updated suceesfully');
+      this.toastr.success('Data Updated Successfully');
       (<any>$(`#add-modal-employment`)).modal('hide');
      });
   } else {
@@ -317,7 +317,7 @@ saveSeniority(){
     }
     this.companiesService.saveSeniority(this.employmentArry).subscribe(response => {
       this.getSeniority();
-      this.toastr.success('Data updated suceesfully');
+      this.toastr.success('Data Updated Successfully');
       (<any>$(`#add-modal-seniority`)).modal('hide');
      });
   } else {
@@ -335,7 +335,7 @@ saveResponsibility(){
     }
     this.companiesService.saveResponsibility(this.employmentArry).subscribe(response => {
       this.getResponsibility();
-      this.toastr.success('Data updated suceesfully');
+      this.toastr.success('Data Updated Successfully');
       (<any>$(`#add-modal-responsibilities`)).modal('hide');
      });
   } else {
@@ -353,7 +353,7 @@ saveRequirements(){
     }
     this.companiesService.saveRequirements(this.employmentArry).subscribe(response => {
       this.getRequirements();
-      this.toastr.success('Data updated suceesfully');
+      this.toastr.success('Data Updated Successfully');
       (<any>$(`#add-modal-requirements`)).modal('hide');
      });
   } else {
@@ -380,7 +380,7 @@ saveJob(){
     if(this.jobForm.get('jobId').value){
       this.companiesService.editJobs(this.jobForm.getRawValue()).subscribe((response : any) => {
           if (response.statusCode == 200) {
-          this.toastr.success('Data updated suceesfully');
+          this.toastr.success('Data Updated Successfully');
           this.view_jobs= true;
           this.edit_jobs = false;
           this.getJobs();
@@ -393,7 +393,7 @@ saveJob(){
       this.companiesService.saveJobs(this.jobForm.getRawValue()).subscribe((response : any) => {
         if(response.statusCode == 200){
           this.jobForm.reset();
-          this.toastr.success('Data added suceesfully');
+          this.toastr.success('Data Saved Successfully');
           
           this.getJobs();
         }else{
@@ -460,7 +460,7 @@ getJobs(){
       }
       this.companiesService.deleteJob(this.postArry).subscribe(response => {
         this.getJobs();
-        this.toastr.success('Data deleted suceesfully');
+        this.toastr.success('Data deleted Successfully');
        });
     } 
   }
@@ -490,7 +490,7 @@ getJobs(){
       }
       this.companiesService.deleteQuestion(this.postArry).subscribe(response => {
         this.questions.splice(index, 1);     
-        this.toastr.success('Data deleted suceesfully');
+        this.toastr.success('Data deleted Successfully');
       });
     }
   }
