@@ -121,7 +121,7 @@ export class CompanyComponent implements OnInit {
     if(this.companyForm.valid){    
       this.paviAdminService.updateCompany(this.companyForm.getRawValue()).subscribe(response => {
        this.getComapnies();
-       this.toastr.success('Data updated suceesfully');
+       this.toastr.success('Data Updated Successfully');
        this.view_company = true;
       this.edit_company = false;
       });
@@ -169,7 +169,7 @@ export class CompanyComponent implements OnInit {
       }
       this.paviAdminService.deleteCompany(this.postArry).subscribe(response => {
         this.getComapnies();
-        this.toastr.success('Data deleted suceesfully');
+        this.toastr.success('Data deleted Successfully');
        });
     }
     

@@ -101,7 +101,7 @@ export class JobCategoryComponent implements OnInit {
       this.paviAdminService.saveJobCategory({category:this.categoryForm.get('category').value}).subscribe((response : any) => {
         if(response.statusCode==200){
         this.getJobCategory();
-        this.toastr.success('Data updated suceesfully');
+        this.toastr.success('Data Updated Successfully');
         (<any>$(`#add-modal-job-catgory`)).modal('hide');
         } else {
           this.toastr.error(response.message)
@@ -129,7 +129,7 @@ export class JobCategoryComponent implements OnInit {
           console.log("Update Job Category>>>>>>", response)
           if(response.statusCode==200){
              this.getJobCategory();
-             this.toastr.success('Data Updated suceesfully');
+             this.toastr.success('Data Updated Successfully');
              (<any>$(`#edit-modal-popup-jobCategory`)).modal('hide');
           } else {
              this.toastr.error(response.message)

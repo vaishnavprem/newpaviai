@@ -162,7 +162,7 @@ saveEmployee(){
     this.companiesService.updateEmployee(this.employeeForm.getRawValue()).subscribe(async (dt: any) => {
       this.isLoder=false;
       if(dt.statusCode==200){
-        this.toastr.success('Employee successfully updated');
+        this.toastr.success('Employee Updated Successfully');
         // (<any>$(`#add-modal-popup-employee`)).modal('hide');
         this.edit_employee = false;
         this.view_employee = true;
@@ -207,7 +207,7 @@ async deleteEmployee(employeeId){
     }
     this.companiesService.deleteEmployee(this.postArry).subscribe(response => {
       this.getEmployee();
-      this.toastr.success('Data deleted suceesfully');
+      this.toastr.success('Data deleted Successfully');
      });
   }
   

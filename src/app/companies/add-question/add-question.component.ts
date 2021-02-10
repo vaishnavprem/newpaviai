@@ -154,7 +154,7 @@ saveQuestion(){
         if(this.jobId){
           this.questionForm.patchValue({jobId : this.jobId});
         }
-        this.toastr.success('Data added suceesfully');
+        this.toastr.success('Data Saved Successfully');
        });
   } else {
     this.toastr.error('Please check all fields');

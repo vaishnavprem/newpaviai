@@ -193,6 +193,13 @@ getUsers(){
             }
           };
           this.applyFilterThree('1');
+        }else if(this.filterKey == 'Pending'){
+          this.dataSourceThree.filterPredicate = function(data, filter: string): boolean {
+            if(data.avg_rating){
+              return  data.avg_rating.toLowerCase().includes(filter)
+            }
+          };
+          this.applyFilterThree("0.0000");
         }else{
           this.dataSourceThree.filterPredicate = function(data, filter: string): boolean {
             if(data.interview_status){
@@ -317,7 +324,7 @@ saveFeedBack(){
     this.companiesService.saveFeedback(this.employmentArry).subscribe((response : any)=> {
       this.isLoder=false;
       if(response.statusCode == 200){
-        this.toastr.success('Data save suceesfully');
+        this.toastr.success('Data Saved Successfully');
       }else{
         this.toastr.error(response.message);
       }    
@@ -341,7 +348,7 @@ saveFinalDecision(){
     this.companiesService.saveFinalDecision(this.employmentArry).subscribe((response : any)=> {
       this.isLoder=false;
       if(response.statusCode == 200){
-        this.toastr.success('Data save suceesfully');
+        this.toastr.success('Data Saved Successfully');
       }else{
         this.toastr.error(response.message);
       }    

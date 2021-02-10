@@ -249,7 +249,7 @@ saveEmployment(){
     }
     this.companiesService.saveEmployment(this.employmentArry).subscribe(response => {
       this.getEmployment();
-      this.toastr.success('Data updated suceesfully');
+      this.toastr.success('Data Updated Successfully');
       (<any>$(`#add-modal-employment`)).modal('hide');
      });
   } else {
@@ -267,7 +267,7 @@ saveSeniority(){
     }
     this.companiesService.saveSeniority(this.employmentArry).subscribe(response => {
       this.getSeniority();
-      this.toastr.success('Data updated suceesfully');
+      this.toastr.success('Data Updated Successfully');
       (<any>$(`#add-modal-seniority`)).modal('hide');
      });
   } else {
@@ -285,7 +285,7 @@ saveResponsibility(){
     }
     this.companiesService.saveResponsibility(this.employmentArry).subscribe(response => {
       this.getResponsibility();
-      this.toastr.success('Data updated suceesfully');
+      this.toastr.success('Data Updated Successfully');
       (<any>$(`#add-modal-responsibilities`)).modal('hide');
      });
   } else {
@@ -303,7 +303,7 @@ saveRequirements(){
     }
     this.companiesService.saveRequirements(this.employmentArry).subscribe(response => {
       this.getRequirements();
-      this.toastr.success('Data updated suceesfully');
+      this.toastr.success('Data Updated Successfully');
       (<any>$(`#add-modal-requirements`)).modal('hide');
      });
   } else {
@@ -330,7 +330,7 @@ saveJob(){
     if(this.jobForm.get('jobId').value){
       this.companiesService.editJobs(this.jobForm.getRawValue()).subscribe((response : any) => {
           if (response.statusCode == 200) {
-          this.toastr.success('Data updated suceesfully');
+          this.toastr.success('Data Updated Successfully');
           } else if (response.statusCode == 401) {
             this.toastr.error(response.message);
           }
@@ -340,7 +340,7 @@ saveJob(){
       this.companiesService.saveJobs(this.jobForm.getRawValue()).subscribe((response :any) => {
        if(response.statusCode == 200){
           this.jobForm.reset();
-          this.toastr.success('Data added suceesfully');
+          this.toastr.success('Data Saved Successfully');
           this.getJobs();
           this.router.navigate(['/companies/view-jobs']);
        }else{

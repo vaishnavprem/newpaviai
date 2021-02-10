@@ -158,6 +158,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   CalendarView = CalendarView;
   interview_status;
+  pending_overview;
   
 
   dataSourceTwo: MatTableDataSource<PeriodicElement>;
@@ -329,6 +330,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         //console.log("Company Data>>",response);
         this.companyData = response['data']['companydata'];
         this.interview_status = response['data']['interview_status'];
+        this.pending_overview = response['data']['pending_overview']
         if(this.companyData.logo_image!=undefined){
           this.profileImage= `${AVATAR_URL}uploads/avatars/${this.companyData.logo_image}`;
         }
