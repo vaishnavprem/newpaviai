@@ -102,7 +102,7 @@ export const FORM_OWL_CAROUSEL_OPTIONS: OwlOptions = {
 };
 
 export const FINAL_DECISION = {
-  0 : 'Reject',
+  0 : 'Decline',
   1 : 'Advance',
   2 : 'Offer',
   3 : 'Hired'

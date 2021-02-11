@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GetAuthUserPipe} from '../../../../shared/pipes/get-auth-user.pipe';
 import {AuthService} from '../../../../core/services/auth.service';
+import {SearchService} from '../../../../core/services/search.service';
 import {CompaniesService} from '../../../../core/services/companies.service';
 import {API_URL,AVATAR_URL, TEXT_ONLY_PATTERN,EMAIL_PATTERN,NO_SPACE_PATTERN} from '../../../../core/constants/general';
 import {ToastrService} from 'ngx-toastr';
@@ -25,6 +26,7 @@ export class CompanyDashboardHeaderComponent implements OnInit {
     private companiesService: CompaniesService,
     public router: Router,
     private toastr: ToastrService,
+    private searchService: SearchService,
   ) { }
 
   ngOnInit(): void {
@@ -59,6 +61,10 @@ export class CompanyDashboardHeaderComponent implements OnInit {
       else this.toastr.error(response.message)
         
   });
+}
+
+public getSuggestion(name){
+  this.searchService.getSuggestion(name);
 }
 
 }

@@ -7,6 +7,7 @@ import {patternValidator} from '../../core/helpers/pattern-validator';
 import {ToastrService} from 'ngx-toastr';
 import {GetAuthUserPipe} from '../../shared/pipes/get-auth-user.pipe';
 import {CompaniesService} from '../../core/services/companies.service';
+import {SearchService} from '../../core/services/search.service';
 import {COUNTRY_LIST} from '../../core/constants/countries';
 import { DatePipe } from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -60,6 +61,7 @@ export class MyEmployeeComponent implements OnInit {
   public displayedColumnsFive: string[];
   employeeForm: FormGroup;
   public domain;
+  public results = null;
 
   view_employee = true;
   edit_employee = false;
@@ -78,10 +80,20 @@ export class MyEmployeeComponent implements OnInit {
     public auth: AuthService,
     private paviAdminService:PaviAdminService,
     public router: Router,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private searchService: SearchService
   ) {
     this.dataSourceFive = new MatTableDataSource<Employee>();
     this.displayedColumnsFive=['first_name', 'last_name', 'user_id', 'position','action'];
+
+    searchService.getResults$()
+    .subscribe((resultList: any[])=> {
+        this.results = resultList;
+        if(this.results != ''){
+          this.applyFilterFive(this.results);
+        }
+    });
+
    }
 
   ngOnInit(): void {
