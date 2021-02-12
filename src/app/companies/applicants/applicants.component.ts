@@ -7,6 +7,7 @@ import {patternValidator} from '../../core/helpers/pattern-validator';
 import {ToastrService} from 'ngx-toastr';
 import {GetAuthUserPipe} from '../../shared/pipes/get-auth-user.pipe';
 import {CompaniesService} from '../../core/services/companies.service';
+import {SearchService} from '../../core/services/search.service';
 import {COUNTRY_LIST} from '../../core/constants/countries';
 import { DatePipe } from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -71,7 +72,10 @@ export class ApplicantsComponent implements OnInit {
   resumeFile;
   play;
   filterKey;
+  from;
   sub;
+  getDecline = true;
+  public results = null;
   
   stars: number[] = [1, 2, 3, 4, 5];
   selectedValue: number;
@@ -91,14 +95,24 @@ export class ApplicantsComponent implements OnInit {
     public router: Router,
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
+    private searchService: SearchService
   ) { 
     this.dataSourceThree = new MatTableDataSource<User>();
     this.displayedColumnsThree=['first_name', 'last_name', 'email','jobTitle','created_at', 'average_rating','final_decision','action'];
+
+    searchService.getResults$()
+    .subscribe((resultList: any[])=> {
+        this.results = resultList;
+        if(this.results != ''){
+          this.applyFilterThree(this.results);
+        }
+    });
   }
 
   ngOnInit(): void {
     this.sub = this.route.queryParams.subscribe(params => {
       this.filterKey = params['filter'] || null; // (+) converts string 'id' to a number
+      this.from = params['from'] || null;
     });
 
     this.authUser = this.getAuthUser.transform();
@@ -130,6 +144,16 @@ export class ApplicantsComponent implements OnInit {
 
   applyFilterThree(filterValue: string) {
     this.dataSourceThree.filter = filterValue.trim().toLowerCase();
+  }
+
+  declinedApplicants(){
+    this.getDecline = false;
+    this.dataSourceThree.filterPredicate = function(data, filter: string): boolean {
+      if(data.interview_status){
+        return  data.interview_status.toLowerCase().includes(filter)
+      }
+    };
+    this.applyFilterThree("Decline");
   }
 
   getCompanyData(){
@@ -200,6 +224,13 @@ getUsers(){
             }
           };
           this.applyFilterThree("0.0000");
+        }else if(this.from){
+          this.dataSourceThree.filterPredicate = function(data, filter: string): boolean {
+            if(data.jobTitle){
+              return  data.jobTitle.toLowerCase().includes(filter)
+            }
+          };
+          this.applyFilterThree(this.filterKey);
         }else{
           this.dataSourceThree.filterPredicate = function(data, filter: string): boolean {
             if(data.interview_status){

@@ -7,6 +7,7 @@ import {patternValidator} from '../../core/helpers/pattern-validator';
 import {ToastrService} from 'ngx-toastr';
 import {GetAuthUserPipe} from '../../shared/pipes/get-auth-user.pipe';
 import {CompaniesService} from '../../core/services/companies.service';
+import {SearchService} from '../../core/services/search.service';
 import {COUNTRY_LIST} from '../../core/constants/countries';
 import { DatePipe } from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -69,6 +70,8 @@ export class ViewJobsComponent implements OnInit {
   public jobs:any[];
   public questions:any[];
 
+  public results = null;
+
   public singleJob:{
     dateOpened: '',
         country: '',
@@ -105,10 +108,19 @@ export class ViewJobsComponent implements OnInit {
     public auth: AuthService,
     private paviAdminService:PaviAdminService,
     public router: Router,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private searchService: SearchService
   ) {
     this.dataSourceOne = new MatTableDataSource<JobsElements>();
     this.displayedColumnsOne=['jobTitle', 'email', 'level','employer','salary','action'];
+
+    searchService.getResults$()
+    .subscribe((resultList: any[])=> {
+        this.results = resultList;
+        if(this.results != ''){
+          this.applyFilterOne(this.results);
+        }
+    });
 
    }
 
