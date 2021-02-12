@@ -12,6 +12,8 @@ import { PartnerComponent } from './partner/partner.component';
 import { WorkComponent } from './work/work.component';
 import { UserInterviewComponent } from './user-interview/user-interview.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
+import { TermsComponent } from './terms/terms.component';
+import { PolicyComponent } from './policy/policy.component';
 const routes: Routes = [
   {
     path: 'profile-page',
@@ -57,6 +59,14 @@ const routes: Routes = [
     path: 'thank-you',
     component: ThankYouComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'terms',
+    component: TermsComponent
+  },
+  {
+    path: 'policy',
+    component: PolicyComponent
   },
 ];
 

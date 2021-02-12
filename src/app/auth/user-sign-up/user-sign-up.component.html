@@ -163,7 +163,7 @@
                             <label>
                               <input type="checkbox" id="terms" name="terms" class="checkbox_type" formControlName="agreed" />
                               <i class="helper"></i> Creating an account means you're okay with our</label>
-                              <p> <a href="javascript:void(0);"> Terms of Service,</a> <a href="javascript:void(0);"> privacy Policy,</a> and our default <a href="javascript:void(0);"> Notification Settings.</a> </p>
+                              <p> <a (click)="router.navigate(['users/terms']);"> Terms of Service,</a> <a (click)="router.navigate(['users/policy']);"> Privacy Policy,</a> and our default <a href="javascript:void(0);"> Notification Settings.</a> </p>
                           </div>
                           <div>
                           </div>

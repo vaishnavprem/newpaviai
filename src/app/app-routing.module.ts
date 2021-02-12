@@ -9,6 +9,7 @@ import { AskQuestionComponent } from './home/ask-question/ask-question.component
 import { FindNewEmployeeComponent } from './home/find-new-employee/find-new-employee.component';
 import { EmployeeSignUpComponent } from './home/employee-sign-up/employee-sign-up.component';
 import { RequestDemoComponent } from './home/request-demo/request-demo.component';
+import { ForgotPasswordComponent } from './home/forgot-password/forgot-password.component';
 const routes: Routes = [
   {
     path: '',
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'request-demo',
     component: RequestDemoComponent
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
   },
   // {
   //   path: 'find-new-employee',
