@@ -74,7 +74,8 @@ export class ApplicantsComponent implements OnInit {
   filterKey;
   from;
   sub;
-  getDecline = true;
+  getDecline = false;
+  
   public results = null;
   
   stars: number[] = [1, 2, 3, 4, 5];
@@ -140,6 +141,7 @@ export class ApplicantsComponent implements OnInit {
       this.comment = '';
       this.play = 0;
       this.getUsers();
+      
   }
 
   applyFilterThree(filterValue: string) {
@@ -147,13 +149,9 @@ export class ApplicantsComponent implements OnInit {
   }
 
   declinedApplicants(){
-    this.getDecline = false;
-    this.dataSourceThree.filterPredicate = function(data, filter: string): boolean {
-      if(data.interview_status){
-        return  data.interview_status.toLowerCase().includes(filter)
-      }
-    };
-    this.applyFilterThree("Decline");
+    this.getDecline = true;
+    this.getUsers();
+    
   }
 
   getCompanyData(){
@@ -197,13 +195,15 @@ export class ApplicantsComponent implements OnInit {
 getUsers(){
   this.isLoder=true;
   this.postArry = {
-    companyId:this.companyData.id
+    companyId:this.companyData.id,
+    decline: this.getDecline?'yes':'no'
   }
   let JobData = this.companiesService.getJobsUser(this.postArry)
   .subscribe(response => {
     this.isLoder=false;
     // $('.loader').hide();
     let latest = response['data']['user'].sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+    
     this.dataSourceThree.data = latest as User[];
     this.dataSourceThree.paginator = this.tableThreePaginator;
       this.dataSourceThree.sort = this.tableThreeSort;
