@@ -19,7 +19,7 @@ function typewriterQuestion(params1,param2)
         //console.log("Employer");
         if(params1 == "Start"){
             //console.log("Employee");
-             aText = new Array("Position, you will be asked a series of questions. You will be given 5 mins to answer each question.");
+             aText = new Array("position, you will be asked a series of questions. You will be given 5 minutes to answer each question.");
              //destination = document.getElementById("seekertext");
              iArrLength = aText[0].length; // the length of the text array
              iSpeed = 100; 

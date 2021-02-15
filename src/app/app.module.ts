@@ -30,6 +30,7 @@ import { AskQuestionComponent } from './home/ask-question/ask-question.component
 import { FindNewEmployeeComponent } from './home/find-new-employee/find-new-employee.component';
 import { EmployeeSignUpComponent } from './home/employee-sign-up/employee-sign-up.component';
 import { RequestDemoComponent } from './home/request-demo/request-demo.component';
+import { ForgotPasswordComponent } from './home/forgot-password/forgot-password.component';
 // Token getter for JWT module
 export function tokenGetter() {
   return localStorage.getItem('token') || '';
@@ -46,7 +47,8 @@ export function tokenGetter() {
     AskQuestionComponent,
     FindNewEmployeeComponent,
     EmployeeSignUpComponent,
-    RequestDemoComponent
+    RequestDemoComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

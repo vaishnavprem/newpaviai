@@ -313,7 +313,8 @@
                       </td>
                     </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumnsThree"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumnsThree" [hidden]="row?.interview_status === 'Decline' && getDecline === true"></tr>
+                    <!-- <tr mat-row *matRowDef="let row; columns: displayedColumnsThree" [hidden]="row?.interview_status === 'Decline' && getDecline === true"></tr> -->
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsThree"></tr>
                   </table>
                 
                   <mat-paginator
