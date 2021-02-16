@@ -75,6 +75,8 @@ export class ApplicantsComponent implements OnInit {
   from;
   sub;
   getDecline = false;
+
+  userForm: FormGroup;
   
   public results = null;
   
@@ -124,6 +126,12 @@ export class ApplicantsComponent implements OnInit {
     this.getCompanyData();
     this.play= 0;
     console.log("Final Decision", this.filterKey);
+
+    this.userForm = this.fb.group({
+      subject: ['', Validators.required],
+      body: ['', Validators.required],
+      email:['', Validators.required],
+    });
 
   }
 
@@ -385,6 +393,15 @@ saveFinalDecision(){
       }    
      });
   
+}
+
+sendMail(){
+
+}
+
+showMail(element){
+  this.userForm.patchValue({email: element.email});
+  $("#send-mail").modal("show");
 }
 
 }
