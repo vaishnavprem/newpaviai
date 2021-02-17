@@ -214,6 +214,52 @@
     </div>
   </div>
 
+  <div class="modal fade in" id="send-mail">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Send Mail</h5>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="userForm" (ngSubmit)="sendMail()">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">To:</label>
+                    <input type="text" class="form-control"  formControlName="email" readonly>
+                    <div *ngIf="userForm.get('email').invalid && userForm.get('email').touched  "class="alert alert-danger">Email is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Subject:</label>
+                    <input type="text" class="form-control" formControlName="subject">
+                    <div *ngIf="userForm.get('subject').invalid && userForm.get('subject').touched"class="alert alert-danger">Subject is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Message:</label>
+                    <!-- <input type="text" class="form-control"  formControlName="body"> -->
+                    <textarea class="form-control"  formControlName="body"></textarea>
+                    <div *ngIf="userForm.get('body').invalid && userForm.get('body').touched"class="alert alert-danger">Message is required</div>
+                  </div>
+                </div>
+                
+                
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary ">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   <div class="bg-images-1">
     <div class="content-warp">
@@ -310,10 +356,10 @@
                         <a class="btn" title="View Feedback"> <i class="fa fa-comments" (click)="showCandidateFeedback(element)"></i></a> 
                         <!-- <a class="btn red"> <i class="fa fa-trash"></i></a> -->
                         <a *ngIf="element.resume_file" [href]="'https://d39smmql2m03vn.cloudfront.net/uploads/avatars/'+element.resume_file" title="View Resume" class="btn" target="_blank" download> <i class="fa fa-file" aria-hidden="true"></i></a>
+                        <a class="btn" title="Send Mail"> <i class="fa fa-envelope" (click)="showMail(element)"></i></a>
                       </td>
                     </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumnsThree"></tr>
-                    <!-- <tr mat-row *matRowDef="let row; columns: displayedColumnsThree" [hidden]="row?.interview_status === 'Decline' && getDecline === true"></tr> -->
                     <tr mat-row *matRowDef="let row; columns: displayedColumnsThree"></tr>
                   </table>
                 
