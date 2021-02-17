@@ -24,6 +24,7 @@ import { MyEmployeeComponent } from './my-employee/my-employee.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { VendorsComponent } from './vendors/vendors.component';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { VendorsComponent } from './vendors/vendors.component';
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
-    })
+    }),
+    ClipboardModule,
   ],
   providers: [DatePipe]
 })

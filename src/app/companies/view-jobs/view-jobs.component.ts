@@ -22,6 +22,7 @@ import { Subject } from 'rxjs';
 import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
 import { DomSanitizer } from '@angular/platform-browser';
 import yesno from "yesno-dialog";
+import { ClipboardService } from 'ngx-clipboard'
 declare var $: any;
 
 interface JobsElements {
@@ -31,6 +32,15 @@ interface JobsElements {
   level: string;
   employment: string;
   salary: string;
+}
+
+interface Employee {
+  id:string,
+  first_name: string;
+  last_name: string;
+  user_id: string;
+  position: string;
+  password: string;
 }
 
 @Component({
@@ -69,8 +79,10 @@ export class ViewJobsComponent implements OnInit {
   public requirements:any[];
   public jobs:any[];
   public questions:any[];
+  employees:any[];
 
   public results = null;
+  SelectionStatusOfEmployee: any = {};
 
   public singleJob:{
     dateOpened: '',
@@ -109,7 +121,8 @@ export class ViewJobsComponent implements OnInit {
     private paviAdminService:PaviAdminService,
     public router: Router,
     private sanitizer: DomSanitizer,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private _clipboardService: ClipboardService
   ) {
     this.dataSourceOne = new MatTableDataSource<JobsElements>();
     this.displayedColumnsOne=['jobTitle', 'email', 'level','employer','salary','action'];
@@ -122,6 +135,7 @@ export class ViewJobsComponent implements OnInit {
         }
     });
 
+    
    }
 
   ngOnInit(): void {
@@ -449,6 +463,17 @@ getJobs(){
   }
   editJob(index){
     this.singleJob =this.jobs[index];
+
+    this.isLoder=true;
+    this.postArry = {
+      parent_id:this.authUser.user_id
+    }
+    let employeeData = this.companiesService.getEmployee(this.postArry)
+      .subscribe((response : any) => {
+        this.isLoder=false;
+        //console.log("Response Of get Employee",response);
+        this.employees = response['data']['empdata'] as Employee[];
+      });
     
     if(this.singleJob ){
         // $('#pills-tab a[href="#create-job"]').tab('show');
@@ -506,6 +531,13 @@ getJobs(){
       });
     }
   }
+
+  copyToClipboard(element){
+    let url = "https://dq84tlhr1cf2j.cloudfront.net/jobs/show-job/"+element.id;
+    this._clipboardService.copy(url);
+    this.toastr.success('Copied to clipboard!');
+  }
+
   
 
 }
