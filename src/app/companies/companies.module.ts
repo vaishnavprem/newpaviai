@@ -25,6 +25,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { VendorsComponent } from './vendors/vendors.component';
 import { ClipboardModule } from 'ngx-clipboard';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ClipboardModule } from 'ngx-clipboard';
       useFactory: adapterFactory
     }),
     ClipboardModule,
+    AngularEditorModule 
   ],
   providers: [DatePipe]
 })

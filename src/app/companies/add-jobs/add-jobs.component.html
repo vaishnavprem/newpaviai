@@ -285,6 +285,18 @@
                         <div *ngIf="jobForm.get('date_closed').touched && jobForm.get('date_closed').invalid"class="alert alert-danger">Job End Date is required</div>
                         <input type="hidden" formControlName="jobId">
                       </div> -->
+                      <div class="col-xl-12 col-md-12">
+                        <div class="form-group">
+                          <label>Employee List</label>
+                          <div class="row">
+                            <div class="col-md-4" *ngFor="let emp of employees">
+                                <mat-checkbox (change)="onChange(emp.id, $event)">
+                                  {{emp.first_name}}&nbsp;{{emp.last_name}}
+                                </mat-checkbox>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="row">
                       <div class="col-sm-12">

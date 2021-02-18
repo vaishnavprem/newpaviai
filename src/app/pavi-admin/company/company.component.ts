@@ -160,12 +160,13 @@ export class CompanyComponent implements OnInit {
     this.getComapnies();
    }
 
-   async deleteCompany(company_id){
+   async deleteCompany(company_id,user_id){
      //console.log("Company_id",company_id);
      const yes = await yesno();
      if(yes){
       this.postArry = {
         company_id:company_id,
+        user_id:user_id
       }
       this.paviAdminService.deleteCompany(this.postArry).subscribe(response => {
         this.getComapnies();
