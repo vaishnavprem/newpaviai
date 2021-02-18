@@ -21,6 +21,7 @@ import {startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,add
 import { Subject } from 'rxjs';
 import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 declare var $: any;
 
@@ -68,7 +69,7 @@ export class ApplicantsComponent implements OnInit {
   position;
   candidate_name;
   comment = "";
-  final_decision = "Reject";
+  final_decision = "Decline";
   resumeFile;
   play;
   filterKey;
@@ -77,6 +78,7 @@ export class ApplicantsComponent implements OnInit {
   getDecline = false;
 
   userForm: FormGroup;
+  templateForm: FormGroup;
   
   public results = null;
   
@@ -86,6 +88,73 @@ export class ApplicantsComponent implements OnInit {
   @ViewChild('TableThreePaginator', {static: false}) tableThreePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableThreeSort: MatSort;
 
+  config1: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    minHeight: '5rem',
+    maxHeight: '15rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    sanitize: true,
+    height: '350px',
+    toolbarPosition: 'top',
+    defaultFontName: '',
+    defaultFontSize: '3',
+    defaultParagraphSeparator: 'p',
+    toolbarHiddenButtons: [
+      ['undo','redo','underline','strikeThrough','subscript','superscript','justifyLeft','justifyCenter','justifyRight','justifyFull','indent','outdent','insertUnorderedList','insertOrderedList','heading','fontName'],
+      ['fontSize','textColor','backgroundColor','customClasses','link','unlink','insertImage','insertVideo','insertHorizontalRule','removeFormat','toggleEditorMode']
+    ],
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ]
+  };
+
+  config2: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    minHeight: '5rem',
+    maxHeight: '15rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    sanitize: true,
+    height: '350px',
+    toolbarPosition: 'top',
+    defaultFontName: '',
+    defaultFontSize: '3',
+    defaultParagraphSeparator: 'p',
+    toolbarHiddenButtons: [
+      ['undo','redo','underline','strikeThrough','subscript','superscript','justifyLeft','justifyCenter','justifyRight','justifyFull','indent','outdent','insertUnorderedList','insertOrderedList','heading','fontName'],
+      ['fontSize','textColor','backgroundColor','customClasses','link','unlink','insertImage','insertVideo','insertHorizontalRule','removeFormat','toggleEditorMode']
+    ],
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ]
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -131,8 +200,13 @@ export class ApplicantsComponent implements OnInit {
       subject: ['', Validators.required],
       body: ['', Validators.required],
       email:['', Validators.required],
+      template: ['', Validators.required]
     });
 
+    this.templateForm = this.fb.group({
+      name: ['', Validators.required],
+      message: ['', Validators.required],
+    });
   }
 
   stopPlayer(){
@@ -396,12 +470,22 @@ saveFinalDecision(){
 }
 
 sendMail(){
-
+  //console.log("Send Mail>>>",this.userForm.getRawValue());
 }
 
 showMail(element){
   this.userForm.patchValue({email: element.email});
   $("#send-mail").modal("show");
+}
+
+addTemplate(){
+  $("#add-template").modal("show");
+
+}
+
+saveTemplate(){
+  //console.log("Save Template>>>>",this.templateForm.getRawValue());
+
 }
 
 }

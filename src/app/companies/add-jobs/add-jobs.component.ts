@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectionStrategy} from '@angular/core';
 import {AuthService} from '../../core/services/auth.service';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup,FormArray, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {API_URL,AVATAR_URL, TEXT_ONLY_PATTERN,EMAIL_PATTERN,NO_SPACE_PATTERN} from '../../core/constants/general';
 import {patternValidator} from '../../core/helpers/pattern-validator';
@@ -21,6 +21,15 @@ import { Subject } from 'rxjs';
 import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
 import { DomSanitizer } from '@angular/platform-browser';
 declare var $: any;
+
+interface Employee {
+  id:string,
+  first_name: string;
+  last_name: string;
+  user_id: string;
+  position: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-add-jobs',
@@ -57,6 +66,7 @@ export class AddJobsComponent implements OnInit {
   public responsibilities:any[];
   public requirements:any[];
   public jobs:any[];
+  employees:any[];
 
 
   constructor(
@@ -96,6 +106,7 @@ export class AddJobsComponent implements OnInit {
         // responsibility:['', Validators.required],
         companyId:['' ],
         jobId:[''],
+        employeeId: this.fb.array([])
     });
 
     this.employmentForm = this.fb.group({
@@ -144,6 +155,7 @@ export class AddJobsComponent implements OnInit {
       this.openJobs= response['data']['jobs']; 
       this.applicants= response['data']['applicants']; 
       this.interviewCompleted= response['data']['interview_com']; 
+      this.getEmployee();
        } else if (response.statusCode == 401) {
         this.toastr.error(response.message)
         this.auth.logOut();
@@ -373,6 +385,32 @@ getJobs(){
     
   });
   
+}
+
+getEmployee(){
+  this.isLoder=true;
+    this.postArry = {
+      parent_id:this.authUser.user_id
+    }
+    let employeeData = this.companiesService.getEmployee(this.postArry)
+      .subscribe((response : any) => {
+        this.isLoder=false;
+        //console.log("Response Of get Employee",response);
+        this.employees = response['data']['empdata'] as Employee[];
+    });   
+}
+
+onChange(employeeId:string, event) {
+  const employee_ids = <FormArray>this.jobForm.controls.employeeId;
+
+  if(event.checked) {
+    employee_ids.push(new FormControl(employeeId));
+  } else {
+    let index = employee_ids.controls.findIndex(x => x.value == employeeId)
+    employee_ids.removeAt(index);
+  }
+
+  //console.log("selected Employee>>>",employee_ids.value)
 }
 
 }
