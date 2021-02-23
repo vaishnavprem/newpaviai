@@ -227,9 +227,9 @@
                 <div class="col-sm-12">
                   <div class="form-group">
                     <label for="email-template" class="col-form-label">Email Template &nbsp;<i class="fa fa-plus" aria-hidden="true" title="Add Template" (click)="addTemplate()"></i></label>
-                    <select class="form-control" formControlName="template">
+                    <select class="form-control" formControlName="template" (change)='onTemplateSelected($event)'>
                       <option selected disabled [value]="''">Email Template*</option>
-                      <!-- <option *ngFor="let seniority of seniorityLevels" [value]="seniority['seniority']">{{seniority['seniority']}}</option> -->
+                      <option *ngFor="let template of templates" [value]="template['id']">{{template['name']}}</option>
                       <div *ngIf="userForm.get('template').touched && userForm.get('template').invalid" class="alert alert-danger">Template is required</div>
                     </select>
                   </div>
@@ -290,6 +290,12 @@
               <div class="col-sm-12">
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Message:</label>
+                  <select class="email-variable" (change)="onEmailVariableChange($event);">
+                    <option value="Applicant Name">Applicant Name</option>
+                    <option value="Job Name">Job Name</option>
+                    <option value="Sender Name">Sender Name</option>
+                    
+                  </select>
                   <angular-editor id="editor2" formControlName="message" [config]="config2"></angular-editor>
                   <div *ngIf="templateForm.get('message').invalid && templateForm.get('message').touched"class="alert alert-danger">Message is required</div>
                 </div>

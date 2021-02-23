@@ -22,6 +22,7 @@ import { Subject } from 'rxjs';
 import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { ResetPasswordComponent } from 'app/auth/reset-password/reset-password.component';
 
 declare var $: any;
 
@@ -76,9 +77,11 @@ export class ApplicantsComponent implements OnInit {
   from;
   sub;
   getDecline = false;
+  loadFlag = false;
 
   userForm: FormGroup;
   templateForm: FormGroup;
+  templates;
   
   public results = null;
   
@@ -175,7 +178,7 @@ export class ApplicantsComponent implements OnInit {
     searchService.getResults$()
     .subscribe((resultList: any[])=> {
         this.results = resultList;
-        if(this.results != ''){
+        if(this.results != '' && this.loadFlag){
           this.applyFilterThree(this.results);
         }
     });
@@ -186,7 +189,6 @@ export class ApplicantsComponent implements OnInit {
       this.filterKey = params['filter'] || null; // (+) converts string 'id' to a number
       this.from = params['from'] || null;
     });
-
     this.authUser = this.getAuthUser.transform();
     if(localStorage.getItem("user_id") != null){
       this.authUser.user_id = localStorage.getItem("user_id");
@@ -194,7 +196,8 @@ export class ApplicantsComponent implements OnInit {
 
     this.getCompanyData();
     this.play= 0;
-    console.log("Final Decision", this.filterKey);
+    this.loadFlag = true;
+    //console.log("Final Decision", this.filterKey);
 
     this.userForm = this.fb.group({
       subject: ['', Validators.required],
@@ -206,6 +209,7 @@ export class ApplicantsComponent implements OnInit {
     this.templateForm = this.fb.group({
       name: ['', Validators.required],
       message: ['', Validators.required],
+      company_id: this.authUser.user_id
     });
   }
 
@@ -470,10 +474,11 @@ saveFinalDecision(){
 }
 
 sendMail(){
-  //console.log("Send Mail>>>",this.userForm.getRawValue());
+  console.log("Send Mail>>>",this.userForm.getRawValue());
 }
 
 showMail(element){
+  this.getTemplate();
   this.userForm.patchValue({email: element.email});
   $("#send-mail").modal("show");
 }
@@ -485,6 +490,58 @@ addTemplate(){
 
 saveTemplate(){
   //console.log("Save Template>>>>",this.templateForm.getRawValue());
+  
+  if (this.templateForm.valid) {
+    //this.isLoder = true;
+    this.companiesService.saveEmailTemplate(this.templateForm.getRawValue()).subscribe((dt: any) => {
+      if(dt.statusCode==200){
+        //this.isLoder = false;
+        $("#add-template").modal("hide");
+        this.toastr.success('Data Saved Successfully');
+        this.getTemplate();
+      } else {
+        //this.isLoder = false;
+        this.toastr.error(dt.message);
+      }
+    });
+  }else{
+    this.toastr.error("All fields are required");
+  }
+
+}
+
+getTemplate(){
+  this.employmentArry = {
+    company_id: this.authUser.user_id
+  }
+  //console.log("Form Data>>>",this.employmentArry);
+  this.companiesService.getEmailTemplate(this.employmentArry).subscribe((response : any)=> {
+    
+    if(response.statusCode == 200){
+      this.templates = response['data']['emaildata'];
+      //console.log("All Templates",response['data']['emaildata']);
+    }else{
+      this.toastr.error(response.message);
+    }    
+   });
+}
+
+onTemplateSelected(event){
+  const value:number =  parseInt((<HTMLSelectElement>event.srcElement).value);
+   //console.log((<HTMLSelectElement>event.srcElement.options[selectedIndex]text))
+  
+  let temp = this.templates.find(i => i.id === value);
+  //console.log("Event",temp);
+  this.userForm.patchValue({body: temp.message});
+}
+
+onEmailVariableChange(event){
+  let selection = window.getSelection().getRangeAt(0);
+  let parentNode = document.createElement("a"); //create a custom node to insert
+  selection.insertNode(parentNode);
+  console.log("Selection>>",selection);
+  parentNode.insertAdjacentHTML("beforebegin", " ");
+  parentNode.insertAdjacentHTML("afterend", " ");
 
 }
 

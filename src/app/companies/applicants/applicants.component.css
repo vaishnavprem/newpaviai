@@ -113,6 +113,7 @@ a.disabled {
   .notFound{text-align: center;font-size: 40px;font-weight: bolder;font-family: 'Montserrat Ultra Light';color:black;display: table-cell;vertical-align: middle;}
   .final-parent{float: right;margin-right: 100px;display: inline-flex;}
   .final-decision{font-size: 20px;font-weight: 600;color: #000000;border-right: none;}
+  .email-variable{font-size: 15px;font-weight: 600;color: #000000;margin-left: 20px;}
 
 
 html, body {height: 100%; margin: 0;}

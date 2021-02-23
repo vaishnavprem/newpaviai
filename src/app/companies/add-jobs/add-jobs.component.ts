@@ -365,6 +365,7 @@ saveJob(){
     this.toastr.error('Please check all fields');
   }
   this.isLoder=false;
+  //console.log("Job Form>>>>",this.jobForm.getRawValue());
 }
 
 getJobs(){

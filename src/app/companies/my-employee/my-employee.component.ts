@@ -62,6 +62,7 @@ export class MyEmployeeComponent implements OnInit {
   employeeForm: FormGroup;
   public domain;
   public results = null;
+  loadFlag = false;
 
   view_employee = true;
   edit_employee = false;
@@ -89,7 +90,7 @@ export class MyEmployeeComponent implements OnInit {
     searchService.getResults$()
     .subscribe((resultList: any[])=> {
         this.results = resultList;
-        if(this.results != ''){
+        if(this.results != '' && this.loadFlag){
           this.applyFilterFive(this.results);
         }
     });
@@ -112,6 +113,7 @@ export class MyEmployeeComponent implements OnInit {
       parent_id:this.authUser.user_id
     });
     this.getCompanyData();
+    this.loadFlag = true;
   }
 
   applyFilterFive(filterValue: string) {

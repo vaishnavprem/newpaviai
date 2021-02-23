@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectionStrategy} from '@angular/core';
 import {AuthService} from '../../core/services/auth.service';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, FormArray, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {API_URL,AVATAR_URL, TEXT_ONLY_PATTERN,EMAIL_PATTERN,NO_SPACE_PATTERN} from '../../core/constants/general';
 import {patternValidator} from '../../core/helpers/pattern-validator';
@@ -82,6 +82,7 @@ export class ViewJobsComponent implements OnInit {
   employees:any[];
 
   public results = null;
+  loadFlag = false;
   SelectionStatusOfEmployee: any = {};
 
   public singleJob:{
@@ -130,7 +131,7 @@ export class ViewJobsComponent implements OnInit {
     searchService.getResults$()
     .subscribe((resultList: any[])=> {
         this.results = resultList;
-        if(this.results != ''){
+        if(this.results != '' && this.loadFlag){
           this.applyFilterOne(this.results);
         }
     });
@@ -163,6 +164,7 @@ export class ViewJobsComponent implements OnInit {
         //responsibility:['', Validators.required],
         companyId:['' ],
         jobId:[''],
+        employeeId: this.fb.array([])
     });
 
     this.employmentForm = this.fb.group({
@@ -185,7 +187,7 @@ export class ViewJobsComponent implements OnInit {
     });
 
     this.getCompanyData();
-    
+    this.loadFlag = true;
   }
 
   getCompanyData(){
@@ -536,6 +538,19 @@ getJobs(){
     let url = "https://dq84tlhr1cf2j.cloudfront.net/jobs/show-job/"+element.id;
     this._clipboardService.copy(url);
     this.toastr.success('Copied to clipboard!');
+  }
+
+  onChange(employeeId:string, event) {
+    const employee_ids = <FormArray>this.jobForm.controls.employeeId;
+  
+    if(event.checked) {
+      employee_ids.push(new FormControl(employeeId));
+    } else {
+      let index = employee_ids.controls.findIndex(x => x.value == employeeId)
+      employee_ids.removeAt(index);
+    }
+  
+    console.log("selected Employee>>>",employee_ids.value)
   }
 
   

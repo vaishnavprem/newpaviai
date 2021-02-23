@@ -30,6 +30,7 @@ export class CompanyDashboardHeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getSuggestion('');
     this.authUser = this.getAuthUser.transform();
     if(localStorage.getItem("user_id") != null){
       this.authUser.user_id = localStorage.getItem("user_id");
@@ -39,7 +40,6 @@ export class CompanyDashboardHeaderComponent implements OnInit {
 
   getCompanyData(){
     //let that=this;
-    
     this.postArry = {
     user_id:this.authUser.user_id
   }

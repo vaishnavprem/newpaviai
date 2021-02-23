@@ -82,6 +82,7 @@
                               <input class="form-control" type="password" placeholder="Password*" formControlName="password" />
                             </div>
                             <div *ngIf="employeeForm.get('password').invalid && (employeeForm.get('password').dirty || employeeForm.get('password').touched)" class="alert alert-danger">Password is required</div>
+                            <div *ngIf="employeeForm.get('password').hasError('patternInvalid')" class="alert alert-danger">Password should not contain spaces</div>
                           </div>
                           
                         </div>

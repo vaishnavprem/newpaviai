@@ -385,7 +385,7 @@
                           <label>Employee List</label>
                           <div class="row">
                             <div class="col-md-4" *ngFor="let emp of employees">
-                                <mat-checkbox>
+                                <mat-checkbox (change)="onChange(emp.id, $event)">
                                   {{emp.first_name}}&nbsp;{{emp.last_name}}
                                 </mat-checkbox>
                             </div>

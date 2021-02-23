@@ -131,4 +131,12 @@ authUser;
   saveFinalDecision(params){
     return this.httpClient.post(`${API_URL}companies/save-interview-status`, params,{headers:this.getHeaders()}); 
   }
+
+  saveEmailTemplate(params){
+    return this.httpClient.post(`${API_URL}companies/add-email-template`, params,{headers:this.getHeaders()}); 
+  }
+
+  getEmailTemplate(params){
+    return this.httpClient.post(`${API_URL}companies/get-email-template`, params,{headers:this.getHeaders()}); 
+  }
 }
