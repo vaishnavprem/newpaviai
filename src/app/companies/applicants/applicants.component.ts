@@ -21,8 +21,8 @@ import {startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,add
 import { Subject } from 'rxjs';
 import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ResetPasswordComponent } from 'app/auth/reset-password/reset-password.component';
+import { ToolbarService} from '@syncfusion/ej2-angular-richtexteditor';
 
 declare var $: any;
 
@@ -38,7 +38,8 @@ interface User {
 @Component({
   selector: 'app-applicants',
   templateUrl: './applicants.component.html',
-  styleUrls: ['./applicants.component.css']
+  styleUrls: ['./applicants.component.css'],
+  providers: [ToolbarService]
 })
 export class ApplicantsComponent implements OnInit {
   authUser;
@@ -82,6 +83,9 @@ export class ApplicantsComponent implements OnInit {
   userForm: FormGroup;
   templateForm: FormGroup;
   templates;
+  emailMessage = '';
+  emailName = '';
+  emailVariable = '';
   
   public results = null;
   
@@ -91,73 +95,12 @@ export class ApplicantsComponent implements OnInit {
   @ViewChild('TableThreePaginator', {static: false}) tableThreePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableThreeSort: MatSort;
 
-  config1: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    minHeight: '5rem',
-    maxHeight: '15rem',
-    placeholder: 'Enter text here...',
-    translate: 'no',
-    sanitize: true,
-    height: '350px',
-    toolbarPosition: 'top',
-    defaultFontName: '',
-    defaultFontSize: '3',
-    defaultParagraphSeparator: 'p',
-    toolbarHiddenButtons: [
-      ['undo','redo','underline','strikeThrough','subscript','superscript','justifyLeft','justifyCenter','justifyRight','justifyFull','indent','outdent','insertUnorderedList','insertOrderedList','heading','fontName'],
-      ['fontSize','textColor','backgroundColor','customClasses','link','unlink','insertImage','insertVideo','insertHorizontalRule','removeFormat','toggleEditorMode']
-    ],
-    customClasses: [
-      {
-        name: 'quote',
-        class: 'quote',
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: 'titleText',
-        class: 'titleText',
-        tag: 'h1',
-      },
-    ]
+  
+  public tools: object = {
+    items: [
+        'Bold', 'Italic','SourceCode']
   };
-
-  config2: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    minHeight: '5rem',
-    maxHeight: '15rem',
-    placeholder: 'Enter text here...',
-    translate: 'no',
-    sanitize: true,
-    height: '350px',
-    toolbarPosition: 'top',
-    defaultFontName: '',
-    defaultFontSize: '3',
-    defaultParagraphSeparator: 'p',
-    toolbarHiddenButtons: [
-      ['undo','redo','underline','strikeThrough','subscript','superscript','justifyLeft','justifyCenter','justifyRight','justifyFull','indent','outdent','insertUnorderedList','insertOrderedList','heading','fontName'],
-      ['fontSize','textColor','backgroundColor','customClasses','link','unlink','insertImage','insertVideo','insertHorizontalRule','removeFormat','toggleEditorMode']
-    ],
-    customClasses: [
-      {
-        name: 'quote',
-        class: 'quote',
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: 'titleText',
-        class: 'titleText',
-        tag: 'h1',
-      },
-    ]
-  };
+  
 
   constructor(
     private fb: FormBuilder,
@@ -489,18 +432,20 @@ addTemplate(){
 }
 
 saveTemplate(){
-  //console.log("Save Template>>>>",this.templateForm.getRawValue());
+  //console.log("Save Template>>>>",this.emailMessage);
+  this.employmentArry = {
+    name: this.emailName,
+    message: this.emailMessage,
+    company_id: this.authUser.user_id
+  }
   
-  if (this.templateForm.valid) {
-    //this.isLoder = true;
-    this.companiesService.saveEmailTemplate(this.templateForm.getRawValue()).subscribe((dt: any) => {
+  if (this.emailMessage != '' && this.emailName != '') {
+    this.companiesService.saveEmailTemplate(this.employmentArry).subscribe((dt: any) => {
       if(dt.statusCode==200){
-        //this.isLoder = false;
         $("#add-template").modal("hide");
         this.toastr.success('Data Saved Successfully');
         this.getTemplate();
       } else {
-        //this.isLoder = false;
         this.toastr.error(dt.message);
       }
     });
@@ -528,7 +473,6 @@ getTemplate(){
 
 onTemplateSelected(event){
   const value:number =  parseInt((<HTMLSelectElement>event.srcElement).value);
-   //console.log((<HTMLSelectElement>event.srcElement.options[selectedIndex]text))
   
   let temp = this.templates.find(i => i.id === value);
   //console.log("Event",temp);
@@ -536,13 +480,13 @@ onTemplateSelected(event){
 }
 
 onEmailVariableChange(event){
-  let selection = window.getSelection().getRangeAt(0);
-  let parentNode = document.createElement("a"); //create a custom node to insert
-  selection.insertNode(parentNode);
-  console.log("Selection>>",selection);
-  parentNode.insertAdjacentHTML("beforebegin", " ");
-  parentNode.insertAdjacentHTML("afterend", " ");
+  // this.emailMessage += '{{'+event.target.value+'}}'
+  this.emailVariable = '{{'+event.target.value+'}}';
 
+}
+
+addVariable(){
+  this.emailMessage += this.emailVariable;
 }
 
 }

@@ -251,8 +251,7 @@
                 <div class="col-sm-12">
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Message:</label>
-                    <angular-editor id="editor1" formControlName="body" [config]="config1"></angular-editor>
-                    <!-- <textarea class="form-control"  formControlName="body"></textarea> -->
+                    <textarea class="form-control"  formControlName="body"></textarea>
                     <div *ngIf="userForm.get('body').invalid && userForm.get('body').touched"class="alert alert-danger">Message is required</div>
                   </div>
                 </div>
@@ -278,26 +277,28 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form [formGroup]="templateForm" (ngSubmit)="saveTemplate()">
+          <!-- <form [formGroup]="templateForm" (ngSubmit)="saveTemplate()"> -->
             <div class="row">
               <div class="col-sm-12">
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Template Name:</label>
-                  <input type="text" class="form-control" formControlName="name">
-                  <div *ngIf="templateForm.get('name').invalid && templateForm.get('name').touched"class="alert alert-danger">Name is required</div>
+                  <!-- <input type="text" class="form-control" formControlName="name"> -->
+                  <input type="text" class="form-control" [(ngModel)]="emailName">
                 </div>
               </div>
               <div class="col-sm-12">
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Message:</label>
                   <select class="email-variable" (change)="onEmailVariableChange($event);">
+                    <option value="''" disabled selected>Variables</option>
                     <option value="Applicant Name">Applicant Name</option>
                     <option value="Job Name">Job Name</option>
                     <option value="Sender Name">Sender Name</option>
                     
                   </select>
-                  <angular-editor id="editor2" formControlName="message" [config]="config2"></angular-editor>
-                  <div *ngIf="templateForm.get('message').invalid && templateForm.get('message').touched"class="alert alert-danger">Message is required</div>
+                  <i class="fa fa-plus-circle fa-2x" style="position: relative; top: 5px;" (click)="addVariable()"></i>
+                  <!-- <ejs-richtexteditor #toolsRTE id='defaultRTE' [(ngModel)]="emailMessage"  [toolbarSettings]='tools' ></ejs-richtexteditor> -->
+                  <textarea class="form-control"  [(ngModel)]="emailMessage"></textarea>
                 </div>
               </div>
               
@@ -306,9 +307,9 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary ">Add</button>
+              <button type="button" (click)= "saveTemplate()" class="btn btn-primary ">Add</button>
             </div>
-          </form>
+          <!-- </form> -->
         </div>
       </div>
     </div>

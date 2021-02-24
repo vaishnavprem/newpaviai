@@ -25,7 +25,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { VendorsComponent } from './vendors/vendors.component';
 import { ClipboardModule } from 'ngx-clipboard';
-import { AngularEditorModule } from '@kolkov/angular-editor';
+import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
       useFactory: adapterFactory
     }),
     ClipboardModule,
-    AngularEditorModule 
+    RichTextEditorAllModule
   ],
   providers: [DatePipe]
 })
