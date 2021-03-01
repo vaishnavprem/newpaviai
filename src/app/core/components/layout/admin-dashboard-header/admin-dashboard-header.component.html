@@ -9,7 +9,7 @@
       </div>
       <div class="col-sm-6 col-md-5 col-xs-12">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search" />
+          <input type="text" class="form-control" placeholder="Search" (keyup)="getSuggestion($event.target.value)"/>
           <div class="input-group-btn">
             <div class="btn-group">
               <button type="button" class="btn"><i class="fa fa-search"></i></button>

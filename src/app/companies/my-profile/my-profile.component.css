@@ -96,6 +96,8 @@ a.disabled {
     cursor: not-allowed;
     color: gray; 
  }
+ .cover-image.change-photo-img{width: 180px;}
+ .profile-image.change-photo-img{width: 180px;}
 
 html, body {height: 100%; margin: 0;}
 .mid-bar{position: absolute !important; left: 0; right: 0; top: 12%;bottom: 10%;}

@@ -71,4 +71,8 @@ export class PaviAdminService {
   getDemoRequest(){
     return this.httpClient.post(`${API_URL}admin/demo-request`,'', {headers:this.getHeaders()});
   }
+
+  deleteUser(params){
+    return this.httpClient.post(`${API_URL}admin/delete-user`,params, {headers:this.getHeaders()});
+  }
 }

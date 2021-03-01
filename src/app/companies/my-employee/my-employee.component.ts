@@ -92,6 +92,8 @@ export class MyEmployeeComponent implements OnInit {
         this.results = resultList;
         if(this.results != '' && this.loadFlag){
           this.applyFilterFive(this.results);
+        }else{
+          this.applyFilterFive('');
         }
     });
 
@@ -205,17 +207,18 @@ saveEmployee(){
 
 editEmployee(index){
   this.employeeForm.reset();
-  this.singleEmployee =this.employees[index];
+  //this.singleEmployee =this.employees[index];
+  this.singleEmployee =this.employees.find(x => x.id === index);
   
   if(this.singleEmployee ){
   this.edit_employee = true;
   this.view_employee = false;
   this.employeeForm.patchValue({
-    id:this.employees[index].id,
-    first_name:this.employees[index].first_name,
-    last_name:this.employees[index].last_name,
-    user_id:this.employees[index].user_id,
-    position:this.employees[index].position,
+    id:this.singleEmployee.id,
+    first_name:this.singleEmployee.first_name,
+    last_name:this.singleEmployee.last_name,
+    user_id:this.singleEmployee.user_id,
+    position:this.singleEmployee.position,
     // password:this.employees[index].password,
   });
   //this.employeeForm.patchValue(this.singleEmployee);

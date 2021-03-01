@@ -14,6 +14,7 @@ import {COUNTRY_LIST} from '../../core/constants/countries';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {SearchService} from '../../core/services/search.service';
 
 declare var $: any;
 
@@ -39,6 +40,9 @@ export class JobSpecialistComponent implements OnInit {
   public dataSourceFive;
   public displayedColumnsFive: string[];
 
+  public results = null;
+  loadFlag = false;
+
   @ViewChild('TableFivePaginator', {static: false}) tableFivePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableFiveSort: MatSort;
 
@@ -50,14 +54,26 @@ export class JobSpecialistComponent implements OnInit {
     private paviAdminService:PaviAdminService,
     private getAuthUser: GetAuthUserPipe,
     private toastr: ToastrService,
+    private searchService: SearchService,
   ) {
     this.dataSourceFive = new MatTableDataSource<JobSpecialty>();
     this.displayedColumnsFive=['specialist_level','action'];
+
+    searchService.getResults$()
+    .subscribe((resultList: any[])=> {
+        this.results = resultList;
+        if(this.results != '' && this.loadFlag){
+          this.applyFilterFive(this.results);
+        }else{
+          this.applyFilterFive('');
+        }
+    });
    }
 
   ngOnInit(): void {
 
     this.getJobSpecialistLevel();
+    this.loadFlag = true;
 
     this.specialistForm = this.fb.group({
       specialist_level: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), patternValidator(TEXT_ONLY_PATTERN)]],
@@ -115,9 +131,10 @@ export class JobSpecialistComponent implements OnInit {
   editJobSpecialty(index){
     $("#edit-modal-popup-jobSpecialty").modal("show");
     $("#edit-modal-popup-jobSpecialty").appendTo("body");
+    let single = this.levels.find(x => x.id === index);
     this.jobSpecialtyForm.patchValue({
-      jobSpecialtyName: this.levels[index].specialist_level,
-      id: this.levels[index].id,
+      jobSpecialtyName: single.specialist_level,
+      id: single.id,
     });
    }
    updateJobSpecialty(){
@@ -126,7 +143,7 @@ export class JobSpecialistComponent implements OnInit {
         specialist_level: this.jobSpecialtyForm.getRawValue().jobSpecialtyName};
           
         this.paviAdminService.updateJobSpecialties(params).subscribe((response : any) => { 
-          console.log("Update Job Specialist>>>>>>", response)
+          //console.log("Update Job Specialist>>>>>>", response)
           if(response.statusCode==200){
              this.getJobSpecialistLevel();
              this.toastr.success('Data Updated Successfully');

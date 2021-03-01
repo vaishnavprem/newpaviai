@@ -15,6 +15,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import yesno from "yesno-dialog";
+import {SearchService} from '../../core/services/search.service';
 
 declare var $: any;
 
@@ -47,6 +48,10 @@ export class CompanyComponent implements OnInit {
   public edit_company = false;
   public postArry;
   authUser;
+  singleCompany;
+
+  public results = null;
+  loadFlag = false;
 
   @ViewChild('TableOnePaginator', {static: false}) tableOnePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableOneSort: MatSort;
@@ -59,15 +64,27 @@ export class CompanyComponent implements OnInit {
     private paviAdminService:PaviAdminService,
     private getAuthUser: GetAuthUserPipe,
     private toastr: ToastrService,
+    private searchService: SearchService,
   ) { 
     this.dataSourceOne = new MatTableDataSource<Company>();
     this.displayedColumnsOne=['name', 'address', 'country', 'phone','email','action'];
+
+    searchService.getResults$()
+    .subscribe((resultList: any[])=> {
+        this.results = resultList;
+        if(this.results != '' && this.loadFlag){
+          this.applyFilterOne(this.results);
+        }else{
+          this.applyFilterOne('');
+        }
+    });
   }
 
   ngOnInit(): void {
     this.authUser = this.getAuthUser.transform();
 
     this.getComapnies();
+    this.loadFlag = true;
 
     this.companyForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15), patternValidator(TEXT_ONLY_PATTERN)]],
@@ -136,20 +153,21 @@ export class CompanyComponent implements OnInit {
     //console.log('Status>>>',this.companies[index]);
     this.view_company = false;
     this.edit_company = true;
+    this.singleCompany = this.companies.find(x => x.company_id === index);
     // $("#edit-modal-popup-company").modal("show");
     // $("#edit-modal-popup-company").appendTo("body");
     // let element = document.getElementById('edit-modal-popup-company');
     // element.className = 'modal fade in';
     this.companyForm.patchValue({
-      company_id: this.companies[index].company_id,
-      name: this.companies[index].name,
-      address: this.companies[index].address,
-      country: this.companies[index].country,
-      phone: this.companies[index].phone,
-      email: this.companies[index].email,
+      company_id: this.singleCompany.company_id,
+      name: this.singleCompany.name,
+      address: this.singleCompany.address,
+      country: this.singleCompany.country,
+      phone: this.singleCompany.phone,
+      email: this.singleCompany.email,
       // first_name: this.companies[index].first_name,
       // last_name: this.companies[index].last_name,
-      status: this.companies[index].status
+      status: this.singleCompany.status
       //status: true 
     });
    }

@@ -139,4 +139,8 @@ authUser;
   getEmailTemplate(params){
     return this.httpClient.post(`${API_URL}companies/get-email-template`, params,{headers:this.getHeaders()}); 
   }
+
+  disableApplicants(params){
+    return this.httpClient.post(`${API_URL}companies/disable-applicants`, params,{headers:this.getHeaders()}); 
+  }
 }

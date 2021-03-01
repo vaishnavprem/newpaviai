@@ -409,9 +409,11 @@
                         <!-- <a class="btn" data-toggle="modal" > <i class="fa fa-pencil"></i></a>  -->
                         <a class="btn"> <i class="fa fa-eye" (click)="showCandidateAnswers(element)"></i></a>
                         <a class="btn" title="View Feedback"> <i class="fa fa-comments" (click)="showCandidateFeedback(element)"></i></a> 
-                        <!-- <a class="btn red"> <i class="fa fa-trash"></i></a> -->
+                        
                         <a *ngIf="element.resume_file" [href]="'https://d39smmql2m03vn.cloudfront.net/uploads/avatars/'+element.resume_file" title="View Resume" class="btn" target="_blank" download> <i class="fa fa-file" aria-hidden="true"></i></a>
                         <a class="btn" title="Send Mail"> <i class="fa fa-envelope" (click)="showMail(element)"></i></a>
+
+                        <a class="btn red" title="Disable Applicants"> <i class="fa fa-trash" (click)="disableApplicants(element.interview_id)"></i></a>
                       </td>
                     </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumnsThree"></tr>

@@ -14,6 +14,7 @@ import {COUNTRY_LIST} from '../../core/constants/countries';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {SearchService} from '../../core/services/search.service';
 
 declare var $: any;
 
@@ -40,6 +41,9 @@ export class CountryListComponent implements OnInit {
   public dataSourceSix;
   public displayedColumnsSix: string[];
 
+  public results = null;
+  loadFlag = false;
+
   @ViewChild('TableSixPaginator', {static: false}) tableSixPaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableSixSort: MatSort;
 
@@ -51,14 +55,26 @@ export class CountryListComponent implements OnInit {
     private paviAdminService:PaviAdminService,
     private getAuthUser: GetAuthUserPipe,
     private toastr: ToastrService,
+    private searchService: SearchService,
   ) {
     this.dataSourceSix = new MatTableDataSource<Country>();
     this.displayedColumnsSix=['country_name','action'];
+
+    searchService.getResults$()
+    .subscribe((resultList: any[])=> {
+        this.results = resultList;
+        if(this.results != '' && this.loadFlag){
+          this.applyFilterSix(this.results);
+        }else{
+          this.applyFilterSix('');
+        }
+    });
    }
 
   ngOnInit(): void {
 
     this.getCountries();
+    this.loadFlag = true;
 
     this.countryForm = this.fb.group({
       countryName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), patternValidator(TEXT_ONLY_PATTERN)]],
@@ -99,7 +115,7 @@ export class CountryListComponent implements OnInit {
     $("#edit-modal-popup-country").modal("show");
     $("#edit-modal-popup-country").appendTo("body");
     this.countryForm.patchValue({
-      countryName: this.allcountries[index].country_name,
+      countryName: this.allcountries.find(x => x.id === index).country_name,
     });
    }
 

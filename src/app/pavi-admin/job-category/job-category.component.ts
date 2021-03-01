@@ -14,6 +14,7 @@ import {COUNTRY_LIST} from '../../core/constants/countries';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {SearchService} from '../../core/services/search.service';
 
 declare var $: any;
 
@@ -39,6 +40,9 @@ export class JobCategoryComponent implements OnInit {
   public dataSourceThree;
   public displayedColumnsThree: string[];
 
+  public results = null;
+  loadFlag = false;
+
   @ViewChild('TableThreePaginator', {static: false}) tableThreePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableThreeSort: MatSort;
 
@@ -50,14 +54,26 @@ export class JobCategoryComponent implements OnInit {
     private paviAdminService:PaviAdminService,
     private getAuthUser: GetAuthUserPipe,
     private toastr: ToastrService,
+    private searchService: SearchService,
   ) {
     this.dataSourceThree = new MatTableDataSource<JobCategory>();
     this.displayedColumnsThree=['category','action'];
+
+    searchService.getResults$()
+    .subscribe((resultList: any[])=> {
+        this.results = resultList;
+        if(this.results != '' && this.loadFlag){
+          this.applyFilterThree(this.results);
+        }else{
+          this.applyFilterThree('');
+        }
+    });
    }
 
   ngOnInit(): void {
 
     this.getJobCategory();
+    this.loadFlag = true;
 
     this.categoryForm = this.fb.group({
       category: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), patternValidator(TEXT_ONLY_PATTERN)]],
@@ -115,9 +131,10 @@ export class JobCategoryComponent implements OnInit {
   editJobCategory(index){
     $("#edit-modal-popup-jobCategory").modal("show");
     $("#edit-modal-popup-jobCategory").appendTo("body");
+    let singleCategory = this.categories.find(x => x.id === index); 
     this.jobCategoryForm.patchValue({
-      jobCategoryName: this.categories[index].category,
-      id: this.categories[index].id
+      jobCategoryName: singleCategory.category,
+      id: singleCategory.id
     });
    }
    updateJobCategory(){
@@ -126,7 +143,7 @@ export class JobCategoryComponent implements OnInit {
                 category: this.jobCategoryForm.getRawValue().jobCategoryName};
           
         this.paviAdminService.updateJobCategories(params).subscribe((response : any) => { 
-          console.log("Update Job Category>>>>>>", response)
+          //console.log("Update Job Category>>>>>>", response)
           if(response.statusCode==200){
              this.getJobCategory();
              this.toastr.success('Data Updated Successfully');

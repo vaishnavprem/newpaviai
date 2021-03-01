@@ -12,6 +12,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { DomSanitizer } from '@angular/platform-browser';
+import {SearchService} from '../../core/services/search.service';
 declare var $: any;
 interface User {
   jobTitle: string;
@@ -37,6 +38,9 @@ export class UserInterviewComponent implements OnInit {
   public firstQuestion:any;
   play;
 
+  public results = null;
+  loadFlag = false;
+
   @ViewChild('TableOnePaginator', {static: false}) tableOnePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableOneSort: MatSort;
   constructor(
@@ -46,13 +50,25 @@ export class UserInterviewComponent implements OnInit {
     private usersService: UsersService,
     private getAuthUser: GetAuthUserPipe,
     private toastr: ToastrService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private searchService: SearchService,
   ) { 
     this.dataSourceOne = new MatTableDataSource<User>();
     this.displayedColumnsOne=['jobTitle','created_at','action'];
+
+    searchService.getResults$()
+    .subscribe((resultList: any[])=> {
+        this.results = resultList;
+        if(this.results != '' && this.loadFlag){
+          this.applyFilterOne(this.results);
+        }else{
+          this.applyFilterOne('');
+        }
+    });
   }
 
   ngOnInit(): void {
+    this.loadFlag = true;
     this.isLoder=true;
     this.play= 0;
     this.authUser = this.getAuthUser.transform();

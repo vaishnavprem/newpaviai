@@ -16,6 +16,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import yesno from "yesno-dialog";
+import {SearchService} from '../../core/services/search.service';
 
 declare var $: any;
 
@@ -47,6 +48,9 @@ export class DemoRequestComponent implements OnInit {
   public displayedColumnsOne: string[];
   public request;
 
+  public results = null;
+  loadFlag = false;
+
   @ViewChild('TableOnePaginator', {static: false}) tableOnePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableOneSort: MatSort;
 
@@ -58,13 +62,25 @@ export class DemoRequestComponent implements OnInit {
     private paviAdminService:PaviAdminService,
     private getAuthUser: GetAuthUserPipe,
     private toastr: ToastrService,
+    private searchService: SearchService,
   ) {
     this.dataSourceOne = new MatTableDataSource<DemoRequest>();
     this.displayedColumnsOne=['company_name', 'company_address', 'contact_name', 'contact_number','contact_email', 'company_website', 'hiring'];
+
+    searchService.getResults$()
+    .subscribe((resultList: any[])=> {
+        this.results = resultList;
+        if(this.results != '' && this.loadFlag){
+          this.applyFilterOne(this.results);
+        }else{
+          this.applyFilterOne('');
+        }
+    });
    }
 
   ngOnInit(): void {
     this.getDemoRequest();
+    this.loadFlag = true;
   }
 
   applyFilterOne(filterValue: string) {

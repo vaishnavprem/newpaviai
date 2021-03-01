@@ -14,6 +14,7 @@ import {COUNTRY_LIST} from '../../core/constants/countries';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {SearchService} from '../../core/services/search.service';
 
 declare var $: any;
 
@@ -39,6 +40,9 @@ export class JobTermComponent implements OnInit {
   public dataSourceFour;
   public displayedColumnsFour: string[];
 
+  public results = null;
+  loadFlag = false;
+
   @ViewChild('TableFourPaginator', {static: false}) tableFourPaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableFourSort: MatSort;
 
@@ -50,14 +54,26 @@ export class JobTermComponent implements OnInit {
     private paviAdminService:PaviAdminService,
     private getAuthUser: GetAuthUserPipe,
     private toastr: ToastrService,
+    private searchService: SearchService,
   ) {
     this.dataSourceFour = new MatTableDataSource<JobTerm>();
     this.displayedColumnsFour=['term','action'];
+
+    searchService.getResults$()
+    .subscribe((resultList: any[])=> {
+        this.results = resultList;
+        if(this.results != '' && this.loadFlag){
+          this.applyFilterFour(this.results);
+        }else{
+          this.applyFilterFour('');
+        }
+    });
    }
 
   ngOnInit(): void {
 
     this.getJobTerms();
+    this.loadFlag = true;
 
     this.termsForm = this.fb.group({
       term: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), patternValidator(TEXT_ONLY_PATTERN)]],
@@ -115,9 +131,10 @@ export class JobTermComponent implements OnInit {
   editJobTerm(index){
     $("#edit-modal-popup-jobTerm").modal("show");
     $("#edit-modal-popup-jobTerm").appendTo("body");
+    let singleTerm = this.terms.find(x => x.id === index);
     this.jobTermForm.patchValue({
-      jobTermName: this.terms[index].term,
-      id: this.terms[index].id
+      jobTermName: singleTerm.term,
+      id: singleTerm.id
     });
    }
    updateJobTerm(){
@@ -126,7 +143,7 @@ export class JobTermComponent implements OnInit {
                 term: this.jobTermForm.getRawValue().jobTermName};
                 
         this.paviAdminService.updateJobTerms(params).subscribe((response : any) => {
-          console.log("Update Job Term>>>>>>", response)
+          //console.log("Update Job Term>>>>>>", response)
           if(response.statusCode==200){
             this.getJobTerms();
             this.toastr.success('Data Updated Successfully');

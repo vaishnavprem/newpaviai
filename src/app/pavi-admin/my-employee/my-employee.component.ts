@@ -21,6 +21,7 @@ import { Subject } from 'rxjs';
 import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
 import { DomSanitizer } from '@angular/platform-browser';
 import yesno from "yesno-dialog";
+import {SearchService} from '../../core/services/search.service';
 declare var $: any;
 
 interface Employee {
@@ -63,6 +64,9 @@ export class MyEmployeeComponent implements OnInit {
   employees:any[];
   singleEmployee;
 
+  public results = null;
+  loadFlag = false;
+
   @ViewChild('TableFivePaginator', {static: false}) tableFivePaginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) tableFiveSort: MatSort;
 
@@ -76,9 +80,21 @@ export class MyEmployeeComponent implements OnInit {
     public auth: AuthService,
     private paviAdminService:PaviAdminService,
     public router: Router,
+    private searchService: SearchService,
   ) {
     this.dataSourceFive = new MatTableDataSource<Employee>();
     this.displayedColumnsFive=['first_name', 'last_name', 'user_id', 'position','action'];
+
+    searchService.getResults$()
+    .subscribe((resultList: any[])=> {
+        this.results = resultList;
+        if(this.results != '' && this.loadFlag){
+          this.applyFilterFive(this.results);
+        }else{
+          this.applyFilterFive('');
+        }
+    });
+
    }
 
   ngOnInit(): void {
@@ -96,6 +112,7 @@ export class MyEmployeeComponent implements OnInit {
     });
     //this.getCompanyData();
     this.getEmployee();
+    this.loadFlag = true;
   }
 
   applyFilterFive(filterValue: string) {
@@ -181,18 +198,18 @@ saveEmployee(){
 
 editEmployee(index){
   this.employeeForm.reset();
-  this.singleEmployee =this.employees[index];
+  this.singleEmployee =this.employees.find(x => x.id === index);
   
   if(this.singleEmployee ){
   this.edit_employee = true;
   this.view_employee = false;
   this.employeeForm.patchValue({
-    id:this.employees[index].id,
-    first_name:this.employees[index].first_name,
-    last_name:this.employees[index].last_name,
-    user_id:this.employees[index].user_id,
-    position:this.employees[index].position,
-    // password:this.employees[index].password,
+    id:this.singleEmployee.id,
+    first_name:this.singleEmployee.first_name,
+    last_name:this.singleEmployee.last_name,
+    user_id:this.singleEmployee.user_id,
+    position:this.singleEmployee.position,
+    // password:this.singleEmployee.password,
   });
   //this.employeeForm.patchValue(this.singleEmployee);
   }

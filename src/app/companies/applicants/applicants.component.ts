@@ -23,6 +23,7 @@ import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,Calenda
 import { DomSanitizer } from '@angular/platform-browser';
 import { ResetPasswordComponent } from 'app/auth/reset-password/reset-password.component';
 import { ToolbarService} from '@syncfusion/ej2-angular-richtexteditor';
+import yesno from "yesno-dialog";
 
 declare var $: any;
 
@@ -123,6 +124,8 @@ export class ApplicantsComponent implements OnInit {
         this.results = resultList;
         if(this.results != '' && this.loadFlag){
           this.applyFilterThree(this.results);
+        }else{
+          this.applyFilterThree('');
         }
     });
   }
@@ -279,7 +282,7 @@ getUsers(){
 showCandidateAnswers(element){
   this.position = element.jobTitle;
   this.candidate_name = element.first_name+" "+element.last_name;
-  this.final_decision = element.interview_status ? element.interview_status : 'Reject';
+  this.final_decision = element.interview_status ? element.interview_status : 'Decline';
   this.resumeFile = element.resume_file;
   this.isLoder=true;
    let parmsa ={
@@ -414,6 +417,19 @@ saveFinalDecision(){
       }    
      });
   
+}
+
+async disableApplicants(interview_id){
+  const yes = await yesno();
+     if(yes){
+      this.postArry = {
+        interview_id:interview_id
+      }
+      this.companiesService.disableApplicants(this.postArry).subscribe(response => {
+        this.getUsers();
+        this.toastr.success('Data deleted Successfully');
+       });
+    }
 }
 
 sendMail(){

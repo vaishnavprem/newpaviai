@@ -133,6 +133,8 @@ export class ViewJobsComponent implements OnInit {
         this.results = resultList;
         if(this.results != '' && this.loadFlag){
           this.applyFilterOne(this.results);
+        }else{
+          this.applyFilterOne('');
         }
     });
 
@@ -457,14 +459,16 @@ getJobs(){
 }
 
   showJob(index){
-    this.singleJob =this.jobs[index];
+    //this.singleJob =this.jobs[index];
+    this.singleJob =this.jobs.find(x => x.id === index);
     $("#show-job").modal("show");
     $("#show-job").appendTo("body");
     
     //console.log("Index>>",index,"Single jOB>>",this.singleJob);
   }
   editJob(index){
-    this.singleJob =this.jobs[index];
+    //this.singleJob =this.jobs[index];
+    this.singleJob =this.jobs.find(x => x.id === index);
 
     this.isLoder=true;
     this.postArry = {
@@ -483,9 +487,9 @@ getJobs(){
         this.view_jobs = false;
         this.edit_jobs = true;
         this.jobForm.patchValue({
-          jobId:this.jobs[index].id,
-          date_opened:new Date(this.jobs[index].dateOpened).toISOString().substring(0, 10),
-          date_closed:new Date(this.jobs[index].dateClose).toISOString().substring(0, 10)
+          jobId:this.jobs.find(x => x.id === index).id,
+          date_opened:new Date(this.jobs.find(x => x.id === index).dateOpened).toISOString().substring(0, 10),
+          date_closed:new Date(this.jobs.find(x => x.id === index).dateClose).toISOString().substring(0, 10)
         });
 
         this.jobForm.patchValue(this.singleJob);

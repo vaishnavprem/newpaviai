@@ -472,8 +472,8 @@
   
                       <ng-container matColumnDef="action">
                         <th mat-header-cell *matHeaderCellDef>Action</th>
-                        <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editJob(tableOnePaginator.pageSize * tableOnePaginator.pageIndex + i)"></i></a> 
-                          <a class="btn"> <i class="fa fa-eye"  (click)="showJob(tableOnePaginator.pageSize * tableOnePaginator.pageIndex + i)"></i></a> 
+                        <td mat-cell *matCellDef="let element  let i = index;"> <a class="btn" data-toggle="modal" > <i class="fa fa-pencil" (click)="editJob(element.id)"></i></a> 
+                          <a class="btn"> <i class="fa fa-eye"  (click)="showJob(element.id)"></i></a> 
                           <a class="btn red"> <i (click)="deleteJob(element.id)" class="fa fa-trash"></i></a>
 
                           <a class="btn" title="Add Questions"> <i (click)="router.navigate(['/companies/add-question'],{ queryParams: { jobId: element.id } })" class="fa fa-plus"></i></a>

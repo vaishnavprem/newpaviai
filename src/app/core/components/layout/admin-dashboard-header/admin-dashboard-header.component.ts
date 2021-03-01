@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GetAuthUserPipe} from '../../../../shared/pipes/get-auth-user.pipe';
 import {AuthService} from '../../../../core/services/auth.service';
+import {SearchService} from '../../../../core/services/search.service';
 
 @Component({
   selector: 'app-admin-dashboard-header',
@@ -13,10 +14,16 @@ export class AdminDashboardHeaderComponent implements OnInit {
   constructor(
     private getAuthUser: GetAuthUserPipe,
     public auth: AuthService,
+    private searchService: SearchService,
   ) { }
 
   ngOnInit(): void {
+    this.getSuggestion('');
     this.authUser = this.getAuthUser.transform();
+  }
+
+  public getSuggestion(name){
+    this.searchService.getSuggestion(name);
   }
 
 }
