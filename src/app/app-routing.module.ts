@@ -10,6 +10,7 @@ import { FindNewEmployeeComponent } from './home/find-new-employee/find-new-empl
 import { EmployeeSignUpComponent } from './home/employee-sign-up/employee-sign-up.component';
 import { RequestDemoComponent } from './home/request-demo/request-demo.component';
 import { ForgotPasswordComponent } from './home/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './home/reset-password/reset-password.component';
 const routes: Routes = [
   {
     path: '',
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent
+  },
+  {
+    path: 'reset-password/:key/:email',
+    component: ResetPasswordComponent
   },
   // {
   //   path: 'find-new-employee',

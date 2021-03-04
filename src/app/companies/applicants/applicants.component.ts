@@ -149,7 +149,10 @@ export class ApplicantsComponent implements OnInit {
       subject: ['', Validators.required],
       body: ['', Validators.required],
       email:['', Validators.required],
-      template: ['', Validators.required]
+      template: ['', Validators.required],
+      applicant_name: [''],
+      sender_name: [''],
+      job_name: ['']
     });
 
     this.templateForm = this.fb.group({
@@ -433,12 +436,28 @@ async disableApplicants(interview_id){
 }
 
 sendMail(){
-  console.log("Send Mail>>>",this.userForm.getRawValue());
+  if(this.userForm.valid){
+    //console.log("Send Mail>>>",this.userForm.getRawValue());
+    this.companiesService.sendApplicantMail(this.userForm.getRawValue()).subscribe((dt: any) => {
+      if(dt.statusCode==200){
+        this.toastr.success("Mail send successfully")
+        $("#send-mail").modal("hide");
+      } else {
+        this.toastr.error(dt.message);
+      }
+    });
+  }else{
+    this.toastr.error("All fields are required");
+  }
+  
 }
 
 showMail(element){
   this.getTemplate();
   this.userForm.patchValue({email: element.email});
+  this.userForm.patchValue({applicant_name: element.first_name+' '+element.last_name});
+  this.userForm.patchValue({sender_name: this.companyData.name});
+  this.userForm.patchValue({job_name: element.jobTitle});
   $("#send-mail").modal("show");
 }
 

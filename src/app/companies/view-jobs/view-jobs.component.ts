@@ -80,6 +80,8 @@ export class ViewJobsComponent implements OnInit {
   public jobs:any[];
   public questions:any[];
   employees:any[];
+  assignEmp:any[];
+  employee_ids;
 
   public results = null;
   loadFlag = false;
@@ -190,6 +192,7 @@ export class ViewJobsComponent implements OnInit {
 
     this.getCompanyData();
     this.loadFlag = true;
+    this.employee_ids = <FormArray>this.jobForm.controls.employeeId;
   }
 
   getCompanyData(){
@@ -411,6 +414,11 @@ saveJob(){
       this.companiesService.editJobs(this.jobForm.getRawValue()).subscribe((response : any) => {
           if (response.statusCode == 200) {
           this.toastr.success('Data Updated Successfully');
+
+          while(this.employee_ids.length > 0){
+            this.employee_ids.removeAt(0);
+          }
+         
           this.view_jobs= true;
           this.edit_jobs = false;
           this.getJobs();
@@ -469,6 +477,25 @@ getJobs(){
   editJob(index){
     //this.singleJob =this.jobs[index];
     this.singleJob =this.jobs.find(x => x.id === index);
+    this.employee_ids = <FormArray>this.jobForm.controls.employeeId;
+    
+    this.isLoder=true;
+    this.postArry = {
+      job_id:index
+    }
+    let empData = this.companiesService.getAssignEmp(this.postArry)
+      .subscribe((response : any) => {
+        this.isLoder=false;
+        //console.log("Response Of get Employee",response);
+        this.assignEmp = response['data']['empdata'];
+        if(this.assignEmp){
+          this.assignEmp.forEach((value)=>{
+            this.employee_ids.push(new FormControl(value.user_id));
+            //console.log("User_id", this.employee_ids.value);
+          })
+        }
+      
+    });
 
     this.isLoder=true;
     this.postArry = {
@@ -479,7 +506,7 @@ getJobs(){
         this.isLoder=false;
         //console.log("Response Of get Employee",response);
         this.employees = response['data']['empdata'] as Employee[];
-      });
+    });
     
     if(this.singleJob ){
         // $('#pills-tab a[href="#create-job"]').tab('show');
@@ -545,16 +572,27 @@ getJobs(){
   }
 
   onChange(employeeId:string, event) {
-    const employee_ids = <FormArray>this.jobForm.controls.employeeId;
+    //this.employee_ids = <FormArray>this.jobForm.controls.employeeId;
   
     if(event.checked) {
-      employee_ids.push(new FormControl(employeeId));
+      this.employee_ids.push(new FormControl(employeeId));
     } else {
-      let index = employee_ids.controls.findIndex(x => x.value == employeeId)
-      employee_ids.removeAt(index);
+      let index = this.employee_ids.controls.findIndex(x => x.value == employeeId)
+      this.employee_ids.removeAt(index);
     }
   
-    console.log("selected Employee>>>",employee_ids.value)
+    //console.log("selected Employee>>>",this.employee_ids.value)
+  }
+
+  getCheckedEmployee(empId){
+    let empID = this.employee_ids.value.find(x =>x === empId);
+    //console.log("EmpID",empID);
+    if(empID){
+      return true;
+    }else{
+      return false;
+    }
+    
   }
 
   

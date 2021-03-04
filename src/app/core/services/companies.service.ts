@@ -143,4 +143,20 @@ authUser;
   disableApplicants(params){
     return this.httpClient.post(`${API_URL}companies/disable-applicants`, params,{headers:this.getHeaders()}); 
   }
+
+  sendResetPasswordLink(params){
+    return this.httpClient.post(`${API_URL}companies/send-mail`, params,{headers:this.getHeaders()}); 
+  }
+
+  resetPassword(params){
+    return this.httpClient.post(`${API_URL}companies/reset-password`, params,{headers:this.getHeaders()}); 
+  }
+
+  getAssignEmp(params){
+    return this.httpClient.post(`${API_URL}companies/get-assign-emp`, params,{headers:this.getHeaders()}); 
+  }
+
+  sendApplicantMail(params){
+    return this.httpClient.post(`${API_URL}companies/send-applicant-mail`, params,{headers:this.getHeaders()}); 
+  }
 }

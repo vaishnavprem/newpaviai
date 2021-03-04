@@ -5,6 +5,7 @@ import {AuthService} from '../../core/services/auth.service';
 import {patternValidator} from '../../core/helpers/pattern-validator';
 import {ToastrService} from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
+import {CompaniesService} from '../../core/services/companies.service';
 import {
   API_URL,
   DATE_ONLY_PATTERN,
@@ -25,12 +26,14 @@ import {COUNTRY_LIST} from '../../core/constants/countries';
 export class ForgotPasswordComponent implements OnInit {
   forgotPasswordForm: FormGroup;
   isSubmitted = false;
+  isLoder = false;
 
   constructor(
     public router: Router,
     private fb: FormBuilder,
     public auth: AuthService,
     private toastr: ToastrService,
+    private companiesService: CompaniesService,
     private route: ActivatedRoute
   ) {
     this.forgotPasswordForm = this.fb.group({
@@ -50,8 +53,22 @@ export class ForgotPasswordComponent implements OnInit {
     // console.log(this.userRegisterForm.value)
     // console.log(this.userRegisterForm.valid)
     if (this.forgotPasswordForm.valid) {
-      //console.log(this.forgotPasswordForm.value)
-      this.toastr.error("This functionality is comming soon");
+      this.isLoder = true;
+      this.companiesService.sendResetPasswordLink(this.forgotPasswordForm.getRawValue())
+      .subscribe((response : any)=> {
+      this.isLoder=false;
+      if (response.statusCode == 200) {
+        this.isLoder = false;
+        this.toastr.success("A link is sent to your mail to reset your password");
+        }
+        else{
+          this.toastr.error("Email Not Found");
+        } 
+          
+      });
+    }
+    else{
+      this.toastr.error("Email is required.");
     }
   }
 
